@@ -1,0 +1,10 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"newFeature": true
+	},
+	"appid": "wxcb3ed1484b8c7147",
+	"projectname": "HITMers",
+	"condition": {}
+}

@@ -1,0 +1,21 @@
+<view class="container">
+
+  <image class="logo" src="../../images/logo.jpg"></image>
+
+  <zan-panel title="{{language.personalInfo}}">
+    <zan-cell title="{{logged ? userInfo.nickName : language.login}}" bindtap="login">
+      <image class="user-avatar" src="{{logged ? userInfo.avatarUrl : '../../images/user-unlogin.png'}}" slot="icon" />
+    </zan-cell>
+  </zan-panel>
+
+  <zan-panel title="{{language.settings}}">
+    <zan-cell title="{{language.language}}">
+      <picker mode="selector" range="{{languages}}" value="{{languageIndex}}" bindchange="changeLanguage">
+        <view class="picker">
+          {{languages[languageIndex]}}
+        </view>
+      </picker>
+    </zan-cell>
+  </zan-panel>
+
+</view>

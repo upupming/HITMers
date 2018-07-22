@@ -1,0 +1,15 @@
+.logo {
+  display: block;
+  margin: 40px auto;
+  width: 184px;
+  height: 164px;
+  border-radius: 50%;
+  border-color: #F9F9F9;
+}
+  
+.user-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}
