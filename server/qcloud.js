@@ -33,4 +33,7 @@ const sdkConfig = (() => {
 
 // 初始化 SDK
 // 将基础配置和 sdk.config 合并传入 SDK 并导出初始化完成的 SDK
+// https://github.com/tencentyun/wafer2-node-sdk/blob/HEAD/API.md
+// 如果购买了腾讯云小程序解决方案，配置项中 serverHost, tunnelServerUrl, tunnelSignatureKey, qcloudAppId, qcloudSecretId, qcloudSecretKey, wxMessageToken 由腾讯云自动下发到您的开发环境和生产环境上。
+// 说的 sdk.config.json 这个文件
 module.exports = qcloud(Object.assign({}, sdkConfig, configs))

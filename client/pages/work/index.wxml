@@ -3,7 +3,7 @@
     <view class="icon">
       <zan-icon type="sign"></zan-icon>
     </view>
-    <view class="icon-action">{{language.signIn}}</view>
+    <view class="icon-action">{{checkedIn ? language.checkOut : language.checkIn}}</view>
   </view>
 
   <zan-dialog id="sign-in-dialog"></zan-dialog>

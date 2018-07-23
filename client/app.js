@@ -6,7 +6,7 @@ import locales from './utils/locales'
 import T from './utils/i18n'
 
 T.registerLocale(locales);
-T.setLocale('zh-Hans');
+T.setLocaleByIndex(wx.getStorageSync('langIndex') || 0);
 wx.T = T;
 
 App({
@@ -14,7 +14,8 @@ App({
         qcloud.setLoginUrl(config.service.loginUrl)
     },
     globalData: {
+        // 登录信息
         logged: wx.getStorageSync('logged') || false,
-        userInfo: wx.getStorageSync('userInfo') || null,
+        userInfo: wx.getStorageSync('userInfo') || undefined
     }
 })

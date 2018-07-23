@@ -5,14 +5,17 @@
   <zan-panel title="{{language.personalInfo}}">
     <zan-cell title="{{logged ? userInfo.nickName : language.login}}" bindtap="login">
       <image class="user-avatar" src="{{logged ? userInfo.avatarUrl : '../../images/user-unlogin.png'}}" slot="icon" />
+      <view wx:if="{{logged}}" slot="footer" catchtap="logout">
+        {{language.logout}}
+      </view>
     </zan-cell>
   </zan-panel>
 
   <zan-panel title="{{language.settings}}">
     <zan-cell title="{{language.language}}">
-      <picker mode="selector" range="{{languages}}" value="{{languageIndex}}" bindchange="changeLanguage">
+      <picker mode="selector" range="{{languages}}" value="{{langIndex}}" bindchange="changeLanguage">
         <view class="picker">
-          {{languages[languageIndex]}}
+          {{languages[langIndex]}}
         </view>
       </picker>
     </zan-cell>

@@ -5,7 +5,8 @@ const Dialog = require('../../zan-ui/dialog/dialog');
 Page({
   data: {
     language: '',
-    signedInTimes: 0
+    signedInTimes: 0,
+    checkedIn: false
   },
   onLoad: function() {
     this.setLanguage();
