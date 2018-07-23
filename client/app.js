@@ -12,5 +12,9 @@ wx.T = T;
 App({
     onLaunch: function () {
         qcloud.setLoginUrl(config.service.loginUrl)
+    },
+    globalData: {
+        logged: wx.getStorageSync('logged') || false,
+        userInfo: wx.getStorageSync('userInfo') || null,
     }
 })

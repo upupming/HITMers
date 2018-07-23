@@ -9,7 +9,6 @@ Page({
     data: {
         userInfo: {},
         logged: false,
-        takeSession: false,
         requestResult: '',
         language: '',
         languageCode: ['zh-Hans', 'en'],
@@ -19,6 +18,16 @@ Page({
 
     onLoad: function() {
         this.setLanguage();
+        let globalData = getApp().globalData;
+        console.log(globalData);
+        if(!globalData.logged) {
+            this.login();
+        } else {
+            this.setData({
+                logged: globalData.logged,
+                userInfo: globalData.userInfo
+            })
+        }
     },
 
     changeLanguage(e) {
@@ -37,6 +46,18 @@ Page({
         });
     },
 
+    saveLoginStatus() {
+        wx.setStorage({
+            key: 'logged',
+            data: this.data.logged
+        });
+        
+        wx.setStorage({
+            key: 'userInfo',
+            data: this.data.userInfo
+        });
+    },
+
     // 用户登录
     login: function() {
         if (this.data.logged) return
@@ -52,7 +73,10 @@ Page({
                     that.setData({
                         userInfo: result,
                         logged: true
-                    })
+                    });
+                    if(logged) {
+                        that.saveLoginStatus();
+                    }
                 } else {
                     // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
                     qcloud.request({
@@ -65,6 +89,11 @@ Page({
                                 userInfo: result.data.data,
                                 logged: true
                             })
+
+                            // 缓存
+                            if(that.data.logged) {
+                                that.saveLoginStatus();
+                            }
                         },
 
                         fail(error) {

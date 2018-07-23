@@ -1,0 +1,17 @@
+.icon-wrap {
+  width: 33.33333%;
+  height: 100px;
+  float: left;
+  text-align: center;
+}
+
+.icon {
+  font-size: 24px;
+  padding: 10px;
+  color: var(--theme-color);
+}
+
+.icon-action {
+  color: var(--theme-color);
+  font-size: 10px;
+}

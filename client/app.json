@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/work/index",
     "pages/index/index"
   ],
   "window":{
@@ -8,5 +9,25 @@
     "navigationBarBackgroundColor": "#49B1F5",
     "navigationBarTitleText": "哈工大博物馆小助手",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#888",
+    "selectedColor":"#49B1F5",
+    "backgroundColor": "#F9F9F9",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-selected.png"
+      },
+      {
+        "pagePath": "pages/work/index",
+        "text": "工作",
+        "iconPath": "images/work.png",
+        "selectedIconPath": "images/work-selected.png"
+      }
+    ]
   }
 }

@@ -9,7 +9,8 @@ export default {
         "logining": "正在登陆",
         "requestError": "请求失败",
         "personalInfo": "个人信息",
-        "settings": "设置"
+        "settings": "设置",
+        "signIn": "签到",
     },
     'en': {
         "language": "Language",
@@ -20,6 +21,7 @@ export default {
         "logining": "Logging in",
         "requestError": "Request error",
         "personalInfo": "Personal information",
-        "settings": "Settings"
+        "settings": "Settings",
+        "signIn": "Sign in",
     }
 }
