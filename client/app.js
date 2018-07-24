@@ -6,16 +6,18 @@ import locales from './utils/locales'
 import T from './utils/i18n'
 
 T.registerLocale(locales);
-T.setLocaleByIndex(wx.getStorageSync('langIndex') || 0);
+let langIndex = wx.getStorageSync('langIndex') || 0;
+T.setLocaleByIndex(langIndex);
 wx.T = T;
 
 App({
-    onLaunch: function () {
-        qcloud.setLoginUrl(config.service.loginUrl)
-    },
-    globalData: {
-        // 登录信息
-        logged: wx.getStorageSync('logged') || false,
-        userInfo: wx.getStorageSync('userInfo') || undefined
-    }
+  onLaunch: function () {
+    qcloud.setLoginUrl(config.service.loginUrl)
+  },
+
+  globalData: {
+    // 登录信息
+    logged: wx.getStorageSync('logged') || false,
+    userInfo: wx.getStorageSync('userInfo') || undefined
+  }
 })

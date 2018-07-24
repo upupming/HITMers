@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/work/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/work/index"
   ],
   "window":{
     "backgroundColor":"#49B1F5",
@@ -17,16 +17,16 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "我",
-        "iconPath": "images/me.png",
-        "selectedIconPath": "images/me-selected.png"
-      },
-      {
         "pagePath": "pages/work/index",
         "text": "工作",
         "iconPath": "images/work.png",
         "selectedIconPath": "images/work-selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-selected.png"
       }
     ]
   }

@@ -8,14 +8,21 @@ Page({
     signedInTimes: 0,
     checkedIn: false
   },
-  onLoad: function() {
+  onLoad: function () {
     this.setLanguage();
     event.on("languageChanged", this, this.setLanguage);
   },
+  onShow: function() {
+    if(this.data.shouldChangeTitle) {
+      wx.T.setNavigationBarTitle();
+      this.data.shouldChangeTitle = false;
+    }
+  },
   setLanguage() {
     this.setData({
-        language: wx.T.getLanguage()
+      language: wx.T.getLanguage()
     });
+    this.data.shouldChangeTitle = true;
   },
   signIn() {
     let that = this;

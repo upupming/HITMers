@@ -13,6 +13,7 @@ Page({
     language: '',
     languages: ['简体中文', 'English'],
     langIndex: 0
+
   },
 
   onLoad: function () {
@@ -40,7 +41,7 @@ Page({
     });
     wx.T.setLocaleByIndex(index);
     this.setLanguage();
-    event.emit('languageChanged', index);
+    event.emit('languageChanged');
 
     wx.setStorage({
       key: 'langIndex',
@@ -49,9 +50,10 @@ Page({
   },
 
   setLanguage() {
-    this.setData ({
+    this.setData({
       language: wx.T.getLanguage()
     });
+    wx.T.setNavigationBarTitle();
   },
 
   saveLoginStatus() {
