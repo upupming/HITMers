@@ -1,7 +1,3 @@
-//app.js
-var qcloud = require('./vendor/wafer2-client-sdk/index')
-var config = require('./config')
-
 import locales from './utils/locales'
 import T from './utils/i18n'
 
@@ -12,12 +8,24 @@ wx.T = T;
 
 App({
   onLaunch: function () {
-    qcloud.setLoginUrl(config.service.loginUrl)
   },
 
   globalData: {
+    // 语言设置
+    langIndex: wx.getStorageSync('langIndex') || 0,
     // 登录信息
-    logged: wx.getStorageSync('logged') || false,
-    userInfo: wx.getStorageSync('userInfo') || undefined
+    logged: wx.getStorageSync('logged') || false
+  },
+
+  onHide: function() {
+    wx.setStorage({
+      key: 'langIndex',
+      data: this.globalData.langIndex
+    });
+
+    wx.setStorage({
+      key: 'logged',
+      data: this.globalData.logged
+    });
   }
 })

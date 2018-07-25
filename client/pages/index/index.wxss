@@ -7,7 +7,14 @@
   border-color: #F9F9F9;
 }
   
+.userinfo {
+  position: relative;
+  align-items: center;
+}
+
 .user-avatar {
+  display: block;
+  overflow: hidden;
   width: 100rpx;
   height: 100rpx;
   margin: 10rpx;

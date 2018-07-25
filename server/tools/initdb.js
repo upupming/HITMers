@@ -20,7 +20,7 @@ const DB = require('knex')({
         port: config.port,
         user: config.user,
         password: config.pass,
-        database: config.db,
+        database: config.db.cAuth,
         charset: config.char,
         multipleStatements: true
     }

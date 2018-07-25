@@ -1,15 +1,30 @@
 <view class="container">
   <image class="logo" src="../../images/logo.jpg"></image>
   <zan-panel title="{{language.personalInfo}}">
-    <zan-cell title="{{logged ? userInfo.nickName : language.login}}" bindtap="login">
-      <image class="user-avatar" src="{{logged ? userInfo.avatarUrl : '../../images/user-unlogin.png'}}" slot="icon" />
+    <zan-cell>
+      <open-data type="userNickName" wx:if="{{logged}}">
+      </open-data>
+      <zan-button wx:else size="small" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+        {{language.login}}
+      </zan-button>
+
+      <view class="userinfo" slot="icon">
+        <open-data  wx:if="{{logged}}" type="userAvatarUrl" class="user-avatar"></open-data>
+        <image wx:else src="{{'../../images/user-unlogin.png'}}" class="user-avatar" />
+      </view>
+
+      
+      
+      
       <view wx:if="{{logged}}" slot="footer" catchtap="logout">{{language.logout}}</view>
     </zan-cell>
   </zan-panel>
   <zan-panel title="{{language.settings}}">
     <zan-cell title="{{language.language}}">
       <picker mode="selector" range="{{languages}}" value="{{langIndex}}" bindchange="changeLanguage">
-        <view class="picker">{{languages[langIndex]}}</view>
+        <!-- 经测试，部分微信版本不支持动态下标索引数组元素 -->
+        <!-- <view class="picker">{{languages[langIndex]}}</view> -->
+        <view class="picker">{{langIndex == 0 ? languages[0] : languages[1]}}</view>
       </picker>
     </zan-cell>
   </zan-panel>
