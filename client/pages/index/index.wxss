@@ -20,3 +20,8 @@
   margin: 10rpx;
   border-radius: 50%;
 }
+
+zan-button {
+  position: relative;
+  padding: 30rpx;
+}

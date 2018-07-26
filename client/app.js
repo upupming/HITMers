@@ -14,7 +14,8 @@ App({
     // 语言设置
     langIndex: wx.getStorageSync('langIndex') || 0,
     // 登录信息
-    logged: wx.getStorageSync('logged') || false
+    logged: wx.getStorageSync('logged') || false,
+    userInfo: wx.getStorageSync('userInfo') || null
   },
 
   onHide: function() {
@@ -27,5 +28,10 @@ App({
       key: 'logged',
       data: this.globalData.logged
     });
+
+    wx.setStorage({
+      key: 'userInfo',
+      data: this.globalData.userInfo
+    })
   }
 })

@@ -1,4 +1,4 @@
-const { mysql: config } = require('../config')
+const config = require('../config')
 
 module.exports = async (ctx, next) => {
   // 连接数据库
@@ -8,5 +8,7 @@ module.exports = async (ctx, next) => {
     table.string('wx_id');
     table.string('date');
     table.string('time');
+    table.string('check_in');
+    table.string('check_out');
   })
 }

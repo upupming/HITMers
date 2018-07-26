@@ -12,10 +12,9 @@
         <open-data  wx:if="{{logged}}" type="userAvatarUrl" class="user-avatar"></open-data>
         <image wx:else src="{{'../../images/user-unlogin.png'}}" class="user-avatar" />
       </view>
+      
+      <zan-button size="small" openType="openSetting">{{language.permissions}}</zan-button>
 
-      
-      
-      
       <view wx:if="{{logged}}" slot="footer" catchtap="logout">{{language.logout}}</view>
     </zan-cell>
   </zan-panel>
@@ -28,4 +27,9 @@
       </picker>
     </zan-cell>
   </zan-panel>
+
+  <zan-dialog id="input-info-dialog">
+    <input placeholder="请输入学号" type="number"/>
+    <input placeholder="请输入姓名" type="text" />
+  </zan-dialog>    
 </view>

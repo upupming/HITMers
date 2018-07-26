@@ -34,12 +34,11 @@ const CONF = {
       user: 'root',
       port: 3306,// 数据库的端口
       password: 'wxcb3ed1484b8c7147',
-      database: 'cAuth'
+      database: 'HITMers'
     }
   },
   
   cdbName: 'checkModel',
-  
 
   cos: {
     /**
