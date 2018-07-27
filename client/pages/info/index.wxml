@@ -1,0 +1,28 @@
+<view class="container">
+  <zan-panel title="{{language.fillInInfo}}">
+    <zan-cell-group>
+      <zan-field
+        id="stuId"
+        title="{{language.stuId.title}}"
+        placeholder="{{language.stuId.placeholder}}"
+        focus="{{true}}"
+        value="{{ stuId }}"
+        inputType="number"
+        bind:change="syncValue"
+      ></zan-field>
+      <zan-field
+        id="stuName"
+        title="{{language.stuName.title}}"
+        placeholder="{{language.stuName.placeholder}}"
+        value="{{ stuName }}"
+        inputType="text"
+        bind:change="syncValue"
+      ></zan-field>
+    </zan-cell-group>
+  </zan-panel>
+  <zan-button-group>
+    <zan-button type="primary" bind:btnclick="saveInfo">
+      {{language.save}}
+    </zan-button>
+  </zan-button-group>
+</view>

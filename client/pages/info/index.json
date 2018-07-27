@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+      "zan-panel": "../../zan-ui/panel/index",
+      "zan-cell": "../../zan-ui/cell/index",
+      "zan-cell-group": "../../zan-ui/cell-group/index",
+      "zan-button": "../../zan-ui/btn/index",
+      "zan-button-group": "../../zan-ui/btn-group/index",
+      "zan-field": "../../zan-ui/field/index",
+      "zan-dialog": "../../zan-ui/dialog/index"
+  }
+}

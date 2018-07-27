@@ -29,6 +29,17 @@ export default {
         "tooFarFrom": "距离工作地点太远",
         "pleaseArrive": "请到达工作地点",
         "pleaseLogin": "请先登录",
+
+        "fillInInfo": "填写用户信息",
+        "stuId": {
+          "title": "学号",
+          "placeholder": "请输入学号"
+        },
+        "stuName": {
+          "title": "姓名",
+          "placeholder": "请输入姓名"
+        },
+        "save": "保存"
     },
     'en': {
         "language": "Language",
@@ -60,5 +71,16 @@ export default {
         "tooFarFrom": "Too far from work place",
         "pleaseArrive": "Please arrive st work place",
         "pleaseLogin": "Please login first",
+
+        "fillInInfo": "Fill in user information",
+        "stuId": {
+          "title": "Student ID",
+          "placeholder": "Please input your Student ID",
+        },
+        "stuName": {
+          "title": "Name",
+          "placeholder": "Please input your name"
+        },
+        "save": "Save"
     }
 }

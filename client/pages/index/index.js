@@ -19,7 +19,9 @@ Page({
   onLoad: function () {
     this.setData({
       langIndex: globalData.langIndex,
-      logged: globalData.logged
+      logged: globalData.logged,
+      stuId: globalData.stuId,
+      stuName: globalData.stuName
     });
     this.setLanguage();
   },
@@ -47,9 +49,6 @@ Page({
     console.log(e);
   },
 
-  fillInInfo() {
-  },
-
   onGotUserInfo(res) {
     console.log(res);
 
@@ -57,7 +56,10 @@ Page({
     globalData.userInfo = res.detail.userInfo;  
 
     this.setData({
-      logged: true
+      logged: true,
+      userInfo: globalData.userInfo,
+      stuId: globalData.stuId,
+      stuName: globalData.stuName
     });
     util.showSuccess(this.data.language.loginSuccessed);
   },

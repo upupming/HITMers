@@ -5,7 +5,6 @@
         "zan-cell": "../../zan-ui/cell/index",
         "zan-cell-group": "../../zan-ui/cell-group/index",
         "zan-button": "../../zan-ui/btn/index",
-        "zan-field": "../../zan-ui/field/index",
         "zan-dialog": "../../zan-ui/dialog/index"
     }
 }

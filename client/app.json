@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/work/index"
+    "pages/work/index",
+    "pages/info/index"
   ],
   "window":{
     "backgroundColor":"#49B1F5",

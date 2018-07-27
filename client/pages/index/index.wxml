@@ -2,18 +2,23 @@
   <image class="logo" src="../../images/logo.jpg"></image>
   <zan-panel title="{{language.personalInfo}}">
     <zan-cell>
-      <open-data type="userNickName" wx:if="{{logged}}">
-      </open-data>
-      <zan-button wx:else size="small" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
-        {{language.login}}
-      </zan-button>
-
-      <view class="userinfo" slot="icon">
+      <view class="flex-container">
+        <navigator open-type="navigate" url="../info/index" >
+          <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
+          <text class="center-text" wx:if="{{logged}}">{{stuId || '' }}</text>
+          <text class="center-text" wx:if="{{logged}}">{{stuName || ''}}</text>
+          <zan-button class="center" wx:else size="small" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+            {{language.login}}
+          </zan-button>
+        </navigator>
+        <zan-button class="center" size="small" openType="openSetting">{{language.permissions}}</zan-button>
+      </view>
+      
+      <view slot="icon">
         <open-data  wx:if="{{logged}}" type="userAvatarUrl" class="user-avatar"></open-data>
         <image wx:else src="{{'../../images/user-unlogin.png'}}" class="user-avatar" />
       </view>
       
-      <zan-button size="small" openType="openSetting">{{language.permissions}}</zan-button>
 
       <view wx:if="{{logged}}" slot="footer" catchtap="logout">{{language.logout}}</view>
     </zan-cell>

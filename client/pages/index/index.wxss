@@ -6,10 +6,23 @@
   border-radius: 50%;
   border-color: #F9F9F9;
 }
-  
-.userinfo {
-  position: relative;
-  align-items: center;
+
+.flex-container {
+  display: flex;
+}
+
+.center {
+  display: block;
+  margin: auto;
+  padding: 50rpx;
+}
+
+.center-text {
+  display: block;
+  margin: auto;
+  height: 33%;
+  padding-top: 5rpx;
+  padding-left: 20rpx;
 }
 
 .user-avatar {
