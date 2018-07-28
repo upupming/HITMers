@@ -1,8 +1,9 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/work/index",
-    "pages/info/index"
+    "pages/index/index",
+    "pages/info/index",
+    "pages/work/monthly"
   ],
   "window":{
     "backgroundColor":"#49B1F5",
@@ -30,5 +31,11 @@
         "selectedIconPath": "images/me-selected.png"
       }
     ]
-  }
+  },
+    "plugins": {
+        "calendar": {
+            "version": "1.1.3",
+            "provider": "wx92c68dae5a8bb046"
+        }
+    }
 }

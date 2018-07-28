@@ -1,9 +1,15 @@
 <view class="container">
   <view class="icon-wrap" bindtap="checkInOrOut">
     <view class="icon">
-      <zan-icon type="sign"></zan-icon>
+      <image class="icon-img" src="../../images/check.svg"/>
     </view>
     <view class="icon-action">{{checkedIn ? language.checkOut : language.checkIn}}</view>
+  </view>
+  <view class="icon-wrap" bindtap="monthly">
+    <view class="icon">
+      <image class="icon-img" src="../../images/monthly.svg"/>
+    </view>
+    <view class="icon-action">{{language.monthly}}</view>
   </view>
 
   <zan-dialog id="sign-in-dialog"></zan-dialog>

@@ -42,7 +42,12 @@ export default {
           "placeholder": "请输入姓名"
         },
         "save": "保存",
-        "cancel": "取消"
+        "cancel": "取消",
+
+        "monthly": "本月",
+        "months": ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        "workloadSummaty": "本月值班次数",
+        "times": "次"
     },
     'en': {
         "language": "Language",
@@ -87,6 +92,11 @@ export default {
           "placeholder": "Please input your name"
         },
         "save": "Save",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+
+        "monthly": "Monthly",
+        "months": ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'June.', 'July.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'],
+        "workloadSummaty": "Number of shifts monthly",
+        "times": "times"
     }
 }

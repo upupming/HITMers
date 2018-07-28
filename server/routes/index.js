@@ -15,4 +15,7 @@ router.post('/cinsert', controllers.cinsert);
 // 信息录入
 router.post('/info-insert', controllers.infoInsert);
 
+// 值班查询
+router.get('/monthly', controllers.monthly);
+
 module.exports = router;

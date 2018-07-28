@@ -19,6 +19,4 @@ module.exports = async(ctx, next) => {
   console.log(info);
   
   return ctx.response.body = ctx.request.body;
-
-  
 }

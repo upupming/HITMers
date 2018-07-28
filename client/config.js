@@ -14,7 +14,8 @@ var config = {
         // 签到/出接口
         checkUrl: `${host}/weapp/cinsert`,
         // 录入学号、姓名接口
-        saveInfoUrl: `${host}/weapp/info-insert`
+        saveInfoUrl: `${host}/weapp/info-insert`,
+        getMonthlyUrl: `${host}/weapp/monthly`,
     }
 };
 

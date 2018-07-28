@@ -2,16 +2,16 @@
   width: 33.33333%;
   height: 100px;
   float: left;
+  padding-top: 40rpx;
   text-align: center;
 }
 
-.icon {
-  font-size: 24px;
-  padding: 10px;
-  color: var(--theme-color);
+.icon-img {
+  width: 100rpx;
+  height: 80rpx;
 }
 
 .icon-action {
   color: var(--theme-color);
-  font-size: 10px;
+  font-size: 25rpx;
 }

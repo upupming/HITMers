@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container-fluid">
+  <text class="title">{{language.workloadSummaty + ': ' + numOfShifts}}</text>
+  <view class="calendar-box">
+      <view class="left">
+          <view class="today">
+            <text class="monthStr">{{ language.months[month] }}</text>
+              <text>{{ day }}</text>
+          </view>            
+      </view>
+      <view class="right">
+          <calendar header="{{false}}" cell-size="20" days-color="{{demo1_days_style}}" active-type="square" binddayClick="dayClick" />
+      </view>
+  </view>
+  <zan-cell wx:if="{{selectedDay !== -1}}" title="{{language.months[month] + ' ' + selectedDay}}">
+    <view slot="footer">{{shiftsByDay[selectedDay] + ' ' + language.times}}</view>
+  </zan-cell>
+</view>

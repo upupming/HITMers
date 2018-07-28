@@ -19,7 +19,7 @@
 .center-text {
   display: block;
   margin: auto;
-  padding-top: 5rpx;
+  padding-top: 8rpx;
   padding-left: 20rpx;
   width: 200rpx; 
   word-wrap: break-word;

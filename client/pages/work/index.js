@@ -257,5 +257,13 @@ Page({
         }
       );
     }
+  },
+
+  monthly() {
+    if(this.hasLogged()) {
+      wx.navigateTo({
+        url: './monthly'
+      });
+    }
   }
 });

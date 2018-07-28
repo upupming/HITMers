@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+      "calendar": "plugin://calendar/calendar",
+      "zan-dialog": "../../zan-ui/dialog/index",
+      "zan-cell": "../../zan-ui/cell/index",
+      "zan-cell-group": "../../zan-ui/cell-group/index"
+  }
+}
