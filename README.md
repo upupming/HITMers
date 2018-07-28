@@ -4,5 +4,5 @@
 
 # Features
 
-+ Check in/out
+[<img src="/_media/check.svg" height="30px"> Check in/out](/guides.md)
 

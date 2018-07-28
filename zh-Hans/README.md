@@ -4,5 +4,7 @@
 
 # Features
 
-+ 签到/签出
+[<img src="../_media/check.svg" height="30px"> 签到/签出](/zh-Hans/guides.md)
+
+
 
