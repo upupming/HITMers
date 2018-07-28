@@ -24,11 +24,11 @@ let SHIFT_PERIODS = [
   ],
   // 晚班签到
   [
-    17, 0, 18, 0
+    17, 0, 24, 0
   ],
   // 晚班签出
   [
-    15, 30, 18, 30
+    15, 30, 24, 0
   ]
 ];
 
@@ -79,6 +79,10 @@ Page({
     checkedIn: false
   },
   onLoad: function () {
+    // 取出缓存的签入/出信息
+    this.setData({
+      checkedIn: globalData.checkedIn
+    });
     // 实例化腾讯地图 API 核心类
     qqmapsdk = new QQMapWX({
       key: 'FKLBZ-OH66W-N2ER5-RMVPT-4HINT-VWBDV',
@@ -156,8 +160,25 @@ Page({
           message: that.data.checkInMorning.toString() +
             '\n\n' + that.data.checkOutMorning.toString() +
             '\n\n' + that.data.checkInAfternoon.toString() +
-            '\n\n' + that.data.checkOutAfternoon.toString(),
-          selector: "#time-not-valid-dialog"
+            '\n\n' + that.data.checkOutAfternoon.toString() + 
+            '\n\n' + that.data.language.shallWeforcelyCheckOut,
+          selector: "#time-not-valid-dialog",
+          buttons: [{
+            text: that.data.language.cancel,
+            color: '#3CC51F',
+            type: 'cancel'
+          }, {
+            text: that.data.language.checkOutForcely,
+            color: 'red',
+            type: 'force'
+          }]
+        }).then(({ type }) => {
+          if(type === 'force') {
+            this.setData({
+              checkedIn: false
+            });
+            globalData.checkedIn = false;
+          }
         });
         return false;
       }

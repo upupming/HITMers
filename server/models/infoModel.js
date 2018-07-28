@@ -9,5 +9,7 @@ module.exports = async (ctx, next) => {
     // 学号不可重复
     table.string('stu_id').unique().collate('utf8_unicode_ci');;
     table.string('stu_name').collate('utf8_unicode_ci');
+    // 工作量
+    table.integer('workload');
   })
 }

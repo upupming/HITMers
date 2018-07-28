@@ -6,7 +6,8 @@ module.exports = async(ctx, next) => {
   let info = {
     wx_name: ctx.request.body.wx_name,
     stu_id: ctx.request.body.stu_id,
-    stu_name: ctx.request.body.stu_name
+    stu_name: ctx.request.body.stu_name,
+    workload: 0
   };
   await knex(config.infodbName).insert(info)
     .catch(function(e) {

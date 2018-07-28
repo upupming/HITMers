@@ -19,6 +19,8 @@ export default {
         "checkIn": "签到",
         "checkedIn": "签到成功",
         "checkOut": "签出",
+        "checkOutForcely": "强制签出",
+        "shallWeforcelyCheckOut": "是否强制签出？本次值班将不会计入工作量！",
         "checkedOut": "签出成功",
         "morningShift": "早班",
         "afternoonShift": "晚班",
@@ -39,7 +41,8 @@ export default {
           "title": "姓名",
           "placeholder": "请输入姓名"
         },
-        "save": "保存"
+        "save": "保存",
+        "cancel": "取消"
     },
     'en': {
         "language": "Language",
@@ -61,6 +64,8 @@ export default {
         "checkIn": "Check in",
         "checkedIn": "Checked in",
         "checkOut": "Check out",
+        "checkOutForcely": "Check out forcely",
+        "shallWeforcelyCheckOut": "Do you want to check out forcely? This will NOT be recorded in your workload!",
         "checkedOut": "Checked Out",
         "morningShift": "Morning shift",
         "afternoonShift": "Afternoon shift",
@@ -81,6 +86,7 @@ export default {
           "title": "Name",
           "placeholder": "Please input your name"
         },
-        "save": "Save"
+        "save": "Save",
+        "cancel": "Cancel"
     }
 }

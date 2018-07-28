@@ -18,12 +18,19 @@ module.exports = async(ctx, next) => {
     .catch(function(e) {
       console.log(e);
     })
-    .then(
+    .then( () => {
       console.log("Check in/out success")
-    );
+    });
   console.log(info);
   
-  return ctx.response.body = ctx.request.body;
+  console.log(info.check_out);
+  // 如果签出成功，计入工作量
+  if(info.check_out) {
+    console.log(info.stu_id + ' 计入一次工作量');
+    await knex(config.infodbName)
+    .where('stu_id', '=', info.stu_id)
+    .increment('workload', 1);
+  }
 
-  
+  return ctx.response.body = ctx.request.body;
 }
