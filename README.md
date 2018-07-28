@@ -4,5 +4,5 @@
 
 # Features
 
-[<img src="/_media/check.svg" height="30px"> Check in/out](/guides.md)
+![](_media/check.svg ':size=30')  [Check in/out](/guides.md)
 

@@ -4,7 +4,7 @@
 
 # Features
 
-[<img src="../_media/check.svg" height="30px"> 签到/签出](/zh-Hans/guides.md)
+![](../_media/check.svg ':size=30')  [签到/签出](/zh-Hans/guides.md)
 
 
 
