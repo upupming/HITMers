@@ -12,17 +12,17 @@
 }
 
 .center {
-  display: block;
   margin: auto;
-  padding: 50rpx;
+  padding-left: 15rpx;
 }
 
 .center-text {
   display: block;
   margin: auto;
-  height: 33%;
   padding-top: 5rpx;
   padding-left: 20rpx;
+  width: 200rpx; 
+  word-wrap: break-word;
 }
 
 .user-avatar {
@@ -32,9 +32,4 @@
   height: 100rpx;
   margin: 10rpx;
   border-radius: 50%;
-}
-
-zan-button {
-  position: relative;
-  padding: 30rpx;
 }

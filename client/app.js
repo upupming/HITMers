@@ -18,7 +18,9 @@ App({
     userInfo: wx.getStorageSync('userInfo') || null,
     // 学号、姓名
     stuId: wx.getStorageSync('stuId') || null,
-    stuName: wx.getStorageSync('stuName') || null
+    stuName: wx.getStorageSync('stuName') || null,
+    // 签到状态
+    checkedIn: wx.getStorageSync('checkedIn') || false
   },
 
   onHide: function() {
@@ -44,6 +46,10 @@ App({
     wx.setStorage({
       key: 'stuName',
       data: this.globalData.stuName
+    });
+    wx.setStorage({
+      key: 'checkedIn',
+      data: this.globalData.checkedIn
     });
   }
 })

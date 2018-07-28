@@ -20,9 +20,7 @@ const CONF = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    db: {
-      cAuth: 'cAuth',
-    },
+    db: {},
     pass: 'wxcb3ed1484b8c7147',
     char: 'utf8mb4'
   },
@@ -39,6 +37,7 @@ const CONF = {
   },
   
   cdbName: 'checkModel',
+  infodbName: 'infoModel',
 
   cos: {
     /**

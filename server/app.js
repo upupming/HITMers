@@ -7,7 +7,9 @@ const config = require('./config')
 
 // 新建数据库（如果已经建好可以去除这段代码）
 const checkModel = require('./models/checkModel');
-const cdb = checkModel();
+checkModel();
+const infoModel = require('./models/infoModel');
+infoModel();
 
 // 使用响应处理中间件
 app.use(response)

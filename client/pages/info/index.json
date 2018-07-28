@@ -6,6 +6,7 @@
       "zan-button": "../../zan-ui/btn/index",
       "zan-button-group": "../../zan-ui/btn-group/index",
       "zan-field": "../../zan-ui/field/index",
-      "zan-dialog": "../../zan-ui/dialog/index"
+      "zan-dialog": "../../zan-ui/dialog/index",
+      "zan-toast": "../../zan-ui/toast/index"
   }
 }

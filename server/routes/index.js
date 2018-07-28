@@ -12,4 +12,7 @@ router.post('/test', controllers.hello);
 // 提交考勤信息
 router.post('/cinsert', controllers.cinsert);
 
+// 信息录入
+router.post('/info-insert', controllers.infoInsert);
+
 module.exports = router;

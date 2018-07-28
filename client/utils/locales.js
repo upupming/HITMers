@@ -7,7 +7,7 @@ export default {
         "login": "登录",
         "logout": "登出",
         "logining": "正在登陆",
-        "loginSuccessed": "登录成功",
+        "loginSuccessed": "登录成功，请填写用户信息",
         "loginFailed": "登录失败",
         "permissions": "应用权限",
         
@@ -49,7 +49,7 @@ export default {
         "login": "Log in",
         "logout": "Log out",
         "logining": "Logging in",
-        "loginSuccessed": "Logged in",
+        "loginSuccessed": "Logged in successfully, please input your information",
         "loginFailed": "Logged in failed",
         "permissions": "Permissions",
         

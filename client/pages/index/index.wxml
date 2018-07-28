@@ -3,14 +3,14 @@
   <zan-panel title="{{language.personalInfo}}">
     <zan-cell>
       <view class="flex-container">
-        <navigator open-type="navigate" url="../info/index" >
+        <view>
           <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
           <text class="center-text" wx:if="{{logged}}">{{stuId || '' }}</text>
           <text class="center-text" wx:if="{{logged}}">{{stuName || ''}}</text>
           <zan-button class="center" wx:else size="small" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
             {{language.login}}
           </zan-button>
-        </navigator>
+        </view>
         <zan-button class="center" size="small" openType="openSetting">{{language.permissions}}</zan-button>
       </view>
       
@@ -32,9 +32,4 @@
       </picker>
     </zan-cell>
   </zan-panel>
-
-  <zan-dialog id="input-info-dialog">
-    <input placeholder="请输入学号" type="number"/>
-    <input placeholder="请输入姓名" type="text" />
-  </zan-dialog>    
 </view>

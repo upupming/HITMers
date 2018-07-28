@@ -12,7 +12,9 @@ var config = {
         host,
 
         // 签到/出接口
-        checkUrl: `${host}/weapp/cinsert`
+        checkUrl: `${host}/weapp/cinsert`,
+        // 录入学号、姓名接口
+        saveInfoUrl: `${host}/weapp/info-insert`
     }
 };
 

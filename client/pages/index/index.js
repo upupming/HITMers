@@ -1,8 +1,3 @@
-//index.js
-var util = require('../../utils/util.js');
-let config = require('../../config');
-const Dialog = require('../../zan-ui/dialog/dialog');
-
 import event from '../../utils/event'
 
 let globalData = getApp().globalData;
@@ -54,14 +49,15 @@ Page({
 
     globalData.logged = true;
     globalData.userInfo = res.detail.userInfo;  
-
+    
     this.setData({
       logged: true,
-      userInfo: globalData.userInfo,
-      stuId: globalData.stuId,
-      stuName: globalData.stuName
+      userInfo: globalData.userInfo
     });
-    util.showSuccess(this.data.language.loginSuccessed);
+
+    wx.navigateTo({
+      url: '../info/index'
+    });
   },
 
   logout: function () {

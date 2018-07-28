@@ -26,3 +26,4 @@
     </zan-button>
   </zan-button-group>
 </view>
+<zan-toast id="login-status"></zan-toast>

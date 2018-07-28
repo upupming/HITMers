@@ -4,14 +4,10 @@ module.exports = async (ctx, next) => {
   // 连接数据库
   const knex = require('knex')(config.db);
   // 定义和创建数据表
-  await knex.schema.createTableIfNotExists(config.cdbName, function(table) {
+  await knex.schema.createTableIfNotExists(config.infodbName, function(table) {
     table.string('wx_name').collate('utf8_unicode_ci');
-    table.string('stu_id').collate('utf8_unicode_ci');;
+    // 学号不可重复
+    table.string('stu_id').unique().collate('utf8_unicode_ci');;
     table.string('stu_name').collate('utf8_unicode_ci');
-    table.dateTime('date_time');
-    table.boolean('check_in');
-    table.boolean('check_out');
-    table.boolean('morning');
-    table.boolean('afternoon');
   })
 }

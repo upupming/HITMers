@@ -1,4 +1,6 @@
 import event from '../../utils/event'
+const Toast = require('../../zan-ui/toast/toast');
+const config = require('../../config');
 
 let globalData = getApp().globalData;
 
@@ -17,11 +19,18 @@ Page({
 
   onLoad() {
     this.readGlobalData();
-
     this.setLanguage();
     event.on("languageChanged", this, this.setLanguage);
   },
   onShow: function () {
+    let that = this;
+    new Toast({
+      type: 'success',
+      message: that.data.language.loginSuccessed,
+      selector: '#login-status',
+      timeout: 2000
+    });
+
     if (this.data.shouldChangeTitle) {
       wx.T.setNavigationBarTitle();
       this.data.shouldChangeTitle = false;
@@ -37,7 +46,7 @@ Page({
     this.data[e.currentTarget.id] = e.detail.detail.value;
   },
 
-  saveInfo() {
+  saveInfo(flag) {
     console.log(this.data);
 
     globalData.stuId = this.data.stuId;
@@ -51,9 +60,40 @@ Page({
       stuName: this.data.stuName
     });
 
-    wx.navigateBack({
-      delta: 1
+    console.log('设置好之后的 globalData: ')
+    console.log(globalData);
+
+    wx.request({
+      url: config.service.saveInfoUrl,
+      method: 'POST',
+      data: {
+        wx_name: globalData.userInfo.nickName,
+        stu_id: this.data.stuId,
+        stu_name: this.data.stuName
+      },
+      header: {
+          'content-type': 'application/json' // 默认值
+      },
+      success: (res)=>{
+        console.log('数据成功记录到服务器');
+        console.log(res);
+      },
+      fail: (res)=>{
+        console.log('数据记录到服务器失败');
+        console.log(res);
+      }
     });
+
+    if(flag !== 'do-not-back') {
+      wx.navigateBack({
+        delta: 1
+      });
+    }
+  },
+
+  // 卸载页面时，也将数据保存好
+  onUnload() {
+    this.saveInfo('do-not-back');
   },
 
 
