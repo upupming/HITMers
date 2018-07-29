@@ -11,8 +11,9 @@ Each check-in/check-out is valid only when both time constraint and location con
 
 ## Location constraint
 
-+ HIT Museum foyer
-+ (latitude, longitude) = _TO BE MEASURED_
++ HIT Museum entrance hall
++ (latitude, longitude) = (45.751057, 126.63867)
++ Your location is no farther than 400 meters from the museum entrance hall
 
 After checked in and checked out, one workload will be counted, and you can check your monthly workload in "Monthly" page.
 
