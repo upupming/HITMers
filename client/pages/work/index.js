@@ -9,14 +9,14 @@ var qqmapsdk;
 
 //========= 地点约束
 let TARGET_POSITION = 'A02 公寓 4 楼自习室';
-let TARGET_LATITUDE = 45.74326;
-let TARGET_LONGITUDE = 126.635765;
+let TARGET_LATITUDE = 45.743099;
+let TARGET_LONGITUDE = 126.635986;
 let MAX_DISTANCE = 400;
 //========= 时间约束
 let SHIFT_PERIODS = [
   // 早班签到
   [
-    8, 0, 9, 0
+    8, 0, 24, 0
   ],
   // 早班签出
   [
@@ -224,7 +224,7 @@ Page({
     if (this.hasLogged() && (shift = this.getShift())) {
       this.isLocationValid().then(
         res => {
-          console.log(res);
+          console.log(res ? '符合 POST 条件' : '条件未满足，不允许 POST');
           if (res) {
             wx.request({
               url: config.service.checkUrl,
