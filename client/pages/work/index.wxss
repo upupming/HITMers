@@ -1,6 +1,6 @@
 .icon-wrap {
   width: 33.33333%;
-  height: 100px;
+  height: 50rpx;
   float: left;
   padding-top: 40rpx;
   text-align: center;

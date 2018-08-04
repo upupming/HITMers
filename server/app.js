@@ -6,10 +6,13 @@ const bodyParser = require('koa-bodyparser')
 const config = require('./config')
 
 // 新建数据库（如果已经建好可以去除这段代码）
-const checkModel = require('./models/checkModel');
-checkModel();
-const infoModel = require('./models/infoModel');
-infoModel();
+// const checkModel = require('./models/checkModel');
+// checkModel();
+// const infoModel = require('./models/infoModel');
+// infoModel();
+// const loginModel = require('./models/loginModel');
+// loginModel();
+
 
 // 使用响应处理中间件
 app.use(response)

@@ -37,7 +37,9 @@ const CONF = {
   },
   
   cdbName: 'checkModel',
+  logindbName: 'loginModel',
   infodbName: 'infoModel',
+
 
   cos: {
     /**

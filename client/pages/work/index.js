@@ -7,6 +7,7 @@ const util = require('../../utils/util');
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 
+//#region GLOAL_CONSTRAINT
 //========= 地点约束
 let TARGET_POSITION = 'A02 公寓 4 楼自习室';
 let TARGET_LATITUDE = 45.743099;
@@ -31,6 +32,7 @@ let SHIFT_PERIODS = [
     15, 30, 24, 0
   ]
 ];
+//#endregion GLOAL_CONSTRAINT
 
 let globalData = getApp().globalData;
 
@@ -252,7 +254,7 @@ Page({
                 console.log(res);
                 util.showModel(that.data.language.requestError);
               },
-            })
+            });
           }
         }
       );

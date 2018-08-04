@@ -1,10 +1,26 @@
-// 登录授权接口
-module.exports = async (ctx, next) => {
-    // 通过 Koa 中间件进行登录之后
-    // 登录信息会被存储到 ctx.state.$wxInfo
-    // 具体查看：`
-    if (ctx.state.$wxInfo.loginState) {
-        ctx.state.data = ctx.state.$wxInfo.userinfo
-        ctx.state.data['time'] = Math.floor(Date.now() / 1000)
-    }
+const config = require('../config');
+const knex = require('knex')(config.db);
+
+// 登录接口
+module.exports = async(ctx, next) => {
+  await knex(config.logindbName).where({
+    stu_id: ctx.query.stu_id, 
+    stu_name: ctx.query.stu_name, 
+    stu_password: ctx.query.stu_password}).select()
+    .catch( e => {
+      console.log(e);
+
+      ctx.response.body = e;
+    })
+    .then( data => {
+      if(data.length == 1) {
+        console.log('Login permitted for: ' + ctx.query.stu_id);
+        console.log(data);
+      } else {
+        ctx.status = 401;
+      }
+      ctx.response.body = data;
+    })
+
+  return ctx.response.body;
 }

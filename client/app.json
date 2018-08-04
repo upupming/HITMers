@@ -1,8 +1,7 @@
 {
   "pages":[
-    "pages/work/index",
     "pages/index/index",
-    "pages/info/index",
+    "pages/work/index",
     "pages/work/monthly"
   ],
   "window":{

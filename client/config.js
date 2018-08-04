@@ -3,7 +3,9 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://pmdt8kru.qcloud.la';
+let host = 'https://pmdt8kru.qcloud.la';
+
+let apiPath = `${host}/weapp`;
 
 var config = {
 
@@ -11,11 +13,13 @@ var config = {
     service: {
         host,
 
-        // 签到/出接口
-        checkUrl: `${host}/weapp/cinsert`,
+        // Check in/out API
+        checkUrl: `${apiPath}/cinsert`,
+        // Login API
+        loginUrl: `${apiPath}/login`,
         // 录入学号、姓名接口
-        saveInfoUrl: `${host}/weapp/info-insert`,
-        getMonthlyUrl: `${host}/weapp/monthly`,
+        saveInfoUrl: `${apiPath}/info-insert`,
+        getMonthlyUrl: `${apiPath}/monthly`,
     }
 };
 

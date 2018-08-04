@@ -2,54 +2,36 @@ import locales from './utils/locales'
 import T from './utils/i18n'
 
 T.registerLocale(locales);
-let langIndex = wx.getStorageSync('langIndex') || 0;
+let savedGlobalData = wx.getStorageSync('globalData');
+let langIndex = savedGlobalData.langIndex || 0;
 T.setLocaleByIndex(langIndex);
 wx.T = T;
 
 App({
-  onLaunch: function () {
-  },
 
-  globalData: {
-    // 语言设置
-    langIndex: wx.getStorageSync('langIndex') || 0,
-    // 登录信息
-    logged: wx.getStorageSync('logged') || false,
-    userInfo: wx.getStorageSync('userInfo') || null,
-    // 学号、姓名
-    stuId: wx.getStorageSync('stuId') || null,
-    stuName: wx.getStorageSync('stuName') || null,
-    // 签到状态
-    checkedIn: wx.getStorageSync('checkedIn') || false
+  globalData: { },
+
+  onLaunch: function () {
+    this.globalData = savedGlobalData || 
+      {
+        // Language settings
+        langIndex: 0,
+        // Login status
+        logged: false,
+        userInfo: null,
+        // Student ID, name
+        stuId: null,
+        stuName: null,
+        stuPassword: null,
+        // Check in/out status
+        checkedIn: false
+      };
   },
 
   onHide: function() {
     wx.setStorage({
-      key: 'langIndex',
-      data: this.globalData.langIndex
-    });
-
-    wx.setStorage({
-      key: 'logged',
-      data: this.globalData.logged
-    });
-
-    wx.setStorage({
-      key: 'userInfo',
-      data: this.globalData.userInfo
-    });
-
-    wx.setStorage({
-      key: 'stuId',
-      data: this.globalData.stuId
-    });
-    wx.setStorage({
-      key: 'stuName',
-      data: this.globalData.stuName
-    });
-    wx.setStorage({
-      key: 'checkedIn',
-      data: this.globalData.checkedIn
+      key: 'globalData',
+      data: this.globalData
     });
   }
 })

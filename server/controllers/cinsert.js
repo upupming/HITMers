@@ -3,7 +3,8 @@ const knex = require('knex')(config.db);
 
 // 提交考勤信息
 module.exports = async(ctx, next) => {
-  // ctx 对应 koa，res 对应 knex
+  console.log(ctx);
+
   let info = {
     wx_name: ctx.request.body.wx_name,
     stu_id: ctx.request.body.stu_id,

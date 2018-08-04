@@ -33,3 +33,51 @@
     </zan-cell>
   </zan-panel>
 </view>
+
+<zan-popup
+  show="{{showLoginPopup}}"
+  type="top"
+>
+  <view class="login-popup">
+    <zan-panel title="{{language.fillInInfo}}">
+        <form  bindsubmit="submitInfo" bindreset="abandonInfo">
+          <zan-field
+            name="stuId"
+            title="{{language.stuId.title}}"
+            placeholder="{{language.stuId.placeholder}}"
+            focus="{{true}}"
+            value="{{ stuId }}"
+            inputType="number"
+          ></zan-field>
+        
+          <zan-field
+            name="stuName"
+            title="{{language.stuName.title}}"
+            placeholder="{{language.stuName.placeholder}}"
+            value="{{ stuName }}"
+            inputType="text"
+          ></zan-field>    
+        
+          <zan-field
+          name="stuPassword"
+          title="{{language.stuPassword.title}}"
+          placeholder="{{language.stuPassword.placeholder}}"
+          value="{{ stuPassword }}"
+          inputType="password"
+        ></zan-field>    
+
+          <zan-button-group class="horizontal-buttons">
+              <button type="warn" form-type="reset" class="button-wrap">
+                  {{language.cancel}}
+                </button>
+            <button type="primary" form-type="submit" class="button-wrap">
+              {{language.save}}
+            </button>
+          </zan-button-group>
+
+      </form>
+    </zan-panel>
+  </view>
+</zan-popup>
+
+<zan-toast id="toast"></zan-toast>

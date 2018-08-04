@@ -7,8 +7,9 @@ export default {
         "login": "登录",
         "logout": "登出",
         "logining": "正在登陆",
-        "loginSuccessed": "登录成功，请填写用户信息",
+        "loginSucceed": "登录成功",
         "loginFailed": "登录失败",
+        "wrongPassword": "学号/姓名/密码错误",
         "permissions": "应用权限",
         
         "requestError": "请求失败",
@@ -41,6 +42,10 @@ export default {
           "title": "姓名",
           "placeholder": "请输入姓名"
         },
+        "stuPassword": {
+          "title": "密码",
+          "placeholder": "请输入密码"
+        },
         "save": "保存",
         "cancel": "取消",
 
@@ -57,8 +62,9 @@ export default {
         "login": "Log in",
         "logout": "Log out",
         "logining": "Logging in",
-        "loginSuccessed": "Logged in successfully, please input your information",
-        "loginFailed": "Logged in failed",
+        "loginSucceed": "Logged in successfully",
+        "loginFailed": "Log in failed",
+        "wrongPassword": "Wrong ID/Name/Password",
         "permissions": "Permissions",
         
         "requestError": "Request error",
@@ -90,6 +96,10 @@ export default {
         "stuName": {
           "title": "Name",
           "placeholder": "Please input your name"
+        },
+        "stuPassword": {
+          "title": "Password",
+          "placeholder": "Please input your password"
         },
         "save": "Save",
         "cancel": "Cancel",

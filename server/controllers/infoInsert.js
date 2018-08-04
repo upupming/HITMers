@@ -3,6 +3,8 @@ const knex = require('knex')(config.db);
 
 // 提交用户
 module.exports = async(ctx, next) => {
+  console.log(ctx);
+
   let info = {
     wx_name: ctx.request.body.wx_name,
     stu_id: ctx.request.body.stu_id,

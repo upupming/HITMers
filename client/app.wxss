@@ -22,3 +22,14 @@ page {
     background-color: #e2e2e2;
     z-index: 5;
   }
+
+button[type=warn] {
+  color:#FFFFFF;
+  background-color:#f85;
+}
+
+button[type=primary] {
+  color:#FFFFFF;
+  background-color:#49B1F5;
+}
+    

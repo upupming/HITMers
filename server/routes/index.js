@@ -6,8 +6,8 @@ const router = require('koa-router')({
 });
 const controllers = require('../controllers');
 
-// 测试模块
-router.post('/test', controllers.hello);
+// Login varification
+router.get('/login', controllers.login);
 
 // 提交考勤信息
 router.post('/cinsert', controllers.cinsert);
