@@ -1,12 +1,12 @@
 # API
 
-HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `token` 是随机字符串，防止暴露 API 接口导致隐私泄露，只有开发者才应该持有这个 `token`。API 域名下文将简写为 `AD`。
+HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `token` 是随机字符串（我在开发时将其设置为 `weapp`），防止暴露 API 接口导致隐私泄露，只有开发者才应该持有这个 `token`。API 域名下文将简写为 `AD`。
 
 ## 登录
 
 用于验证是否存在此用户。
 
-格式： `GET AD/weapp/login`
+格式： `GET AD/login`
 
 ### 请求 query
 
@@ -34,7 +34,7 @@ HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `
 
 ## 修改密码
 
-格式： `PUT AD/weapp/change-password`
+格式： `PUT AD/change-password`
 
 ### 请求 body
 
@@ -60,7 +60,7 @@ HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `
 
 每次签入或签出均会计入数据库，如果成功完成一次签出，将会计入一次工作量。
 
-格式： `POST AD/weapp/cinsert`
+格式： `POST AD/cinsert`
 
 ### 请求 body
 

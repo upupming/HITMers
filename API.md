@@ -1,12 +1,12 @@
 # API
 
-For HITMers, the API domain is `https://api.hitmers.solotime.xyz/token`, the `token` is a random string used to prevent disclosure of privacy, so only developers should know this token. The API domain will be denoted as `AD` below.
+For HITMers, the API domain is `https://api.hitmers.solotime.xyz/token`, the `token` is a random string used to prevent disclosure of privacy(I set `token` to `weapp` when developing), so only developers should know this token. The API domain will be denoted as `AD` below.
 
 ## Login
 
 Used to verify if this user exists.
 
-Format: `GET AD/weapp/login`
+Format: `GET AD/login`
 
 ### Request query
 
@@ -34,7 +34,7 @@ Format: `GET AD/weapp/login`
 
 ## Change password
 
-Format: `PUT AD/weapp/change-password`
+Format: `PUT AD/change-password`
 
 ### Request body
 
@@ -60,7 +60,7 @@ Format: `PUT AD/weapp/change-password`
 
 Each check-in or check-out is counted in the database. If a check-out is successfully completed, the workload will be counted.
 
-Format: `POST AD/weapp/cinsert`
+Format: `POST AD/cinsert`
 
 ### Request body
 
