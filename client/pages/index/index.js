@@ -2,6 +2,7 @@ import event from '../../utils/event';
 import '../../utils/wxPromise.min.js';
 const config = require('../../config');
 const Toast = require('../../zan-ui/toast/toast');
+const Dialog = require('../../zan-ui/dialog/dialog');
 
 let globalData = getApp().globalData;
 
@@ -12,7 +13,8 @@ Page({
     language: '',
     languages: ['简体中文', 'English'],
     langIndex: 0,
-    showLoginPopup: false
+    showLoginPopup: false,
+    showChangePasswordPopup: false
   },
 
   onLoad: function () {
@@ -49,6 +51,11 @@ Page({
       showLoginPopup: false
     });
   },
+  abandonPassword() {
+    this.setData({
+      showChangePasswordPopup: false
+    });
+  },
   submitInfo(event) {
     this.setData({
       stuId: event.detail.value.stuId || null,
@@ -80,35 +87,40 @@ Page({
       header: {
           'content-type': 'application/json' // 默认值
       }
-    }).then((res) => {
-      Toast.clear();
-      return res;
-    }).catch( err => {
-      throw err;
     }).then( res =>{
+      Toast.clear();
       if(res.statusCode === 200) {
         Toast({
           type: 'success',
           message: that.data.language.loginSucceed,
-          selector: '#toast'
+          selector: '#toast',
+          timeout: 1500
         });
-        this.setData({
-          logged: true
-        });
-        globalData.logged = true;
-      } else{
+        
+        setTimeout(() => {
+          this.setData({
+            logged: true
+          });
+          globalData.logged = true;
+          if(res.data.stu_password_changed_times === 0) {
+            this.showChangePasswordDialog();
+          }
+        }, 1500);
+      } else {
         Toast({
           type: 'fail',
           message: res.statusCode === 401 ? that.data.language.wrongPassword : that.data.language.loginFailed,
-          selector: '#toast'
+          selector: '#toast',
+          timeout: 1500
         });
       } 
     }).catch( err => {
-      console.log(err);
+      Toast.clear();
       Toast({
         type: 'fail',
         message: that.data.language.requestError,
-        selector: '#toast'
+        selector: '#toast',
+        timeout: 1500
       });
     });
 
@@ -116,12 +128,10 @@ Page({
       showLoginPopup: false
     });
   },
-  // zan ui 的 bug，这样做是为了让最后一栏 field 的键盘上的√能起到保存数据的作用
-  handleFieldChange(e) {
-    console.log(e);
-    this.saveInfo();
+  // zan ui 的 bug，这样做是为了响应最后 field 的键盘上的√被按下
+  handleFieldChange(event) {
+    // do nothing
   },
-
   onGotUserInfo(res) {
     console.log('User information got: ');
     console.log(res);
@@ -134,10 +144,75 @@ Page({
     });
   },
 
+  changePassword() {
+    this.setData({
+      showChangePasswordPopup: true
+    });
+  },
+
+  showChangePasswordDialog() {
+    let that = this;
+    Dialog({
+      title: that.data.language.changePassword,
+      message: that.data.language.shouldChangePassword,
+      selector: '#change-password-dialog',
+      buttons: [{
+        text: that.data.language.confirm,
+        color: '#49B1F5',
+        type: 'changePassword'
+      }]
+    }).then(({type}) => {
+      if(type === 'changePassword') {
+        this.setData({
+          showChangePasswordPopup: true
+        });
+      }
+    });
+  },
+
+  submitPassword(event) {
+    let oldPassword = event.detail.value.oldPassword;
+    let newPassword = event.detail.value.newPassword;
+
+    let that = this;
+    if(oldPassword !== this.data.stuPassword) {
+      Toast({
+        message: that.data.language.wrongOldPassword,
+        type: 'fail',
+        selector: '#toast',
+        timeout: 1500
+      });
+      return;
+    }
+
+    wx.pro.request({
+      url: config.service.changePasswordUrl,
+      method: 'PUT',
+      data: {
+        stu_id: that.data.stuId,
+        stu_new_password: newPassword
+      },
+      header: {
+          'content-type': 'application/json' // 默认值
+      }
+    }).then( res => {
+      if(res.statusCode === 200 && res.data.stu_password_changed_times) {
+        this.setData({
+          showChangePasswordPopup: false
+        })
+        Toast({
+          type: 'success',
+          message: that.data.language.changePasswordSucceed,
+          selector: '#toast',
+          timeout: 1500
+        });
+      }
+    });
+  },
+
   logout: function () {
     globalData.logged = false;
     globalData.userInfo = null;
-    console.log(getApp().globalData);
     this.setData({
       logged: false
     });

@@ -1,6 +1,7 @@
 <view class="container">
   <image class="logo" src="../../images/logo.jpg"></image>
   <zan-panel title="{{language.personalInfo}}">
+    <zan-cell-group>
     <zan-cell>
       <view class="flex-container">
         <view>
@@ -22,6 +23,10 @@
 
       <view wx:if="{{logged}}" slot="footer" catchtap="logout">{{language.logout}}</view>
     </zan-cell>
+    <zan-cell wx:if="{{logged}}">
+        <view bindtap="changePassword">{{language.changePassword}}</view>
+    </zan-cell>
+    </zan-cell-group>
   </zan-panel>
   <zan-panel title="{{language.settings}}">
     <zan-cell title="{{language.language}}">
@@ -38,14 +43,13 @@
   show="{{showLoginPopup}}"
   type="top"
 >
-  <view class="login-popup">
+  <view class="field-popup">
     <zan-panel title="{{language.fillInInfo}}">
         <form  bindsubmit="submitInfo" bindreset="abandonInfo">
           <zan-field
             name="stuId"
             title="{{language.stuId.title}}"
             placeholder="{{language.stuId.placeholder}}"
-            focus="{{true}}"
             value="{{ stuId }}"
             inputType="number"
           ></zan-field>
@@ -67,9 +71,9 @@
         ></zan-field>    
 
           <zan-button-group class="horizontal-buttons">
-              <button type="warn" form-type="reset" class="button-wrap">
-                  {{language.cancel}}
-                </button>
+            <button type="warn" form-type="reset" class="button-wrap">
+              {{language.cancel}}
+            </button>
             <button type="primary" form-type="submit" class="button-wrap">
               {{language.save}}
             </button>
@@ -80,4 +84,40 @@
   </view>
 </zan-popup>
 
+<zan-popup
+  show="{{showChangePasswordPopup}}"
+  type="top"
+>
+  <view class="field-popup">
+    <zan-panel title="{{language.changePassword}}">
+        <form  bindsubmit="submitPassword" bindreset="abandonPassword">
+          <zan-field
+            name="oldPassword"
+            title="{{language.oldPassword.title}}"
+            placeholder="{{language.oldPassword.placeholder}}"
+            inputType="password"
+          ></zan-field>
+        
+          <zan-field
+            name="newPassword"
+            title="{{language.newPassword.title}}"
+            placeholder="{{language.newPassword.placeholder}}"
+            inputType="password"
+          ></zan-field>  
+
+          <zan-button-group class="horizontal-buttons">
+            <button type="warn" form-type="reset" class="button-wrap">
+                {{language.cancel}}
+              </button>
+            <button type="primary" form-type="submit" class="button-wrap">
+              {{language.confirm}}
+            </button>
+          </zan-button-group>
+      </form>
+    </zan-panel>
+  </view>
+</zan-popup>
+
+
 <zan-toast id="toast"></zan-toast>
+<zan-dialog id="change-password-dialog"></zan-dialog>

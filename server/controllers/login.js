@@ -16,10 +16,11 @@ module.exports = async(ctx, next) => {
       if(data.length == 1) {
         console.log('Login permitted for: ' + ctx.query.stu_id);
         console.log(data);
+        ctx.response.body = data[0];
       } else {
         ctx.status = 401;
+        ctx.response.body = [];
       }
-      ctx.response.body = data;
     })
 
   return ctx.response.body;

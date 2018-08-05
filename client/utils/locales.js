@@ -10,6 +10,10 @@ export default {
         "loginSucceed": "登录成功",
         "loginFailed": "登录失败",
         "wrongPassword": "学号/姓名/密码错误",
+        "changePassword": "修改密码",
+        "wrongOldPassword": "原密码错误",
+        "shouldChangePassword": "您现在使用的是初始密码，为了您的账号安全，请修改密码。",
+        "changePasswordSucceed": "密码修改成功",
         "permissions": "应用权限",
         
         "requestError": "请求失败",
@@ -46,6 +50,15 @@ export default {
           "title": "密码",
           "placeholder": "请输入密码"
         },
+        "oldPassword": {
+          "title": "原密码",
+          "placeholder": "请输入原密码"
+        },
+        "newPassword": {
+          "title": "新密码",
+          "placeholder": "请输入新密码"
+        },
+        "confirm": "确定",
         "save": "保存",
         "cancel": "取消",
 
@@ -65,6 +78,10 @@ export default {
         "loginSucceed": "Logged in successfully",
         "loginFailed": "Log in failed",
         "wrongPassword": "Wrong ID/Name/Password",
+        "wrongOldPassword": "Wrong old password",
+        "changePassword": "Change password",
+        "shouldChangePassword": "You are using the initial password. For your account security, please change your password.",
+        "changePasswordSucceed": "Change password succeed",
         "permissions": "Permissions",
         
         "requestError": "Request error",
@@ -101,6 +118,15 @@ export default {
           "title": "Password",
           "placeholder": "Please input your password"
         },
+        "oldPassword": {
+          "title": "Old password",
+          "placeholder": "Please input your old password"
+        },
+        "newPassword": {
+          "title": "New password",
+          "placeholder": "Please input a new password"
+        },
+        "confirm": "Confirm",
         "save": "Save",
         "cancel": "Cancel",
 

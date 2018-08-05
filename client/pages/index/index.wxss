@@ -34,7 +34,7 @@
   border-radius: 50%;
 }
 
-.login-popup {
+.field-popup {
   position: fixed;
   top: 0rpx;
   left: -350rpx;

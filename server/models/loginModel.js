@@ -9,5 +9,6 @@ module.exports = async (ctx, next) => {
     table.string('stu_id').unique().collate('utf8_unicode_ci');;
     table.string('stu_name').collate('utf8_unicode_ci');
     table.string('stu_password').collate('utf8_unicode_ci');
+    table.integer('stu_password_changed_times');
   })
 }

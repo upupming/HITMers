@@ -33,7 +33,8 @@ const CONF = {
       port: 3306,// 数据库的端口
       password: 'wxcb3ed1484b8c7147',
       database: 'HITMers'
-    }
+    },
+    debug: true
   },
   
   cdbName: 'checkModel',

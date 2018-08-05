@@ -32,4 +32,9 @@ button[type=primary] {
   color:#FFFFFF;
   background-color:#49B1F5;
 }
-    
+button[type=warn].button-hover {
+  background-color: #ff5811;
+}
+button[type=primary].button-hover {
+  background-color: #199cf2;
+}

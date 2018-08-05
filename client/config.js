@@ -17,6 +17,8 @@ var config = {
         checkUrl: `${apiPath}/cinsert`,
         // Login API
         loginUrl: `${apiPath}/login`,
+        // Change password API
+        changePasswordUrl: `${apiPath}/change-password`,
         // 录入学号、姓名接口
         saveInfoUrl: `${apiPath}/info-insert`,
         getMonthlyUrl: `${apiPath}/monthly`,

@@ -10,12 +10,8 @@ const config = require('./config')
 // checkModel();
 // const infoModel = require('./models/infoModel');
 // infoModel();
-// const loginModel = require('./models/loginModel');
-// loginModel();
-
-
-// 使用响应处理中间件
-app.use(response)
+const loginModel = require('./models/loginModel');
+loginModel();
 
 // 解析请求体
 app.use(bodyParser())
