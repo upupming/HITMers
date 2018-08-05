@@ -18,3 +18,5 @@
   <zan-dialog id="please-login-dialog"></zan-dialog>
 
 </view>
+
+<zan-toast id="toast"></zan-toast>

@@ -8,8 +8,6 @@ const config = require('./config')
 // 新建数据库（如果已经建好可以去除这段代码）
 // const checkModel = require('./models/checkModel');
 // checkModel();
-// const infoModel = require('./models/infoModel');
-// infoModel();
 const loginModel = require('./models/loginModel');
 loginModel();
 

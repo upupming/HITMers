@@ -9,7 +9,6 @@ var qqmapsdk;
 
 //#region GLOAL_CONSTRAINT
 //========= 地点约束
-let TARGET_POSITION = 'A02 公寓 4 楼自习室';
 let TARGET_LATITUDE = 45.743099;
 let TARGET_LONGITUDE = 126.635986;
 let MAX_DISTANCE = 400;
@@ -117,7 +116,11 @@ Page({
     if (!globalData.logged) {
       Dialog({
         message: that.data.language.pleaseLogin,
-        selector: '#please-login-dialog'
+        selector: '#please-login-dialog',
+        buttons: [{
+          text: that.data.language.confirm,
+          color: '#49B1F5'
+        }]
       });
       return false;
     }
@@ -143,7 +146,11 @@ Page({
             '\n\n' + that.data.checkOutMorning.toString() +
             '\n\n' + that.data.checkInAfternoon.toString() +
             '\n\n' + that.data.checkOutAfternoon.toString(),
-          selector: "#time-not-valid-dialog"
+          selector: "#time-not-valid-dialog",
+          buttons: [{
+            text: that.data.language.confirm,
+            color: '#49B1F5'
+          }]
         });
         return false;
       }
@@ -167,11 +174,11 @@ Page({
           selector: "#time-not-valid-dialog",
           buttons: [{
             text: that.data.language.cancel,
-            color: '#3CC51F',
+            color: '#49B1F5',
             type: 'cancel'
           }, {
             text: that.data.language.checkOutForcely,
-            color: 'red',
+            color: '#f85',
             type: 'force'
           }]
         }).then(({ type }) => {
@@ -201,8 +208,12 @@ Page({
           if (res.result.elements[0].distance > MAX_DISTANCE) {
             Dialog({
               title: that.data.language.tooFarFrom,
-              message: that.data.language.pleaseArrive + ' ' + TARGET_POSITION,
-              selector: "#location-not-valid-dialog"
+              message: that.data.language.pleaseArrive + ' ' + that.data.language.TARGET_POSITION,
+              selector: "#location-not-valid-dialog",
+              buttons: [{
+                text: that.data.language.confirm,
+                color: '#49B1F5'
+              }]
             });
             resolve(false);
           } else {
@@ -210,8 +221,7 @@ Page({
           }
         },
         fail: res => {
-          util.showModel(language.calDistanceFailed);
-          console.log(res);
+          util.show(that.data.language.calDistanceFailed + ': ' + res.message, 'fail');
           resolve(false);
         }
       });
@@ -226,7 +236,7 @@ Page({
     if (this.hasLogged() && (shift = this.getShift())) {
       this.isLocationValid().then(
         res => {
-          console.log(res ? '符合 POST 条件' : '条件未满足，不允许 POST');
+          console.log(res ? 'Constraints not met' : 'POSTing...');
           if (res) {
             wx.request({
               url: config.service.checkUrl,
@@ -244,7 +254,7 @@ Page({
               },
               success: function (res) {
                 console.log(res);
-                util.showSuccess(that.data.checkedIn ? that.data.language.checkedOut : that.data.language.checkedIn);
+                util.show(that.data.checkedIn ? that.data.language.checkedOut : that.data.language.checkedIn, 'success');
                 that.setData({
                   checkedIn: !that.data.checkedIn
                 });
@@ -252,7 +262,7 @@ Page({
               },
               fail: function (res) {
                 console.log(res);
-                util.showModel(that.data.language.requestError);
+                util.show(that.data.language.requestError, 'fail');
               },
             });
           }

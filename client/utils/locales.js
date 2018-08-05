@@ -20,7 +20,8 @@ export default {
 
         "personalInfo": "个人信息",
         "settings": "设置",
-        
+
+        "TARGET_POSITION": "哈工大博物馆",
         "checkIn": "签到",
         "checkedIn": "签到成功",
         "checkOut": "签出",
@@ -89,6 +90,7 @@ export default {
         "personalInfo": "Personal information",
         "settings": "Settings",
         
+        "TARGET_POSITION": "Harbin Institute of Technology",
         "checkIn": "Check in",
         "checkedIn": "Checked in",
         "checkOut": "Check out",

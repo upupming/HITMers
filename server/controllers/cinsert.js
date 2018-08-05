@@ -28,7 +28,7 @@ module.exports = async(ctx, next) => {
   // 如果签出成功，计入工作量
   if(info.check_out) {
     console.log(info.stu_id + ' 计入一次工作量');
-    await knex(config.infodbName)
+    await knex(config.logindbName)
     .where('stu_id', '=', info.stu_id)
     .increment('workload', 1);
   }
