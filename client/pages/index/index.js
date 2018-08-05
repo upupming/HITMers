@@ -46,6 +46,16 @@ Page({
     wx.T.setNavigationBarTitle();
   },
 
+  toggleLoginPopup() {
+    this.setData({
+      showLoginPopup: !this.data.showLoginPopup
+    });
+  },
+  toggleChangePasswordPopup() {
+    this.setData({
+      showChangePasswordPopup: !this.data.showChangePasswordPopup
+    });
+  },
   abandonInfo() {
     this.setData({
       showLoginPopup: false
