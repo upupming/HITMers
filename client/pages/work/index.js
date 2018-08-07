@@ -1,4 +1,5 @@
-import event from '../../utils/event'
+/* global getApp wx Page*/
+import event from '../../utils/event';
 
 const Dialog = require('../../zan-ui/dialog/dialog');
 const config = require('../../config');
@@ -65,7 +66,7 @@ class CheckPeriod {
       '\n' +
       ' ' + ('00' + this.startHours).slice(-2) + ':' + ('00' + this.startMinutes).slice(-2) +
       ' - ' +
-      ('00' + this.endHours).slice(-2) + ':' + ('00' + this.endMinutes).slice(-2)
+      ('00' + this.endHours).slice(-2) + ':' + ('00' + this.endMinutes).slice(-2);
   }
 
   static setLanguage(language) {
@@ -96,7 +97,7 @@ Page({
     this.data.checkOutAfternoon = new CheckPeriod(SHIFT_PERIODS[3][0], SHIFT_PERIODS[3][1], SHIFT_PERIODS[3][2], SHIFT_PERIODS[3][3], false, false);
 
     this.setLanguage();
-    event.on("languageChanged", this, this.setLanguage);
+    event.on('languageChanged', this, this.setLanguage);
   },
   onShow: function () {
     if (this.data.shouldChangeTitle) {
@@ -135,7 +136,7 @@ Page({
     if (!this.data.checkedIn) {
       if (this.data.checkInMorning.isInThisPeriod(now.getHours(), now.getMinutes())){
         // 早班
-        return 1
+        return 1;
       } else if (this.data.checkInAfternoon.isInThisPeriod(now.getHours(), now.getMinutes())) {
         // 晚班
         return 2;
@@ -146,7 +147,7 @@ Page({
             '\n\n' + that.data.checkOutMorning.toString() +
             '\n\n' + that.data.checkInAfternoon.toString() +
             '\n\n' + that.data.checkOutAfternoon.toString(),
-          selector: "#time-not-valid-dialog",
+          selector: '#time-not-valid-dialog',
           buttons: [{
             text: that.data.language.confirm,
             color: '#49B1F5'
@@ -171,7 +172,7 @@ Page({
             '\n\n' + that.data.checkInAfternoon.toString() +
             '\n\n' + that.data.checkOutAfternoon.toString() + 
             '\n\n' + that.data.language.shallWeforcelyCheckOut,
-          selector: "#time-not-valid-dialog",
+          selector: '#time-not-valid-dialog',
           buttons: [{
             text: that.data.language.cancel,
             color: '#49B1F5',
@@ -204,12 +205,12 @@ Page({
           longitude: TARGET_LONGITUDE
         }],
         success: res => {
-          console.log(res.result.elements[0]);
+          // console.log(res.result.elements[0]);
           if (res.result.elements[0].distance > MAX_DISTANCE) {
             Dialog({
               title: that.data.language.tooFarFrom,
               message: that.data.language.pleaseArrive + ' ' + that.data.language.TARGET_POSITION,
-              selector: "#location-not-valid-dialog",
+              selector: '#location-not-valid-dialog',
               buttons: [{
                 text: that.data.language.confirm,
                 color: '#49B1F5'
@@ -236,7 +237,7 @@ Page({
     if (this.hasLogged() && (shift = this.getShift())) {
       this.isLocationValid().then(
         res => {
-          console.log(res ? 'Constraints not met' : 'POSTing...');
+          // console.log(res ? 'Constraints not met' : 'POSTing...');
           if (res) {
             wx.request({
               url: config.service.checkUrl,
@@ -245,23 +246,22 @@ Page({
                 stu_id: globalData.stuId,
                 stu_name: globalData.stuName,
                 check_in: that.data.checkedIn ? false : true,
-                morning: shift === 1,
-                afternoon: shift === 2
+                morning: shift === 1
               },
               method: 'POST',
               header: {
                 'content-type': 'application/json' // 默认值
               },
-              success: function (res) {
-                console.log(res);
+              success: function () {
+                // console.log(res);
                 util.show(that.data.checkedIn ? that.data.language.checkedOut : that.data.language.checkedIn, 'success');
                 that.setData({
                   checkedIn: !that.data.checkedIn
                 });
                 globalData.checkedIn = that.data.checkedIn;
               },
-              fail: function (res) {
-                console.log(res);
+              fail: function () {
+                // console.log(res);
                 util.show(that.data.language.requestError, 'fail');
               },
             });
