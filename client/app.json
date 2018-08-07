@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/work/monthly",
     "pages/work/index",
-    "pages/index/index",
-    "pages/work/monthly"
+    "pages/index/index"
   ],
   "window":{
     "backgroundColor":"#49B1F5",

@@ -1,3 +1,5 @@
+/* global getApp wx Page*/
+
 import event from '../../utils/event';
 import '../../utils/wxPromise.min.js';
 const config = require('../../config');
@@ -14,17 +16,19 @@ Page({
     languages: ['简体中文', 'English'],
     langIndex: 0,
     showLoginPopup: false,
-    showChangePasswordPopup: false
+    showChangePasswordPopup: false,
+    loading: true
   },
 
   onLoad: function () {
+    this.setLanguage();
     this.setData({
       langIndex: globalData.langIndex,
       logged: globalData.logged,
       stuId: globalData.stuId,
-      stuName: globalData.stuName
+      stuName: globalData.stuName,
+      loading: false
     });
-    this.setLanguage();
   },
 
   changeLanguage(e) {
@@ -77,8 +81,8 @@ Page({
     globalData.stuName = this.data.stuName;
     globalData.stuPassword = this.data.stuPassword;
 
-    console.log('globalData changed to: ');
-    console.log(globalData);
+    // console.log('globalData changed to: ');
+    // console.log(globalData);
 
     let that = this;
     Toast({
@@ -95,7 +99,7 @@ Page({
         stu_password: this.data.stuPassword
       },
       header: {
-          'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' // 默认值
       }
     }).then( res =>{
       Toast.clear();
@@ -124,7 +128,7 @@ Page({
           timeout: 1500
         });
       } 
-    }).catch( err => {
+    }).catch( () => {
       Toast.clear();
       Toast({
         type: 'fail',
@@ -139,12 +143,12 @@ Page({
     });
   },
   // zan ui 的 bug，这样做是为了响应最后 field 的键盘上的√被按下
-  handleFieldChange(event) {
+  handleFieldChange() {
     // do nothing
   },
   onGotUserInfo(res) {
-    console.log('User information got: ');
-    console.log(res);
+    // console.log('User information got: ');
+    // console.log(res);
 
     globalData.userInfo = res.detail.userInfo;  
     
@@ -203,7 +207,7 @@ Page({
         stu_new_password: newPassword
       },
       header: {
-          'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' // 默认值
       }
     }).then( res => {
       if(res.statusCode === 200 && res.data.stu_password_changed_times) {

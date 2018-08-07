@@ -2,7 +2,7 @@ const config = require('../config');
 const knex = require('knex')(config.db);
 
 // 提交考勤信息
-module.exports = async(ctx, next) => {
+module.exports = async(ctx) => {
   console.log(ctx);
 
   let info = {
@@ -20,7 +20,7 @@ module.exports = async(ctx, next) => {
       console.log(e);
     })
     .then( () => {
-      console.log("Check in/out success")
+      console.log('Check in/out success');
     });
   console.log(info);
   
@@ -34,4 +34,4 @@ module.exports = async(ctx, next) => {
   }
 
   return ctx.response.body = ctx.request.body;
-}
+};

@@ -1,18 +1,34 @@
 <!--index.wxml-->
-<view class="container-fluid">
-  <text class="title">{{language.workloadSummaty + ': ' + numOfShifts}}</text>
+<zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
+<view wx:else>
+  <text class="title theme">{{language.monthly  }}</text>
   <view class="calendar-box">
       <view class="left">
           <view class="today">
-            <text class="monthStr">{{ language.months[month] }}</text>
-              <text>{{ day }}</text>
+            <text class="month-str">{{ monthStr }}</text>
+            <text class="day-str">{{ dayStr }}</text>
           </view>            
       </view>
       <view class="right">
-          <calendar header="{{false}}" cell-size="20" days-color="{{demo1_days_style}}" active-type="square" binddayClick="dayClick" />
+          <calendar weeks-type="{{language.languageName === '简体中文' ? 'cn' : 'full-en'}}" header="{{false}}" cell-size="30" days-color="{{days_style}}" active-type="circle" binddayClick="dayClick" />
       </view>
   </view>
-  <zan-cell wx:if="{{selectedDay !== -1}}" title="{{language.months[month] + ' ' + selectedDay}}">
-    <view slot="footer">{{shiftsByDay[selectedDay] + ' ' + language.times}}</view>
-  </zan-cell>
+
+  
+  <view class="card selected" wx:if="{{selectedDay !== -1}}">
+      <text class="card-title">{{language.selectedDay}}</text>
+      <zan-cell  title="{{monthStr + ' ' + language.days[selectedDay - 1]}}">
+        <view class="text-finished">{{shiftsByDay[selectedDay] + ' ' + language.times}}</view>
+        <view slot="footer" class="text-unfinished">{{reaminShiftsByDay[selectedDay] + ' ' + language.times}}</view>
+      </zan-cell>
+  </view>
+  <view class="card finished">
+      <text class="card-title">{{language.workloadSummary + ': ' + numOfShifts + ' ' + language.times}}</text>
+      <zan-cell-group>
+        <zan-cell wx:for="{{shiftsByDay}}" wx:if="{{shiftsByDay[index]}}" title="{{monthStr + ' ' + language.days[index - 1]}}">
+          <text class="text-finished">{{shiftsByDay[index] + ' ' + language.times}}</text>
+        </zan-cell>
+      </zan-cell-group>
+  </view>
+
 </view>

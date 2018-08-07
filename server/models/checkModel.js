@@ -13,5 +13,5 @@ module.exports = async () => {
     table.boolean('check_out');
     table.boolean('morning');
     table.boolean('afternoon');
-  })
-}
+  });
+};
