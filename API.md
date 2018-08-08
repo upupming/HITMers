@@ -70,7 +70,7 @@ Format: `POST AD/cinsert`
 |stu_id|string|Student ID|
 |stu_name|string|Student name|
 |checkin|boolean|`true` if you want to check in|
-|morning|`true` if it's morning shift|
+|morning|boolean|`true` if it's morning shift|
 
 ### Response body
 
@@ -86,3 +86,47 @@ You will get the same body as your request.
 }
 ```
 
+## Monthly
+
+Format: `GET AD/monthly`
+
+### Request query
+
+|Parameter|Type|Description|
+|---------|----|-----------|
+|stu_id|string|Student ID|
+
+### Response body
+
+You will get an array of check-out details.
+
+`GET AD/monthly?stu_id=123`
+
+```json
+[
+    {
+        "wx_name": "upupming",
+        "stu_id": "123",
+        "stu_name": "Bob",
+        "date_time": "2018-08-05T09:43:13.000Z",
+        "check_in": 0,
+        "check_out": 1,
+        "morning": 0,
+        "afternoon": 1
+    },
+    {
+        "wx_name": "upupming",
+        "stu_id": "123",
+        "stu_name": "Bob",
+        "date_time": "2018-08-05T09:59:37.000Z",
+        "check_in": 0,
+        "check_out": 1,
+        "morning": 0,
+        "afternoon": 1
+    }
+]
+```
+
+!> Please note the `date_time` is UTC time, see [this post](https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc) for more information. You can simply use `new Date(Date.parse("2018-08-05T09:59:37.000Z"))` get a `Date` object.
+
+!> If your `stu_id` cannot match any record in the database, you will get `204` No Content status code.
