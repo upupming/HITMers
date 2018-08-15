@@ -18,19 +18,23 @@ HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `
 
 ### 返回 body
 
-`GET AD/login?stu_id=123&stu_name=Bob&stu_password=1234`
+`GET AD/login?stu_id=Z003&stu_name=张三&stu_password=test123`
 
 ```json
 {
-    "stu_id": "123",
-    "stu_name": "Bob",
-    "stu_password": "1234",
-    "stu_password_changed_times": 0,
-    "workload": 1
+    "stu_id": "Z003",
+    "stu_name": "张三",
+    "phone_number": 13849045786,
+    "language": "中英",
+    "session": 14,
+    "stu_password": "test123",
+    "stu_password_changed_times": 1,
+    "stu_reputation": 0,
+    "workload": 0
 }
 ```
 
-!> 如果您查询的 学号+姓名+密码 在数据库中没有记录，您将接收到 `401` 状态码。
+?> 如果您查询的 学号+姓名+密码 在数据库中没有记录，您将接收到 `401` 状态码。
 
 ## 修改密码
 
@@ -54,7 +58,7 @@ HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `
     "workload": 1
 }
 ```
-!> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
+?> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
 
 ## 签入/签出
 
@@ -88,7 +92,7 @@ HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `
 
 ## 本月
 
-Format: `GET AD/monthly`
+格式: `GET AD/monthly`
 
 ### 请求 query
 
@@ -127,6 +131,148 @@ Format: `GET AD/monthly`
 ]
 ```
 
-!> 请注意 `date_time` 是 UTC 时间, 详见[这篇帖子](https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc)。 您可以使用 `new Date(Date.parse("2018-08-05T09:59:37.000Z"))` 得到一个 `Date` 对象。
+?> 请注意 `date_time` 是 UTC 时间, 详见[这篇帖子](https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc)。 您可以使用 `new Date(Date.parse("2018-08-05T09:59:37.000Z"))` 得到一个 `Date` 对象。
 
-!> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
+?> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
+
+## 班次查询
+
+格式: `GET AD/shifts`
+
+### 请求 query
+
+|参数|类型|描述|
+|---------|----|-----------|
+|startMonth|number|起始月|
+|startDay|number|起始日|
+|endMonth|number|终止月|
+|endDay|number|终止日|
+
+例如，想要查询 7 月 1 日到 9 月 6 日的班次信息：
+
+`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
+
+### 返回 body
+
+返回一个三维数组，分别索引**第几日**、**早晚班**、**全部值班人员**。如果返回的数据为 `data`，则 `data[0][0][0]` 表示查询日期中**第一天**的**上午**值班的**第一个人**，其中每个班次的人员是按照他们的**声誉**递减排序的。
+
+`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
+
+```json
+[
+    // 第一天
+    [
+        // 上午
+        [
+            // 所有值班人员
+            {
+                // 班次唯一标识
+                "shift_id": 1,
+                "name": "张三",
+                "phoneNumber": 13849045786,
+                "language": "中英",
+                // 届数
+                "session": 14,
+                // 值班状态
+                "status": "studying",
+                // 声誉
+                "reputation": 0
+            },
+            {
+                "shift_id": 7,
+                "name": "李四",
+                "phoneNumber": 13848888786,
+                "language": "韩文",
+                "session": 13,
+                "status": "working",
+                "reputation": 0
+            },
+            {
+                "shift_id": 45,
+                "name": "王五",
+                "phoneNumber": 10009045786,
+                "language": "俄语",
+                "session": 15,
+                "status": "working",
+                "reputation": 0
+            },
+            {
+                "shift_id": 23,
+                "name": "赵六",
+                "phoneNumber": 13877745786,
+                "language": "日语",
+                "session": 16,
+                "status": "waiting",
+                "reputation": 0
+            }
+        ],
+        // 下午
+        [
+            {
+                "shift_id": 324,
+                "name": "张三",
+                "phoneNumber": 13849045786,
+                "language": "中英",
+                "session": 14,
+                "status": "working",
+                "reputation": 0
+            },
+            // ...
+        ]
+    ],
+    // 第二天
+    // ...
+]
+```
+
+## 班次填写
+
+格式： `POST AD/shifts`
+
+### 请求 body
+
+|参数|类型|描述|
+|---------|----|-----------|
+|stu_id|string|学号|
+|month|number|月份|
+|day|number|日期|
+|morning|boolean|早班时为 `true`|
+|status|string|值班状态，目前有 `working`, `waiting` 和 `studying`|
+
+### 返回 body
+
+您将得到与请求 body 完全相同的 body。
+
+```json
+{
+    "stu_id": "123",
+    "month": 8,
+    "day": 15,
+    "morning": true,
+    "status": "working"
+}
+```
+
+?> 如果当前不允许填写值班表，您将接收到 `403` 状态码。
+
+## 班次删除
+
+格式： `DELETE AD/shifts`
+
+### 请求 query
+
+|参数|类型|描述|
+|---------|----|-----------|
+|shift_id|number|班次唯一 id|
+
+### 返回 body
+
+您将得到与请求 body 完全相同的 body。
+
+```json
+{
+    "shift_id": "123"
+}
+```
+
+?> 如果当前不允许删除值班信息，您将接收到 `403` 状态码。如果没有此 id，您将接收到 `401` 状态码。
