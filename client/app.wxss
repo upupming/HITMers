@@ -2,6 +2,7 @@
 
 page {
   background: #F9F9F9;
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 
 .container {
@@ -37,4 +38,62 @@ button[type=warn].button-hover {
 }
 button[type=primary].button-hover {
   background-color: #199cf2;
+}
+
+/* table default style */
+/* copied from  https://www.w3schools.com/cssref/css_default_values.asp */
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+th {
+	display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.field-popup {
+  position: fixed;
+  top: 0rpx;
+  left: -350rpx;
+  width: 700rpx;
+}
+
+.horizontal-buttons {
+  display: flex;
+}
+
+.button-wrap {
+  width: 50%;
+  border-radius: 0rpx;
+}
+
+.field-picker {
+  background: white;
 }

@@ -116,6 +116,7 @@ Page({
             logged: true
           });
           globalData.logged = true;
+          globalData.loginResponse = res.data;
           if(res.data.stu_password_changed_times === 0) {
             this.showChangePasswordDialog();
           }
@@ -213,7 +214,7 @@ Page({
       if(res.statusCode === 200 && res.data.stu_password_changed_times) {
         this.setData({
           showChangePasswordPopup: false
-        })
+        });
         Toast({
           type: 'success',
           message: that.data.language.changePasswordSucceed,
@@ -231,4 +232,4 @@ Page({
       logged: false
     });
   }
-})
+});

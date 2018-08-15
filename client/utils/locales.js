@@ -28,6 +28,8 @@ export default {
     checkOutForcely: '强制签出',
     shallWeforcelyCheckOut: '是否强制签出？本次值班将不会计入工作量！',
     checkedOut: '签出成功',
+    morning: '上午',
+    afternoon: '下午',
     morningShift: '早班',
     afternoonShift: '晚班',
     period: '时间段',
@@ -64,11 +66,23 @@ export default {
     cancel: '取消',
 
     monthly: '本月',
-    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-    days: ['一日', '二日', '三日', '四日', '五日', '六日', '七日', '八日', '九日', '十日','十一日', '十二日', '十三日', '十四日', '十五日', '十六日', '十七日', '十八日', '十九日', '二十日', '二十一日', '二十二日', '二十三日', '二十四日', '二十五日', '二十六日', '二十七日', '二十八日', '二十九日', '三十日', '三十一日'],
+    months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+    days: ['1 日', '2 日', '3 日', '4 日', '5 日', '6 日', '7 日', '8 日', '9 日', '10 日','11 日', '12 日', '13 日', '14 日', '15 日', '16 日', '17 日', '18 日', '19 日', '20 日', '21 日', '22 日', '23 日', '24 日', '25 日', '26 日', '27 日', '28 日', '29 日', '30 日', '31 日'],
     workloadSummary: '本月已值班次数',
     selectedDay: '已选日期',
-    times: '次'
+    times: '次',
+
+    fillInSheet: '填写值班表',
+    weekDays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    status: '状态',
+    statuses: ['值班', '待命', '背稿'],
+    date: '日期',
+    sheet: '值班表',
+    fillInSheetSuccess: '填写成功',
+    fillInSheetForbidden: '当前不允许填写值班表',deleteShift: '删除值班信息',
+    confirmDeleteShift: '是否删除此条值班信息？',
+    deleteShiftSuccess: '删除值班信息成功',
+    deleteShiftForbidden: '当前不允许删除值班信息'
   },
   'en': {
     language: 'Language',
@@ -101,7 +115,9 @@ export default {
     checkedOut: 'Checked Out',
     morningShift: 'Morning shift',
     afternoonShift: 'Afternoon shift',
-    period: 'period',
+    morning: 'Morning',
+    afternoon: 'Afternoon',
+    period: 'Period',
     notInPeriod: 'Not in the check-in period',
     notOutPeriod: 'Not in the check-out period',
     calDistanceFailed: 'Calculate diatance failed',
@@ -139,6 +155,19 @@ export default {
     days: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21th', '22th', '23th', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31th'],
     workloadSummary: 'Finished shifts this month',
     selectedDay: 'Selected day',
-    times: 'times'
+    times: 'times',
+
+    fillInSheet: 'Fill in the shift sheet',
+    weekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    status: 'Status',
+    statuses: ['Working', 'Standby', 'Studying'],
+    date: 'Date',
+    sheet: 'Shifts Sheet',
+    fillInSheetSuccess: 'Filled in successfully',
+    fillInSheetForbidden: 'Filling in sheet is not allowed',
+    deleteShift: 'Delete shift',
+    confirmDeleteShift: 'Are you sure to delete this shift?',
+    deleteShiftSuccess: 'Shift deleted successfully',
+    deleteShiftForbidden: 'Deleting shift is not allowed'
   }
 };

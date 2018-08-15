@@ -1,4 +1,6 @@
 const CONF = {
+  env: 'dev',
+
   port: '5757',
   rootPathname: '',
 
@@ -34,13 +36,13 @@ const CONF = {
       password: 'wxcb3ed1484b8c7147',
       database: 'HITMers'
     },
-    debug: true
+    debug: this.env === 'dev' ? true : false
   },
   
   cdbName: 'checkModel',
   logindbName: 'loginModel',
   infodbName: 'infoModel',
-
+  shiftsModel: 'shiftsModel',
 
   cos: {
     /**
@@ -59,6 +61,6 @@ const CONF = {
   // 微信登录态有效期
   wxLoginExpires: 7200,
   wxMessageToken: 'abcdefgh'
-}
+};
 
-module.exports = CONF
+module.exports = CONF;

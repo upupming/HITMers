@@ -1,0 +1,100 @@
+table{
+  display: inline-flex;
+  flex-direction: row;
+  background: linear-gradient(to right, #5d8ef1, #25b7c4);
+}
+
+tr {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+th{
+  display: flex;
+  flex-direction: column;
+  height: 300rpx;
+  width: 120rpx;
+  justify-content: center;
+  border-right:4rpx solid #99d3f9;
+  border-bottom:4rpx solid #99d3f9;
+  color: white;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.today {
+  background-color: #8077D5;
+  color: black;
+}
+
+td{
+  display: flex;
+  flex-direction: column;
+  height: 300rpx;
+  width: 400rpx;
+  text-align: center;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 24rpx;
+  color: #fff;
+  border: 4rpx solid #99d3f9;
+  border-top: 0;
+  border-left: 0;
+  white-space: nowrap;
+}
+
+text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1rpx solid #99d3f9;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+text:active {
+  opacity: 0.5;
+}
+
+/* 小班长 */
+text:first-child {
+  font-weight: bold;
+}
+text:last-child {
+  border-bottom: 0;
+}
+
+td.strong {
+  font-size: 50rpx;
+  vertical-align: middle;
+  justify-content: center;
+  font-weight: bold;
+}
+th:first-child,td:first-child {
+  height: 150rpx;
+}
+
+.month-str {
+  font-size: 30rpx;
+}
+.day-str {
+  margin: 5rpx;
+  font-size: 30rpx;
+}
+.weekday-str {
+  margin: 10rpx;
+  font-size: 30rpx;
+}
+
+/* Guide status */
+.working {
+  background: #66BB6A;
+}
+
+.waiting {
+  background: #ef7a82;
+}
+
+.studying {
+  background: #99d3f9;
+}

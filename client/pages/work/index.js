@@ -271,10 +271,10 @@ Page({
     }
   },
 
-  monthly() {
+  navigateToIfHasLogged(event) {
     if(this.hasLogged()) {
       wx.navigateTo({
-        url: './monthly'
+        url: event.currentTarget.id
       });
     }
   }

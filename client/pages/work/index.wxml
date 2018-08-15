@@ -1,17 +1,22 @@
 <view class="container">
+  <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="fill-in-sheet">
+      <view class="icon">
+        <image class="icon-img" src="../../images/sheet.svg"/>
+      </view>
+      <view class="icon-action">{{language.fillInSheet}}</view>
+  </view>
   <view class="icon-wrap" bindtap="checkInOrOut">
     <view class="icon">
       <image class="icon-img" src="../../images/check.svg"/>
     </view>
     <view class="icon-action">{{checkedIn ? language.checkOut : language.checkIn}}</view>
   </view>
-  <view class="icon-wrap" bindtap="monthly">
+  <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="monthly">
     <view class="icon">
       <image class="icon-img" src="../../images/monthly.svg"/>
     </view>
     <view class="icon-action">{{language.monthly}}</view>
   </view>
-
   <zan-dialog id="sign-in-dialog"></zan-dialog>
   <zan-dialog id="time-not-valid-dialog"></zan-dialog>
   <zan-dialog id="location-not-valid-dialog"></zan-dialog>

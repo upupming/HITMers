@@ -33,19 +33,3 @@
   margin: 10rpx;
   border-radius: 50%;
 }
-
-.field-popup {
-  position: fixed;
-  top: 0rpx;
-  left: -350rpx;
-  width: 700rpx;
-}
-
-.horizontal-buttons {
-  display: flex;
-}
-
-.button-wrap {
-  width: 50%;
-  border-radius: 0rpx;
-}

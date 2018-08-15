@@ -1,9 +1,10 @@
 .icon-wrap {
   width: 33.33333%;
-  height: 50rpx;
   float: left;
   padding-top: 40rpx;
+  padding-bottom: 10rpx;
   text-align: center;
+  color: var(--theme-color);
 }
 
 .icon-img {
@@ -12,6 +13,9 @@
 }
 
 .icon-action {
-  color: var(--theme-color);
   font-size: 25rpx;
+}
+
+.icon-wrap:active {
+  background: #d9d9d9;
 }

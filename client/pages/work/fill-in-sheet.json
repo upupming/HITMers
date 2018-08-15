@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+      "zan-loading": "../../zan-ui/loading/index",
+      "zan-dialog": "../../zan-ui/dialog/index",
+      "zan-popup": "../../zan-ui/popup/index",
+      "zan-field": "../../zan-ui/field/index",
+      "zan-cell": "../../zan-ui/cell/index",
+      "zan-toast": "../../zan-ui/toast/index",
+      "zan-panel": "../../zan-ui/panel/index"
+  },
+  "enablePullDownRefresh": true
+}

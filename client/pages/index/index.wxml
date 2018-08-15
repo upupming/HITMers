@@ -53,7 +53,7 @@
             title="{{language.stuId.title}}"
             placeholder="{{language.stuId.placeholder}}"
             value="{{ stuId }}"
-            inputType="number"
+            inputType="text"
           ></zan-field>
         
           <zan-field

@@ -1,5 +1,7 @@
-import locales from './utils/locales'
-import T from './utils/i18n'
+/* global wx App */
+
+import locales from './utils/locales';
+import T from './utils/i18n';
 
 T.registerLocale(locales);
 let savedGlobalData = wx.getStorageSync('globalData');
@@ -34,4 +36,4 @@ App({
       data: this.globalData
     });
   }
-})
+});

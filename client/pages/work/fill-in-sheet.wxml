@@ -1,0 +1,85 @@
+<zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
+  <scroll-view wx:else scroll scroll-x scroll-y scroll-top="{{scrollTop}}" scroll-left="{{scrollLeft}}" bindtap="saveClickPosition" style="height: {{windowHeight}}px">
+  <table>
+    
+    <!-- This week dates -->
+    <tr>
+      <th>{{language.sheet}}</th>
+      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}">
+        <view class="month-str">{{language.months[monthIndices[index]]}}</view>
+        <view class="day-str">{{language.days[dayIndices[index]]}}</view>
+        <view class="weekday-str">{{item}}</view>
+      </th>
+    </tr>
+
+    <!-- Morning -->
+    <tr>
+        <td class="strong">{{language.morning}}</td>     
+        <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
+
+          <text wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" class="working" data-phone-number="{{guide.phoneNumber}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+          
+          <text wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" class="waiting" data-phone-number="{{guide.phoneNumber}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+          
+          <text wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" class="studying" data-phone-number="{{guide.phoneNumber}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+          <!-- 补齐至 6 格 -->
+          <text wx:if="{{shifts[dayIndex][0].length < 6}}" wx:for="{{complement[shifts[dayIndex][0].length]}}" data-period="morning" data-day-index="{{dayIndex}}" id="{{'morning' + dayIndex + (shifts[dayIndex][0].length + index)}}" bindtap="fillInSheet">\n</text>
+        </td>
+      </tr>
+
+    <!-- Afternoon -->
+    <tr>
+      <td class="strong">{{language.afternoon}}</td>
+     
+      <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
+        
+        <text wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" class="working" data-phone-number="{{guide.phoneNumber}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+        
+        <text wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" class="waiting" data-phone-number="{{guide.phoneNumber}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+        
+        <text wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" class="studying" data-phone-number="{{guide.phoneNumber}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phoneNumber + ' ' + guide.language + ' ' + guide.session}}</text>
+        <!-- 补齐至 6 格 -->
+        <text wx:if="{{shifts[dayIndex][1].length < 6}}" wx:for="{{complement[shifts[dayIndex][1].length]}}" data-period="afternoon" data-day-index="{{dayIndex}}" id="{{'afternoon' + dayIndex + (shifts[dayIndex][1].length + index)}}" bindtap="fillInSheet">\n</text>
+      </td>
+    </tr>
+  
+  </table>
+</scroll-view>
+
+<zan-popup
+  show="{{showFillInSheetPopup}}"
+  type="top"
+  bindclose="toggleFillInSheetPopup"
+>
+  <view class="field-popup">
+    <zan-panel title="{{language.fillInSheet}}">
+      <form  bindsubmit="submitShift" bindreset="abandonShift">
+          <zan-cell title="{{language.date}}">
+            <view>{{language.months[monthIndices[selectedDayIndex]] + ' ' + language.days[dayIndices[selectedDayIndex]] + ' ' + language.weekDays[selectedDayIndex]}}</view>
+          </zan-cell>
+          <zan-cell title="{{language.period}}">
+            <view>{{language[selectedPeriod]}}</view>
+          </zan-cell>
+          <zan-cell title="{{language.status}}">
+            <picker mode="selector" range="{{language.statuses}}" value="{{0}}" bindchange="changeStatus">
+              <view class="picker">{{language.statuses[statusIndex]}}</view>
+            </picker>
+          </zan-cell>
+          
+
+          <zan-button-group class="horizontal-buttons">
+            <button type="warn" form-type="reset" class="button-wrap">
+                {{language.cancel}}
+              </button>
+            <button type="primary" form-type="submit" class="button-wrap">
+              {{language.confirm}}
+            </button>
+          </zan-button-group>
+      </form>
+    </zan-panel>
+  </view>
+</zan-popup>
+
+<zan-dialog id="fill-in-sheet-dialog"></zan-dialog>
+<zan-toast id="toast"></zan-toast>
+<zan-dialog id="delete-shift-dialog"></zan-dialog>

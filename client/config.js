@@ -21,6 +21,8 @@ var config = {
     // 录入学号、姓名接口
     saveInfoUrl: `${apiPath}/info-insert`,
     getMonthlyUrl: `${apiPath}/monthly`,
+    // Shifts information API
+    shiftsUrl: `${apiPath}/shifts`
   }
 };
 
