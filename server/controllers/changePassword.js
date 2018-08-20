@@ -2,7 +2,7 @@ const config = require('../config');
 const knex = require('knex')(config.db);
 
 // 修改密码接口
-module.exports = async(ctx, next) => {
+module.exports = async(ctx) => {
   console.log(ctx);
 
   await knex(config.logindbName)

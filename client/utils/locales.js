@@ -71,6 +71,8 @@ export default {
     workloadSummary: '本月已值班次数',
     selectedDay: '已选日期',
     times: '次',
+    finished: '已完成',
+    left: '未完成',
 
     fillInSheet: '填写值班表',
     weekDays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -82,7 +84,10 @@ export default {
     fillInSheetForbidden: '当前不允许填写值班表',deleteShift: '删除值班信息',
     confirmDeleteShift: '是否删除此条值班信息？',
     deleteShiftSuccess: '删除值班信息成功',
-    deleteShiftForbidden: '当前不允许删除值班信息'
+    deleteShiftForbidden: '当前不允许删除值班信息',
+
+    note: '随手记',
+    enterNote: '记录我的生活'
   },
   'en': {
     language: 'Language',
@@ -106,7 +111,7 @@ export default {
     personalInfo: 'Personal information',
     settings: 'Settings',
 
-    TARGET_POSITION: 'Harbin Institute of Technology',
+    TARGET_POSITION: 'Harbin Institute of Technology Museum',
     checkIn: 'Check in',
     checkedIn: 'Checked in',
     checkOut: 'Check out',
@@ -122,7 +127,7 @@ export default {
     notOutPeriod: 'Not in the check-out period',
     calDistanceFailed: 'Calculate diatance failed',
     tooFarFrom: 'Too far from work place',
-    pleaseArrive: 'Please arrive st work place',
+    pleaseArrive: 'Please arrive at work place',
     pleaseLogin: 'Please login first',
 
     fillInInfo: 'Fill in user information',
@@ -156,6 +161,8 @@ export default {
     workloadSummary: 'Finished shifts this month',
     selectedDay: 'Selected day',
     times: 'times',
+    finished: 'Finished',
+    left: 'Left',
 
     fillInSheet: 'Fill in the shift sheet',
     weekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -168,6 +175,9 @@ export default {
     deleteShift: 'Delete shift',
     confirmDeleteShift: 'Are you sure to delete this shift?',
     deleteShiftSuccess: 'Shift deleted successfully',
-    deleteShiftForbidden: 'Deleting shift is not allowed'
+    deleteShiftForbidden: 'Deleting shift is not allowed',
+
+    note: 'Note',
+    enterNote: 'Note my life'
   }
 };

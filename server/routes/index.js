@@ -16,10 +16,11 @@ router.put('/change-password', controllers.changePassword);
 router.post('/cinsert', controllers.cinsert);
 
 // 个人值班查询
-router.get('/monthly', controllers.monthly);
+router.get('/checks', controllers.checks);
 
 // 值班表查询
-router.get('/shifts', controllers.getShifts);
+router.get('/shifts', controllers.getShifts.all);
+router.get('/shifts/:id', controllers.getShifts.id);
 // 值班表新建
 router.post('/shifts', controllers.newShifts);
 // 值班表删除

@@ -6,7 +6,6 @@ module.exports = async(ctx) => {
   console.log(ctx);
 
   let info = {
-    wx_name: ctx.request.body.wx_name,
     stu_id: ctx.request.body.stu_id,
     stu_name: ctx.request.body.stu_name,
     date_time: new Date(),

@@ -12,6 +12,7 @@ module.exports = async () => {
           table.increments('shift_id');
           // 学号不可重复
           table.string('stu_id').collate('utf8_unicode_ci');
+          table.string('year').defaultTo(new Date().getFullYear());
           table.integer('month');
           table.integer('day');
           table.boolean('morning');

@@ -3,32 +3,58 @@
 <view wx:else>
   <text class="title theme">{{language.monthly  }}</text>
   <view class="calendar-box">
-      <view class="left">
+      <view class="left" bindtap="backToCurrentMonth">
           <view class="today">
             <text class="month-str">{{ monthStr }}</text>
             <text class="day-str">{{ dayStr }}</text>
           </view>            
       </view>
       <view class="right">
-          <calendar weeks-type="{{language.languageName === '简体中文' ? 'cn' : 'full-en'}}" header="{{false}}" cell-size="30" days-color="{{days_style}}" active-type="circle" binddayClick="dayClick" />
+          <calendar 
+            weeks-type="{{language.languageName === '简体中文' ? 'cn' : 'full-en'}}" header="{{true}}" 
+            cell-size="30" 
+            days-color="{{days_style}}" active-type="circle" 
+            binddayClick="dayClick" bindprevMonth="monthChangedHandler" bindnextMonth="monthChangedHandler" 
+            year="{{selectedYear}}"
+            month="{{selectedMonth + 1}}"
+          />
       </view>
   </view>
 
   
   <view class="card selected" wx:if="{{selectedDay !== -1}}">
-      <text class="card-title">{{language.selectedDay}}</text>
-      <zan-cell  title="{{monthStr + ' ' + language.days[selectedDay - 1]}}">
-        <view class="text-finished">{{shiftsByDay[selectedDay] + ' ' + language.times}}</view>
-        <view slot="footer" class="text-unfinished">{{reaminShiftsByDay[selectedDay] + ' ' + language.times}}</view>
+      <view class="card-title">
+        <van-icon bind:click="closeSelected" custom-class="card-icon" name="close" />
+        <text>{{language.selectedDay}}</text>
+      </view>
+      <zan-cell-group>
+        <zan-cell title="{{language.months[selectedMonth] + ' ' + language.days[selectedDay - 1]}}">
+          <view class="text-finished">{{language.finished + ' ' + finishedShiftsByDay[selectedDay] + ' ' + language.times}}</view>
+          <view slot="footer" class="text-unfinished">{{language.left + ' ' + (totalShiftsByDay[selectedDay] - finishedShiftsByDay[selectedDay]) + ' ' + language.times}}</view>
+        </zan-cell>
+        <zan-cell>
+        <van-field
+          id="note-for-{{selectedDay}}"
+          value="{{notes[selectedYear - notesStartYear][selectedMonth][selectedDay]}}"
+          label="{{language.note}}"
+          type="textarea"
+          placeholder="{{language.enterNote}}"
+          autosize
+          border="{{ false }}"
+          bind:change="noteChanged"
+        />
       </zan-cell>
+      </zan-cell-group>
   </view>
   <view class="card finished">
-      <text class="card-title">{{language.workloadSummary + ': ' + numOfShifts + ' ' + language.times}}</text>
+      <view class="card-title"><text>{{language.workloadSummary + ': ' + numOfFinishedShifts + ' ' + language.times}}</text></view>
       <zan-cell-group>
-        <zan-cell wx:for="{{shiftsByDay}}" wx:if="{{shiftsByDay[index]}}" title="{{monthStr + ' ' + language.days[index - 1]}}">
-          <text class="text-finished">{{shiftsByDay[index] + ' ' + language.times}}</text>
+        <zan-cell wx:for="{{finishedShiftsByDay}}" wx:if="{{finishedShiftsByDay[index]}}" title="{{language.months[selectedMonth] + ' ' + language.days[index - 1]}}">
+          <text class="text-finished">{{language.finished + ' ' + finishedShiftsByDay[index] + ' ' + language.times}}</text>
         </zan-cell>
       </zan-cell-group>
   </view>
 
 </view>
+
+<zan-toast id="toast"></zan-toast>

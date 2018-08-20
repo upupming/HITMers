@@ -36,6 +36,9 @@ let SHIFT_PERIODS = [
 
 let globalData = getApp().globalData;
 
+let BYPASS_CHECK_TIME = (config.env === 'dev');
+let BYPASS_CHECK_POS = (config.env === 'dev');
+
 class CheckPeriod {
   constructor(startHours, startMinutes, endHours, endMinutes, isIn, isMorning) {
     this.startHours = startHours;
@@ -199,6 +202,10 @@ Page({
     let that = this;
 
     return new Promise(function (resolve) {
+      if(BYPASS_CHECK_POS){
+        resolve(true);
+        return;
+      } 
       qqmapsdk.calculateDistance({
         to: [{
           latitude: TARGET_LATITUDE,
@@ -234,15 +241,13 @@ Page({
     CheckPeriod.setLanguage(this.data.language);
 
     let shift;
-    if (this.hasLogged() && (shift = this.getShift())) {
+    if (this.hasLogged() && ((shift = this.getShift()) || BYPASS_CHECK_TIME)) {
       this.isLocationValid().then(
         res => {
-          // console.log(res ? 'Constraints not met' : 'POSTing...');
           if (res) {
             wx.request({
               url: config.service.checkUrl,
               data: {
-                wx_name: globalData.userInfo.nickName,
                 stu_id: globalData.stuId,
                 stu_name: globalData.stuName,
                 check_in: that.data.checkedIn ? false : true,
@@ -253,7 +258,6 @@ Page({
                 'content-type': 'application/json' // 默认值
               },
               success: function () {
-                // console.log(res);
                 util.show(that.data.checkedIn ? that.data.language.checkedOut : that.data.language.checkedIn, 'success');
                 that.setData({
                   checkedIn: !that.data.checkedIn
@@ -261,7 +265,6 @@ Page({
                 globalData.checkedIn = that.data.checkedIn;
               },
               fail: function () {
-                // console.log(res);
                 util.show(that.data.language.requestError, 'fail');
               },
             });

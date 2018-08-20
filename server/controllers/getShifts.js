@@ -1,7 +1,9 @@
 const config = require('../config'); 
 const knex = require('knex')(config.db); 
+const thisYear = new Date().getFullYear();
+
 // 查询班次接口
-module.exports = async (ctx) => { 
+module.exports.all = async (ctx) => { 
   console.log(ctx);
 
   let shifts = [];
@@ -9,6 +11,7 @@ module.exports = async (ctx) => {
   // 如果只是一个月内
   if(ctx.query.startMonth === ctx.query.endMonth) {
     await knex(config.shiftsModel)
+      .where('year', ctx.query.year || thisYear)
       .where('month',  ctx.query.startMonth)
       .whereBetween('day', [ctx.query.startDay, ctx.query.endDay])
       .then(data => {
@@ -21,6 +24,7 @@ module.exports = async (ctx) => {
   // 如果跨过多个月
   else if(ctx.query.startMonth < ctx.query.endMonth) {
     await knex(config.shiftsModel)
+      .where('year', ctx.query.year || thisYear)
       // 第一个月
       .where(function() {
         this.where('month', ctx.query.startMonth)
@@ -92,4 +96,53 @@ module.exports = async (ctx) => {
   }
 
   return ctx.response.body = shiftsArray; 
+};
+
+module.exports.id = async (ctx) => {
+  console.log(ctx);
+
+  let shifts = [];
+
+  // 如果只是一个月内
+  if(ctx.query.startMonth === ctx.query.endMonth) {
+    await knex(config.shiftsModel)
+      .where('stu_id', ctx.params.id)
+      .where('year', ctx.query.year || thisYear)
+      .where('month',  ctx.query.startMonth)
+      .whereBetween('day', [ctx.query.startDay, ctx.query.endDay])
+      .then(data => {
+        shifts = data;
+      })
+      .catch(err => {
+        ctx.status = 502;
+        console.log(err);
+      });
+  }
+  // 如果跨过多个月
+  else if(ctx.query.startMonth < ctx.query.endMonth) {
+    await knex(config.shiftsModel)
+      .where('stu_id', ctx.params.id)
+      .where('year', ctx.query.year || thisYear)
+      // 第一个月
+      .where(function() {
+        this.where('month', ctx.query.startMonth)
+            .where('day', '>=', ctx.query.startDay);
+      })
+      // 中间的月
+      .orWhereIn('month', [ctx.query.startMonth + 1, ctx.query.endMonth - 1])
+      // 最后一个月
+      .orWhere(function() {
+        this.where('month', ctx.query.endMonth)
+            .where('day', '<=', ctx.query.endDay);
+      })
+      .then(data => {
+        shifts = data;
+      })
+      .catch(err => {
+        ctx.status = 502;
+        console.log(err);
+      });
+  }
+
+  return ctx.response.body = shifts;
 };

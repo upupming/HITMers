@@ -9,4 +9,4 @@ function show(message, type) {
   });
 }
 
-module.exports = { show }
+module.exports = { show };

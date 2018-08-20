@@ -2,15 +2,14 @@
  * 小程序配置文件
  */
 
-// 此处主机域名修改成腾讯云解决方案分配的域名
-// let host = 'https://pmdt8kru.qcloud.la';
-// 本地调试
-let host = 'http://localhost:5757';
+/* global wx */
+let host = wx.getSystemInfoSync().model === 'iPhone 5' ? 
+  'http://localhost:5757': 'https://pmdt8kru.qcloud.la';
 
 let apiPath = `${host}/weapp`;
 
 var config = {
-  // 下面的地址配合云端 Demo 工作
+  env: 'dev',
   service: {
     host,
 
@@ -22,7 +21,7 @@ var config = {
     changePasswordUrl: `${apiPath}/change-password`,
     // 录入学号、姓名接口
     saveInfoUrl: `${apiPath}/info-insert`,
-    getMonthlyUrl: `${apiPath}/monthly`,
+    checksUrl: `${apiPath}/checks`,
     // Shifts information API
     shiftsUrl: `${apiPath}/shifts`
   }
