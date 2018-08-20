@@ -3,7 +3,9 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-let host = 'https://pmdt8kru.qcloud.la';
+// let host = 'https://pmdt8kru.qcloud.la';
+// 本地调试
+let host = 'http://localhost:5757';
 
 let apiPath = `${host}/weapp`;
 
