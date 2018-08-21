@@ -1,6 +1,5 @@
 {
 	"miniprogramRoot": "./client",
-	"qcloudRoot": "./server",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,

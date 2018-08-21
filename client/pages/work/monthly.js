@@ -32,8 +32,6 @@ Page({
   },
 
   noteChanged(event) {
-    console.log(this.data.notes);
-    console.log(this.data.selectedYear);
     this.data.notes[this.data.selectedYear - NOTES_START_YEAR][this.data.selectedMonth][parseInt(event.currentTarget.id.substring(9))] = event.detail;
     this.setData({
       notes: this.data.notes
@@ -200,8 +198,6 @@ Page({
       // Delegate to globalData.notes
       notes: globalData.notes
     });
-    console.log(globalData.notes);
-    console.log(this.data.notes);
   },
 
   refreshCalenderTo(year, month) {

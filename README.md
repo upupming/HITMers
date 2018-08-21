@@ -1,5 +1,7 @@
 # 哈工大博物馆小助手
 
+[HITMers Node.js Server](https://github.com/upupming/HITMers-node-js-server)
+
 ## 账号
 
 - 账号：liyiming159@qq.com
