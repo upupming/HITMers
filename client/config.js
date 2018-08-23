@@ -4,7 +4,7 @@
 
 /* global wx */
 let host = wx.getSystemInfoSync().model === 'iPhone 5' ? 
-  'http://localhost:5757': 'https://pmdt8kru.qcloud.la';
+  'http://localhost:5757': 'https://hitmers-api.solotime.xyz';
 
 let apiPath = `${host}/weapp`;
 
