@@ -1,4 +1,4 @@
-const nativeBehaviors = require('./behaviors');
+const buttonBehaviors = require('../behaviors/button');
 const classnames = require('../common/classnames');
 
 const observer = function() {
@@ -6,9 +6,13 @@ const observer = function() {
 };
 
 Component({
+  options: {
+    addGlobalClass: true
+  },
+
   externalClasses: ['custom-class', 'loading-class'],
 
-  behaviors: [nativeBehaviors],
+  behaviors: [buttonBehaviors],
 
   properties: {
     type: {
@@ -36,6 +40,10 @@ Component({
     block: {
       type: Boolean,
       observer
+    },
+    square: {
+      type: Boolean,
+      observer
     }
   },
 
@@ -51,11 +59,12 @@ Component({
     },
 
     setClasses() {
-      const { type, size, plain, disabled, loading, block } = this.data;
+      const { type, size, plain, disabled, loading, square, block } = this.data;
       this.setData({
         classes: classnames(`van-button--${type}`, `van-button--${size}`, {
           'van-button--block': block,
           'van-button--plain': plain,
+          'van-button--square': square,
           'van-button--loading': loading,
           'van-button--disabled': disabled,
           'van-button--unclickable': disabled || loading
