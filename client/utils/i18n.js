@@ -1,28 +1,30 @@
+/* global wx */
+
 let T = {
   locale: null,
   locales: {},
   langCode: ['zh-Hans', 'en']
-}
+};
 let lastLangIndex;
 
 T.registerLocale = function (locales) {
   T.locales = locales;
-}
+};
 
 T.setLocale = function (code) {
   T.locale = code;
-}
+};
 
 T.setLocaleByIndex = function (index) {
   lastLangIndex = index;
   T.setLocale(T.langCode[index]);
 
   setTabBarLang(index);
-}
+};
 
 T.getLanguage = function () {
   return T.locales[T.locale];
-}
+};
 
 
 let navigationBarTitles = [
@@ -33,8 +35,8 @@ let navigationBarTitles = [
 T.setNavigationBarTitle = function() {
   wx.setNavigationBarTitle({
     title: navigationBarTitles[lastLangIndex]
-  })
-}
+  });
+};
 
 let tabBarLangs = [
   [
@@ -54,8 +56,8 @@ function setTabBarLang(index) {
     wx.setTabBarItem({
       'index': index,
       'text': element
-    })
-  })  
+    });
+  });
 }
 
-export default T
+export default T;

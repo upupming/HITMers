@@ -1,12 +1,7 @@
-const Toast = require('../zan-ui/toast/toast');
+import Toast from '../van-ui/toast/index';
 
 function show(message, type) {
-  Toast({
-    message: message,
-    type: type,
-    selector: '#toast',
-    timeout: 1500
-  });
+  Toast[type](message);
 }
 
 module.exports = { show };

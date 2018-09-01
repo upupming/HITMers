@@ -1,5 +1,6 @@
 /* global wx App */
 
+import './utils/wxPromise.min.js';
 import locales from './utils/locales';
 import T from './utils/i18n';
 
@@ -18,6 +19,8 @@ App({
       {
         // Language settings
         langIndex: 0,
+        languages: locales,
+        language: locales['zh-Hans'],
         // Login status
         logged: false,
         userInfo: null,

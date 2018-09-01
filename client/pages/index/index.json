@@ -8,7 +8,9 @@
     "zan-dialog": "../../zan-ui/dialog/index",
     "zan-field": "../../zan-ui/field/index",
     "zan-popup": "../../zan-ui/popup/index",
-    "zan-toast": "../../zan-ui/toast/index",
-    "zan-loading": "../../zan-ui/loading/index"
+    "zan-loading": "../../zan-ui/loading/index",
+    
+    "van-toast": "../../van-ui/toast/index",
+    "van-notify": "../../van-ui/notify/index" 
   }
 }

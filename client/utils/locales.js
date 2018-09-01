@@ -14,9 +14,18 @@ export default {
     wrongOldPassword: '原密码错误',
     shouldChangePassword: '您现在使用的是初始密码，为了您的账号安全，请修改密码。',
     changePasswordSucceed: '密码修改成功',
+    changePasswordFailed: '密码修改失败',
     permissions: '应用权限',
 
     requestError: '请求失败',
+    requestSuccess: '请求成功',
+    200: '请求成功',
+    401: '授权失败，请重新登录',
+    403: '权限不足',
+    404: '信息有误，请重新输入',
+    409: '要修改的数据与服务端出现冲突',
+    500: '服务器错误',
+
 
     personalInfo: '个人信息',
     settings: '设置',
@@ -104,9 +113,17 @@ export default {
     changePassword: 'Change password',
     shouldChangePassword: 'You are using the initial password. For your account security, please change your password.',
     changePasswordSucceed: 'Change password succeed',
+    changePasswordFailed: 'Change password failed',
     permissions: 'Permissions',
 
     requestError: 'Request error',
+    requestSuccess: 'Request success',
+    200: 'Request success',
+    401: 'Authentication failed, please login again',
+    403: 'Insufficient priviledges',
+    404: 'Wrong input, please input again',
+    409: 'Conflict with the server',
+    500: 'Error on the server',
 
     personalInfo: 'Personal information',
     settings: 'Settings',

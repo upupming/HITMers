@@ -1,17 +1,15 @@
 /* global getApp wx Page*/
 
-import event from '../../utils/event';
-import '../../utils/wxPromise.min.js';
-const config = require('../../config');
-const Toast = require('../../zan-ui/toast/toast');
+const event = require('../../utils/event');
 const Dialog = require('../../zan-ui/dialog/dialog');
+const request = require('../../utils/requests');
+const util = require('../../utils/util');
 
 let globalData = getApp().globalData;
 
 Page({
   data: {
     logged: false,
-    requestResult: '',
     language: '',
     languages: ['简体中文', 'English'],
     langIndex: 0,
@@ -41,6 +39,7 @@ Page({
     event.emit('languageChanged');
 
     globalData.langIndex = this.data.langIndex;
+    globalData.language = globalData.languages[wx.T.langCode[this.data.langIndex]];
   },
 
   setLanguage() {
@@ -81,80 +80,39 @@ Page({
     globalData.stuName = this.data.stuName;
     globalData.stuPassword = this.data.stuPassword;
 
-    // console.log('globalData changed to: ');
-    // console.log(globalData);
-
-    let that = this;
-    Toast({
-      type: 'loading',
-      message: that.data.language.logining,
-      selector: '#toast'
-    });
-    wx.pro.request({
-      url: config.service.loginUrl,
-      method: 'GET',
-      data: {
-        stu_id: this.data.stuId,
-        stu_name: this.data.stuName,
-        stu_password: this.data.stuPassword
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      }
-    }).then( res =>{
-      Toast.clear();
-      if(res.statusCode === 200) {
-        Toast({
-          type: 'success',
-          message: that.data.language.loginSucceed,
-          selector: '#toast',
-          timeout: 1500
+    request.login(this.data.stuId, this.data.stuPassword)
+      .then(res => {
+        this.setData({
+          logged: true
         });
-        
-        setTimeout(() => {
-          this.setData({
-            logged: true
-          });
-          globalData.logged = true;
-          globalData.loginResponse = res.data;
-          if(res.data.stu_password_changed_times === 0) {
-            this.showChangePasswordDialog();
-          }
-        }, 1500);
-      } else {
-        Toast({
-          type: 'fail',
-          message: res.statusCode === 401 ? that.data.language.wrongPassword : that.data.language.loginFailed,
-          selector: '#toast',
-          timeout: 1500
-        });
-      } 
-    }).catch( () => {
-      Toast.clear();
-      Toast({
-        type: 'fail',
-        message: that.data.language.requestError,
-        selector: '#toast',
-        timeout: 1500
+        globalData.logged = true;
+        globalData.token = res.data.token;
+        this.shouldChangePassword();
       });
-    });
-
+      
     this.setData({
       showLoginPopup: false
     });
   },
+
+  shouldChangePassword() {
+    request.getUserInfo(this.data.stuId)
+      .then(res => {
+        if(res.data.password_changed_times === 0) {
+          this.showChangePasswordDialog();
+        }
+      });
+  },
+
   // zan ui 的 bug，这样做是为了响应最后 field 的键盘上的√被按下
   handleFieldChange() {
     // do nothing
   },
   onGotUserInfo(res) {
-    // console.log('User information got: ');
-    // console.log(res);
-
     globalData.userInfo = res.detail.userInfo;  
     
     this.setData({
-      userInfo: globalData.userInfo,
+      userInfo: globalData.userInfo || null,
       showLoginPopup: true
     });
   },
@@ -191,38 +149,21 @@ Page({
 
     let that = this;
     if(oldPassword !== this.data.stuPassword) {
-      Toast({
-        message: that.data.language.wrongOldPassword,
-        type: 'fail',
-        selector: '#toast',
-        timeout: 1500
-      });
-      return;
+      util.show(this.data.language.wrongOldPassword, 'fail');
+    } else {
+      request.updateUser(this.data.stuId, {password: newPassword})
+        .then(res => {
+          if(res.data.password_changed_times) {
+            this.setData({
+              showChangePasswordPopup: false
+            });
+            this.data.stuPassword = newPassword;
+            util.show(that.data.language.changePasswordSucceed, 'success');
+          } else {
+            util.show(that.data.language.changePasswordFailed, 'fail');
+          }
+        });
     }
-
-    wx.pro.request({
-      url: config.service.changePasswordUrl,
-      method: 'PUT',
-      data: {
-        stu_id: that.data.stuId,
-        stu_new_password: newPassword
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      }
-    }).then( res => {
-      if(res.statusCode === 200 && res.data.stu_password_changed_times) {
-        this.setData({
-          showChangePasswordPopup: false
-        });
-        Toast({
-          type: 'success',
-          message: that.data.language.changePasswordSucceed,
-          selector: '#toast',
-          timeout: 1500
-        });
-      }
-    });
   },
 
   logout: function () {
