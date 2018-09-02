@@ -10,7 +10,8 @@ var config = {
 
     login: `${apiPath}/login`,
     user: `${apiPath}/user`,
-    userAll: `${apiPath}/user/all`
+    userAll: `${apiPath}/user/all`,
+    check: `${apiPath}/check`
   }
 };
 

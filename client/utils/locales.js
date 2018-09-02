@@ -15,6 +15,7 @@ export default {
     shouldChangePassword: '您现在使用的是初始密码，为了您的账号安全，请修改密码。',
     changePasswordSucceed: '密码修改成功',
     changePasswordFailed: '密码修改失败',
+    illegalPassword: '密码不合法',
     permissions: '应用权限',
 
     requestError: '请求失败',
@@ -51,12 +52,14 @@ export default {
 
     fillInInfo: '填写用户信息',
     stuId: {
-      title: '学号',
-      placeholder: '请输入学号'
+      title: '学号/职工号',
+      placeholder: '请输入学号/职工号',
+      illegal: '学号/职工号不合法'
     },
     stuName: {
       title: '姓名',
-      placeholder: '请输入姓名'
+      placeholder: '请输入姓名',
+      illegal: '姓名不合法，仅支持中文姓名'
     },
     stuPassword: {
       title: '密码',
@@ -114,6 +117,7 @@ export default {
     shouldChangePassword: 'You are using the initial password. For your account security, please change your password.',
     changePasswordSucceed: 'Change password succeed',
     changePasswordFailed: 'Change password failed',
+    illegalPassword: 'Password is invalid',
     permissions: 'Permissions',
 
     requestError: 'Request error',
@@ -149,12 +153,14 @@ export default {
 
     fillInInfo: 'Fill in user information',
     stuId: {
-      title: 'Student ID',
-      placeholder: 'Please input your Student ID',
+      title: 'ID',
+      placeholder: 'Please input your ID',
+      illegal: 'ID is invalid'
     },
     stuName: {
       title: 'Name',
-      placeholder: 'Please input your name'
+      placeholder: 'Please input your name',
+      illegal: 'Name is invalid, and only Chinese name is supported'
     },
     stuPassword: {
       title: 'Password',

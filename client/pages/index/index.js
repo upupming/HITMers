@@ -68,29 +68,31 @@ Page({
     });
   },
   submitInfo(event) {
-    this.setData({
-      stuId: event.detail.value.stuId || null,
-      stuName: event.detail.value.stuName || null,
-      stuPassword: event.detail.value.stuPassword || null
-    });
-
-    globalData.stuId = this.data.stuId;
-    globalData.stuName = this.data.stuName;
-    globalData.stuPassword = this.data.stuPassword;
-
-    request.login(this.data.stuId, this.data.stuPassword)
-      .then(res => {
-        this.setData({
-          logged: true
+    if(this.isIdLegal(event.detail.value.stuId) && 
+      this.isNameValid(event.detail.value.stuName) &&
+      this.isPasswordLegal(event.detail.value.stuPassword)) {  
+      request.login(this.data.stuId, this.data.stuPassword)
+        .then(res => {
+          this.setData({
+            logged: true
+          });
+          this.setData({
+            stuId: event.detail.value.stuId,
+            stuName: event.detail.value.stuName,
+            stuPassword: event.detail.value.stuPassword
+          });
+          globalData.stuId = this.data.stuId;
+          globalData.stuName = this.data.stuName;
+          globalData.stuPassword = this.data.stuPassword;
+          globalData.logged = true;
+          globalData.token = res.data.token;
+          this.shouldChangePassword();
         });
-        globalData.logged = true;
-        globalData.token = res.data.token;
-        this.shouldChangePassword();
+        
+      this.setData({
+        showLoginPopup: false
       });
-      
-    this.setData({
-      showLoginPopup: false
-    });
+    }
   },
 
   shouldChangePassword() {
@@ -110,7 +112,7 @@ Page({
     globalData.userInfo = res.detail.userInfo;  
     
     this.setData({
-      userInfo: globalData.userInfo || null,
+      userInfo: globalData.userInfo,
       showLoginPopup: true
     });
   },
@@ -141,6 +143,28 @@ Page({
     });
   },
 
+  isIdLegal(id) {
+    if(id == null || !/^\w+$/.test(id)) {
+      util.show(this.data.language.stuId.illegal, 'fail');
+      return false;
+    }
+    return true;
+  },
+  isNameValid(name) {
+    if(name == null || !/^[\u4e00-\u9fa5]+$/gm.test(name)) {
+      util.show(this.data.language.stuName.illegal, 'fail');
+      return false;
+    }
+    return true;
+  },
+  isPasswordLegal(password) {
+    if(password === '' || password === null) {
+      util.show(this.data.language.illegalPassword, 'fail');
+      return false;
+    }
+    return true;
+  },
+
   submitPassword(event) {
     let oldPassword = event.detail.value.oldPassword;
     let newPassword = event.detail.value.newPassword;
@@ -148,7 +172,8 @@ Page({
     let that = this;
     if(oldPassword !== this.data.stuPassword) {
       util.show(this.data.language.wrongOldPassword, 'fail');
-    } else {
+    } 
+    else if(this.isPasswordLegal(newPassword)) {
       request.updateUser(this.data.stuId, {password: newPassword})
         .then(res => {
           if(res.data.password_changed_times) {
