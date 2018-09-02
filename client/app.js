@@ -23,7 +23,6 @@ App({
         language: locales['zh-Hans'],
         // Login status
         logged: false,
-        userInfo: null,
         // Student ID, name
         stuId: null,
         stuName: null,

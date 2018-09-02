@@ -9,7 +9,7 @@
           <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
           <text class="center-text" wx:if="{{logged}}">{{stuId || '' }}</text>
           <text class="center-text" wx:if="{{logged}}">{{stuName || ''}}</text>
-          <zan-button class="center" wx:else size="small" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+          <zan-button class="center" wx:else size="small" bindtap="login" openType="getUserInfo">
             {{language.login}}
           </zan-button>
         </view>

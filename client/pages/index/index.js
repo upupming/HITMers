@@ -71,7 +71,7 @@ Page({
     if(this.isIdLegal(event.detail.value.stuId) && 
       this.isNameValid(event.detail.value.stuName) &&
       this.isPasswordLegal(event.detail.value.stuPassword)) {  
-      request.login(this.data.stuId, this.data.stuPassword)
+      request.login(event.detail.value.stuId, event.detail.value.stuPassword)
         .then(res => {
           this.setData({
             logged: true
@@ -108,11 +108,8 @@ Page({
   handleFieldChange() {
     // do nothing
   },
-  onGotUserInfo(res) {
-    globalData.userInfo = res.detail.userInfo;  
-    
+  login() {
     this.setData({
-      userInfo: globalData.userInfo,
       showLoginPopup: true
     });
   },
@@ -191,7 +188,6 @@ Page({
 
   logout: function () {
     globalData.logged = false;
-    globalData.userInfo = null;
     this.setData({
       logged: false
     });
