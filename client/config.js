@@ -1,8 +1,3 @@
-/**
- * 小程序配置文件
- */
-
-/* global wx */
 let host = wx.getSystemInfoSync().model === 'iPhone 5' ? 
   'http://localhost:5757': 'https://hitmers-api.solotime.xyz';
 

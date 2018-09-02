@@ -1,5 +1,3 @@
-/* global wx */
-
 let T = {
   locale: null,
   locales: {},

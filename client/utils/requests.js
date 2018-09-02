@@ -1,4 +1,4 @@
-/* global wx getApp */
+/*eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 const request = wx.pro.request;
 const service = require('../config').service;
 import Notify from '../van-ui/notify/index';

@@ -1,4 +1,3 @@
-/* global getApp wx Page*/
 import event from '../../utils/event';
 const config = require('../../config');
 const Dialog = require('../../zan-ui/dialog/dialog');

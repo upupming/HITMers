@@ -1,14 +1,8 @@
-# 哈工大博物馆小助手
+# HITMers
 
-[HITMers Node.js Server](https://github.com/upupming/HITMers-node-js-server)
+Wechat mini-program client for [HITMers Node.js Server](https://github.com/upupming/HITMers-node-js-server).
 
-## 账号
-
-- 账号：liyiming159@qq.com
-- AppID: wxcb3ed1484b8c7147
-
-
-## 预计功能功能
+## 预计功能
 
 ## 国际化
 

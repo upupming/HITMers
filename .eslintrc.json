@@ -29,5 +29,10 @@
 			"error",
 			"always"
 		]
+	},
+	"globals": {
+		"getApp": false,
+		"wx": true,
+		"Page": false
 	}
 }

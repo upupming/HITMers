@@ -1,5 +1,3 @@
-/* global getApp wx Page*/
-
 import event from '../../utils/event';
 import '../../utils/wxPromise.min.js';
 const util = require('../../utils/util');
