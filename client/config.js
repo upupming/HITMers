@@ -1,10 +1,16 @@
-let host = wx.getSystemInfoSync().model === 'iPhone 5' ? 
-  'http://localhost:5757': 'https://hitmers-api.solotime.xyz';
+let host;
+let env = 'dev';
+
+if(env === 'production') {
+  host = 'https://hitmers-api.solotime.xyz';
+} else {
+  host = wx.getSystemInfoSync().model === 'iPhone 5' ? 'http://localhost:5757': 'https://hitmers-api.solotime.xyz';
+}
 
 let apiPath = `${host}/v1`;
 
 var config = {
-  env: 'dev',
+  env: env,
   service: {
     host,
 
