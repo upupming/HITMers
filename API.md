@@ -1,278 +1,423 @@
 # API
 
-For HITMers, the API domain is `https://api.hitmers.solotime.xyz/token`, the `token` is a random string used to prevent disclosure of privacy(I set `token` to `weapp` when developing), so only developers should know this token. The API domain will be denoted as `AD` below.
+|Environment|API Address|
+|---|--------|
+|Development Environment|http://localhost:5757/v1|
+|Production Environment|https://hitmers-api.solotime.xyz/v1|
+
+Use the [Json Web Token](https://github.com/auth0/node-jsonwebtoken) authorization mechanism.
+
+The initialization data for all of the following examples can be found in [seed files](https://github.com/upupming/HITMers-node-js-server/tree/dev/src/db/seeds) on GitHub.
 
 ## Login
 
-Used to verify if this user exists.
+Verify user information and generate tokens for subsequent verification in all requests.
 
-Format: `GET AD/login`
+Format: `POST /v1/login`
 
-### Request query
+You can also use other information as a filter instead of `id`. As long as the parameters are unambiguous for one user, the server will fing that user. 
 
-|Parameter|Type|Description|
-|---------|----|-----------|
-|stu_id|string|Student ID|
-|stu_name|string|Student name|
-|stu_password|string|Student password|
+|Parameter|Type|Required|Description|
+|---------|----|-------|----|
+|user_id|string|No|User unique identifier|
+|id|string|Yes|Student ID/Staff ID|
+|name|string|No|Name|
+|phone_number|string|No|Phone number|
+|language|string|No|Language|
+|session|number|No|Session|
+|password|string|Yes|Password|
 
-### Response body
+**Example 1:**
 
-`GET AD/login?stu_id=Z003&stu_name=张三&stu_password=test123`
+Request Body:
+
+```json
+{id: 'no_such_id'}
+```
+
+Returns: 404 NOT FOUND
+
+```json
+{"auth":false,"token":null}
+```
+
+**Example 2:**
+
+Request Body:
+
+```json
+{id: 'Z003', password: 'worng-password'}
+```
+
+Returns: 401 Unauthorized
+
+```json
+{"auth":false,"token":null}
+```
+
+**Example 3:**
+
+Request Body:
+
+```json
+{id: 'Z003', password: '13849045786'}
+```
+
+Returns: 200 OK
 
 ```json
 {
-    "stu_id": "Z003",
-    "stu_name": "张三",
-    "phone_number": 13849045786,
-    "language": "中英",
-    "session": 14,
-    "stu_password": "test123",
-    "stu_password_changed_times": 1,
-    "stu_reputation": 0,
-    "workload": 0
+    "auth":true,
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTM1OTYyNDI5fQ.PN0WiiWeNGhd-FzJZErxh-RjAmp-2r9jTOoL7_g6Nho",
+    "user":
+        {"user_id":1,"id":"Z003","name":"张三","identify":"老师","phone_number":13849045786,"language":"中英","session":14,"email":"zhangsan@qq.com","school":"经管学院","password_changed_times":0,"reputation":0}
 }
 ```
 
-?> If your id+name+password query cannot match any record in the database, you will get `401` status code.
+?> User passwords are stored after hashing by [bcrypt](https://github.com/dcodeIO/bcrypt.js). So even in extreme cases which the database is leaked, users don't have to worry about password leaks. The encryption algorithm can be found in [Wikipedia](https://en.wikipedia.org/wiki/Bcrypt).
 
-## Change password
+?> All subsequent requests, if there is no exception metioned, need to set the `x-access-token` field in the header to the `token` obtained here, otherwise the server will return 401 Unauthorized.
 
-Format: `PUT AD/change-password`
+## User information
 
-### Request body
+### GET
 
-|Parameter|Type|Description|
-|---------|----|-----------|
-|stu_id|string|Student ID|
-|stu_new_password|string|Student's new password|
+Get user information.
 
-### Response body
+Format:
 
-```json
-{
-    "stu_id": "123",
-    "stu_name": "Bob",
-    "stu_password": "abcd",
-    "stu_password_changed_times": 1,
-    "workload": 1
-}
-```
-?> If your `stu_id` cannot match any record in the database, you will get `204` No Content status code.
+`GET /v1/user/all`
 
-## Check in/out
+`GET /v1/user/:id`
 
-Each check-in or check-out is counted in the database. If a check-out is successfully completed, the workload will be counted.
+**Example 1:**
 
-Format: `POST AD/cinsert`
+`GET /v1/user/all`
 
-### Request body
-
-|Parameter|Type|Description|
-|---------|----|-----------|
-|wx_name|string|Student Wechat name|
-|stu_id|string|Student ID|
-|stu_name|string|Student name|
-|checkin|boolean|`true` if you want to check in|
-|morning|boolean|`true` if it's morning shift|
-
-### Response body
-
-You will get the same body as your request.
-
-```json
-{
-    "wx_name": "upupming",
-    "stu_id": "123",
-    "stu_name": "Bob",
-    "check_in": true,
-    "morning": true
-}
-```
-
-## Monthly
-
-Format: `GET AD/monthly`
-
-### Request query
-
-|Parameter|Type|Description|
-|---------|----|-----------|
-|stu_id|string|Student ID|
-
-### Response body
-
-You will get an array of check-out details.
-
-`GET AD/monthly?stu_id=123`
+Returns: 200 OK
 
 ```json
 [
-    {
-        "wx_name": "upupming",
-        "stu_id": "123",
-        "stu_name": "Bob",
-        "date_time": "2018-08-05T09:43:13.000Z",
-        "check_in": 0,
-        "check_out": 1,
-        "morning": 0,
-        "afternoon": 1
-    },
-    {
-        "wx_name": "upupming",
-        "stu_id": "123",
-        "stu_name": "Bob",
-        "date_time": "2018-08-05T09:59:37.000Z",
-        "check_in": 0,
-        "check_out": 1,
-        "morning": 0,
-        "afternoon": 1
-    }
+    {"id":"Z003","name":"张三","identify":"老师","phone_number":13849045786,"language":"中英","session":14,"email" : "zhangsan@qq.com", "school": "administration school", "password_changed_times": 0, "reputation": 0},
+    {"id":"L004","name":"李四","identify":"instructor","phone_number":13848888786,"language":"Korean","session":13,"email" :"lisi@163.com","school":"Humanities", "password_changed_times":0,"reputation":0},
+    {"id": "W005", "name": "Wangwu", "identify": "Librarian", "phone_number": 10009045786, "language": "Russian", "session": 15, "email ":"wangwu@qq.com","school":"Computer Academy", "password_changed_times":0,"reputation":0},
+    {"id":"Z006","name":"Zhao Liu", "identify": "Instructor", "phone_number":13877745786,"language":"Japanese", "session":16,"email" : "zhaoliu@gmail.com", "school": "Materials Institute", "password_changed_times": 0, "reputation": 0}
 ]
 ```
 
-?> Please note the `date_time` is UTC time, see [this post](https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc) for more information. You can simply use `new Date(Date.parse("2018-08-05T09:59:37.000Z"))` get a `Date` object.
+`GET /v1/user/L004`
 
-?> If your `stu_id` cannot match any record in the database, you will get `204` No Content status code.
+Returns: 200 OK
 
-## Shift inquiry
+```json
+{"id":"L004","name":"李四","identify":"instructor","phone_number":13848888786,"language":"Korean","session":13,"email" :"lisi@163.com","school":"Humanities", "password_changed_times":0,"reputation":0}
+```
 
-Format: `GET AD/shifts`
+**Example 2:**
 
-### Request query
+`GET /v1/user/L004`
 
-|Parameter|Type|Description|
-|---------|----|-----------|
-|startMonth|number|Month of start date|
-|startDay|number|Day of start date|
-|endMonth|number|Month of end date|
-|endDay|number|Day of end date|
+Returns: 200 OK
 
-For example, if you want to query the shifts from July 1st to September 6th:
+```json
+{"id":"L004","name":"李四","identify":"instructor","phone_number":13848888786,"language":"Korean","session":13,"email" :"lisi@163.com","school":"Humanities", "password_changed_times":0,"reputation":0}
+```
 
-`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
+?> Only users whose `identify` is `老师` and `队长` have permission to obtain all users' information. Only these users can use their own `token` to get information about other users. Otherwise 403 Forbidden will be returned.
 
-### Response body
+### POST
 
-Returns a three-dimensional array that indexes *query dates*, *morning and evening shifts*, and *all persons on duty*. If the returned data is `data`, then `data[0][0][0]` represents the *first day* of the query dates, *in the morning* and *the first person*. Persons of each period are desending sorted according to their *reputation*.
+Add new users.
 
-`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
+Format: `POST /v1/user`
+
+**Example: **
+
+Request Body:
 
 ```json
 [
-    // First day
-    [
-        // Morning
-        [
-            // All persons
-            {
-                // Unique id for this shift
-                "shift_id": 1,
-                "name": "张三",
-                "phoneNumber": 13849045786,
-                "language": "中英",
-                // Session entered HIT Museum
-                "session": 14,
-                // Status
-                "status": "studying",
-                // Reputation
-                "reputation": 0
-            },
-            {
-                "shift_id": 7,
-                "name": "李四",
-                "phoneNumber": 13848888786,
-                "language": "韩文",
-                "session": 13,
-                "status": "working",
-                "reputation": 0
-            },
-            {
-                "shift_id": 45,
-                "name": "王五",
-                "phoneNumber": 10009045786,
-                "language": "俄语",
-                "session": 15,
-                "status": "working",
-                "reputation": 0
-            },
-            {
-                "shift_id": 23,
-                "name": "赵六",
-                "phoneNumber": 13877745786,
-                "language": "日语",
-                "session": 16,
-                "status": "waiting",
-                "reputation": 0
-            }
-        ],
-        // Afternoon
-        [
-            {
-                "shift_id": 324,
-                "name": "张三",
-                "phoneNumber": 13849045786,
-                "language": "中英",
-                "session": 14,
-                "status": "working",
-                "reputation": 0
-            },
-            // ...
-        ]
-    ],
-    // Second day
-    // ...
+    {"id":"moon5","name":"Moon Star","identify":"Instructor", "phone_number":17766458988,"language":"中文","session":14,"email" :"cs65@may.xyz","school":"Humanities College"},
+    {"id":"newton2","name":"Newton","identify":"Collection staff", "phone_number":18866458988,"language":"中英","session":16,"email" :"cs6521@may.xyz","school":"Foreign Language Institute"}
 ]
 ```
 
-## Fill in shfts
+Returns: 200 OK
 
-Format: `POST AD/shifts`
+```
+Users have been added successfully.
+```
 
-### Request body
+?> If any of the users you want to add already exist in the database, the entire request will be rejected and 409 Conflict will be returned. For existing users, use `PUT` instead if you need to modify user information.
 
-|Parameter|Type|Description|
-|---------|----|-----------|
-|stu_id|string|Student ID|
-|month|number|Month|
-|day|number|Day|
-|morning|boolean|`true` if it's morning|
-|status|string|Shift status, can be `working`, `waiting` and `studying` at present|
+### DELETE
 
-### Response body
+Delete users.
 
-You will get the same body as your request.
+Format: `DELETE /v1/user`
+
+It is also possible to provide a minimum filter that uniquely distinguishes the user for each user who needs to be deleted.
+
+**Example: **
+
+Request Body:
+
+```json
+[
+   {"id": "moon5"},
+   {"id": "newton2"}
+]
+```
+
+Returns: 200 OK
+
+```
+Users have been deleted successfully.
+```
+
+### PUT
+
+Update user information and return updated user information.
+
+Format:
+
+`PUT /v1/user`
+`PUT /v1/user/:id`
+
+**Example 1:**
+
+`PUT /v1/user/W005`
+
+Request Body:
+
+```json
+[{"id":"W00995", "school": "Art Academy", "password": "so-easy-to-crack"}, {"id": "Z006", "reputation": "90" ,"password":"easy-to-crack-too"}]
+// or
+[{"id": "W005", "school": "Art Academy", "password": "so-easy-to-crack"}, {"id": "Z006", "reputation": "90" ,"password":"easy-to-crack-too"}]
+```
+
+Returns: 200 OK
+
+```json
+[
+    {"id":"Z006","name":"Zhao Liu", "identify": "Instructor", "phone_number":13877745786,"language":"Japanese", "session":16,"email" : "zhaoliu@gmail.com", "school": "Materials Institute", "password_changed_times": 0, "reputation": 90}
+]
+// or
+[
+    {"id": "W005", "name": "Wangwu", "identify": "Librarian", "phone_number": 10009045786, "language": "Russian", "session": 15, "email ":"wangwu@qq.com","school":"Graduate School", "password_changed_times":0,"reputation":0},
+    {"id":"Z006","name":"Zhao Liu", "identify": "Instructor", "phone_number":13877745786,"language":"Japanese", "session":16,"email" : "zhaoliu@gmail.com", "school": "Materials Institute", "password_changed_times": 0, "reputation": 90}
+]
+```
+
+**Example 2:**
+
+`PUT /v1/user/W005`
+
+Request Body:
+
+```json
+{"id":"WangWuNewID","reputation":"19000","password":"easy-to-crack-too"}
+```
+
+Returns: 200 OK
+
+```json
+{"id": "WangWuNewID", "name": "Wang Wu", "identify": "Librarian", "phone_number": 10009045786, "language": "Russian", "session": 15, "email ":"wangwu@qq.com","school":"Computer Academy", "password_changed_times":0,"reputation":19000}
+```
+
+?> User `W00995` of the array in first request in Example 1 cannot be found, it will be ignored directly and no error messages will be returned. Please use `POST` if you want to add users.
+
+?> In Example 2, the user id is modified, and the corresponding user needs to acquire the token again, because the server determines whether the user is permitted to request by verifying the `id` payload decrypted from the token.
+
+## Checks
+
+### GET
+
+Format: `GET /v1/check/:id`
+
+**Example 1:**
+
+`POST /v1/check/Z003`
+
+Request Query: Empty
+
+Returns: 200 OK
+
+```json
+[
+    {"check_id":1,"id":"Z003","name":"张三","date_time":"2018-09-03T06:21:59.000Z","check_in":0,"check_out" :1,"morning":1,"afternoon":0},
+    {"check_id":2,"id":"Z003","name":"张三","date_time":"2018-07-02T16:00:00.000Z","check_in":0,"check_out" :1,"morning":0,"afternoon":1},
+    {"check_id":3,"id":"Z003","name":"张三","date_time":"2018-08-02T16:00:00.000Z","check_in":0,"check_out" :1,"morning":0,"afternoon":1},
+    {"check_id":4,"id":"Z003","name":"张三","date_time":"2018-07-05T16:00:00.000Z","check_in":0,"check_out" :1,"morning":0,"afternoon":1}
+]
+```
+
+**Example 2:**
+
+`POST /v1/check/Z003`
+
+Request Query:
+
+```
+Year: 2018
+Month: 7
+```
+
+Returns: 200 OK
+
+```json
+[
+    {"check_id":2,"id":"Z003","name":"张三","date_time":"2018-07-02T16:00:00.000Z","check_in":0,"check_out" :1,"morning":0,"afternoon":1},
+    {"check_id":4,"id":"Z003","name":"张三","date_time":"2018-07-05T16:00:00.000Z","check_in":0,"check_out" :1,"morning":0,"afternoon":1}
+]
+```
+
+?> If you try to get the check-in information of other users, 403 Forbidden will be returned.
+
+### POST
+
+Format: `POST /v1/check`
+
+**Example: **
+
+`POST /v1/check`
+
+Request Body:
+
+```json
+{"id":"L004","in":true,"morning":true}
+```
+
+Returns: 200 OK
 
 ```json
 {
-    "stu_id": "123",
-    "month": 8,
-    "day": 15,
-    "morning": true,
-    "status": "working"
+     "id": "L004",
+     "name": "Li Si",
+     "date_time": "2018-09-02T02:53:01.392Z",
+     "check_in": true,
+     "check_out": false,
+     "morning": true,
+     "afternoon": false
 }
 ```
 
-?> If filling in shifts is not allowed, you will get `403` status code.
+?> Please note that `date_time` is UTC time, see [this post] (https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc). You can construct a `Date` object using `new Date(Date.parse("2018-08-05T09:59:37.000Z"))`.
 
-## Delete shifts
+?> If you try to check in for another user, 403 Forbidden will be returned.
 
-Format: `DELETE AD/shifts`
+## Shifts
 
-### Request query
+### GET
 
-|Parameter|Type|Description|
-|---------|----|-----------|
-|shift_id|number|Unique id for this shift|
+Format: 
 
-### Response body
+`GET /v1/shift`
 
-You will get the same body as your request.
+Return a three-dimensional array, whose indices are used for indexing **days index**, **morning/evening shift**, and **all shifts**. If the returned body is `data`, then `data[0][0][0]` represents in **the first day of the query days**, and **in the morning**, **the first person**'s shift information. Persons of each period are sorted according to their **reputation**.
+
+`GET /v1/shift/:id`
+
+Get the user's shifts during a period of time.
+
+**Example 1:**
+
+`GET /v1/shift`
+
+Request Query:
+
+```
+Year:2018
+startMonth: 9
+startDay: 2
+endMonth:9
+endDay: 4
+```
+
+Returns: 200 OK
+
+```json
+[
+    [[],[{"id":"Z006","name":"Zhao Liu", "identify": "Instructor", "phone_number":13877745786,"language":"Japanese", "session": 16, "email": "zhaoliu@gmail.com", "school": "Materials", "password_changed_times": 0, "reputation": 0, "shift_id": 106, "status": "working"}] ],
+    [[{"id":"L004","name":"李四","identify":"Instructor", "phone_number":13848888786,"language":"Korean", "session":13," Email":"lisi@163.com","school":"Humanities", "password_changed_times":0,"reputation":0,"shift_id":107,"status":"working"},{"id" : "Z003", "name": "Zhang San", "identify": "Teacher", "phone_number": 13840945786, "language": "中英", "session": 14, "email": "zhangsan@ Qq.com","school":"Economics Institute", "password_changed_times":0,"reputation":0,"shift_id":111,"status":"working"},,[]],
+    [[],[{"id":"Z006","name":"Zhao Liu", "identify": "Instructor", "phone_number":13877745786,"language":"Japanese", "session": 16, "email": "zhaoliu@gmail.com", "school": "Materials", "password_changed_times": 0, "reputation": 0, "shift_id": 108, "status": "working"}] ]
+]
+```
+
+**Example 2:**
+
+`GET /v1/shift/Z003`
+
+Request Query:
+
+```
+Year:2018
+startMonth: 9
+startDay: 2
+endMonth:9
+endDay: 4
+```
+
+Returns: 200 OK
+
+```json
+[{"shift_id":111,"id":"Z003","name":"张三","year":"2018","month":9,"day":3,"morning":1 , "afternoon": 0, "status": "working"}]
+```
+
+?> If you try to query other users' shifts during a period of time, 403 Forbidden will be returned.
+
+### POST
+
+Format: `POST /v1/shift`
+
+**Example: **
+
+`POST /v1/shift`
+
+Request Body:
+
+```json
+{"id":"Z003","year":2018,"month":9,"day":8,"morning":false}
+```
+
+Returns: 200 OK
 
 ```json
 {
-    "shift_id": "123"
+     "id": "L004",
+     "year": 2018,
+     "month": 4,
+     "day": 5,
+     "morning": 1,
+     "name": "Li Si",
+     "afternoon": 0,
+     "shift_id": 121,
+     "status": "working"
 }
 ```
 
-?> If deleting shifts is not allowed, you will get `403` status code. If the `shift_id` doesn't exist, you will get `401` status code.
+?> If you try to add shifts for other users, 403 Forbidden will be returned.
+
+### DELETE
+
+Format: `DELETE /v1/shift/:shift_id`
+
+**Example: **
+
+`DELETE /v1/shift/1`
+
+Returns: 200 OK
+
+```json
+{
+     "shift_id": 1,
+     "id": "L004",
+     "name": "Li Si",
+     "year": 2018,
+     "month": 8,
+     "day": 2,
+     "morning": 0,
+     "afternoon": 1,
+     "status": "working"
+}
+```

@@ -1,278 +1,426 @@
 # API
 
-HITMers 的 API 域名为 `https://api.hitmers.solotime.xyz/token`，其中的 `token` 是随机字符串（我在开发时将其设置为 `weapp`），防止暴露 API 接口导致隐私泄露，只有开发者才应该持有这个 `token`。API 域名下文将简写为 `AD`。
+|环境|API 地址|
+|---|--------|
+|开发环境|http://localhost:5757/v1|
+|生产环境|https://hitmers-api.solotime.xyz/v1|
+
+采用 [JWT token](https://github.com/auth0/node-jsonwebtoken) 授权机制。
+
+以下所有示例的初始化数据见 GitHub 上的 [seed 文件](https://github.com/upupming/HITMers-node-js-server/tree/dev/src/db/seeds)。
 
 ## 登录
 
-用于验证是否存在此用户。
+验证用户信息，生成 token 用于之后的验证。
 
-格式： `GET AD/login`
+格式：`POST /v1/login`
 
-### 请求 query
+参数只要能够唯一性即可，如果 `id` 一样还可增加其他信息作为筛选。
 
-|参数|类型|描述|
-|---------|----|-----------|
-|stu_id|string|学号|
-|stu_name|string|姓名|
-|stu_password|string|密码|
+|参数|类型|是否必选|描述|
+|---------|----|-------|----|
+|user_id|string|否|用户唯一标识|
+|id|string|是|学号/职工号|
+|name|string|否|姓名|
+|phone_number|string|否|电话号码|
+|language|string|否|语种|
+|session|number|否|届数|
+|password|string|是|密码|
 
-### 返回 body
+**示例 1：**
 
-`GET AD/login?stu_id=Z003&stu_name=张三&stu_password=test123`
+请求 Body:
+
+```json
+{id: 'no_such_id'}
+```
+
+返回：404 NOT FOUND
+
+```json
+{"auth":false,"token":null}
+```
+
+**示例 2：**
+
+请求 Body:
+
+```json
+{id: 'Z003', password: 'worng-password'}
+```
+
+返回：401 Unauthorized
+
+```json
+{"auth":false,"token":null}
+```
+
+**示例 3：**
+
+请求 Body:
+
+```json
+{id: 'Z003', password: '13849045786'}
+```
+
+返回：200 OK
 
 ```json
 {
-    "stu_id": "Z003",
-    "stu_name": "张三",
-    "phone_number": 13849045786,
-    "language": "中英",
-    "session": 14,
-    "stu_password": "test123",
-    "stu_password_changed_times": 1,
-    "stu_reputation": 0,
-    "workload": 0
+    "auth":true,
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTM1OTYyNDI5fQ.PN0WiiWeNGhd-FzJZErxh-RjAmp-2r9jTOoL7_g6Nho",
+    "user":
+        {"user_id":1,"id":"Z003","name":"张三","identify":"老师","phone_number":13849045786,"language":"中英","session":14,"email":"zhangsan@qq.com","school":"经管学院","password_changed_times":0,"reputation":0}
 }
 ```
 
-?> 如果您查询的 学号+姓名+密码 在数据库中没有记录，您将接收到 `401` 状态码。
+?> 用户密码采用 [bcrypt](https://github.com/dcodeIO/bcrypt.js) 哈希之后存储，即使在极端情况下数据库泄露，用户也不必担心密码泄露。加密算法参见[维基百科](https://en.wikipedia.org/wiki/Bcrypt)。
 
-## 修改密码
+?> 后续所有请求如无特殊说明均需要在 header 中设置 `x-access-token` 字段为这里的得到的 `token`，否则将返回 401 Unauthorized。
 
-格式： `PUT AD/change-password`
+## 用户信息
 
-### 请求 body
+### GET
 
-|参数|类型|描述|
-|---------|----|-----------|
-|stu_id|string|学号|
-|stu_new_password|string|新密码|
+获取用户信息。
 
-### 返回 body
+格式：
 
-```json
-{
-    "stu_id": "123",
-    "stu_name": "Bob",
-    "stu_password": "abcd",
-    "stu_password_changed_times": 1,
-    "workload": 1
-}
-```
-?> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
+`GET /v1/user/all`
 
-## 签入/签出
+`GET /v1/user/:id`
 
-每次签入或签出均会计入数据库，如果成功完成一次签出，将会计入一次工作量。
+**示例 1：**
 
-格式： `POST AD/cinsert`
+`GET /v1/user/all`
 
-### 请求 body
-
-|参数|类型|描述|
-|---------|----|-----------|
-|wx_name|string|微信昵称|
-|stu_id|string|学号|
-|stu_new_password|string|新密码|
-|checkin|boolean|签入时为 `true`|
-|morning|boolean|早班时为 `true`|
-
-### 返回 body
-
-您将得到与请求 body 完全相同的 body。
-
-```json
-{
-    "wx_name": "upupming",
-    "stu_id": "123",
-    "stu_name": "Bob",
-    "check_in": true,
-    "morning": true
-}
-```
-
-## 本月
-
-格式: `GET AD/monthly`
-
-### 请求 query
-
-|参数|类型|描述|
-|---------|----|-----------|
-|stu_id|string|学号|
-
-### 返回 body
-
-您将得到两个数组，第一个数组的每项元素记录了一次签入和签出的时间，第二个数组的每项元素记录了该学生即将到来的值班信息。
-
-`GET AD/monthly?stu_id=123`
+返回： 200 OK
 
 ```json
 [
-    {
-        "wx_name": "upupming",
-        "stu_id": "123",
-        "stu_name": "Bob",
-        "date_time": "2018-08-05T09:43:13.000Z",
-        "check_in": 0,
-        "check_out": 1,
-        "morning": 0,
-        "afternoon": 1
-    },
-    {
-        "wx_name": "upupming",
-        "stu_id": "123",
-        "stu_name": "Bob",
-        "date_time": "2018-08-05T09:59:37.000Z",
-        "check_in": 0,
-        "check_out": 1,
-        "morning": 0,
-        "afternoon": 1
-    }
+    {"id":"Z003","name":"张三","identify":"老师","phone_number":13849045786,"language":"中英","session":14,"email":"zhangsan@qq.com","school":"经管学院","password_changed_times":0,"reputation":0},
+    {"id":"L004","name":"李四","identify":"讲解员","phone_number":13848888786,"language":"韩文","session":13,"email":"lisi@163.com","school":"人文","password_changed_times":0,"reputation":0},
+    {"id":"W005","name":"王五","identify":"馆藏人员","phone_number":10009045786,"language":"俄文","session":15,"email":"wangwu@qq.com","school":"计算机学院","password_changed_times":0,"reputation":0},
+    {"id":"Z006","name":"赵六","identify":"讲解员","phone_number":13877745786,"language":"日文","session":16,"email":"zhaoliu@gmail.com","school":"材料学院","password_changed_times":0,"reputation":0}
 ]
+```
+
+`GET /v1/user/L004`
+
+返回： 200 OK
+
+```json
+{"id":"L004","name":"李四","identify":"讲解员","phone_number":13848888786,"language":"韩文","session":13,"email":"lisi@163.com","school":"人文","password_changed_times":0,"reputation":0}
+```
+
+**示例 2：**
+
+`GET /v1/user/L004`
+
+返回：200 OK
+
+```json
+{"id":"L004","name":"李四","identify":"讲解员","phone_number":13848888786,"language":"韩文","session":13,"email":"lisi@163.com","school":"人文","password_changed_times":0,"reputation":0}
+```
+
+?> 只有 `identify` 为`老师`、`队长`的用户才有权限获取全部用户信息。也只有这些用户能够用自己的 `token` 获取其它用户的信息。否则将返回 403 Forbidden。
+
+
+### POST
+
+新增用户。
+
+格式：`POST /v1/user`
+
+**示例：**
+
+请求 Body:
+
+```json
+[
+    {"id":"moon5","name":"Moon Star","identify":"讲解员","phone_number":17766458988,"language":"中文","session":14,"email":"cs65@may.xyz","school":"人文学院"},
+    {"id":"newton2","name":"Newton","identify":"馆藏人员","phone_number":18866458988,"language":"中英","session":16,"email":"cs6521@may.xyz","school":"外国语学院"}
+]
+```
+
+返回：200 OK
+
+```
+Users have been added successfully.
+```
+
+?> 如果想要新增的用户中有已经存在于数据库中的，将拒绝整个请求并返回 409 Conflict。对于已存在用户，如需修改用户信息请使用 `PUT`。
+
+### DELETE
+
+删除用户。
+
+格式：`DELETE /v1/user`
+
+同样针对每个需要删除的用户，提供能唯一区分用户的极小信息量即可。
+
+**示例：**
+
+请求 Body:
+
+```json
+[
+  {"id": "moon5"},
+  {"id": "newton2"}
+]
+```
+
+返回：200 OK
+
+```
+Users have been deleted successfully.
+```
+
+### PUT
+
+更新用户信息，返回更新后的用户信息。
+
+格式：
+
+`PUT /v1/user`
+`PUT /v1/user/:id`
+
+**示例 1：**
+
+`PUT /v1/user/W005`
+
+请求 Body:
+
+```json
+[{"id":"W00995","school":"美术学院","password":"so-easy-to-crack"},{"id":"Z006","reputation":"90","password":"easy-to-crack-too"}]
+// or
+[{"id":"W005","school":"美术学院","password":"so-easy-to-crack"},{"id":"Z006","reputation":"90","password":"easy-to-crack-too"}]
+```
+
+返回：200 OK
+
+```json
+[
+    {"id":"Z006","name":"赵六","identify":"讲解员","phone_number":13877745786,"language":"日文","session":16,"email":"zhaoliu@gmail.com","school":"材料学院","password_changed_times":0,"reputation":90}
+]
+// or
+[
+    {"id":"W005","name":"王五","identify":"馆藏人员","phone_number":10009045786,"language":"俄文","session":15,"email":"wangwu@qq.com","school":"美术学院","password_changed_times":0,"reputation":0},
+    {"id":"Z006","name":"赵六","identify":"讲解员","phone_number":13877745786,"language":"日文","session":16,"email":"zhaoliu@gmail.com","school":"材料学院","password_changed_times":0,"reputation":90}
+]
+```
+
+
+**示例 2：**
+
+`PUT /v1/user/W005`
+
+请求 Body:
+
+```json
+{"id":"WangWuNewID","reputation":"19000","password":"easy-to-crack-too"}
+```
+
+返回：200 OK
+
+```json
+{"id":"WangWuNewID","name":"王五","identify":"馆藏人员","phone_number":10009045786,"language":"俄文","session":15,"email":"wangwu@qq.com","school":"计算机学院","password_changed_times":0,"reputation":19000}
+```
+
+?> 在示例 1 中第一个请求的数组中有的用户查询不到，将直接忽略并不返回任何错误信息。如需新增用户请使用 `POST`。
+
+?> 在示例 2 中修改了用户 id，对应的用户需要再次获取 token，因为服务端以 token 解密之后的 id 判断用户是否具有访问权限。
+
+## 签到
+
+### GET
+
+格式：`GET /v1/check/:id`
+
+**示例 1：**
+
+`POST /v1/check/Z003`
+
+请求 Query: 空
+
+返回：200 OK
+
+```json
+[
+    {"check_id":1,"id":"Z003","name":"张三","date_time":"2018-09-03T06:21:59.000Z","check_in":0,"check_out":1,"morning":1,"afternoon":0},
+    {"check_id":2,"id":"Z003","name":"张三","date_time":"2018-07-02T16:00:00.000Z","check_in":0,"check_out":1,"morning":0,"afternoon":1},
+    {"check_id":3,"id":"Z003","name":"张三","date_time":"2018-08-02T16:00:00.000Z","check_in":0,"check_out":1,"morning":0,"afternoon":1},
+    {"check_id":4,"id":"Z003","name":"张三","date_time":"2018-07-05T16:00:00.000Z","check_in":0,"check_out":1,"morning":0,"afternoon":1}
+]
+```
+
+**示例 2：**
+
+`POST /v1/check/Z003`
+
+请求 Query: 
+
+```
+year: 2018
+month: 7
+```
+
+返回：200 OK
+
+```json
+[
+    {"check_id":2,"id":"Z003","name":"张三","date_time":"2018-07-02T16:00:00.000Z","check_in":0,"check_out":1,"morning":0,"afternoon":1},
+    {"check_id":4,"id":"Z003","name":"张三","date_time":"2018-07-05T16:00:00.000Z","check_in":0,"check_out":1,"morning":0,"afternoon":1}
+]
+```
+
+?> 如果获取其他用户的签到信息，将返回 403 Forbidden。
+
+
+### POST
+
+格式：`POST /v1/check`
+
+**示例：**
+
+`POST /v1/check`
+
+请求 Body:
+
+```json
+{"id":"L004","in":true,"morning":true}
+``` 
+
+返回：200 OK
+
+```json
+{
+    "id": "L004",
+    "name": "李四",
+    "date_time": "2018-09-02T02:53:01.392Z",
+    "check_in": true,
+    "check_out": false,
+    "morning": true,
+    "afternoon": false
+}
 ```
 
 ?> 请注意 `date_time` 是 UTC 时间, 详见[这篇帖子](https://stackoverflow.com/questions/1486476/json-stringify-changes-time-of-date-because-of-utc)。 您可以使用 `new Date(Date.parse("2018-08-05T09:59:37.000Z"))` 得到一个 `Date` 对象。
 
-?> 如果您请求的 `stu_id` 在数据库中没有记录, 您将接收到 `204` No Content 状态码。
+?> 如果尝试为其他用户签到，将返回 403 Forbidden。
 
-## 班次查询
+## 班次
 
-格式: `GET AD/shifts`
+### GET
 
-### 请求 query
+格式：
 
-|参数|类型|描述|
-|---------|----|-----------|
-|startMonth|number|起始月|
-|startDay|number|起始日|
-|endMonth|number|终止月|
-|endDay|number|终止日|
-
-例如，想要查询 7 月 1 日到 9 月 6 日的班次信息：
-
-`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
-
-### 返回 body
+`GET /v1/shift`
 
 返回一个三维数组，分别索引**第几日**、**早晚班**、**全部值班人员**。如果返回的数据为 `data`，则 `data[0][0][0]` 表示查询日期中**第一天**的**上午**值班的**第一个人**，其中每个班次的人员是按照他们的**声誉**递减排序的。
 
-`GET AD/shifts?startMonth=7&startDay=1&endMonth=9&endDay=6`
+`GET /v1/shift/:id`
+
+按 `id` 获取用户的一段时间的值班信息。
+
+**示例 1：**
+
+`GET /v1/shift`
+
+请求 Query:
+
+```
+year:2018
+startMonth:9
+startDay:2
+endMonth:9
+endDay:4
+```
+
+返回：200 OK
 
 ```json
 [
-    // 第一天
-    [
-        // 上午
-        [
-            // 所有值班人员
-            {
-                // 班次唯一标识
-                "shift_id": 1,
-                "name": "张三",
-                "phoneNumber": 13849045786,
-                "language": "中英",
-                // 届数
-                "session": 14,
-                // 值班状态
-                "status": "studying",
-                // 声誉
-                "reputation": 0
-            },
-            {
-                "shift_id": 7,
-                "name": "李四",
-                "phoneNumber": 13848888786,
-                "language": "韩文",
-                "session": 13,
-                "status": "working",
-                "reputation": 0
-            },
-            {
-                "shift_id": 45,
-                "name": "王五",
-                "phoneNumber": 10009045786,
-                "language": "俄语",
-                "session": 15,
-                "status": "working",
-                "reputation": 0
-            },
-            {
-                "shift_id": 23,
-                "name": "赵六",
-                "phoneNumber": 13877745786,
-                "language": "日语",
-                "session": 16,
-                "status": "waiting",
-                "reputation": 0
-            }
-        ],
-        // 下午
-        [
-            {
-                "shift_id": 324,
-                "name": "张三",
-                "phoneNumber": 13849045786,
-                "language": "中英",
-                "session": 14,
-                "status": "working",
-                "reputation": 0
-            },
-            // ...
-        ]
-    ],
-    // 第二天
-    // ...
+    [[],[{"id":"Z006","name":"赵六","identify":"讲解员","phone_number":13877745786,"language":"日文","session":16,"email":"zhaoliu@gmail.com","school":"材料学院","password_changed_times":0,"reputation":0,"shift_id":106,"status":"working"}]],
+    [[{"id":"L004","name":"李四","identify":"讲解员","phone_number":13848888786,"language":"韩文","session":13,"email":"lisi@163.com","school":"人文","password_changed_times":0,"reputation":0,"shift_id":107,"status":"working"},{"id":"Z003","name":"张三","identify":"老师","phone_number":13849045786,"language":"中英","session":14,"email":"zhangsan@qq.com","school":"经管学院","password_changed_times":0,"reputation":0,"shift_id":111,"status":"working"}],[]],
+    [[],[{"id":"Z006","name":"赵六","identify":"讲解员","phone_number":13877745786,"language":"日文","session":16,"email":"zhaoliu@gmail.com","school":"材料学院","password_changed_times":0,"reputation":0,"shift_id":108,"status":"working"}]]
 ]
 ```
 
-## 班次填写
+**示例 2：**
 
-格式： `POST AD/shifts`
+`GET /v1/shift/Z003`
 
-### 请求 body
+请求 Query:
 
-|参数|类型|描述|
-|---------|----|-----------|
-|stu_id|string|学号|
-|month|number|月份|
-|day|number|日期|
-|morning|boolean|早班时为 `true`|
-|status|string|值班状态，目前有 `working`, `waiting` 和 `studying`|
+```
+year:2018
+startMonth:9
+startDay:2
+endMonth:9
+endDay:4
+```
 
-### 返回 body
+返回：200 OK
 
-您将得到与请求 body 完全相同的 body。
+```json
+[{"shift_id":111,"id":"Z003","name":"张三","year":"2018","month":9,"day":3,"morning":1,"afternoon":0,"status":"working"}]
+```
+
+?> 如果尝试查询其他用户一段时间的值班信息，将返回 403 Forbidden。
+
+### POST
+
+格式：`POST /v1/shift`
+
+**示例：**
+
+`POST /v1/shift`
+
+请求 Body:
+
+```json
+{"id":"Z003","year":2018,"month":9,"day":8,"morning":false}
+```
+
+返回：200 OK
 
 ```json
 {
-    "stu_id": "123",
-    "month": 8,
-    "day": 15,
-    "morning": true,
+    "id": "L004",
+    "year": 2018,
+    "month": 4,
+    "day": 5,
+    "morning": 1,
+    "name": "李四",
+    "afternoon": 0,
+    "shift_id": 121,
     "status": "working"
 }
 ```
 
-?> 如果当前不允许填写值班表，您将接收到 `403` 状态码。
+?> 如果尝试为其他用户添加值班信息，将返回 403 Forbidden。
 
-## 班次删除
+### DELETE
 
-格式： `DELETE AD/shifts`
+格式：`DELETE /v1/shift/:shift_id`
 
-### 请求 query
+**示例：**
 
-|参数|类型|描述|
-|---------|----|-----------|
-|shift_id|number|班次唯一 id|
+`DELETE /v1/shift/1`
 
-### 返回 body
-
-您将得到与请求 body 完全相同的 body。
+返回： 200 OK
 
 ```json
 {
-    "shift_id": "123"
+    "shift_id": 1,
+    "id": "L004",
+    "name": "李四",
+    "year": 2018,
+    "month": 8,
+    "day": 2,
+    "morning": 0,
+    "afternoon": 1,
+    "status": "working"
 }
 ```
-
-?> 如果当前不允许删除值班信息，您将接收到 `403` 状态码。如果没有此 id，您将接收到 `401` 状态码。
