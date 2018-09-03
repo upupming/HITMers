@@ -2,7 +2,7 @@
 
 Wechat mini-program client for [HITMers Node.js Server](https://github.com/upupming/HITMers-node-js-server).
 
-## 预计功能
+## 已实现/待完成功能
 
 ## 国际化
 
@@ -20,7 +20,7 @@ Wechat mini-program client for [HITMers Node.js Server](https://github.com/upupm
 
 ## 讲解系统 
 
-- [ ] 排班系统，减轻排班人员负担
+- [x] 排班系统，减轻排班人员负担
 - [ ] 参观登记系统，老师登记、讲解员实时可见
 - [ ] 为每个半天的小班建立讨论小组，实时联系
 - [ ] 通知系统，讲稿改动通知等等
