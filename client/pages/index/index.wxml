@@ -1,6 +1,10 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view class="container" wx:else>
-  <image class="logo" src="../../images/logo.jpg"></image>
+  <view class="title">
+    <image class="logo" src="../../images/logo.jpg"></image>
+    <view class="title-text">HIT Museumers</view>
+  </view>
+  <view class="desc">{{language.desc}}</view>
   <zan-panel title="{{language.personalInfo}}">
     <zan-cell-group>
     <zan-cell>
@@ -18,7 +22,7 @@
       
       <view slot="icon">
         <open-data  wx:if="{{logged}}" type="userAvatarUrl" class="user-avatar"></open-data>
-        <image wx:else src="{{'../../images/user-unlogin.png'}}" class="user-avatar" />
+        <image wx:else src="../../images/user-unlogin.png" class="user-avatar" />
       </view>
       
 
@@ -36,6 +40,13 @@
         <!-- <view class="picker">{{languages[langIndex]}}</view> -->
         <view class="picker">{{langIndex == 0 ? languages[0] : languages[1]}}</view>
       </picker>
+    </zan-cell>
+  </zan-panel>
+  <zan-panel title="{{language.about}}">
+    <zan-cell title="{{language.version}}">
+      {{language.currentVersion}}
+    </zan-cell>
+    <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
     </zan-cell>
   </zan-panel>
 </view>

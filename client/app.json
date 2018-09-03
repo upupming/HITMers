@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/work/index",
     "pages/work/fill-in-sheet",
-    "pages/work/monthly"
+    "pages/work/monthly",
+    "pages/about/opensource"
   ],
   "window":{
     "backgroundColor":"#49B1F5",

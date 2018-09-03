@@ -1,5 +1,7 @@
 export default {
   'zh-Hans': {
+    desc: '记录在的博物馆一切',
+
     language: '语言',
     languageName: '简体中文',
     changed: '修改成功',
@@ -30,6 +32,14 @@ export default {
 
     personalInfo: '个人信息',
     settings: '设置',
+    about: '关于',
+    version: '版本',
+    currentVersion: '0.0.1',
+    opensource: '开源声明',
+
+    license: '协议和版权',
+    sourceCode: '源代码',
+    bugsTracker: 'Bug 追踪',
 
     TARGET_POSITION: '哈工大博物馆',
     checkIn: '签到',
@@ -102,6 +112,8 @@ export default {
     enterNote: '记录我的生活'
   },
   'en': {
+    desc: 'Record everything in the museum',
+
     language: 'Language',
     languageName: 'English',
     changed: 'Changed successfully',
@@ -131,6 +143,14 @@ export default {
 
     personalInfo: 'Personal information',
     settings: 'Settings',
+    about: 'About',
+    version: 'Version',
+    currentVersion: '0.0.1',
+    opensource: 'Open source',
+
+    license: 'License and copyright',
+    sourceCode: 'Source code',
+    bugsTracker: 'Bugs tracker',
 
     TARGET_POSITION: 'Harbin Institute of Technology Museum',
     checkIn: 'Check in',

@@ -1,0 +1,28 @@
+<view class="container">
+  <van-cell-group>
+    <van-cell title="{{language.license}}">
+      <view>MIT</view>
+      <view>Copyright (c) 2018 upupming</view>
+      <view slot="icon">
+        <image src="../../images/copyright.svg" class="icon" />
+      </view>
+    </van-cell>
+    <van-cell>
+      <view class="title">{{language.sourceCode}}</view>
+      <view bindtap="copy" class="para link" data-link-index="0">
+        {{links[0]}}
+      </view>
+      <view bindtap="copy" class="para link" data-link-index="1">
+        {{links[1]}}
+      </view>
+    </van-cell>
+    <van-cell>
+      <view class="title">{{language.bugsTracker}}</view>
+      <view bindtap="copy" class="para link" data-link-index="2">
+        {{links[2]}}
+      </view>
+    </van-cell>
+    </van-cell-group>
+</view>
+
+<van-toast id="van-toast"></van-toast>

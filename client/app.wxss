@@ -1,4 +1,4 @@
-@import 'zan-ui/index.wxss';
+@import 'van-ui/common/index.wxss';
 
 page {
   background: #F9F9F9;

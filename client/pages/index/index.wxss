@@ -1,10 +1,37 @@
+.container {
+  padding: 45rpx 15rpx 0;
+}
+
+.title {
+  margin: 0 0 15rpx;
+  text-align: center;
+  user-select: none;
+}
+
+.logo,
+.title-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.title-text {
+  font-size: 50rpx;
+  margin-left: 15rpx;
+  font-weight: 400;
+  font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
 .logo {
-  display: block;
-  margin: 40px auto;
-  width: 184px;
-  height: 164px;
-  border-radius: 50%;
-  border-color: #F9F9F9;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 60%;
+}
+
+.desc {
+  font-size: 28rpx;
+  color: #455a64;
+  margin: 0 0 60rpx;
+  text-align: center;
 }
 
 .flex-container {
