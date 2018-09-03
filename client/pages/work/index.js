@@ -17,7 +17,7 @@ let MAX_DISTANCE = 400;
 let SHIFT_PERIODS = [
   // 早班签到
   [
-    8, 0, 24, 0
+    8, 0, 9, 0
   ],
   // 早班签出
   [
@@ -25,11 +25,11 @@ let SHIFT_PERIODS = [
   ],
   // 晚班签到
   [
-    17, 0, 24, 0
+    12, 0, 13, 0
   ],
   // 晚班签出
   [
-    15, 30, 24, 0
+    15, 30, 16, 30
   ]
 ];
 //#endregion GLOAL_CONSTRAINT
