@@ -1,15 +1,17 @@
-# Check-in/Check-out
+# Guides
+
+## Check-in/Check-out
 
 Each check-in/check-out is valid only when both time constraint and location constraint are met.
 
-## Time constraint
+### Time constraint
 
 ||Morning|Afternoon|
 |-|-|-|
 |Check in|8:00 - 9:00|12:00 - 13:00|
 |Check out|12:00 - 13:00|15:30 - 16:30|
 
-## Location constraint
+### Location constraint
 
 + HIT Museum entrance hall
 + (latitude, longitude) = (45.751057, 126.63867)

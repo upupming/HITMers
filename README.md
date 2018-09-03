@@ -4,5 +4,8 @@
 
 # Features
 
-![](_media/check.svg ':size=30')  [Check in/out](/guides.md)
+![](../_media/sheet.svg ':size=30')  Shifts sheet in real time
 
+![](../_media/check.svg ':size=30')  Check in/out
+
+![](../_media/monthly.svg ':size=30')  Monthly overview
