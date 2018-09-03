@@ -86,6 +86,7 @@ Page({
           globalData.stuPassword = this.data.stuPassword;
           globalData.logged = true;
           globalData.token = res.data.token;
+          globalData.user = res.data.user;
           this.shouldChangePassword();
         });
         

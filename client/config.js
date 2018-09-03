@@ -11,7 +11,8 @@ var config = {
     login: `${apiPath}/login`,
     user: `${apiPath}/user`,
     userAll: `${apiPath}/user/all`,
-    check: `${apiPath}/check`
+    check: `${apiPath}/check`,
+    shift: `${apiPath}/shift`
   }
 };
 

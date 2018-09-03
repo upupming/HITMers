@@ -81,5 +81,94 @@ module.exports = {
       data: user
     }).catch(errorHandler)
       .then(statusCodeChecker);
+  },
+
+  addCheck(id, isIn, isMorning) {
+    return request({
+      url: service.check,
+      method: 'POST',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: {
+        id,
+        in: isIn,
+        morning: isMorning
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  getMonthlyChecks(id, year, month) {
+    return request({
+      url: service.check + `/${id}`,
+      method: 'GET',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: {
+        year,
+        month
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+
+  addShift(id, year, month, day, isMorning, status) {
+    return request({
+      url: service.shift,
+      method: 'POST',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: {
+        id,
+        year,
+        month,
+        day,
+        morning: isMorning,
+        status
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  /**
+   * Get all shifts during filter.
+   * @param {Object} filter year, startMonth, startDay, endMonth, endDay
+   */
+  getShifts(filter) {
+    return request({
+      url: service.shift,
+      method: 'GET',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: filter
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  /**
+   * Get all shifts during filter.
+   * @param {Object} filter year, startMonth, startDay, endMonth, endDay
+   */
+  getShiftsById(id, filter) {
+    return request({
+      url: service.shift + `/${id}`,
+      method: 'GET',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: filter
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  deleteShift(shift_id) {
+    return request({
+      url: service.shift + `/${shift_id}`,
+      method: 'DELETE',
+      header: {
+        'x-access-token': globalData.token
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
   }
 };

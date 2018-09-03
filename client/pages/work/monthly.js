@@ -1,7 +1,6 @@
 import event from '../../utils/event';
-const config = require('../../config');
 const Dialog = require('../../zan-ui/dialog/dialog');
-const util = require('../../utils/util');
+const request = require('../../utils/requests');
 
 // globalData.notes[0][0][1] 表示
 // 2018 年 1 月 1 日的日记 
@@ -39,10 +38,13 @@ Page({
 
   dayClick(event) {
     let days_style = this.data.days_style;
-    days_style
-      .splice(days_style.indexOf({
-        month: 'current', day: this.data.selectedDay, background: '#66BB6A', color: 'white'
-      }));
+    let selectedStyleIndex = -1;
+    selectedStyleIndex = days_style.indexOf({
+      month: 'current', day: this.data.selectedDay, background: '#66BB6A', color: 'white'
+    });
+    if(selectedStyleIndex != -1) {
+      days_style.splice(selectedStyleIndex);
+    }
     days_style
       .push({
         month: 'current', day: event.detail.day, background: '#66BB6A', color: 'white'
@@ -111,57 +113,46 @@ Page({
       });
     }
 
-    let that = this;
-    // 获取已值班信息
-    wx.pro.request({
-      url: config.service.checksUrl,
-      method: 'GET',
-      data: {
-        stu_id: globalData.stuId,
-        year,
-        month: month + 1
-      }
-    }).then(res => {
-      res.data.forEach(element => {
-        // 根据取得的信息修改样式
-        let day = new Date(element.date_time).getDate();
-        // 增加次数
-        this.data.finishedShiftsByDay[day]++;
-        days_style.add({
-          month: 'current',
-          day: new Date(element.date_time).getDate(),
-          color: 'white',
-          background: '#49B1F5'
-        });
-        that.data.numOfFinishedShifts = res.data.length;
-      });
-    }).then(() => {
+    Promise.all([
       // 获取当月总的值班信息
-      return wx.pro.request({
-        url: config.service.shiftsUrl + `/${globalData.stuId}`,
-        method: 'GET',
-        data: {
-          year: year,
-          startMonth: month + 1,
-          startDay: 1,
-          endMonth: month + 1,
-          endDay: days_count
-        }
-      });
-    }).then(res => {
-      res.data.forEach(element => {
-        that.data.totalShiftsByDay[element.day]++;
-        days_style.add({
-          month: 'current',
-          day: element.day,
-          color: 'white',
-          background: '#ef7a82'
+      request.getShiftsById(globalData.stuId, {
+        year: year,
+        startMonth: month + 1,
+        startDay: 1,
+        endMonth: month + 1,
+        endDay: days_count
+      }).then(res => {
+        res.data.forEach(element => {
+          this.data.totalShiftsByDay[element.day]++;
+          days_style.add({
+            month: 'current',
+            day: element.day,
+            color: 'white',
+            background: '#ef7a82'
+          });
         });
-      });
-      that.data.numOfTotalShifts = res.data.length;
-    }).then(() => {  
+        this.data.numOfTotalShifts = res.data.length;
+      }),
+      // 获取已值班信息
+      request.getMonthlyChecks(globalData.stuId, year, month)
+        .then(res => {
+          res.data.forEach(element => {
+            // 根据取得的信息修改样式
+            let day = new Date(element.date_time).getDate();
+            // 增加次数
+            this.data.finishedShiftsByDay[day]++;
+            days_style.add({
+              month: 'current',
+              day: new Date(element.date_time).getDate(),
+              color: 'white',
+              background: '#49B1F5'
+            });
+            this.data.numOfFinishedShifts = res.data.length;
+          });
+        })
+    ]).then(() => {
       // Set today's style
-      if(month == that.data.month) {
+      if(month == this.data.month) {
         days_style.add({
           month: 'current',
           day: this.data.day,
@@ -172,14 +163,12 @@ Page({
 
       this.setData({
         days_style: Array.from(days_style),
-        numOfFinishedShifts: that.data.numOfFinishedShifts,
-        numOfTotalShifts: that.data.numOfTotalShifts,
-        finishedShiftsByDay: that.data.finishedShiftsByDay,
-        totalShiftsByDay: that.data.totalShiftsByDay,
+        numOfFinishedShifts: this.data.numOfFinishedShifts,
+        numOfTotalShifts: this.data.numOfTotalShifts,
+        finishedShiftsByDay: this.data.finishedShiftsByDay,
+        totalShiftsByDay: this.data.totalShiftsByDay,
         loading: false
       });
-    }).catch(err => {
-      util.show(that.data.language.requestError + ': ' + err.toString(), 'fail');
     });
   },
 

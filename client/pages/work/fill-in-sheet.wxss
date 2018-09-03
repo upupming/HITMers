@@ -15,11 +15,11 @@ th{
   height: 300rpx;
   width: 120rpx;
   justify-content: center;
-  border-right:4rpx solid #99d3f9;
-  border-bottom:4rpx solid #99d3f9;
+  border: 3rpx solid #d7dce2;
   color: white;
   padding-left: 10rpx;
   padding-right: 10rpx;
+  box-sizing: border-box;
 }
 
 .today {
@@ -37,20 +37,21 @@ td{
   font-weight: 300;
   font-size: 24rpx;
   color: #fff;
-  border: 4rpx solid #99d3f9;
-  border-top: 0;
-  border-left: 0;
+  border: 3rpx solid #d7dce2;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 text {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 50rpx;
   width: 100%;
-  border-bottom: 1rpx solid #99d3f9;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #d7dce2;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  box-sizing: border-box;
 }
 text:active {
   opacity: 0.5;

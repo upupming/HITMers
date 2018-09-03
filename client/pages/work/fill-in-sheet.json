@@ -6,7 +6,10 @@
       "zan-field": "../../zan-ui/field/index",
       "zan-cell": "../../zan-ui/cell/index",
       "zan-toast": "../../zan-ui/toast/index",
-      "zan-panel": "../../zan-ui/panel/index"
+      "zan-panel": "../../zan-ui/panel/index",
+
+      "van-toast": "../../van-ui/toast/index",
+      "van-notify": "../../van-ui/notify/index" 
   },
   "enablePullDownRefresh": true
 }

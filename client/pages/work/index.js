@@ -3,9 +3,10 @@ import event from '../../utils/event';
 const Dialog = require('../../zan-ui/dialog/dialog');
 const config = require('../../config');
 const util = require('../../utils/util');
+const request = require('../../utils/requests');
 
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
-var qqmapsdk;
+const QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+let qqmapsdk;
 
 //#region GLOAL_CONSTRAINT
 //========= 地点约束
@@ -236,40 +237,20 @@ Page({
   },
 
   checkInOrOut() {
-    let that = this;
     CheckPeriod.setLanguage(this.data.language);
 
     let shift;
     if (this.hasLogged() && ((shift = this.getShift()) || BYPASS_CHECK_TIME)) {
       this.isLocationValid().then(
         res => {
-          if (res) {
-            wx.request({
-              url: config.service.checkUrl,
-              data: {
-                stu_id: globalData.stuId,
-                stu_name: globalData.stuName,
-                check_in: that.data.checkedIn ? false : true,
-                morning: shift === 1
-              },
-              method: 'POST',
-              header: {
-                'content-type': 'application/json' // 默认值
-              },
-              success: function () {
-                util.show(that.data.checkedIn ? that.data.language.checkedOut : that.data.language.checkedIn, 'success');
-                that.setData({
-                  checkedIn: !that.data.checkedIn
-                });
-                globalData.checkedIn = that.data.checkedIn;
-              },
-              fail: function () {
-                util.show(that.data.language.requestError, 'fail');
-              },
-            });
+          if(res) {
+            request.addCheck(globalData.stuId, this.data.checkedIn ? false : true, shift === 1)
+              .then(() => {
+                util.show(this.data.checkedIn ? this.data.language.checkedOut : this.data.language.checkedIn, 'success');
+                this.setData({checkedIn: !this.data.checkedIn});
+              });
           }
-        }
-      );
+        });
     }
   },
 

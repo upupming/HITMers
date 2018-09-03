@@ -77,7 +77,7 @@
               {{language.cancel}}
             </button>
             <button type="primary" form-type="submit" class="button-wrap">
-              {{language.save}}
+              {{language.confirm}}
             </button>
           </zan-button-group>
 

@@ -1,7 +1,7 @@
 .icon-wrap {
   width: 33.33333%;
   float: left;
-  padding-top: 40rpx;
+  padding-top: 60rpx;
   padding-bottom: 10rpx;
   text-align: center;
   color: var(--theme-color);
