@@ -5,7 +5,8 @@ Page({
     links: [
       'https://github.com/upupming/HITMers-node-js-server',
       'https://github.com/upupming/HITMers',
-      'https://github.com/upupming/HITMers/issues'
+      'https://github.com/upupming/HITMers/issues',
+      'https://upupming.site/HITMers'
     ]
   },
 

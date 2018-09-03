@@ -40,6 +40,7 @@ export default {
     license: '协议和版权',
     sourceCode: '源代码',
     bugsTracker: 'Bug 追踪',
+    docs: '官方文档',
 
     TARGET_POSITION: '哈工大博物馆',
     checkIn: '签到',
@@ -151,6 +152,7 @@ export default {
     license: 'License and copyright',
     sourceCode: 'Source code',
     bugsTracker: 'Bugs tracker',
+    docs: 'Documentation',
 
     TARGET_POSITION: 'Harbin Institute of Technology Museum',
     checkIn: 'Check in',

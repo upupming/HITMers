@@ -8,6 +8,12 @@
       </view>
     </van-cell>
     <van-cell>
+      <view class="title">{{language.docs}}</view>
+      <view bindtap="copy" class="para link" data-link-index="3">
+        {{links[3]}}
+      </view>
+    </van-cell>
+    <van-cell>
       <view class="title">{{language.sourceCode}}</view>
       <view bindtap="copy" class="para link" data-link-index="0">
         {{links[0]}}
