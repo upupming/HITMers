@@ -15,7 +15,7 @@ Verify user information and generate tokens for subsequent verification in all r
 
 Format: `POST /v1/login`
 
-You can also use other information as a filter instead of `id`. As long as the parameters are unambiguous for one user, the server will fing that user. 
+You can also use other information as a filter instead of `id`. As long as the parameters are unambiguous for one user, the server will find that user. 
 
 |Parameter|Type|Required|Description|
 |---------|----|-------|----|
@@ -76,7 +76,7 @@ Returns: 200 OK
 
 ?> User passwords are stored after hashing by [bcrypt](https://github.com/dcodeIO/bcrypt.js). So even in extreme cases which the database is leaked, users don't have to worry about password leaks. The encryption algorithm can be found in [Wikipedia](https://en.wikipedia.org/wiki/Bcrypt).
 
-?> All subsequent requests, if there is no exception metioned, need to set the `x-access-token` field in the header to the `token` obtained here, otherwise the server will return 401 Unauthorized.
+?> All subsequent requests, if there is no exception mentioned, need to set the `x-access-token` field in the header to the `token` obtained here, otherwise the server will return 401 Unauthorized.
 
 ## User information
 
@@ -227,7 +227,7 @@ Returns: 200 OK
 
 ?> User `W00995` of the array in first request in Example 1 cannot be found, it will be ignored directly and no error messages will be returned. Please use `POST` if you want to add users.
 
-?> In Example 2, the user id is modified, and the corresponding user needs to acquire the token again, because the server determines whether the user is permitted to request by verifying the `id` payload decrypted from the token.
+?> In Example 2, the user id is modified, and the corresponding user needs to acquire the token again because the server determines whether the user is permitted to request by verifying the `id` payload decrypted from the token.
 
 ## Checks
 
