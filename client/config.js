@@ -1,5 +1,5 @@
 let host;
-let env = 'dev';
+let env = 'production';
 
 if(env === 'production') {
   host = 'https://hitmers-api.solotime.xyz';

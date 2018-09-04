@@ -10,8 +10,8 @@ let qqmapsdk;
 
 //#region GLOAL_CONSTRAINT
 //========= 地点约束
-let TARGET_LATITUDE = 45.743099;
-let TARGET_LONGITUDE = 126.635986;
+let TARGET_LATITUDE = 45.751057;
+let TARGET_LONGITUDE = 126.63867;
 let MAX_DISTANCE = 400;
 //========= 时间约束
 let SHIFT_PERIODS = [
@@ -212,7 +212,16 @@ Page({
           longitude: TARGET_LONGITUDE
         }],
         success: res => {
-          // console.log(res.result.elements[0]);
+          let calRes = res.result.elements[0];
+          Dialog({
+            title: that.data.language.location,
+            message: `${that.data.language.currentLocation}: (${that.data.language.latitude}, ${that.data.language.longitude}) = (${calRes.from.lat}, ${calRes.from.lng})\n${that.data.language.distance} ${calRes.distance} ${that.data.language.meters}`,
+            selector: '#location-dialog',
+            buttons: [{
+              text: that.data.language.confirm,
+              color: '#49B1F5'
+            }]
+          });
           if (res.result.elements[0].distance > MAX_DISTANCE) {
             Dialog({
               title: that.data.language.tooFarFrom,

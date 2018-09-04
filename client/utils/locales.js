@@ -62,6 +62,12 @@ export default {
     tooFarFrom: '距离工作地点太远',
     pleaseArrive: '请到达工作地点',
     pleaseLogin: '请先登录',
+    location: '位置信息',
+    currentLocation: '当前位置',
+    latitude: '纬度',
+    longitude: '经度',
+    distance: '与哈工大博物馆相距',
+    meters: '米',
 
     fillInInfo: '填写用户信息',
     stuId: {
@@ -176,6 +182,12 @@ export default {
     tooFarFrom: 'Too far from work place',
     pleaseArrive: 'Please arrive at work place',
     pleaseLogin: 'Please login first',
+    location: 'Location',
+    currentLocation: 'Current location',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    distance: 'Distance away from Harbin Institute of Technology Museum',
+    meters: 'meters',
 
     fillInInfo: 'Fill in user information',
     stuId: {

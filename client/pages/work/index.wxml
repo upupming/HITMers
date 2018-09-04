@@ -20,6 +20,7 @@
   <zan-dialog id="sign-in-dialog"></zan-dialog>
   <zan-dialog id="time-not-valid-dialog"></zan-dialog>
   <zan-dialog id="location-not-valid-dialog"></zan-dialog>
+  <zan-dialog id="location-dialog"></zan-dialog>
   <zan-dialog id="please-login-dialog"></zan-dialog>
 
 </view>
