@@ -12,6 +12,7 @@ Page({
     languages: ['简体中文', 'English'],
     langIndex: 0,
     showLoginPopup: false,
+    showRegisterPopup: false,
     showChangePasswordPopup: false,
     loading: true
   },
@@ -47,6 +48,11 @@ Page({
     wx.T.setNavigationBarTitle();
   },
 
+  toggleRegisterPopup() {
+    this.setData({
+      showRegisterPopup: !this.data.showRegisterPopup
+    });
+  },
   toggleLoginPopup() {
     this.setData({
       showLoginPopup: !this.data.showLoginPopup
@@ -67,27 +73,34 @@ Page({
       showChangePasswordPopup: false
     });
   },
+  abandonRegister() {
+    this.setData({
+      showRegisterPopup: false
+    });
+  },
   submitInfo(event) {
     if(this.isIdLegal(event.detail.value.stuId) && 
       this.isNameValid(event.detail.value.stuName) &&
       this.isPasswordLegal(event.detail.value.stuPassword)) {  
       request.login(event.detail.value.stuId, event.detail.value.stuPassword)
         .then(res => {
-          this.setData({
-            logged: true
-          });
-          this.setData({
-            stuId: event.detail.value.stuId,
-            stuName: event.detail.value.stuName,
-            stuPassword: event.detail.value.stuPassword
-          });
-          globalData.stuId = this.data.stuId;
-          globalData.stuName = this.data.stuName;
-          globalData.stuPassword = this.data.stuPassword;
-          globalData.logged = true;
-          globalData.token = res.data.token;
-          globalData.user = res.data.user;
-          this.shouldChangePassword();
+          if(res.statusCode === 200) {
+            util.show(this.data.language.loginSucceed, 'success');
+            this.setData({
+              logged: true
+            });
+            this.setData({
+              stuId: event.detail.value.stuId,
+              stuName: event.detail.value.stuName,
+              stuPassword: event.detail.value.stuPassword
+            });
+            globalData.stuId = this.data.stuId;
+            globalData.stuName = this.data.stuName;
+            globalData.stuPassword = this.data.stuPassword;
+            globalData.logged = true;
+            globalData.token = res.data.token;
+            globalData.user = res.data.user;
+          }
         });
         
       this.setData({
@@ -95,19 +108,43 @@ Page({
       });
     }
   },
-
-  shouldChangePassword() {
-    request.getUserInfo(this.data.stuId)
-      .then(res => {
-        if(res.data.password_changed_times === 0) {
-          this.showChangePasswordDialog();
+  submitRegister(event) {
+    let values = event.detail.value;
+    if(this.isIdLegal(values.stuId) && 
+      this.isNameValid(values.stuName) &&
+      this.isPasswordLegal(values.stuPassword)) {
+      request.register(
+        {
+          id: values.stuId,
+          name: values.stuName,
+          identify: values.identify,
+          phone_number:values.phone_number,
+          language: values.language,
+          session: values.session,
+          email: values.email,
+          school: values.school,
+          password: values.stuPassword
+        },
+        values.registerCode
+      ).then(res => {
+        if(res.statusCode === 200) {
+          util.show(this.data.language.registerSucceed, 'success');
+          this.setData({
+            showRegisterPopup: false
+          });
         }
       });
+    }
   },
 
   // zan ui 的 bug，这样做是为了响应最后 field 的键盘上的√被按下
   handleFieldChange() {
     // do nothing
+  },
+  register() {
+    this.setData({
+      showRegisterPopup: true
+    });
   },
   login() {
     this.setData({
@@ -118,26 +155,6 @@ Page({
   changePassword() {
     this.setData({
       showChangePasswordPopup: true
-    });
-  },
-
-  showChangePasswordDialog() {
-    let that = this;
-    Dialog({
-      title: that.data.language.changePassword,
-      message: that.data.language.shouldChangePassword,
-      selector: '#change-password-dialog',
-      buttons: [{
-        text: that.data.language.confirm,
-        color: '#49B1F5',
-        type: 'changePassword'
-      }]
-    }).then(({type}) => {
-      if(type === 'changePassword') {
-        this.setData({
-          showChangePasswordPopup: true
-        });
-      }
     });
   },
 

@@ -9,7 +9,8 @@
       "zan-panel": "../../zan-ui/panel/index",
 
       "van-toast": "../../van-ui/toast/index",
-      "van-notify": "../../van-ui/notify/index" 
+      "van-notify": "../../van-ui/notify/index",
+      "van-icon": "../../van-ui/icon/index" 
   },
   "enablePullDownRefresh": true
 }

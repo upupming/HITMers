@@ -16,10 +16,10 @@ function statusCodeChecker(res) {
   console.log(res);
   Toast.clear();
   if(res.statusCode === 200) {
-    Notify({
-      text: globalData.language.requestSuccess,
-      backgroundColor: '#38f'
-    });
+    // Notify({
+    //   text: globalData.language.requestSuccess,
+    //   backgroundColor: '#38f'
+    // });
   } else {
     Notify({
       text: globalData.language.requestError + ': ' + res.statusCode + ' ' + globalData.language[res.statusCode]
@@ -167,6 +167,17 @@ module.exports = {
       method: 'DELETE',
       header: {
         'x-access-token': globalData.token
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  register(user, registerCode) {
+    return request({
+      url: service.register,
+      method: 'POST',
+      data: {
+        user,
+        registerCode
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);

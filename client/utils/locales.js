@@ -6,6 +6,8 @@ export default {
     languageName: '简体中文',
     changed: '修改成功',
 
+    register: '注册',
+    registerSucceed: '注册成功',
     login: '登录',
     logout: '登出',
     logining: '正在登陆',
@@ -92,6 +94,34 @@ export default {
       title: '新密码',
       placeholder: '请输入新密码'
     },
+    identify: {
+      title: '身份',
+      placeholder: '老师/队长/讲解员/馆藏人员'
+    },
+    phone_number: {
+      title: '手机号码',
+      placeholder: '请输入手机号码'
+    },
+    stuLanguage: {
+      title: '语言',
+      placeholder: '中英/中文/英文/韩文/俄文/日文'
+    },
+    session: {
+      title: '届数',
+      placeholder: '请输入届数'
+    },
+    email: {
+      title: '邮箱',
+      placeholder: '请输入邮箱'
+    },
+    school: {
+      title: '学院',
+      placeholder: '请输入学院'
+    },
+    registerCode: {
+      title: '注册码',
+      placeholder: '请输入注册码'
+    },
     confirm: '确定',
     save: '保存',
     cancel: '取消',
@@ -127,6 +157,8 @@ export default {
     languageName: 'English',
     changed: 'Changed successfully',
 
+    register: 'Register',
+    registerSucceed: 'Registered successfully',
     login: 'Log in',
     logout: 'Log out',
     logining: 'Logging in',
@@ -211,6 +243,34 @@ export default {
     newPassword: {
       title: 'New password',
       placeholder: 'Please input a new password'
+    },
+    identify: {
+      title: 'Identity',
+      placeholder: '老师/队长/讲解员/馆藏人员'
+    },
+    phone_number: {
+      title: 'Phone number',
+      placeholder: 'Please input your phone number'
+    },
+    stuLanguage: {
+      title: 'language',
+      placeholder: '中英/中文/英文/韩文/俄文/日文'
+    },
+    session: {
+      title: 'Session',
+      placeholder: 'Please input your session'
+    },
+    email: {
+      title: 'Email',
+      placeholder: 'Please input your Email'
+    },
+    school: {
+      title: 'School',
+      placeholder: 'Please input your school'
+    },
+    registerCode: {
+      title: 'Register code',
+      placeholder: 'Please input your register code'
     },
     confirm: 'Confirm',
     save: 'Save',

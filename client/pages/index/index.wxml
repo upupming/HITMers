@@ -13,9 +13,14 @@
           <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
           <text class="center-text" wx:if="{{logged}}">{{stuId || '' }}</text>
           <text class="center-text" wx:if="{{logged}}">{{stuName || ''}}</text>
-          <zan-button class="center" wx:else size="small" bindtap="login" openType="getUserInfo">
-            {{language.login}}
-          </zan-button>
+          <view wx:else>
+            <zan-button class="center" size="small" bindtap="register">
+              {{language.register}}
+            </zan-button>
+            <zan-button class="center" size="small" bindtap="login" openType="getUserInfo">
+              {{language.login}}
+            </zan-button>
+          </view>
         </view>
         <zan-button class="center" size="small" openType="openSetting">{{language.permissions}}</zan-button>
       </view>
@@ -50,6 +55,100 @@
     </zan-cell>
   </zan-panel>
 </view>
+
+<zan-popup
+  show="{{showRegisterPopup}}"
+  type="top"
+  bindclose="toggleRegisterPopup"
+>
+  <view class="field-popup">
+    <zan-panel title="{{language.fillInInfo}}">
+        <form  bindsubmit="submitRegister" bindreset="abandonRegister">
+          
+          <zan-field
+            name="registerCode"
+            title="{{language.registerCode.title}}"
+            placeholder="{{language.registerCode.placeholder}}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-field
+            name="stuId"
+            title="{{language.stuId.title}}"
+            placeholder="{{language.stuId.placeholder}}"
+            inputType="text"
+          ></zan-field>
+        
+          <zan-field
+            name="stuName"
+            title="{{language.stuName.title}}"
+            placeholder="{{language.stuName.placeholder}}"
+            inputType="text"
+          ></zan-field>    
+        
+          <zan-field
+            name="identify"
+            title="{{language.identify.title}}"
+            placeholder="{{language.identify.placeholder}}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-field
+            name="language"
+            title="{{language.stuLanguage.title}}"
+            placeholder="{{language.stuLanguage.placeholder}}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-field
+            name="phone_number"
+            title="{{language.phone_number.title}}"
+            placeholder="{{language.phone_number.placeholder}}"
+            inputType="number"
+          ></zan-field>
+
+          <zan-field
+            name="session"
+            title="{{language.session.title}}"
+            placeholder="{{language.session.placeholder}}"
+            inputType="number"
+          ></zan-field>
+
+          <zan-field
+            name="email"
+            title="{{language.email.title}}"
+            placeholder="{{language.email.placeholder}}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-field
+            name="school"
+            title="{{language.school.title}}"
+            placeholder="{{language.school.placeholder}}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-field
+            name="stuPassword"
+            title="{{language.stuPassword.title}}"
+            placeholder="{{language.stuPassword.placeholder}}"
+            value="{{ stuPassword }}"
+            inputType="password"
+          ></zan-field>    
+
+          <zan-button-group class="horizontal-buttons">
+            <button type="warn" form-type="reset" class="button-wrap">
+              {{language.cancel}}
+            </button>
+            <button type="primary" form-type="submit" class="button-wrap">
+              {{language.confirm}}
+            </button>
+          </zan-button-group>
+
+      </form>
+    </zan-panel>
+  </view>
+</zan-popup>
 
 <zan-popup
   show="{{showLoginPopup}}"

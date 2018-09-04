@@ -62,7 +62,7 @@
           </zan-cell>
           <zan-cell title="{{language.status}}">
             <picker mode="selector" range="{{language.statuses}}" value="{{0}}" bindchange="changeStatus">
-              <view class="picker">{{language.statuses[statusIndex]}}</view>
+              <view class="picker">{{language.statuses[statusIndex]}}<van-icon name="edit" style="padding: 20rpx;" /></view>
             </picker>
           </zan-cell>
           
