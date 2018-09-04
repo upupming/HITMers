@@ -1,5 +1,4 @@
 const event = require('../../utils/event');
-const Dialog = require('../../zan-ui/dialog/dialog');
 const request = require('../../utils/requests');
 const util = require('../../utils/util');
 

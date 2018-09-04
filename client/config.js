@@ -14,6 +14,7 @@ var config = {
   service: {
     host,
 
+    register: `${apiPath}/register`,
     login: `${apiPath}/login`,
     user: `${apiPath}/user`,
     userAll: `${apiPath}/user/all`,
