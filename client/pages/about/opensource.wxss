@@ -1,7 +1,7 @@
 .icon {
   width: 30rpx;
   height: 30rpx;
-  padding: 15rpx 20rpx 0 0;
+  padding: 20rpx 20rpx 0 0;
 }
 
 .title {

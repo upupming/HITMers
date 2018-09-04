@@ -1,20 +1,17 @@
 <view class="container">
   <van-cell-group>
-    <van-cell title="{{language.license}}">
-      <view>MIT</view>
-      <view>Copyright (c) 2018 upupming</view>
-      <view slot="icon">
-        <image src="../../images/copyright.svg" class="icon" />
-      </view>
+    <van-cell>
+      <view class="title"><image src="../../images/copyright.svg" class="icon" />{{language.license}}</view>
+      <view class="para">MIT Copyright (c) 2018 upupming</view>
     </van-cell>
     <van-cell>
-      <view class="title">{{language.docs}}</view>
+      <view class="title"><image src="../../images/documentation.svg" class="icon" />{{language.docs}}</view>
       <view bindtap="copy" class="para link" data-link-index="3">
         {{links[3]}}
       </view>
     </van-cell>
     <van-cell>
-      <view class="title">{{language.sourceCode}}</view>
+      <view class="title"><image src="../../images/source-code.svg" class="icon" />{{language.sourceCode}}</view>
       <view bindtap="copy" class="para link" data-link-index="0">
         {{links[0]}}
       </view>
@@ -23,9 +20,15 @@
       </view>
     </van-cell>
     <van-cell>
-      <view class="title">{{language.bugsTracker}}</view>
+      <view class="title"><image src="../../images/issues.svg" class="icon" />{{language.issueTracker}}</view>
       <view bindtap="copy" class="para link" data-link-index="2">
         {{links[2]}}
+      </view>
+    </van-cell>
+    <van-cell>
+      <view class="title"><image src="../../images/gmail.svg" class="icon" />{{language.contact}}</view>
+      <view bindtap="copy" class="para link" data-link-index="2">
+        {{links[4]}}
       </view>
     </van-cell>
     </van-cell-group>

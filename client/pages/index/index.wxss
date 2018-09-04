@@ -22,7 +22,7 @@
 }
 
 .logo {
-  width: 80rpx;
+  width: 90rpx;
   height: 80rpx;
   border-radius: 60%;
 }

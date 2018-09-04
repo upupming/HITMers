@@ -6,7 +6,8 @@ Page({
       'https://github.com/upupming/HITMers-node-js-server',
       'https://github.com/upupming/HITMers',
       'https://github.com/upupming/HITMers/issues',
-      'https://upupming.site/HITMers'
+      'https://upupming.site/HITMers',
+      'upupming@gmail.com'
     ]
   },
 
