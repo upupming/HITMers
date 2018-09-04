@@ -39,15 +39,22 @@ Page({
   dayClick(event) {
     let days_style = this.data.days_style;
     let selectedStyleIndex = -1;
-    selectedStyleIndex = days_style.indexOf({
-      month: 'current', day: this.data.selectedDay, background: '#66BB6A', color: 'white'
+    selectedStyleIndex = days_style.indexOfSameValue({
+      month: 'current', 
+      day: this.data.selectedDay, 
+      color: 'white',
+      background: '#66BB6A'      
     });
     if(selectedStyleIndex != -1) {
       days_style.splice(selectedStyleIndex);
     }
     days_style
       .push({
-        month: 'current', day: event.detail.day, background: '#66BB6A', color: 'white'
+        month: 'current', 
+        day: event.detail.day, 
+        color: 'white',
+        background: '#66BB6A',
+        
       });
     this.setData({
       selectedDay: event.detail.day,
@@ -59,8 +66,11 @@ Page({
   closeSelected() {
     let days_style = this.data.days_style;
     days_style
-      .splice(days_style.indexOf({
-        month: 'current', day: this.data.selectedDay, background: '#66BB6A', color: 'white'
+      .splice(days_style.indexOfSameValue({
+        month: 'current', 
+        day: this.data.selectedDay, 
+        background: '#66BB6A', 
+        color: 'white'
       }));
     // 回到今天
     days_style.push({
@@ -167,7 +177,8 @@ Page({
         numOfTotalShifts: this.data.numOfTotalShifts,
         finishedShiftsByDay: this.data.finishedShiftsByDay,
         totalShiftsByDay: this.data.totalShiftsByDay,
-        loading: false
+        loading: false,
+        selectedDay: month === this.data.month ? this.data.day : -1
       });
     });
   },

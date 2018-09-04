@@ -3,6 +3,7 @@
 import './utils/wxPromise.min.js';
 import locales from './utils/locales';
 import T from './utils/i18n';
+require('./prototypes');
 
 T.registerLocale(locales);
 let savedGlobalData = wx.getStorageSync('globalData');
