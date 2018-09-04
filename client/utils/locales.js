@@ -42,6 +42,7 @@ export default {
     issueTracker: 'Issue 追踪',
     docs: '官方文档',
     contact: '联系方式',
+    contributors: '贡献者',
 
     TARGET_POSITION: '哈工大博物馆',
     checkIn: '签到',
@@ -89,7 +90,7 @@ export default {
     save: '保存',
     cancel: '取消',
 
-    monthly: '月历',
+    monthly: '值班日历',
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     days: ['1 日', '2 日', '3 日', '4 日', '5 日', '6 日', '7 日', '8 日', '9 日', '10 日','11 日', '12 日', '13 日', '14 日', '15 日', '16 日', '17 日', '18 日', '19 日', '20 日', '21 日', '22 日', '23 日', '24 日', '25 日', '26 日', '27 日', '28 日', '29 日', '30 日', '31 日'],
     workloadSummary: '本月已值班次数',
@@ -149,6 +150,7 @@ export default {
     version: 'Version',
     currentVersion: '0.0.1',
     opensource: 'Open source',
+    contributors: 'Contributors',
 
     license: 'License and copyright',
     sourceCode: 'Source code',
@@ -202,7 +204,7 @@ export default {
     save: 'Save',
     cancel: 'Cancel',
 
-    monthly: 'Monthly',
+    monthly: 'Shifts calender',
     months: ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'June.', 'July.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'],
     days: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21th', '22th', '23th', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31th'],
     workloadSummary: 'Finished shifts this month',

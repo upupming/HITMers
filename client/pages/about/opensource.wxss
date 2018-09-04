@@ -18,3 +18,18 @@
 .link {
   color: blue;
 }
+
+.contributors {
+  text-align: center;
+}
+
+.contributor {
+  padding-top: 30rpx;
+  width: 25%;
+  float: left;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+}

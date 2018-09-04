@@ -31,6 +31,15 @@
         {{links[4]}}
       </view>
     </van-cell>
+    <van-cell>
+      <view class="title"><image src="../../images/contributors.svg" class="icon" />{{language.contributors}}</view>
+      <view class="contributors">
+        <view class="contributor">
+          <image src="../../images/upupming.jpeg" class="avatar"/>
+          <view class="id">upupming</view>
+        </view>
+      </view>
+    </van-cell>
     </van-cell-group>
 </view>
 
