@@ -9,6 +9,42 @@ Use the [Json Web Token](https://github.com/auth0/node-jsonwebtoken) authorizati
 
 The initialization data for all of the following examples can be found in [seed files](https://github.com/upupming/HITMers-node-js-server/tree/dev/src/db/seeds) on GitHub.
 
+## Register
+
+HITMers is only designed for a small group of people, so register by providing register code is a good idea.
+
+Format: `POST /v1/register`
+
+**Example 1：**
+
+Request Body:
+
+```json
+{
+	"user" : {
+	  "id": "MsShi",
+	  "name": "史老师",
+	  "identify": "老师",
+	  "phone_number": 120,
+	  "language": "中英",
+	  "session": 14,
+	  "email": "shilaoshi@qq.com",
+	  "school": "经管学院",
+	  "password": "1456"
+	},
+	"registerCode": "sampleRegisterCode"
+}
+```
+
+Returns: 200 OK
+
+```json
+The user has been added successfully.
+```
+
+
+
+
 ## Login
 
 Verify user information and generate tokens for subsequent verification in all requests.
@@ -186,7 +222,7 @@ Format:
 
 **Example 1:**
 
-`PUT /v1/user/W005`
+`PUT /v1/user`
 
 Request Body:
 

@@ -9,6 +9,40 @@
 
 以下所有示例的初始化数据见 GitHub 上的 [seed 文件](https://github.com/upupming/HITMers-node-js-server/tree/dev/src/db/seeds)。
 
+## 注册
+
+由于软件只在特定人群中使用，目前仅支持注册码注册。
+
+格式：`POST /v1/register`
+
+**示例 1：**
+
+请求 Body:
+
+```json
+{
+	"user" : {
+	  "id": "MsShi",
+	  "name": "史老师",
+	  "identify": "老师",
+	  "phone_number": 120,
+	  "language": "中英",
+	  "session": 14,
+	  "email": "shilaoshi@qq.com",
+	  "school": "经管学院",
+	  "password": "1456"
+	},
+	"registerCode": "sampleRegisterCode"
+}
+```
+
+返回：200 OK
+
+```json
+The user has been added successfully.
+```
+
+
 ## 登录
 
 验证用户信息，生成 token 用于之后的验证。
@@ -187,7 +221,7 @@ Users have been deleted successfully.
 
 **示例 1：**
 
-`PUT /v1/user/W005`
+`PUT /v1/user`
 
 请求 Body:
 
