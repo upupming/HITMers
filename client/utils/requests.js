@@ -181,5 +181,13 @@ module.exports = {
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);
+  },
+
+  getRawVideoUrl(videoId, username, password) {    
+    return request({
+      url: `https://" + ${username} + ":" + ${password} + "@api.streamable.com/videos/${videoId}`,
+      method: 'GET'
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
   }
 };

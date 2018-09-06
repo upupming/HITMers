@@ -17,6 +17,12 @@
     </view>
     <view class="icon-action">{{language.monthly}}</view>
   </view>
+  <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="video">
+    <view class="icon">
+      <image class="icon-img" src="../../images/video.svg"/>
+    </view>
+    <view class="icon-action-2">{{language.video}}</view>
+  </view>
   <zan-dialog id="sign-in-dialog"></zan-dialog>
   <zan-dialog id="time-not-valid-dialog"></zan-dialog>
   <zan-dialog id="location-not-valid-dialog"></zan-dialog>

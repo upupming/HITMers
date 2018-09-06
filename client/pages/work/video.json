@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-cell": "../../van-ui/cell/index",
+    "van-cell-group": "../../van-ui/cell-group/index"
+  }
+}

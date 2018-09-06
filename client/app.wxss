@@ -102,3 +102,8 @@ tr {
 .field-picker {
   background: white;
 }
+
+video {
+  width: 680rpx;
+  margin: 40rpx;
+}

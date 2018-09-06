@@ -1,0 +1,8 @@
+<view class="container">
+  <van-cell-group>
+    <van-cell wx:for="{{videoIds}}" wx:for-item="video" title="{{language[video.key]}}" is-link url='./video-player?videoId={{video.value}}&videoDesc={{language[video.key]}}'>
+    </van-cell>
+  </van-cell-group>
+
+  <view class="footer">By 王义戈 & 吕梦圆</view>
+</view>

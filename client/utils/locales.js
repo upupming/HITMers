@@ -161,7 +161,13 @@ export default {
     deleteShiftForbidden: '当前不允许删除值班信息',
 
     note: '随手记',
-    enterNote: '记录我的生活'
+    enterNote: '记录我的生活',
+
+    video: '演示视频',
+    foyer: '门厅',
+    one1: '第一展厅（1）',
+    one2: '第一展厅（2）',
+    one3: '第一展厅（3）'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -325,6 +331,12 @@ export default {
     deleteShiftForbidden: 'Deleting shift is not allowed',
 
     note: 'Note',
-    enterNote: 'Note my life'
+    enterNote: 'Note my life',
+
+    video: 'Demo videos',
+    foyer: 'Foyer',
+    one1: 'Exhibition hall 1 (1)',
+    one2: 'Exhibition hall 1 (2)',
+    one3: 'Exhibition hall 1 (3)'
   }
 };

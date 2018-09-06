@@ -16,6 +16,11 @@
   font-size: 25rpx;
 }
 
+.icon-action-2 {
+  font-size: 25rpx;
+  color: #1afa29;
+}
+
 .icon-wrap:active {
   background: #d9d9d9;
 }
