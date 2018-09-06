@@ -53,6 +53,8 @@
     </zan-cell>
     <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
     </zan-cell>
+    <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy">
+    </zan-cell>
   </zan-panel>
 </view>
 

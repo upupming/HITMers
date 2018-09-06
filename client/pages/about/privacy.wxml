@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="top-title">{{language.privacy}}</view>
+  <van-cell-group>
+    <van-cell>
+      <view class="title">{{language.collectedInfo.title}}</view>
+      <view class="para">{{language.collectedInfo.text}}</view>
+    </van-cell>
+    <van-cell>
+      <view class="title">{{language.whyCollectInfo.title}}</view>
+      <view class="para">{{language.whyCollectInfo.text}}</view>
+    </van-cell>
+    </van-cell-group>
+</view>
+
+<van-toast id="van-toast"></van-toast>

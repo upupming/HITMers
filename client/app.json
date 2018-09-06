@@ -5,7 +5,8 @@
     "pages/work/index",
     "pages/work/fill-in-sheet",
     "pages/work/monthly",
-    "pages/about/opensource"
+    "pages/about/opensource",
+    "pages/about/privacy"
   ],
   "window":{
     "backgroundColor":"#49B1F5",

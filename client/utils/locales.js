@@ -39,6 +39,16 @@ export default {
     currentVersion: '0.0.2',
     opensource: '开源声明',
 
+    privacy: '隐私权政策',
+    collectedInfo: {
+      title: '收集的信息',
+      text: '我们会收集用户个人信息、值班信息、签到信息。你的个人信息（密码除外）和签到信息只对自己和诸如老师、队长等其他管理员可见，你的值班信息对所有人可见。'
+    },
+    whyCollectInfo: {
+      title: '为什么要收集信息',
+      text: '我们使用你的个人信息验证你的请求，与你取得联系，统计好博物馆现有人员。你所有的值班和签到信息只会用于分析你当前的工作状态。'
+    },
+
     license: '协议和版权',
     sourceCode: '源代码',
     issueTracker: 'Issue 追踪',
@@ -198,6 +208,16 @@ export default {
     issueTracker: 'Issue tracker',
     docs: 'Documentation',
     contact: 'Contact',
+
+    privacy: 'Privacy',
+    collectedInfo: {
+      title: 'Collected information',
+      text: 'We collect our users\'s profile, checks, and shifts. Your profile(excluding password) and checks are only visible to yourself and superusers such as teachers and other managers. Your shifts are visible to all other users.'
+    },
+    whyCollectInfo: {
+      title: 'Why we collects information',
+      text: 'We use your profile data to verify your request, contact you, and orginze our team members. All your checks and shifts are used for analyzing your working status.'
+    },
 
     changeProfile: 'Change profile',    
     changeProfileSucceed: 'Changed profile successfully',

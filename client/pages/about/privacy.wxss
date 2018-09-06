@@ -1,0 +1,42 @@
+.icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 20rpx 20rpx 0 0;
+}
+
+.top-title {
+  font-size: 50rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.title {
+  padding-top: 20rpx;
+  text-align: center; 
+}
+
+.para {
+  padding: 10rpx;
+  font-size: 30rpx;
+  text-align: left;
+}
+
+.link {
+  color: blue;
+}
+
+.contributors {
+  text-align: center;
+}
+
+.contributor {
+  padding-top: 30rpx;
+  width: 25%;
+  float: left;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+}
