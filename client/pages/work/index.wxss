@@ -18,7 +18,7 @@
 
 .icon-action-2 {
   font-size: 25rpx;
-  color: #1afa29;
+  color: #25EC7E;
 }
 
 .icon-wrap:active {

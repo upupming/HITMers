@@ -8,14 +8,13 @@ Wechat mini-program client for [HITMers Node.js Server](https://github.com/upupm
 
 - [x] 支持中英双语
 
-	使用 https://github.com/upupming/weapp-i18n ，并做了一些小修改。
-
 ## 讲解员个人
 
 - [x] 位置跟踪打卡
 - [x] 统计打卡次数，计入工作量
+- [x] 示范视频
 - [ ] 请假实时通知到老师，老师同意后方可请假
-- [ ] 总结每月讲团数量，反馈讲解员状态
+- [x] 总结每月讲团数量，反馈讲解员状态
 
 
 ## 讲解系统 

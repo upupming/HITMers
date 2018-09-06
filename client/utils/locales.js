@@ -36,7 +36,7 @@ export default {
     settings: '设置',
     about: '关于',
     version: '版本',
-    currentVersion: '0.0.2',
+    currentVersion: '0.0.3',
     opensource: '开源声明',
 
     privacy: '隐私权政策',
@@ -205,7 +205,7 @@ export default {
     settings: 'Settings',
     about: 'About',
     version: 'Version',
-    currentVersion: '0.0.2',
+    currentVersion: '0.0.3',
     opensource: 'Open source',
     contributors: 'Contributors',
 
