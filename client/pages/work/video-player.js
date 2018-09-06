@@ -6,7 +6,7 @@ Page({
     request.getRawVideoUrl(params.videoId, video.username, video.password)
       .then(res => {
         this.setData({
-          videoUrl: res.data.files['mp4-mobile'].url,
+          videoUrl: 'https://' + res.data.files['mp4-mobile'].url,
           videoDesc: params.videoDesc
         });
       });
