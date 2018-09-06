@@ -1,0 +1,39 @@
+<view class="container">
+  <van-cell-group>
+    <van-cell wx:for="{{profiles}}" wx:for-item="profile" title="{{language[profile].title}}" is-link bindtap="updateUser" id="{{profile}}" value="{{user[profile]}}">
+    </van-cell>
+  </van-cell-group>
+</view>
+
+<zan-popup
+  show="{{showChangeProfilePopup}}"
+  type="top"
+  bindclose="toggleChangeProfilePopup"
+>
+  <view class="field-popup">
+    <zan-panel title="{{language.changeProfile}}">
+        <form  bindsubmit="submitInfo" bindreset="abandonInfo">
+          <zan-field
+            name="{{selectedProfile}}"
+            title="{{language[selectedProfile].title}}"
+            placeholder="{{language[selectedProfile].placeholder}}"
+            value="{{ user[selectedProfile] }}"
+            inputType="text"
+          ></zan-field>
+
+          <zan-button-group class="horizontal-buttons">
+            <button type="warn" form-type="reset" class="button-wrap">
+              {{language.cancel}}
+            </button>
+            <button type="primary" form-type="submit" class="button-wrap">
+              {{language.confirm}}
+            </button>
+          </zan-button-group>
+
+      </form>
+    </zan-panel>
+  </view>
+</zan-popup>
+
+
+<van-toast id="van-toast"></van-toast>

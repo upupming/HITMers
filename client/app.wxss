@@ -24,6 +24,11 @@ page {
     z-index: 5;
   }
 
+button {
+  height: 100rpx;
+  font-size: 40rpx;
+}
+
 button[type=warn] {
   color:#FFFFFF;
   background-color:#f85;

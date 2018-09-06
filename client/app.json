@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/index/profile",
     "pages/work/index",
     "pages/work/fill-in-sheet",
     "pages/work/monthly",

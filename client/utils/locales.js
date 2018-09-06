@@ -46,6 +46,9 @@ export default {
     contact: '联系方式',
     contributors: '贡献者',
 
+    changeProfile: '修改个人信息',
+    changeProfileSucceed: '修改个人信息成功',
+
     TARGET_POSITION: '哈工大博物馆',
     checkIn: '签到',
     checkedIn: '签到成功',
@@ -182,7 +185,7 @@ export default {
     409: 'Conflict with the server',
     500: 'Error on the server',
 
-    personalInfo: 'Personal information',
+    personalInfo: 'Profile',
     settings: 'Settings',
     about: 'About',
     version: 'Version',
@@ -195,6 +198,9 @@ export default {
     issueTracker: 'Issue tracker',
     docs: 'Documentation',
     contact: 'Contact',
+
+    changeProfile: 'Change profile',    
+    changeProfileSucceed: 'Changed profile successfully',
 
     TARGET_POSITION: 'Harbin Institute of Technology Museum',
     checkIn: 'Check in',

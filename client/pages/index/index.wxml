@@ -7,7 +7,7 @@
   <view class="desc">{{language.desc}}</view>
   <zan-panel title="{{language.personalInfo}}">
     <zan-cell-group>
-    <zan-cell>
+    <zan-cell is-link="{{logged}}" url="/pages/index/profile">
       <view class="flex-container">
         <view>
           <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
@@ -156,7 +156,7 @@
   bindclose="toggleLoginPopup"
 >
   <view class="field-popup">
-    <zan-panel title="{{language.fillInInfo}}">
+    <zan-panel title="{{language.register}}">
         <form  bindsubmit="submitInfo" bindreset="abandonInfo">
           <zan-field
             name="stuId"

@@ -1,6 +1,7 @@
 const event = require('../../utils/event');
 const request = require('../../utils/requests');
 const util = require('../../utils/util');
+const userAdapter = require('../../utils/user-adapter');
 
 let globalData = getApp().globalData;
 
@@ -98,7 +99,7 @@ Page({
             globalData.stuPassword = this.data.stuPassword;
             globalData.logged = true;
             globalData.token = res.data.token;
-            globalData.user = res.data.user;
+            globalData.user = userAdapter.getClientUser(res.data.user);
           }
         });
         
