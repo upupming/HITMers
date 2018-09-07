@@ -25,7 +25,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: this.data.language,
+      title: this.data.subject,
       path: `/pages/work/notice-content?subject=${this.data.subject}&content=${this.data.content}&time={${this.data.time}&user=${this.data.user}`
     };
   }
