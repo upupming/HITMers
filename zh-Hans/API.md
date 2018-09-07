@@ -481,12 +481,12 @@ endDay:4
 
 ```json
 [
-    {"notice_id":6,"created_by":"Z003","created_at":"2018-09-07T08:25:35.000Z","content":"测试通知", "user": {...}},
-    {"notice_id":5,"created_by":"Z003","created_at":"2018-09-07T08:20:03.000Z","content":null, "user": {...}},
-    {"notice_id":4,"created_by":"Z003","created_at":"2018-09-07T08:16:57.000Z","content":null, "user": {...}},
-    {"notice_id":3,"created_by":"Z003","created_at":"2018-09-07T08:14:21.000Z","content":null, "user": {...}},
-    {"notice_id":2,"created_by":"L003","created_at":"2018-09-06T16:00:00.000Z","content":"这是第二条通知", "user": {...}},
-    {"notice_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","content":"这是第一条通知"}, "user": {...}]
+    {"notice_id":6,"created_by":"Z003","created_at":"2018-09-07T08:25:35.000Z", "subject": "通知", "content":"测试通知", "user": {...}},
+    {"notice_id":5,"created_by":"Z003","created_at":"2018-09-07T08:20:03.000Z", "subject": "通知", "content":null, "user": {...}},
+    {"notice_id":4,"created_by":"Z003","created_at":"2018-09-07T08:16:57.000Z", "subject": "通知", "content":null, "user": {...}},
+    {"notice_id":3,"created_by":"Z003","created_at":"2018-09-07T08:14:21.000Z", "subject": "通知", "content":null, "user": {...}},
+    {"notice_id":2,"created_by":"L003","created_at":"2018-09-06T16:00:00.000Z", "subject": "通知", "content":"这是第二条通知", "user": {...}},
+    {"notice_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z", "subject": "通知", "content":"这是第一条通知"}, "user": {...}]
 ```
 
 ### POST
@@ -500,7 +500,7 @@ endDay:4
 请求 Body:
 
 ```json
-{content: '测试通知'}
+{subject: '通知', content: '测试通知'}
 ```
 
 返回：200 OK
@@ -510,6 +510,7 @@ endDay:4
     "notice_id": 7,
     "created_by": "Z003",
     "created_at": "2018-09-07T08:49:20.000Z",
+    "subject": "通知",
     "content": "测试通知",
     "user": {
         "id": "Z003",
@@ -541,6 +542,7 @@ endDay:4
     "notice_id": 7,
     "created_by": "Z003",
     "created_at": "2018-09-07T08:49:20.000Z",
+    "subject": "通知",
     "content": "测试通知",
     "user": {
         "id": "Z003",
