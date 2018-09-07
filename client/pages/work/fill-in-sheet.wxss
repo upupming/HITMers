@@ -42,7 +42,7 @@ td{
   box-sizing: border-box;
 }
 
-text {
+.grid {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,15 +53,15 @@ text {
   padding-bottom: 12rpx;
   box-sizing: border-box;
 }
-text:active {
+.grid:active {
   opacity: 0.5;
 }
 
 /* 小班长 */
-text:first-child {
+.grid:first-child {
   font-weight: bold;
 }
-text:last-child {
+.grid:last-child {
   border-bottom: 0;
 }
 
@@ -98,4 +98,17 @@ th:first-child,td:first-child {
 
 .studying {
   background: #99d3f9;
+}
+
+.title {
+  padding-top: 20rpx;
+  text-align: center; 
+  display: block;
+}
+
+.para {
+  padding: 10rpx;
+  font-size: 30rpx;
+  text-align: left;
+  display: block;
 }

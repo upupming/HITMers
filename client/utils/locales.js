@@ -177,7 +177,8 @@ export default {
     enterNotice: '请输入通知内容',
     noticeAdded: '通知发布成功',
 
-    appName: '哈工大博物馆小助手'
+    appName: '哈工大博物馆小助手',
+    shiftsRules: '值班规则'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -357,6 +358,7 @@ export default {
     enterNotice: 'Enter notice content',
     noticeAdded: 'Notice published successfully',
 
-    appName: 'HIT Museum Assistant'
+    appName: 'HIT Museum Assistant',
+    shiftsRules: 'Shifts rules'
   }
 };

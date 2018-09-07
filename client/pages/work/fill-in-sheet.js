@@ -51,6 +51,26 @@ Page({
     this.setComplement();
   },
 
+  getRules() {
+    request.getNotices()
+      .then(res => {
+        if(res.statusCode === 200) {
+          let notices = res.data;
+          let rules;
+          for(let notice of notices) {
+            console.log(notice.subject);
+            if(notice.subject.includes('值班规则')) {
+              rules = notice.content;
+              break;
+            }
+          }
+          if(rules) {
+            this.setData({rules});
+          }
+        }
+      });
+  },
+
   getWeight() {
     wx.pro.getSystemInfo()
       .then(res => {
@@ -121,6 +141,8 @@ Page({
         });
       }, 1500);
     });
+
+    this.getRules();
   },
 
   setLanguage() {
