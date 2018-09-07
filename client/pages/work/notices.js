@@ -10,8 +10,6 @@ Page({
   onLoad: function () {
     this.setLanguage();
     event.on('languageChanged', this, this.setLanguage);
-
-    this.fetchNotices();
   },
   setLanguage() {
     this.setData({
@@ -24,6 +22,8 @@ Page({
       wx.T.setNavigationBarTitle();
       this.data.shouldChangeTitle = false;
     }
+
+    this.fetchNotices();
   },
 
   fetchNotices() {

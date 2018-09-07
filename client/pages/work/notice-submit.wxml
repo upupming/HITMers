@@ -4,7 +4,6 @@
       <van-cell-group>
       <van-cell>
       <van-field
-        label="{{language.subject}}"
         placeholder="{{language.enterSubject}}"
         clearable
         required
@@ -17,6 +16,7 @@
         type="textarea"
         placeholder="{{language.enterNotice}}"
         autosize
+        required
         name="content"
       />
       </van-cell>
