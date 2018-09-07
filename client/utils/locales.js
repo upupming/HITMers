@@ -165,9 +165,9 @@ export default {
 
     video: '演示视频',
     foyer: '门厅',
-    one1: '第一展厅（1）',
-    one2: '第一展厅（2）',
-    one3: '第一展厅（3）'
+    one1: '第一展厅·中东铁路局管理时期',
+    one2: '第一展厅·东北沦陷时期',
+    one3: '第一展厅·中长铁路局管理时期'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -335,8 +335,8 @@ export default {
 
     video: 'Demo videos',
     foyer: 'Foyer',
-    one1: 'Exhibition hall 1 (1)',
-    one2: 'Exhibition hall 1 (2)',
-    one3: 'Exhibition hall 1 (3)'
+    one1: 'Exhibition hall 1 - Middle East Railway Administration Period',
+    one2: 'Exhibition hall 1 - Northeast Occurred Period',
+    one3: 'Exhibition hall 1 - Zhongchang Railway Bureau Occurred Period'
   }
 };

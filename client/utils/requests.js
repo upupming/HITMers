@@ -185,7 +185,7 @@ module.exports = {
 
   getRawVideoUrl(videoId, username, password) {    
     return request({
-      url: `https://" + ${username} + ":" + ${password} + "@api.streamable.com/videos/${videoId}`,
+      url: `https://" + ${username} + ":" + ${password} + "@${service.stream}/${videoId}`,
       method: 'GET'
     }).catch(errorHandler)
       .then(statusCodeChecker);

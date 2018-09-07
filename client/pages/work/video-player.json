@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "zan-loading": "../../zan-ui/loading/index",
+      
+      "van-toast": "../../van-ui/toast/index"
+  }
+}

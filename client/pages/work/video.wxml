@@ -1,6 +1,7 @@
 <view class="container">
   <van-cell-group>
-    <van-cell wx:for="{{videoIds}}" wx:for-item="video" title="{{language[video.key]}}" is-link url='./video-player?videoId={{video.value}}&videoDesc={{language[video.key]}}'>
+    <van-cell wx:for="{{videoIds}}" wx:for-item="video" is-link url='./video-player?videoId={{video.value}}&videoDesc={{language[video.key]}}' class="left">
+      <view class="left">{{language[video.key]}}</view>
     </van-cell>
   </van-cell-group>
 
