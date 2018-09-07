@@ -167,7 +167,17 @@ export default {
     foyer: '门厅',
     one1: '第一展厅·中东铁路局管理时期',
     one2: '第一展厅·东北沦陷时期',
-    one3: '第一展厅·中长铁路局管理时期'
+    one3: '第一展厅·中长铁路局管理时期',
+
+    notices: '通知',
+    time: '发布时间',
+    person: '发布者',
+    subject: '主题',
+    enterSubject: '请输入通知主题',
+    enterNotice: '请输入通知内容',
+    noticeAdded: '通知发布成功',
+
+    appName: '哈工大博物馆小助手'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -337,6 +347,16 @@ export default {
     foyer: 'Foyer',
     one1: 'Exhibition hall 1 - Middle East Railway Administration Period',
     one2: 'Exhibition hall 1 - Northeast Occurred Period',
-    one3: 'Exhibition hall 1 - Zhongchang Railway Bureau Occurred Period'
+    one3: 'Exhibition hall 1 - Zhongchang Railway Bureau Occurred Period',
+
+    notices: 'Notices',
+    time: 'Publish time',
+    person: 'Publisher',
+    subject: 'Subject',
+    enterSubject: 'Enter notice subject',
+    enterNotice: 'Enter notice content',
+    noticeAdded: 'Notice published successfully',
+
+    appName: 'HIT Museum Assistant'
   }
 };

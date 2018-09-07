@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "zan-loading": "../../zan-ui/loading/index",
+  
+    "van-toast": "../../van-ui/toast/index",
+    "van-notify": "../../van-ui/notify/index",
+    "van-card": "../../van-ui/card/index",
+    "van-cell": "../../van-ui/cell/index",
+    "van-cell-group": "../../van-ui/cell-group/index",
+    "van-icon": "../../van-ui/icon/index",
+    "van-popup": "../../van-ui/popup/index",
+    "van-panel": "../../van-ui/panel/index",
+    "van-field": "../../van-ui/field/index"
+  },
+  "enablePullDownRefresh": true
+}

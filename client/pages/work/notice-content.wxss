@@ -1,0 +1,16 @@
+.title {
+  padding-top: 40rpx;
+  text-align: center; 
+}
+
+.para {
+  padding: 10rpx;
+  font-size: 30rpx;
+  text-align: left;
+}
+
+.icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 20rpx 20rpx 0 0;
+}

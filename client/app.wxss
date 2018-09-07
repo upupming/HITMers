@@ -107,3 +107,7 @@ video {
   width: 680rpx;
   margin: 40rpx;
 }
+
+.left {
+  text-align: left;
+}

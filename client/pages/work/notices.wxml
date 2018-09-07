@@ -1,0 +1,16 @@
+<zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
+<view class="container" wx:else>
+  <view class="title">{{language.notices}}</view>
+  <van-cell
+    wx:for="{{notices}}"
+    wx:for-item="notice"
+    title="{{notice.timeInfo}}"
+    label="{{notice.userInfo}}"
+    is-link
+    url='./notice-content?subject={{notice.subject}}&content={{notice.content}}&time={{notice.timeInfo}}&user={{notice.userInfo}}'
+  >
+  <view class="left">{{notice.subject}}</view>
+  </van-cell>
+</view>
+
+<van-icon name="add" class="add" bindtap="newNotice"></van-icon>

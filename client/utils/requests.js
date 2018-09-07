@@ -189,5 +189,30 @@ module.exports = {
       method: 'GET'
     }).catch(errorHandler)
       .then(statusCodeChecker);
+  },
+  
+  getNotices() {
+    return request({
+      url: service.notice,
+      header: {
+        'x-access-token': globalData.token
+      },
+      method: 'GET'
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  addNotice(subject, content) {
+    return request({
+      url: service.notice,
+      method: 'POST',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: {
+        subject,
+        content
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);  
   }
 };

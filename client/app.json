@@ -8,7 +8,10 @@
     "pages/work/video",
     "pages/work/video-player",
     "pages/about/opensource",
-    "pages/about/privacy"
+    "pages/about/privacy",
+    "pages/work/notices",
+    "pages/work/notice-content",
+    "pages/work/notice-submit"
   ],
   "window":{
     "backgroundColor":"#49B1F5",

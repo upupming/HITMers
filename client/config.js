@@ -20,6 +20,7 @@ var config = {
     userAll: `${apiPath}/user/all`,
     check: `${apiPath}/check`,
     shift: `${apiPath}/shift`,
+    notice: `${apiPath}/notice`,
     
     stream: 'hitmers-api.solotime.xyz/videos'
   }

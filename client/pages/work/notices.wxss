@@ -1,0 +1,14 @@
+.title {
+  font-size: 50rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx; 
+}
+
+.add {
+  position: fixed;
+  bottom: 20rpx;
+  right: 40rpx;
+  font-size: 80rpx;
+  color: #1296db;
+}
