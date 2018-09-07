@@ -457,3 +457,9 @@ Returns: 200 OK
      "status": "working"
 }
 ```
+
+## Videos
+
+Format: `GET /videos/:shortcode`
+
+This API is a proxy of `https://api.streamable.com/videos/:shortcode`, see [Streamable API](https://streamable.com/documentation).

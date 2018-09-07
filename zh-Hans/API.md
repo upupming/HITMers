@@ -458,3 +458,9 @@ endDay:4
     "status": "working"
 }
 ```
+
+## 视频
+
+格式： `GET /videos/:shortcode`
+
+因为 streamable.com 没有备案,使用此 API 代理 `https://api.streamable.com/videos/:shortcode` 来获取视频源文件链接，参见 [Streamable API](https://streamable.com/documentation)。·
