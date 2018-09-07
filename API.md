@@ -463,3 +463,95 @@ Returns: 200 OK
 Format: `GET /videos/:shortcode`
 
 This API is a proxy of `https://api.streamable.com/videos/:shortcode`, see [Streamable API](https://streamable.com/documentation).
+
+## Notices
+
+### GET
+
+Format: `GET /v1/notice`
+
+Get all notices from newer to older.
+
+**Example: **
+
+`GET /v1/notice`
+
+Returns: 200 OK
+
+```json
+[
+    {"notice_id":6,"created_by":"Z003","created_at":"2018-09-07T08:25:35.000Z","content":"测试通知", "user": {...}},
+    {"notice_id":5,"created_by":"Z003","created_at":"2018-09-07T08:20:03.000Z","content":null, "user": {...}},
+    {"notice_id":4,"created_by":"Z003","created_at":"2018-09-07T08:16:57.000Z","content":null, "user": {...}},
+    {"notice_id":3,"created_by":"Z003","created_at":"2018-09-07T08:14:21.000Z","content":null, "user": {...}},
+    {"notice_id":2,"created_by":"L003","created_at":"2018-09-06T16:00:00.000Z","content":"这是第二条通知", "user": {...}},
+    {"notice_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","content":"这是第一条通知"}, "user": {...}]
+```
+
+### POST
+
+Format: `POST /v1/notice`
+
+**Example: **
+
+`POST /v1/notice`
+
+Request Body:
+
+```json
+{content: '测试通知'}
+```
+
+Returns: 200 OK
+
+```json
+{
+    "notice_id": 7,
+    "created_by": "Z003",
+    "created_at": "2018-09-07T08:49:20.000Z",
+    "content": "测试通知",
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
+
+### DELETE
+
+Format: `DELETE /v1/notice/:notice_id`
+
+**Example: **
+
+`DELETE /v1/notice/7`
+
+Returns: 200 OK
+
+```json
+{
+    "notice_id": 7,
+    "created_by": "Z003",
+    "created_at": "2018-09-07T08:49:20.000Z",
+    "content": "测试通知",
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
