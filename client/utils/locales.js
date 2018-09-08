@@ -185,7 +185,8 @@ export default {
     appName: '哈工大博物馆小助手',
     shiftsRules: '值班规则',
 
-    welcomeContribution: 'HITMers 是开源软件，欢迎任何人为它贡献代码，哪怕再小的贡献也非常欢迎！😃更多技术信息请阅读官方文档。'
+    welcomeContribution: 'HITMers 是开源软件，欢迎任何人为它贡献代码，哪怕再小的贡献也非常欢迎！😃更多技术信息请阅读官方文档。',
+    weProtectPravicy: 'HITmers 会非常谨慎地对待你的用户数据，竭尽所能不让用户的隐私被其他人窥探到。'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -373,6 +374,7 @@ export default {
     appName: 'HIT Museum Assistant',
     shiftsRules: 'Shifts rules',
 
-    welcomeContribution: 'HITMers is an open-source software, any minor contribution is welcome!😃 For technical support, please read documentation.'
+    welcomeContribution: 'HITMers is an open-source software, any minor contribution is welcome!😃 For technical support, please read documentation.',
+    weProtectPravicy: 'HITmers will treat your user data very carefully, and do everything we can to prevent the privacy of our users from being snooped by others.'
   }
 };

@@ -2,6 +2,9 @@
   <view class="top-title">{{language.privacy}}</view>
   <van-cell-group>
     <van-cell>
+      <view class="para">{{language.weProtectPravicy}}</view>
+    </van-cell>
+    <van-cell>
       <view class="title">{{language.collectedInfo.title}}</view>
       <view class="para">{{language.collectedInfo.text}}</view>
     </van-cell>
