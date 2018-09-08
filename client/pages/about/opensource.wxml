@@ -39,6 +39,10 @@
           <image src="../../images/upupming.jpeg" class="avatar"/>
           <view class="id">upupming</view>
         </view>
+        <view class="contributor">
+          <image src="../../images/suxiexian.jpg" class="avatar"/>
+          <view class="id">苏挟仙</view>
+        </view>
       </view>
     </van-cell>
     </van-cell-group>

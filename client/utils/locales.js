@@ -359,9 +359,9 @@ export default {
 
     video: 'Demo videos',
     foyer: 'Foyer',
-    one1: 'Exhibition hall 1 - Middle East Railway Administration Period',
-    one2: 'Exhibition hall 1 - Northeast Occurred Period',
-    one3: 'Exhibition hall 1 - Zhongchang Railway Bureau Occurred Period',
+    one1: 'Exhibition hall 1 - the management period of the Chinese Northeastern Railway Bureau',
+    one2: 'Exhibition hall 1 - the fall of  Northeastern China',
+    one3: 'Exhibition hall 1 - the management period of China Changchun Railway Bureau',
 
     notices: 'Notices',
     time: 'Publish time',
