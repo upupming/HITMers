@@ -22,7 +22,10 @@ var config = {
     shift: `${apiPath}/shift`,
     notice: `${apiPath}/notice`,
     
-    stream: 'hitmers-api.solotime.xyz/videos'
+    stream: 'https://hitmers-api.solotime.xyz/videos',
+    streamCDN: 'https://cdn-b-east.streamable.com/video/mp4',
+    streamCDNProxy: 'https://hitmers-api.solotime.xyz/mp4'
+
   }
 };
 
