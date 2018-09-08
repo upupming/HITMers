@@ -7,10 +7,10 @@
     "zan-button": "../../zan-ui/btn/index",
     "zan-dialog": "../../zan-ui/dialog/index",
     "zan-field": "../../zan-ui/field/index",
-    "zan-popup": "../../zan-ui/popup/index",
     "zan-loading": "../../zan-ui/loading/index",
     
     "van-toast": "../../van-ui/toast/index",
+    "van-popup": "../../van-ui/popup/index",
     "van-notify": "../../van-ui/notify/index" 
   }
 }

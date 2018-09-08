@@ -78,30 +78,32 @@ Page({
       showRegisterPopup: false
     });
   },
+  loginRequest(id, name, password) {
+    request.login(id, password)
+      .then(res => {
+        if(res.statusCode === 200) {
+          this.setData({
+            logged: true,
+            stuId: id,
+            stuName: name,
+            stuPassword: password
+          });
+          globalData.stuId = this.data.stuId;
+          globalData.stuName = this.data.stuName;
+          globalData.stuPassword = this.data.stuPassword;
+          globalData.logged = true;
+          globalData.token = res.data.token;
+          globalData.user = userAdapter.getClientUser(res.data.user);
+          util.show(this.data.language.loginSucceed, 'success');
+        }
+      });
+  },
   submitInfo(event) {
     if(this.isIdLegal(event.detail.value.stuId) && 
       this.isNameValid(event.detail.value.stuName) &&
       this.isPasswordLegal(event.detail.value.stuPassword)) {  
-      request.login(event.detail.value.stuId, event.detail.value.stuPassword)
-        .then(res => {
-          if(res.statusCode === 200) {
-            util.show(this.data.language.loginSucceed, 'success');
-            this.setData({
-              logged: true
-            });
-            this.setData({
-              stuId: event.detail.value.stuId,
-              stuName: event.detail.value.stuName,
-              stuPassword: event.detail.value.stuPassword
-            });
-            globalData.stuId = this.data.stuId;
-            globalData.stuName = this.data.stuName;
-            globalData.stuPassword = this.data.stuPassword;
-            globalData.logged = true;
-            globalData.token = res.data.token;
-            globalData.user = userAdapter.getClientUser(res.data.user);
-          }
-        });
+    
+      this.loginRequest(event.detail.value.stuId, event.detail.value.stuName, event.detail.value.stuPassword);
         
       this.setData({
         showLoginPopup: false
@@ -112,26 +114,27 @@ Page({
     let values = event.detail.value;
     if(this.isIdLegal(values.stuId) && 
       this.isNameValid(values.stuName) &&
-      this.isPasswordLegal(values.stuPassword)) {
+      this.isPasswordLegal(values.stuPassword) &&
+      this.isPasswordEqual(values.stuPassword, values.confirmPassword)) {  
+      this.setData({
+        showRegisterPopup: false
+      });
       request.register(
         {
           id: values.stuId,
           name: values.stuName,
-          identify: values.identify,
-          phone_number:values.phone_number,
-          language: values.language,
-          session: values.session,
-          email: values.email,
-          school: values.school,
           password: values.stuPassword
         },
         values.registerCode
       ).then(res => {
         if(res.statusCode === 200) {
           util.show(this.data.language.registerSucceed, 'success');
-          this.setData({
-            showRegisterPopup: false
-          });
+          this.loginRequest(values.stuId, values.stuName, values.stuPassword);
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/index/profile'
+            });
+          }, 1500);
         }
       });
     }
@@ -178,6 +181,13 @@ Page({
       return false;
     }
     return true;
+  },
+  isPasswordEqual(password, confirmPassword) {
+    if(password === confirmPassword) {
+      return true;
+    }
+    util.show(this.data.language.passwordNotMatch, 'fail');
+    return false;
   },
 
   submitPassword(event) {

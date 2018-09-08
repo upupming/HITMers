@@ -58,180 +58,138 @@
   </zan-panel>
 </view>
 
-<zan-popup
+<van-popup
   show="{{showRegisterPopup}}"
-  type="top"
-  bindclose="toggleRegisterPopup"
+  position="top"
+  bind:close="toggleRegisterPopup"
 >
-  <view class="field-popup">
-    <zan-panel title="{{language.fillInInfo}}">
-        <form  bindsubmit="submitRegister" bindreset="abandonRegister">
-          
-          <zan-field
-            name="registerCode"
-            title="{{language.registerCode.title}}"
-            placeholder="{{language.registerCode.placeholder}}"
-            inputType="text"
-          ></zan-field>
-
-          <zan-field
-            name="stuId"
-            title="{{language.stuId.title}}"
-            placeholder="{{language.stuId.placeholder}}"
-            inputType="text"
-          ></zan-field>
+  <zan-panel title="{{language.register}}">
+      <form  bindsubmit="submitRegister" bindreset="abandonRegister">
         
-          <zan-field
-            name="stuName"
-            title="{{language.stuName.title}}"
-            placeholder="{{language.stuName.placeholder}}"
-            inputType="text"
-          ></zan-field>    
-        
-          <zan-field
-            name="identify"
-            title="{{language.identify.title}}"
-            placeholder="{{language.identify.placeholder}}"
-            inputType="text"
-          ></zan-field>
+        <zan-field
+          name="registerCode"
+          title="{{language.registerCode.title}}"
+          placeholder="{{language.registerCode.placeholder}}"
+          inputType="text"
+        ></zan-field>
 
-          <zan-field
-            name="language"
-            title="{{language.stuLanguage.title}}"
-            placeholder="{{language.stuLanguage.placeholder}}"
-            inputType="text"
-          ></zan-field>
+        <zan-field
+          name="stuId"
+          title="{{language.stuId.title}}"
+          placeholder="{{language.stuId.placeholder}}"
+          inputType="text"
+        ></zan-field>
+      
+        <zan-field
+          name="stuName"
+          title="{{language.stuName.title}}"
+          placeholder="{{language.stuName.placeholder}}"
+          inputType="text"
+        ></zan-field>    
 
-          <zan-field
-            name="phone_number"
-            title="{{language.phone_number.title}}"
-            placeholder="{{language.phone_number.placeholder}}"
-            inputType="number"
-          ></zan-field>
-
-          <zan-field
-            name="session"
-            title="{{language.session.title}}"
-            placeholder="{{language.session.placeholder}}"
-            inputType="number"
-          ></zan-field>
-
-          <zan-field
-            name="email"
-            title="{{language.email.title}}"
-            placeholder="{{language.email.placeholder}}"
-            inputType="text"
-          ></zan-field>
-
-          <zan-field
-            name="school"
-            title="{{language.school.title}}"
-            placeholder="{{language.school.placeholder}}"
-            inputType="text"
-          ></zan-field>
-
-          <zan-field
-            name="stuPassword"
-            title="{{language.stuPassword.title}}"
-            placeholder="{{language.stuPassword.placeholder}}"
-            value="{{ stuPassword }}"
-            inputType="password"
-          ></zan-field>    
-
-          <zan-button-group class="horizontal-buttons">
-            <button type="warn" form-type="reset" class="button-wrap">
-              {{language.cancel}}
-            </button>
-            <button type="primary" form-type="submit" class="button-wrap">
-              {{language.confirm}}
-            </button>
-          </zan-button-group>
-
-      </form>
-    </zan-panel>
-  </view>
-</zan-popup>
-
-<zan-popup
-  show="{{showLoginPopup}}"
-  type="top"
-  bindclose="toggleLoginPopup"
->
-  <view class="field-popup">
-    <zan-panel title="{{language.register}}">
-        <form  bindsubmit="submitInfo" bindreset="abandonInfo">
-          <zan-field
-            name="stuId"
-            title="{{language.stuId.title}}"
-            placeholder="{{language.stuId.placeholder}}"
-            value="{{ stuId }}"
-            inputType="text"
-          ></zan-field>
-        
-          <zan-field
-            name="stuName"
-            title="{{language.stuName.title}}"
-            placeholder="{{language.stuName.placeholder}}"
-            value="{{ stuName }}"
-            inputType="text"
-          ></zan-field>    
-        
-          <zan-field
+        <zan-field
           name="stuPassword"
           title="{{language.stuPassword.title}}"
           placeholder="{{language.stuPassword.placeholder}}"
-          value="{{ stuPassword }}"
           inputType="password"
         ></zan-field>    
 
-          <zan-button-group class="horizontal-buttons">
-            <button type="warn" form-type="reset" class="button-wrap">
+        <zan-field
+          name="confirmPassword"
+          title="{{language.confirmPassword.title}}"
+          placeholder="{{language.confirmPassword.placeholder}}"
+          inputType="password"
+        ></zan-field>    
+
+        <zan-button-group class="horizontal-buttons">
+          <button type="warn" form-type="reset" class="button-wrap">
+            {{language.cancel}}
+          </button>
+          <button type="primary" form-type="submit" class="button-wrap">
+            {{language.confirm}}
+          </button>
+        </zan-button-group>
+
+    </form>
+  </zan-panel>
+</van-popup>
+
+<van-popup
+  show="{{showLoginPopup}}"
+  position="top"
+  bind:close="toggleLoginPopup"
+>
+  <zan-panel title="{{language.login}}">
+      <form  bindsubmit="submitInfo" bindreset="abandonInfo">
+        <zan-field
+          name="stuId"
+          title="{{language.stuId.title}}"
+          placeholder="{{language.stuId.placeholder}}"
+          value="{{ stuId }}"
+          inputType="text"
+        ></zan-field>
+      
+        <zan-field
+          name="stuName"
+          title="{{language.stuName.title}}"
+          placeholder="{{language.stuName.placeholder}}"
+          value="{{ stuName }}"
+          inputType="text"
+        ></zan-field>    
+      
+        <zan-field
+        name="stuPassword"
+        title="{{language.stuPassword.title}}"
+        placeholder="{{language.stuPassword.placeholder}}"
+        value="{{ stuPassword }}"
+        inputType="password"
+      ></zan-field>    
+
+        <zan-button-group class="horizontal-buttons">
+          <button type="warn" form-type="reset" class="button-wrap">
+            {{language.cancel}}
+          </button>
+          <button type="primary" form-type="submit" class="button-wrap">
+            {{language.confirm}}
+          </button>
+        </zan-button-group>
+
+    </form>
+  </zan-panel>
+</van-popup>
+
+<van-popup
+  show="{{showChangePasswordPopup}}"
+  position="top"
+  bind:close="toggleChangePasswordPopup"
+>
+  <zan-panel title="{{language.changePassword}}">
+      <form  bindsubmit="submitPassword" bindreset="abandonPassword">
+        <zan-field
+          name="oldPassword"
+          title="{{language.oldPassword.title}}"
+          placeholder="{{language.oldPassword.placeholder}}"
+          inputType="password"
+        ></zan-field>
+      
+        <zan-field
+          name="newPassword"
+          title="{{language.newPassword.title}}"
+          placeholder="{{language.newPassword.placeholder}}"
+          inputType="password"
+        ></zan-field>  
+
+        <zan-button-group class="horizontal-buttons">
+          <button type="warn" form-type="reset" class="button-wrap">
               {{language.cancel}}
             </button>
-            <button type="primary" form-type="submit" class="button-wrap">
-              {{language.confirm}}
-            </button>
-          </zan-button-group>
-
-      </form>
-    </zan-panel>
-  </view>
-</zan-popup>
-
-<zan-popup
-  show="{{showChangePasswordPopup}}"
-  type="top"
-  bindclose="toggleChangePasswordPopup"
->
-  <view class="field-popup">
-    <zan-panel title="{{language.changePassword}}">
-        <form  bindsubmit="submitPassword" bindreset="abandonPassword">
-          <zan-field
-            name="oldPassword"
-            title="{{language.oldPassword.title}}"
-            placeholder="{{language.oldPassword.placeholder}}"
-            inputType="password"
-          ></zan-field>
-        
-          <zan-field
-            name="newPassword"
-            title="{{language.newPassword.title}}"
-            placeholder="{{language.newPassword.placeholder}}"
-            inputType="password"
-          ></zan-field>  
-
-          <zan-button-group class="horizontal-buttons">
-            <button type="warn" form-type="reset" class="button-wrap">
-                {{language.cancel}}
-              </button>
-            <button type="primary" form-type="submit" class="button-wrap">
-              {{language.confirm}}
-            </button>
-          </zan-button-group>
-      </form>
-    </zan-panel>
-  </view>
-</zan-popup>
+          <button type="primary" form-type="submit" class="button-wrap">
+            {{language.confirm}}
+          </button>
+        </zan-button-group>
+    </form>
+  </zan-panel>
+</van-popup>
 
 
 <van-toast id="van-toast"></van-toast>
