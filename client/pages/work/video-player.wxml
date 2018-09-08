@@ -1,7 +1,7 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view class="container" wx:else>
   <view class="title">{{videoDesc}}</view>
-  <video src="{{videoUrl}}"></video>
+  <video src="{{videoUrl}}" autoplay="{{true}}" loop="{{true}}"></video>
 </view>
 
 <van-toast id="van-toast"></van-toast>
