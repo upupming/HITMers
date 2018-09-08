@@ -2,7 +2,8 @@
   <van-cell-group>
     <van-cell>
       <view class="title"><image src="../../images/copyright.svg" class="icon" />{{language.license}}</view>
-      <view class="para">MIT Copyright (c) 2018 upupming</view>
+      <view class="para">MIT License Copyright (c) 2018 upupming</view>
+      <view class="para">{{language.welcomeContribution}}</view>
     </van-cell>
     <van-cell>
       <view class="title"><image src="../../images/documentation.svg" class="icon" />{{language.docs}}</view>

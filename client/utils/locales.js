@@ -183,7 +183,9 @@ export default {
     noticeAdded: '通知发布成功',
 
     appName: '哈工大博物馆小助手',
-    shiftsRules: '值班规则'
+    shiftsRules: '值班规则',
+
+    welcomeContribution: 'HITMers 是开源软件，欢迎任何人为它贡献代码，哪怕再小的贡献也非常欢迎！😃更多技术信息请阅读官方文档。'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -369,6 +371,8 @@ export default {
     noticeAdded: 'Notice published successfully',
 
     appName: 'HIT Museum Assistant',
-    shiftsRules: 'Shifts rules'
+    shiftsRules: 'Shifts rules',
+
+    welcomeContribution: 'HITMers is an open-source software, any minor contribution is welcome!😃 For technical support, please read documentation.'
   }
 };
