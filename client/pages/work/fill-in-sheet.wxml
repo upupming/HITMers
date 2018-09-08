@@ -55,39 +55,37 @@
 </scroll-view>
 </view>
 
-<zan-popup
+<van-popup
   show="{{showFillInSheetPopup}}"
-  type="top"
-  bindclose="toggleFillInSheetPopup"
+  position="top"
+  bind:close="toggleFillInSheetPopup"
 >
-  <view class="field-popup">
-    <zan-panel title="{{language.fillInSheet}}">
-      <form  bindsubmit="submitShift" bindreset="abandonShift">
-          <zan-cell title="{{language.date}}">
-            <view>{{language.months[monthIndices[selectedDayIndex]] + ' ' + language.days[dayIndices[selectedDayIndex]] + ' ' + language.weekDays[selectedDayIndex]}}</view>
-          </zan-cell>
-          <zan-cell title="{{language.period}}">
-            <view>{{language[selectedPeriod]}}</view>
-          </zan-cell>
-          <zan-cell title="{{language.status}}">
-            <picker mode="selector" range="{{language.statuses}}" value="{{0}}" bindchange="changeStatus">
-              <view class="picker">{{language.statuses[statusIndex]}}<van-icon name="edit" style="padding: 20rpx;" /></view>
-            </picker>
-          </zan-cell>
-          
+  <zan-panel title="{{language.fillInSheet}}">
+    <form  bindsubmit="submitShift" bindreset="abandonShift">
+        <zan-cell title="{{language.date}}">
+          <view>{{language.months[monthIndices[selectedDayIndex]] + ' ' + language.days[dayIndices[selectedDayIndex]] + ' ' + language.weekDays[selectedDayIndex]}}</view>
+        </zan-cell>
+        <zan-cell title="{{language.period}}">
+          <view>{{language[selectedPeriod]}}</view>
+        </zan-cell>
+        <zan-cell title="{{language.status}}">
+          <picker mode="selector" range="{{language.statuses}}" value="{{0}}" bindchange="changeStatus">
+            <view class="picker">{{language.statuses[statusIndex]}}<van-icon name="edit" style="padding: 20rpx;" /></view>
+          </picker>
+        </zan-cell>
+        
 
-          <zan-button-group class="horizontal-buttons">
-            <button type="warn" form-type="reset" class="button-wrap">
-                {{language.cancel}}
-              </button>
-            <button type="primary" form-type="submit" class="button-wrap">
-              {{language.confirm}}
+        <zan-button-group class="horizontal-buttons">
+          <button type="warn" form-type="reset" class="button-wrap">
+              {{language.cancel}}
             </button>
-          </zan-button-group>
-      </form>
-    </zan-panel>
-  </view>
-</zan-popup>
+          <button type="primary" form-type="submit" class="button-wrap">
+            {{language.confirm}}
+          </button>
+        </zan-button-group>
+    </form>
+  </zan-panel>
+</van-popup>
 
 <zan-dialog id="fill-in-sheet-dialog"></zan-dialog>
 <van-toast id="van-toast"></van-toast>

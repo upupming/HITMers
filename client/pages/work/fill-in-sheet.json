@@ -2,7 +2,6 @@
   "usingComponents": {
       "zan-loading": "../../zan-ui/loading/index",
       "zan-dialog": "../../zan-ui/dialog/index",
-      "zan-popup": "../../zan-ui/popup/index",
       "zan-field": "../../zan-ui/field/index",
       "zan-cell": "../../zan-ui/cell/index",
       "zan-toast": "../../zan-ui/toast/index",
@@ -10,6 +9,7 @@
 
       "van-toast": "../../van-ui/toast/index",
       "van-notify": "../../van-ui/notify/index",
+      "van-popup": "../../van-ui/popup/index",
       "van-icon": "../../van-ui/icon/index" 
   },
   "enablePullDownRefresh": true

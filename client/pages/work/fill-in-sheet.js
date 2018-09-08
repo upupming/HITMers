@@ -58,7 +58,6 @@ Page({
           let notices = res.data;
           let rules;
           for(let notice of notices) {
-            console.log(notice.subject);
             if(notice.subject.includes('值班规则')) {
               rules = notice.content;
               break;
