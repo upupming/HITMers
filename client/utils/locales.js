@@ -99,6 +99,11 @@ export default {
       title: '密码',
       placeholder: '请输入密码'
     },
+    confirmPassword: {
+      title: '确认密码',
+      placeholder: '请再次输入密码'
+    },
+    passwordNotMatch: '密码不匹配',
     oldPassword: {
       title: '原密码',
       placeholder: '请输入原密码'
@@ -208,7 +213,7 @@ export default {
     200: 'Request success',
     401: 'Wrong password/token, please login again',
     403: 'Insufficient priviledges',
-    404: 'Wrong input, please input again',
+    404: 'Wrong enter, please enter again',
     409: 'Conflict with the server',
     500: 'Error on the server',
 
@@ -267,25 +272,30 @@ export default {
     fillInInfo: 'Fill in user information',
     stuId: {
       title: 'ID',
-      placeholder: 'Please input your ID',
+      placeholder: 'Please enter your ID',
       illegal: 'ID is invalid'
     },
     stuName: {
       title: 'Name',
-      placeholder: 'Please input your name',
+      placeholder: 'Please enter your name',
       illegal: 'Name is invalid, and only Chinese name is supported'
     },
     stuPassword: {
       title: 'Password',
-      placeholder: 'Please input your password'
+      placeholder: 'Please enter your password'
     },
+    confirmPassword: {
+      title: 'Confirm password',
+      placeholder: 'Please enter your password again'
+    },
+    passwordNotMatch: 'Passwords do not match',
     oldPassword: {
       title: 'Old password',
-      placeholder: 'Please input your old password'
+      placeholder: 'Please enter your old password'
     },
     newPassword: {
       title: 'New password',
-      placeholder: 'Please input a new password'
+      placeholder: 'Please enter a new password'
     },
     identify: {
       title: 'Identity',
@@ -293,27 +303,27 @@ export default {
     },
     phone_number: {
       title: 'Phone number',
-      placeholder: 'Please input your phone number'
+      placeholder: 'Please enter your phone number'
     },
     stuLanguage: {
       title: 'language',
-      placeholder: '中英/中文/英文/韩文/俄文/日文'
+      placeholder: '中英/中文/英文/韩文/中俄/俄文/日文'
     },
     session: {
       title: 'Session',
-      placeholder: 'Please input your session'
+      placeholder: 'Please enter your session'
     },
     email: {
       title: 'Email',
-      placeholder: 'Please input your Email'
+      placeholder: 'Please enter your Email'
     },
     school: {
       title: 'School',
-      placeholder: 'Please input your school'
+      placeholder: 'Please enter your school'
     },
     registerCode: {
       title: 'Register code',
-      placeholder: 'Please input your register code'
+      placeholder: 'Please enter your register code'
     },
     confirm: 'Confirm',
     save: 'Save',

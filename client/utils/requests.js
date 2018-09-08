@@ -3,6 +3,7 @@ const request = wx.pro.request;
 const service = require('../config').service;
 import Notify from '../van-ui/notify/index';
 import Toast from '../van-ui/toast/index';
+const Base64 = require('./base64.min.js').Base64;
 
 const globalData = getApp().globalData;
 
@@ -22,7 +23,7 @@ function statusCodeChecker(res) {
     // });
   } else {
     Notify({
-      text: globalData.language.requestError + ': ' + res.statusCode + ' ' + globalData.language[res.statusCode]
+      text: globalData.language.requestError + ': ' + res.statusCode + ' ' + globalData.language[res.statusCode] + ' ' + JSON.stringify(res.data)
     });
     // Throw error with message from the server
     throw Error(res.data);
@@ -184,9 +185,13 @@ module.exports = {
   },
 
   getRawVideoUrl(videoId, username, password) {    
+    let auth = 'Basic ' + Base64.encode(username + ':' + password);
     return request({
-      url: `https://" + ${username} + ":" + ${password} + "@${service.stream}/${videoId}`,
-      method: 'GET'
+      url: `${service.stream}/${videoId}`,
+      method: 'GET',
+      header: {
+        Authorization: auth
+      }
     }).catch(errorHandler)
       .then(statusCodeChecker);
   },
