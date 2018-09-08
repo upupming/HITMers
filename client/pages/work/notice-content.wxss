@@ -1,6 +1,8 @@
 .title {
   padding-top: 40rpx;
-  text-align: center; 
+  text-align: center;
+  font-size: 60rpx; 
+  font-weight: bold;
 }
 
 .para {
@@ -13,4 +15,8 @@
   width: 30rpx;
   height: 30rpx;
   padding: 20rpx 20rpx 0 0;
+}
+.info {
+  color: #1296db;
+  text-align: center;
 }
