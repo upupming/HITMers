@@ -8,4 +8,8 @@
 
 ![](_media/check.svg ':size=30')  Check in/out
 
-![](_media/monthly.svg ':size=30')  Monthly overview
+![](_media/monthly.svg ':size=30')  Shifts calender overview
+
+![](_media/video.svg ':size=30')  Demo videos
+
+![](_media/notices.svg ':size=30')  Notice center

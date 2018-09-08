@@ -1,6 +1,6 @@
 ![logo](_media/logo.jpg)
 
-# HIT Museum Assistant <small>Developing...</small>
+# HIT Museum Assistant <small>0.0.4</small>
 
 > An organized lifestyle in HIT Museum.
 

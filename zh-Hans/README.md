@@ -10,5 +10,8 @@
 
 ![](../_media/monthly.svg ':size=30')  本月概览
 
+![](../_media/video.svg ':size=30')  示范视频
+
+![](../_media/notices.svg ':size=30')  通知中心
 
 
