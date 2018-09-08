@@ -16,10 +16,12 @@ Page({
       'session',
       'email',
       'school'
-    ],
-    user: globalData.user
+    ]
   },
   onLoad: function () {
+    this.setData({
+      user: globalData.user
+    });
     this.setLanguage();
     event.on('languageChanged', this, this.setLanguage);
   },

@@ -3,9 +3,9 @@
     "van-toast": "../../van-ui/toast/index",
     "van-cell": "../../van-ui/cell/index",
     "van-cell-group": "../../van-ui/cell-group/index",
+    "van-popup": "../../van-ui/popup/index",
 
     "zan-panel": "../../zan-ui/panel/index",
-    "zan-popup": "../../zan-ui/popup/index",
     "zan-field": "../../zan-ui/field/index"
   }
 }

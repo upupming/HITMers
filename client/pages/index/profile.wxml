@@ -5,35 +5,33 @@
   </van-cell-group>
 </view>
 
-<zan-popup
+<van-popup
   show="{{showChangeProfilePopup}}"
-  type="top"
-  bindclose="toggleChangeProfilePopup"
+  position="top"
+  bind:close="toggleChangeProfilePopup"
 >
-  <view class="field-popup">
-    <zan-panel title="{{language.changeProfile}}">
-        <form  bindsubmit="submitInfo" bindreset="abandonInfo">
-          <zan-field
-            name="{{selectedProfile}}"
-            title="{{language[selectedProfile].title}}"
-            placeholder="{{language[selectedProfile].placeholder}}"
-            value="{{ user[selectedProfile] }}"
-            inputType="text"
-          ></zan-field>
+  <zan-panel title="{{language.changeProfile}}">
+      <form  bindsubmit="submitInfo" bindreset="abandonInfo">
+        <zan-field
+          name="{{selectedProfile}}"
+          title="{{language[selectedProfile].title}}"
+          placeholder="{{language[selectedProfile].placeholder}}"
+          value="{{ user[selectedProfile] }}"
+          inputType="text"
+        ></zan-field>
 
-          <zan-button-group class="horizontal-buttons">
-            <button type="warn" form-type="reset" class="button-wrap">
-              {{language.cancel}}
-            </button>
-            <button type="primary" form-type="submit" class="button-wrap">
-              {{language.confirm}}
-            </button>
-          </zan-button-group>
+        <zan-button-group class="horizontal-buttons">
+          <button type="warn" form-type="reset" class="button-wrap">
+            {{language.cancel}}
+          </button>
+          <button type="primary" form-type="submit" class="button-wrap">
+            {{language.confirm}}
+          </button>
+        </zan-button-group>
 
-      </form>
-    </zan-panel>
-  </view>
-</zan-popup>
+    </form>
+  </zan-panel>
+</van-popup>
 
 
 <van-toast id="van-toast"></van-toast>
