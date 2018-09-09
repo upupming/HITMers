@@ -10,6 +10,6 @@
 
 ![](_media/monthly.svg ':size=30')  Shifts calender overview
 
-![](_media/video.svg ':size=30')  Demo videos
+![](_media/video.svg ':size=30')  Videos
 
 ![](_media/notices.svg ':size=30')  Notice center
