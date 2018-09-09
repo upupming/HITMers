@@ -10,6 +10,8 @@
     "zan-loading": "../../zan-ui/loading/index",
     
     "van-toast": "../../van-ui/toast/index",
+    "van-cell": "../../van-ui/cell/index",
+    "van-icon": "../../van-ui/icon/index",
     "van-popup": "../../van-ui/popup/index",
     "van-notify": "../../van-ui/notify/index" 
   }

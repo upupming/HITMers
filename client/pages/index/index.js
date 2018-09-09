@@ -2,6 +2,7 @@ const event = require('../../utils/event');
 const request = require('../../utils/requests');
 const util = require('../../utils/util');
 const userAdapter = require('../../utils/user-adapter');
+const update = require('../../utils/update');
 
 let globalData = getApp().globalData;
 
@@ -218,5 +219,9 @@ Page({
     this.setData({
       logged: false
     });
+  },
+
+  update() {
+    update(this.data.language);
   }
 });

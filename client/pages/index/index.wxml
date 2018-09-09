@@ -48,9 +48,9 @@
     </zan-cell>
   </zan-panel>
   <zan-panel title="{{language.about}}">
-    <zan-cell title="{{language.version}}">
+    <van-cell title="{{language.version}}" bindtap="update" icon="upgrade" is-link>
       {{language.currentVersion}}
-    </zan-cell>
+    </van-cell>
     <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
     </zan-cell>
     <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy">

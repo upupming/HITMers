@@ -4,6 +4,7 @@ import './utils/wxPromise.min.js';
 import locales from './utils/locales';
 import T from './utils/i18n';
 require('./prototypes');
+const update = require('./utils/update');
 
 T.registerLocale(locales);
 let savedGlobalData = wx.getStorageSync('globalData');
@@ -31,6 +32,8 @@ App({
         // Check in/out status
         checkedIn: false
       };
+    
+    update(this.globalData.language);
   },
 
   onHide: function() {
