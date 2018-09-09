@@ -1,5 +1,9 @@
+.container {
+  padding: 45rpx 15rpx 0;
+}
+
 .title {
-  padding-top: 40rpx;
+  padding: 20rpx;
   text-align: center;
   font-size: 60rpx; 
   font-weight: bold;
@@ -19,4 +23,5 @@
 .info {
   color: #1296db;
   text-align: center;
+  padding-bottom: 30rpx;
 }
