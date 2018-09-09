@@ -64,8 +64,9 @@ Page({
       .then(res => {
         if(res.statusCode === 200) {
           util.show(this.data.language.changeProfileSucceed, 'success');
+          globalData.user = userAdapter.getClientUser(res.data);
           this.setData({
-            user: userAdapter.getClientUser(res.data)
+            user: globalData.user
           });
         }
       });
