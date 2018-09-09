@@ -52,5 +52,5 @@ Page({
 
   onPullDownRefresh() {
     this.fetchNotices();
-  },
+  }
 });

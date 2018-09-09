@@ -37,6 +37,8 @@ Page({
       });
   },
   abandonNotice() {
-    this.toggleAddPopup();
+    wx.navigateBack({
+      delta: 1
+    });
   },
 });

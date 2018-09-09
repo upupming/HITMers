@@ -14,3 +14,6 @@
 </view>
 
 <van-icon name="add" class="add" bindtap="newNotice"></van-icon>
+
+<van-toast id="van-toast"></van-toast>
+<van-notify id="van-notify"></van-notify>
