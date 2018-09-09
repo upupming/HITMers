@@ -130,14 +130,6 @@
         ></zan-field>
       
         <zan-field
-          name="stuName"
-          title="{{language.stuName.title}}"
-          placeholder="{{language.stuName.placeholder}}"
-          value="{{ stuName }}"
-          inputType="text"
-        ></zan-field>    
-      
-        <zan-field
         name="stuPassword"
         title="{{language.stuPassword.title}}"
         placeholder="{{language.stuPassword.placeholder}}"

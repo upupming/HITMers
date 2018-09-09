@@ -78,14 +78,14 @@ Page({
       showRegisterPopup: false
     });
   },
-  loginRequest(id, name, password) {
+  loginRequest(id, password) {
     request.login(id, password)
       .then(res => {
         if(res.statusCode === 200) {
           this.setData({
             logged: true,
             stuId: id,
-            stuName: name,
+            stuName: res.data.user.name,
             stuPassword: password
           });
           globalData.stuId = this.data.stuId;
@@ -100,10 +100,9 @@ Page({
   },
   submitInfo(event) {
     if(this.isIdLegal(event.detail.value.stuId) && 
-      this.isNameValid(event.detail.value.stuName) &&
       this.isPasswordLegal(event.detail.value.stuPassword)) {  
     
-      this.loginRequest(event.detail.value.stuId, event.detail.value.stuName, event.detail.value.stuPassword);
+      this.loginRequest(event.detail.value.stuId, event.detail.value.stuPassword);
         
       this.setData({
         showLoginPopup: false
@@ -129,7 +128,7 @@ Page({
       ).then(res => {
         if(res.statusCode === 200) {
           util.show(this.data.language.registerSucceed, 'success');
-          this.loginRequest(values.stuId, values.stuName, values.stuPassword);
+          this.loginRequest(values.stuId, values.stuPassword);
           setTimeout(() => {
             wx.navigateTo({
               url: '/pages/index/profile'
