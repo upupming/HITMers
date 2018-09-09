@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-toast": "../../van-ui/toast/index",
+    "van-notify": "../../van-ui/notify/index",
     "van-cell": "../../van-ui/cell/index",
     "van-cell-group": "../../van-ui/cell-group/index",
     "van-popup": "../../van-ui/popup/index",

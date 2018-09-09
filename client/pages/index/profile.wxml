@@ -1,5 +1,6 @@
 <view class="container">
   <van-cell-group>
+    <van-cell title="{{language.stuId.title}}" value="{{user.stuId}}"></van-cell>
     <van-cell wx:for="{{profiles}}" wx:for-item="profile" title="{{language[profile].title}}" is-link bindtap="updateUser" id="{{profile}}" value="{{user[profile]}}">
     </van-cell>
   </van-cell-group>
@@ -35,3 +36,4 @@
 
 
 <van-toast id="van-toast"></van-toast>
+<van-notify id="van-notify"></van-notify>

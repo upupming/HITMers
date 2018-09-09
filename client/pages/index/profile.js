@@ -8,7 +8,6 @@ let globalData = getApp().globalData;
 Page({
   data: {
     profiles: [
-      'stuId',
       'stuName',
       'identify',
       'stuLanguage',
