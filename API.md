@@ -501,7 +501,7 @@ Format: `POST /v1/notice`
 Request Body:
 
 ```json
-{subject: '通知', content: '测试通知'}
+{"subject": "通知", "content": "测试通知"}
 ```
 
 Returns: 200 OK
@@ -545,6 +545,102 @@ Returns: 200 OK
     "created_at": "2018-09-07T08:49:20.000Z",
     "subject": "通知",
     "content": "测试通知",
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
+
+## Streamable videos
+
+### GET
+
+Format: `GET /v1/video`
+
+Get all videos from newer to older.
+
+**Example: **
+
+`GET /v1/video`
+
+Returns: 200 OK
+
+```json
+[
+    {"video_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","video_code":"c9zrn","subject":"视频标题","desc":"视频描述","user":{...}}
+]
+```
+
+### POST
+
+Format: `POST /v1/video`
+
+**Example: **
+
+`POST /v1/video`
+
+Request Body:
+
+```json
+{
+    "subject": "video subject"
+    "desc": "video desc"
+    "video_code": "c9zrn"
+}
+```
+
+Returns: 200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
+
+### DELETE
+
+Format: `DELETE /v1/video/:video_id`
+
+**Example: **
+
+`DELETE /v1/video/2`
+
+Returns: 200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
     "user": {
         "id": "Z003",
         "name": "张三",
