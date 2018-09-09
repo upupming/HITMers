@@ -9,3 +9,12 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+
+
+.add {
+  position: fixed;
+  bottom: 20rpx;
+  right: 40rpx;
+  font-size: 80rpx;
+  color: #25EC7E;
+}

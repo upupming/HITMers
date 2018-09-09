@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "van-cell": "../../van-ui/cell/index",
-    "van-cell-group": "../../van-ui/cell-group/index"
-  }
+    "van-cell-group": "../../van-ui/cell-group/index",
+    "van-toast": "../../van-ui/toast/index",
+    "van-notify": "../../van-ui/notify/index",
+    "van-icon": "../../van-ui/icon/index"
+  },
+  "enablePullDownRefresh": true
 }

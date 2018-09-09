@@ -1,5 +1,27 @@
+.container {
+  padding: 45rpx 0 0;
+}
+
 .title {
-  font-size: 40rpx;
-  font-weight: bold;
+  padding: 20rpx;
   text-align: center;
+  font-size: 60rpx; 
+  font-weight: bold;
+}
+
+.para {
+  padding: 20rpx;
+  font-size: 30rpx;
+  text-align: left;
+}
+
+.icon {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 20rpx 20rpx 0 0;
+}
+.info {
+  color: #25EC7E;
+  text-align: center;
+  padding-bottom: 30rpx;
 }

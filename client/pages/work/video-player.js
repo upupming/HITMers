@@ -7,13 +7,14 @@ Page({
     loading: true
   },
   onLoad(params) {
-    request.getRawVideoUrl(params.videoId, video.username, video.password)
+    this.setData(params);
+
+    request.getRawVideoUrl(params.video_code, video.username, video.password)
       .then(res => {
         let url = res.data.files['mp4'].url;
         url.replace((new RegExp(config.service.streamCDN), 'gi'), config.service.streamCDNProxy);
         this.setData({
           videoUrl: 'https:' + url,
-          videoDesc: params.videoDesc,
           loading: false
         });
       });

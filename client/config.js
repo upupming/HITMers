@@ -21,6 +21,7 @@ var config = {
     check: `${apiPath}/check`,
     shift: `${apiPath}/shift`,
     notice: `${apiPath}/notice`,
+    video: `${apiPath}/video`,
     
     stream: 'https://hitmers-api.solotime.xyz/videos',
     streamCDN: 'https://cdn-b-east.streamable.com/video/mp4',

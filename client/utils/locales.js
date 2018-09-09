@@ -169,10 +169,12 @@ export default {
     enterNote: '记录我的生活',
 
     video: '演示视频',
-    foyer: '门厅',
-    one1: '第一展厅·中东铁路局管理时期',
-    one2: '第一展厅·东北沦陷时期',
-    one3: '第一展厅·中长铁路局管理时期',
+    submitVideo: '提交视频',
+    videoDesc: '视频简介',
+    enterVideoDesc: '请输入视频简介',
+    enterVideoSubject: '请输入视频主题',
+    enterVideoCode: '请输如 Streamable 视频代码',
+    videoAdded: '视频发布成功',
 
     notices: '通知',
     time: '发布时间',
@@ -357,12 +359,14 @@ export default {
     note: 'Note',
     enterNote: 'Note my life',
 
-    video: 'Demo videos',
-    foyer: 'Foyer',
-    one1: 'Exhibition hall 1 - the management period of the Chinese Northeastern Railway Bureau',
-    one2: 'Exhibition hall 1 - the fall of  Northeastern China',
-    one3: 'Exhibition hall 1 - the management period of China Changchun Railway Bureau',
-
+    video: 'Videos',
+    submitVideo: 'Submit video',
+    videoDesc: 'Video description',
+    enterVideoDesc: 'Enter video description',
+    enterVideoSubject: 'Enter video subject',
+    enterVideoCode: 'Enter streamable video code',
+    videoAdded: 'Video published successfully',
+    
     notices: 'Notices',
     time: 'Publish time',
     person: 'Publisher',

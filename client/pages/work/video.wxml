@@ -1,9 +1,17 @@
 <view class="container">
   <van-cell-group>
-    <van-cell wx:for="{{videoIds}}" wx:for-item="video" is-link url='./video-player?videoId={{video.value}}&videoDesc={{language[video.key]}}' class="left">
-      <view class="left">{{language[video.key]}}</view>
+    <van-cell 
+      wx:for="{{videos}}" wx:for-item="video" 
+      is-link url='./video-player?video_code={{video.video_code}}&desc={{video.desc}}&time={{video.timeInfo}}&user={{video.userInfo}}&subject={{video.subject}}' 
+      title="{{video.timeInfo}}"
+      label="{{video.userInfo}}"
+    >
+      <view class="left">{{video.subject}}</view>
     </van-cell>
   </van-cell-group>
-
-  <view class="footer">By 王义戈 & 吕梦圆</view>
 </view>
+
+<van-toast id="van-toast"></van-toast>
+<van-notify id="van-notify"></van-notify>
+
+<van-icon name="add" class="add" bindtap="newVideo"></van-icon>

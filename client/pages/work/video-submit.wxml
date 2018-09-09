@@ -1,0 +1,44 @@
+<view class="container">
+  <van-panel title="{{language.submitVideo}}">
+    <form  bindsubmit="submitVideo" bindreset="abandonVideo">
+      <van-cell-group>
+      <van-cell>
+      <van-field
+        placeholder="{{language.enterVideoCode}}"
+        clearable
+        required
+        name ="video_code"
+      />
+      <van-field
+        placeholder="{{language.enterVideoSubject}}"
+        clearable
+        required
+        name ="subject"
+      />
+      </van-cell>
+      <van-cell>
+      <van-field
+        type="textarea"
+        placeholder="{{language.enterVideoDesc}}"
+        autosize
+        required
+        name="desc"
+      />
+      </van-cell>
+      </van-cell-group>
+
+      <van-button-group class="horizontal-buttons">
+        <button type="warn" form-type="reset" class="button-wrap">
+            {{language.cancel}}
+          </button>
+        <button type="primary" form-type="submit" class="button-wrap">
+          {{language.confirm}}
+        </button>
+      </van-button-group>
+      
+    </form>
+  </van-panel>
+</view>
+
+<van-toast id="van-toast"></van-toast>
+<van-notify id="van-notify"></van-notify>

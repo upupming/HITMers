@@ -219,5 +219,31 @@ module.exports = {
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);  
+  },
+
+  getVideos() {
+    return request({
+      url: service.video,
+      header: {
+        'x-access-token': globalData.token
+      },
+      method: 'GET'
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  addVideo(subject, desc, video_code) {
+    return request({
+      url: service.video,
+      method: 'POST',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: {
+        subject,
+        desc,
+        video_code
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);  
   }
 };
