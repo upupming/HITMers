@@ -42,6 +42,7 @@
 The user has been added successfully.
 ```
 
+?> 如果试图注册的 id 在数据库中已经存在，将返回 409 Conflict。
 
 ## 登录
 
@@ -264,6 +265,8 @@ Users have been deleted successfully.
 ?> 在示例 1 中第一个请求的数组中有的用户查询不到，将直接忽略并不返回任何错误信息。如需新增用户请使用 `POST`。
 
 ?> 在示例 2 中修改了用户 id，对应的用户需要再次获取 token，因为服务端以 token 解密之后的 id 判断用户是否具有访问权限。
+
+?> 如果试图修改的 id 在数据库中已经存在，将返回 409 Conflict。
 
 ## 签到
 

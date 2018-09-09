@@ -42,7 +42,7 @@ Returns: 200 OK
 The user has been added successfully.
 ```
 
-
+?> If the user id already exists in the database, 409 Conflict will be returned.
 
 
 ## Login
@@ -264,6 +264,8 @@ Returns: 200 OK
 ?> User `W00995` of the array in first request in Example 1 cannot be found, it will be ignored directly and no error messages will be returned. Please use `POST` if you want to add users.
 
 ?> In Example 2, the user id is modified, and the corresponding user needs to acquire the token again because the server determines whether the user is permitted to request by verifying the `id` payload decrypted from the token.
+
+?> If the updated user id already exists in the database, 409 Conflict will be returned.
 
 ## Checks
 
