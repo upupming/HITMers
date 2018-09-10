@@ -1,6 +1,8 @@
 # HITMers
 
-Wechat mini-program client for [HITMers Node.js Server](https://github.com/upupming/HITMers-node-js-server).
+<p align="center">
+<img src="./images/qrcode8x8.jpg"><br>Wechat mini-program client for <a href="https://github.com/upupming/HITMers-node-js-server">HITMers Node.js Server</a>.
+</p>
 
 ## 已实现/待完成功能
 
