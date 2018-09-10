@@ -1,4 +1,4 @@
-![logo](_media/logo.jpg)
+![logo](_media/qrcode15x15.jpg)
 
 # HIT Museum Assistant <small>0.0.6</small>
 

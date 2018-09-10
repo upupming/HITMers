@@ -1,4 +1,4 @@
-![logo](../_media/logo.jpg)
+![logo](../_media/qrcode15x15.jpg)
 
 # 哈工大博物馆小助手 <small>0.0.6</small>
 
