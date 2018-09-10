@@ -4,14 +4,14 @@
 
 # 主要功能
 
-![](../_media/sheet.svg ':size=30')  值班表实时查询
+[![](../_media/sheet.svg ':size=30')  值班表实时查询](zh-Hans/shifts.md)
 
-![](../_media/check.svg ':size=30')  签到/签出
+[![](../_media/check.svg ':size=30')  签到/签出](zh-Hans/check.md)
 
-![](../_media/monthly.svg ':size=30')  本月概览
+[![](../_media/monthly.svg ':size=30')  值班日历](zh-Hans/calender.md)
 
-![](../_media/video.svg ':size=30')  视频共享
+[![](../_media/video.svg ':size=30')  视频共享](zh-Hans/video.md)
 
-![](../_media/notices.svg ':size=30')  通知中心
+[![](../_media/notices.svg ':size=30')  通知中心](zh-Hans/notice.md)
 
 

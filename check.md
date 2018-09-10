@@ -1,6 +1,4 @@
-# Guides
-
-## Check-in/Check-out
+# Check in/out
 
 Each check-in/check-out is valid only when both time constraint and location constraint are met.
 

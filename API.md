@@ -1,4 +1,4 @@
-# API
+# RESTful API
 
 |Environment|API Address|
 |---|--------|
