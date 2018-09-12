@@ -114,27 +114,33 @@ export default {
     },
     identify: {
       title: '身份',
-      placeholder: '老师/队长/讲解员/馆藏人员'
+      placeholder: '老师/队长/讲解员/馆藏人员',
+      illegal: '身份不合法'
     },
     phone_number: {
       title: '手机号码',
-      placeholder: '请输入手机号码'
+      placeholder: '请输入手机号码',
+      illegal: '手机号码不合法'
     },
     stuLanguage: {
       title: '语言',
-      placeholder: '中英/中文/英文/韩文/俄文/日文'
+      placeholder: '中英/中文/英文/韩文//中俄/俄文/日文',
+      illegal: '语言不合法'
     },
     session: {
       title: '届数',
-      placeholder: '请输入届数'
+      placeholder: '请输入届数',
+      illegal: '届数不合法'
     },
     email: {
       title: '邮箱',
-      placeholder: '请输入邮箱'
+      placeholder: '请输入邮箱',
+      illegal: '邮箱不合法'
     },
     school: {
       title: '学院',
-      placeholder: '请输入学院'
+      placeholder: '请输入学院',
+      illegal: '学院不合法'
     },
     registerCode: {
       title: '注册码',
@@ -286,7 +292,7 @@ export default {
     stuName: {
       title: 'Name',
       placeholder: 'Please enter your name',
-      illegal: 'Name is invalid, and only Chinese name is supported'
+      illegal: 'Invalid name, and only Chinese name is supported'
     },
     stuPassword: {
       title: 'Password',
@@ -307,27 +313,33 @@ export default {
     },
     identify: {
       title: 'Identity',
-      placeholder: '老师/队长/讲解员/馆藏人员'
+      placeholder: '老师/队长/讲解员/馆藏人员',
+      illegal: 'Invalid identity'
     },
     phone_number: {
       title: 'Phone number',
-      placeholder: 'Please enter your phone number'
+      placeholder: 'Please enter your phone number',
+      illegal: 'Illegal phone number'
     },
     stuLanguage: {
-      title: 'language',
-      placeholder: '中英/中文/英文/韩文/中俄/俄文/日文'
+      title: 'Language',
+      placeholder: '中英/中文/英文/韩文/中俄/俄文/日文',
+      illegal: 'Invalid language'
     },
     session: {
       title: 'Session',
-      placeholder: 'Please enter your session'
+      placeholder: 'Please enter your session',
+      illegal: 'Invalid session'
     },
     email: {
       title: 'Email',
-      placeholder: 'Please enter your Email'
+      placeholder: 'Please enter your Email',
+      illegal: 'Invalid email'
     },
     school: {
       title: 'School',
-      placeholder: 'Please enter your school'
+      placeholder: 'Please enter your school',
+      illegal: 'Invalid school'
     },
     registerCode: {
       title: 'Register code',

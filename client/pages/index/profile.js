@@ -2,6 +2,7 @@ import event from '../../utils/event';
 const util = require('../../utils/util');
 const request = require('../../utils/requests');
 const userAdapter = require('../../utils/user-adapter');
+const isValid = require('../../utils/profile-checker');
 
 let globalData = getApp().globalData;
 
@@ -17,6 +18,7 @@ Page({
       'school'
     ]
   },
+
   onLoad: function () {
     this.setData({
       user: globalData.user
@@ -57,19 +59,21 @@ Page({
     });
   },
   submitInfo(event) {
-    let updatedUser = this.data.user;
-    updatedUser[this.data.selectedProfile] = event.detail.value[this.data.selectedProfile];
-    request.updateUser(this.data.user.id, userAdapter.getServerUser(updatedUser))
-      .then(res => {
-        if(res.statusCode === 200) {
-          util.show(this.data.language.changeProfileSucceed, 'success');
-          globalData.user = userAdapter.getClientUser(res.data);
-          this.setData({
-            user: globalData.user
-          });
-        }
-      });
-
+    if(isValid(this.data.selectedProfile, event.detail.value[this.data.selectedProfile])) {
+      let updatedUser = this.data.user;
+      updatedUser[this.data.selectedProfile] = event.detail.value[this.data.selectedProfile];
+      request.updateUser(this.data.user.id, userAdapter.getServerUser(updatedUser))
+        .then(res => {
+          if(res.statusCode === 200) {
+            util.show(this.data.language.changeProfileSucceed, 'success');
+            globalData.user = userAdapter.getClientUser(res.data);
+            this.setData({
+              user: globalData.user
+            });
+          }
+        });
+    }
+    
     this.toggleChangeProfilePopup();
   }
 });

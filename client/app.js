@@ -33,6 +33,9 @@ App({
         checkedIn: false
       };
     
+    // load all update in locales.js
+    this.globalData.language = wx.T.getLanguage();
+
     update(this.globalData.language);
   },
 

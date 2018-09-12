@@ -5,8 +5,8 @@
     "van-cell": "../../van-ui/cell/index",
     "van-cell-group": "../../van-ui/cell-group/index",
     "van-popup": "../../van-ui/popup/index",
+    "van-field": "../../van-ui/field/index",
 
-    "zan-panel": "../../zan-ui/panel/index",
-    "zan-field": "../../zan-ui/field/index"
+    "zan-panel": "../../zan-ui/panel/index"
   }
 }

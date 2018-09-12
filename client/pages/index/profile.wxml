@@ -13,13 +13,13 @@
 >
   <zan-panel title="{{language.changeProfile}}">
       <form  bindsubmit="submitInfo" bindreset="abandonInfo">
-        <zan-field
+        <van-field
           name="{{selectedProfile}}"
-          title="{{language[selectedProfile].title}}"
+          label="{{language[selectedProfile].title}}"
           placeholder="{{language[selectedProfile].placeholder}}"
           value="{{ user[selectedProfile] }}"
-          inputType="text"
-        ></zan-field>
+          type="text"
+        ></van-field>
 
         <zan-button-group class="horizontal-buttons">
           <button type="warn" form-type="reset" class="button-wrap">
