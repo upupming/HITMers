@@ -1,6 +1,6 @@
 ![logo](../_media/qrcode15x15.jpg)
 
-# 哈工大博物馆小助手 <small>0.0.6</small>
+# 哈工大博物馆小助手 <small>0.0.7</small>
 
 > 一种在哈工大博物馆更有计划的生活方式
 

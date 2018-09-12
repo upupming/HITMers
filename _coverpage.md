@@ -1,6 +1,6 @@
 ![logo](_media/qrcode15x15.jpg)
 
-# HIT Museum Assistant <small>0.0.6</small>
+# HIT Museum Assistant <small>0.0.7</small>
 
 > An organized lifestyle in HIT Museum.
 
