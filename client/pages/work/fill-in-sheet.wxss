@@ -1,4 +1,5 @@
 table{
+  border: 30rpx solid #99d3f9;
   display: inline-flex;
   flex-direction: row;
   background: linear-gradient(to right, #5d8ef1, #25b7c4);
@@ -111,4 +112,29 @@ th:first-child,td:first-child {
   font-size: 30rpx;
   text-align: left;
   display: block;
+}
+
+.card-title {
+  display: block;
+  font-weight: bold;
+  font-size: 40rpx;
+  padding: 10rpx 0;
+  text-align: center;
+}
+.card-title text {
+  text-align: center;
+}
+.card-title van-icon {
+  position: absolute;
+  left: 20rpx;
+}
+.card-icon {
+  padding-top: 10rpx;
+  color: red;
+}
+.card-icon:hover {
+  color: rgba(223, 223, 223 0.5);
+}
+.rules {
+  color: #99d3f9;
 }

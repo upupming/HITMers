@@ -35,7 +35,9 @@ Page({
 
     // anchor
     windowHeight: 0,
-    toView: ''
+    toView: '',
+
+    showRules: true
   },
 
   onLoad() {
@@ -64,7 +66,10 @@ Page({
             }
           }
           if(rules) {
-            this.setData({rules});
+            this.setData({
+              rules,
+              showRules: true
+            });
           }
         }
       });
@@ -81,6 +86,11 @@ Page({
 
   onPullDownRefresh() {
     this.fetchShifts();
+  },
+
+  pullDownRefresh() {
+    wx.startPullDownRefresh();
+    this.fetchShifts().then(wx.stopPullDownRefresh);
   },
 
   setComplement() {
@@ -119,7 +129,7 @@ Page({
 
   // Get shifts information
   fetchShifts() {
-    request.getShifts({
+    return request.getShifts({
       startMonth: this.data.monthIndices[0] + 1,
       startDay: this.data.dayIndices[0] + 1,
       endMonth: this.data.monthIndices[6] + 1,
@@ -139,9 +149,9 @@ Page({
           delta: 1
         });
       }, 1500);
+    }).then(() => {
+      this.getRules();
     });
-
-    this.getRules();
   },
 
   setLanguage() {
@@ -251,5 +261,16 @@ Page({
   saveClickPosition(event) {
     this.data.scrollTop = event.detail.y;
     this.data.scrollLeft = event.detail.x;
+  },
+
+  closeRules() {
+    this.setData({
+      showRules: false
+    });
+  },
+  showRules() {
+    this.setData({
+      showRules: true
+    });
   }
 });

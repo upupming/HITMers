@@ -1,8 +1,11 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view wx:else>
   <van-cell>
-    <view class="title">{{language.shiftsRules}}</view>
-    <view class="para">
+    <view class="card-title">
+        <van-icon bind:click="closeRules" custom-class="card-icon" name="close" wx:if="{{showRules}}" />
+        <text bindtap="showRules" class="rules">{{language.shiftsRules}}</text>
+    </view>
+    <view class="para"  wx:if="{{showRules}}">
       <text>{{rules}}</text>
     </view>
   </van-cell>
