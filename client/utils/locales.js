@@ -176,13 +176,21 @@ export default {
 
     video: '演示视频',
     submitVideo: '提交视频',
-    videoDesc: '视频简介',
-    enterVideoDesc: '请输入视频简介',
-    enterVideoSubject: '请输入视频主题',
-    enterVideoCode: '请输如 Streamable 视频代码',
     videoAdded: '视频发布成功',
     streamable: {
+      label: 'Streamable 视频代码',
+      placeholder: '请输如 5 位 Streamable 视频代码',
       illegal: '非法 Streamable 代码'
+    },
+    videoSubject: {
+      label: '视频标题',
+      placeholder: '请输入视频标题',
+      illegal: '非法视频标题'
+    },
+    videoDesc: {
+      label: '视频简介',
+      placeholder: '请输入视频简介',
+      illegal: '非法视频简介'
     },
 
     notices: '通知',
@@ -192,6 +200,16 @@ export default {
     enterSubject: '请输入通知主题',
     enterNotice: '请输入通知内容',
     noticeAdded: '通知发布成功',
+    noticeSubject: {
+      label: '通知标题',
+      placeholder: '请输入通知标题',
+      illegal: '非法通知标题'
+    },
+    noticeContent: {
+      label: '通知内容',
+      placeholder: '请输入通知内容',
+      illegal: '非法通知内容'
+    },
 
     appName: '哈工大博物馆小助手',
     shiftsRules: '值班规则',
@@ -379,13 +397,21 @@ export default {
 
     video: 'Videos',
     submitVideo: 'Submit video',
-    videoDesc: 'Video description',
-    enterVideoDesc: 'Enter video description',
-    enterVideoSubject: 'Enter video subject',
-    enterVideoCode: 'Enter Streamable video code',
     videoAdded: 'Video published successfully',
     streamable: {
+      label: 'Streamable video code',
+      placeholder: 'Enter 5-digit Streamable video code',
       illegal: 'Invalid Streamable video code'
+    },
+    videoSubject: {
+      label: 'Video subject',
+      placeholder: 'Enter video subject',
+      illegal: 'Invalid video subject'
+    },
+    videoDesc: {
+      label: 'Video description',
+      placeholder: 'Enter video description',
+      illegal: 'Invalid video description'
     },
     
     notices: 'Notices',
@@ -395,6 +421,16 @@ export default {
     enterSubject: 'Enter notice subject',
     enterNotice: 'Enter notice content',
     noticeAdded: 'Notice published successfully',
+    noticeSubject: {
+      label: 'Notice subject',
+      placeholder: 'Enter notice subject',
+      illegal: 'Invalid notice subject'
+    },
+    noticeContent: {
+      label: 'Notice content',
+      placeholder: 'Enter notice content',
+      illegal: 'Invalid notice content'
+    },
 
     appName: 'HIT Museum Assistant',
     shiftsRules: 'Shifts rules',

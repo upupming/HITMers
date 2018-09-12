@@ -1,26 +1,21 @@
 <view class="container">
   <van-panel title="{{language.notice}}">
     <form  bindsubmit="submitNotice" bindreset="abandonNotice">
-      <van-cell-group>
-      <van-cell>
       <van-field
-        placeholder="{{language.enterSubject}}"
+        label="{{language.noticeSubject.label}}"
+        placeholder="{{language.noticeSubject.placeholder}}"
         clearable
         required
         name ="subject"
-      />
-      </van-cell>
-      <van-cell>
+      ></van-field>
       <van-field
-        label="{{language.notice}}"
+        label="{{language.noticeContent.label}}"
+        placeholder="{{language.noticeContent.placeholder}}"
         type="textarea"
-        placeholder="{{language.enterNotice}}"
-        autosize
+        input-class="input"
         required
         name="content"
-      />
-      </van-cell>
-      </van-cell-group>
+      ></van-field>
 
       <van-button-group class="horizontal-buttons">
         <button type="warn" form-type="reset" class="button-wrap">
