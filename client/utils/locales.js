@@ -36,17 +36,17 @@ export default {
     settings: '设置',
     about: '关于',
     version: '版本',
-    currentVersion: '0.0.6',
+    currentVersion: '0.0.7',
     opensource: '开源声明',
 
     privacy: '隐私权政策',
     collectedInfo: {
       title: '收集的信息',
-      text: '我们会收集用户个人信息、值班信息、签到信息。你的个人信息（密码除外）和签到信息只对自己和诸如老师、队长等其他管理员可见，你的值班信息对所有人可见。'
+      text: '我们会收集用户个人信息、值班信息、签到信息。您的个人信息（密码除外）和签到信息只对自己和诸如老师、队长等其他管理员可见，您的值班信息对所有人可见。'
     },
     whyCollectInfo: {
       title: '为什么要收集信息',
-      text: '我们使用你的个人信息验证你的请求，与你取得联系，统计好博物馆现有人员。你所有的值班和签到信息只会用于分析你当前的工作状态。'
+      text: '我们使用您的个人信息验证您的请求，与您取得联系，统计好博物馆现有人员。您所有的值班和签到信息只会用于分析您当前的工作状态。'
     },
 
     license: '协议和版权',
@@ -215,10 +215,10 @@ export default {
     shiftsRules: '值班规则',
 
     welcomeContribution: 'HITMers 是开源软件，欢迎任何人为它贡献代码，哪怕再小的贡献也非常欢迎！😃更多技术信息请阅读官方文档。',
-    weProtectPravicy: 'HITMers 会非常谨慎地对待你的用户数据，竭尽所能不让用户的隐私被其他人窥探到。',
+    weProtectPravicy: 'HITMers 会非常谨慎地对待您的用户数据，竭尽所能不让用户的隐私被其他人窥探到。',
     update: '更新提示',
     updateIsReady: '新版本已经准备好，是否重启应用？',
-    noUpdate: '你当前使用的是最新版本'
+    noUpdate: '您当前使用的是最新版本'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -256,7 +256,7 @@ export default {
     settings: 'Settings',
     about: 'About',
     version: 'Version',
-    currentVersion: '0.0.6',
+    currentVersion: '0.0.7',
     opensource: 'Open source',
     contributors: 'Contributors',
 
