@@ -221,21 +221,22 @@ Page({
               text: that.data.language.confirm,
               color: '#49B1F5'
             }]
+          }).then(() => {
+            if(res.result.elements[0].distance > MAX_DISTANCE) {
+              Dialog({
+                title: that.data.language.tooFarFrom,
+                message: that.data.language.pleaseArrive + ' ' + that.data.language.TARGET_POSITION,
+                selector: '#location-not-valid-dialog',
+                buttons: [{
+                  text: that.data.language.confirm,
+                  color: '#49B1F5'
+                }]
+              });
+              resolve(false);
+            } else {
+              resolve(true);
+            }
           });
-          if (res.result.elements[0].distance > MAX_DISTANCE) {
-            Dialog({
-              title: that.data.language.tooFarFrom,
-              message: that.data.language.pleaseArrive + ' ' + that.data.language.TARGET_POSITION,
-              selector: '#location-not-valid-dialog',
-              buttons: [{
-                text: that.data.language.confirm,
-                color: '#49B1F5'
-              }]
-            });
-            resolve(false);
-          } else {
-            resolve(true);
-          }
         },
         fail: res => {
           util.show(that.data.language.calDistanceFailed + ': ' + res.message, 'fail');
@@ -255,8 +256,8 @@ Page({
           if(res) {
             request.addCheck(globalData.stuId, this.data.checkedIn ? false : true, shift === 1)
               .then(() => {
-                util.show(this.data.checkedIn ? this.data.language.checkedOut : this.data.language.checkedIn, 'success');
                 this.setData({checkedIn: !this.data.checkedIn});
+                util.show(this.data.checkedIn ? this.data.language.checkedOut : this.data.language.checkedIn, 'success');
               });
           }
         });
