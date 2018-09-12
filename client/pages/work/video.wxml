@@ -1,4 +1,5 @@
-<view class="container">
+<zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
+<view class="container" wx:else>
   <van-cell-group>
     <van-cell 
       wx:for="{{videos}}" wx:for-item="video" 

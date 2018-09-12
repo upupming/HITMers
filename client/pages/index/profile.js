@@ -2,7 +2,7 @@ import event from '../../utils/event';
 const util = require('../../utils/util');
 const request = require('../../utils/requests');
 const userAdapter = require('../../utils/user-adapter');
-const isValid = require('../../utils/profile-checker');
+const isValid = require('../../utils/format-checker');
 
 let globalData = getApp().globalData;
 

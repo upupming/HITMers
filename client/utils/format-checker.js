@@ -45,6 +45,13 @@ module.exports = (profile, value) => {
       util.show(globalData.language.school.illegal, 'fail');
       return false;
     }
+    break;
+  case 'streamable':
+    if(!/^.{5}$/gm.test(value)) {
+      util.show(globalData.language.streamable.illegal, 'fail');
+      return false;
+    }
+    break;
   }
   return true;
 };

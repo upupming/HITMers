@@ -181,6 +181,9 @@ export default {
     enterVideoSubject: '请输入视频主题',
     enterVideoCode: '请输如 Streamable 视频代码',
     videoAdded: '视频发布成功',
+    streamable: {
+      illegal: '非法 Streamable 代码'
+    },
 
     notices: '通知',
     time: '发布时间',
@@ -379,8 +382,11 @@ export default {
     videoDesc: 'Video description',
     enterVideoDesc: 'Enter video description',
     enterVideoSubject: 'Enter video subject',
-    enterVideoCode: 'Enter streamable video code',
+    enterVideoCode: 'Enter Streamable video code',
     videoAdded: 'Video published successfully',
+    streamable: {
+      illegal: 'Invalid Streamable video code'
+    },
     
     notices: 'Notices',
     time: 'Publish time',

@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "zan-loading": "../../zan-ui/loading/index",
+
     "van-cell": "../../van-ui/cell/index",
     "van-cell-group": "../../van-ui/cell-group/index",
     "van-toast": "../../van-ui/toast/index",

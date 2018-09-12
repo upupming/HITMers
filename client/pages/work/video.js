@@ -3,6 +3,7 @@ const request = require('../../utils/requests');
 
 Page({
   data: {
+    loading: true
   },
 
   onLoad: function () {
