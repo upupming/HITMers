@@ -36,7 +36,6 @@
         <van-field
           id="note-for-{{selectedDay}}"
           value="{{notes[selectedYear - notesStartYear][selectedMonth][selectedDay]}}"
-          label="{{language.note}}"
           type="textarea"
           placeholder="{{language.enterNote}}"
           autosize
