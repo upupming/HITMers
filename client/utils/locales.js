@@ -188,7 +188,7 @@ export default {
     shiftsRules: '值班规则',
 
     welcomeContribution: 'HITMers 是开源软件，欢迎任何人为它贡献代码，哪怕再小的贡献也非常欢迎！😃更多技术信息请阅读官方文档。',
-    weProtectPravicy: 'HITmers 会非常谨慎地对待你的用户数据，竭尽所能不让用户的隐私被其他人窥探到。',
+    weProtectPravicy: 'HITMers 会非常谨慎地对待你的用户数据，竭尽所能不让用户的隐私被其他人窥探到。',
     update: '更新提示',
     updateIsReady: '新版本已经准备好，是否重启应用？',
     noUpdate: '你当前使用的是最新版本'
@@ -382,7 +382,7 @@ export default {
     shiftsRules: 'Shifts rules',
 
     welcomeContribution: 'HITMers is an open-source software, any minor contribution is welcome!😃 For technical support, please read documentation.',
-    weProtectPravicy: 'HITmers will treat your user data very carefully, and do everything we can to prevent the privacy of our users from being snooped by others.',
+    weProtectPravicy: 'HITMers will treat your user data very carefully, and do everything we can do to prevent the privacy of our users from being snooped by others.',
     update: 'Update',
     updateIsReady: 'Update is ready, relaunch?',
     noUpdate: 'HITMers is up-to-date now'

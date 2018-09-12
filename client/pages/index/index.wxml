@@ -48,13 +48,16 @@
     </zan-cell>
   </zan-panel>
   <zan-panel title="{{language.about}}">
-    <van-cell title="{{language.version}}" bindtap="update" icon="upgrade" is-link>
-      {{language.currentVersion}}
-    </van-cell>
-    <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
-    </zan-cell>
-    <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy">
-    </zan-cell>
+    <zan-cell-group>
+      <zan-cell title="{{language.version}}" bindtap="update">
+        <view>{{language.currentVersion}}</view>
+        <van-icon name="upgrade" slot="footer"></van-icon>
+      </zan-cell>
+      <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
+      </zan-cell>
+      <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy">
+      </zan-cell>
+    </zan-cell-group>
   </zan-panel>
 </view>
 
@@ -66,40 +69,40 @@
   <zan-panel title="{{language.register}}">
       <form  bindsubmit="submitRegister" bindreset="abandonRegister">
         
-        <zan-field
+        <van-field
           name="registerCode"
-          title="{{language.registerCode.title}}"
+          label="{{language.registerCode.title}}"
           placeholder="{{language.registerCode.placeholder}}"
-          inputType="text"
-        ></zan-field>
+          type="text"
+        ></van-field>
 
-        <zan-field
+        <van-field
           name="stuId"
-          title="{{language.stuId.title}}"
+          label="{{language.stuId.title}}"
           placeholder="{{language.stuId.placeholder}}"
-          inputType="text"
-        ></zan-field>
+          type="text"
+        ></van-field>
       
-        <zan-field
+        <van-field
           name="stuName"
-          title="{{language.stuName.title}}"
+          label="{{language.stuName.title}}"
           placeholder="{{language.stuName.placeholder}}"
-          inputType="text"
-        ></zan-field>    
+          type="text"
+        ></van-field>    
 
-        <zan-field
+        <van-field
           name="stuPassword"
-          title="{{language.stuPassword.title}}"
+          label="{{language.stuPassword.title}}"
           placeholder="{{language.stuPassword.placeholder}}"
-          inputType="password"
-        ></zan-field>    
+          type="password"
+        ></van-field>    
 
-        <zan-field
+        <van-field
           name="confirmPassword"
-          title="{{language.confirmPassword.title}}"
+          label="{{language.confirmPassword.title}}"
           placeholder="{{language.confirmPassword.placeholder}}"
-          inputType="password"
-        ></zan-field>    
+          type="password"
+        ></van-field>    
 
         <zan-button-group class="horizontal-buttons">
           <button type="warn" form-type="reset" class="button-wrap">
@@ -121,21 +124,21 @@
 >
   <zan-panel title="{{language.login}}">
       <form  bindsubmit="submitInfo" bindreset="abandonInfo">
-        <zan-field
+        <van-field
           name="stuId"
-          title="{{language.stuId.title}}"
+          label="{{language.stuId.title}}"
           placeholder="{{language.stuId.placeholder}}"
           value="{{ stuId }}"
-          inputType="text"
-        ></zan-field>
+          type="text"
+        ></van-field>
       
-        <zan-field
-        name="stuPassword"
-        title="{{language.stuPassword.title}}"
-        placeholder="{{language.stuPassword.placeholder}}"
-        value="{{ stuPassword }}"
-        inputType="password"
-      ></zan-field>    
+        <van-field
+          name="stuPassword"
+          label="{{language.stuPassword.title}}"
+          placeholder="{{language.stuPassword.placeholder}}"
+          value="{{ stuPassword }}"
+          type="password"
+        ></van-field>    
 
         <zan-button-group class="horizontal-buttons">
           <button type="warn" form-type="reset" class="button-wrap">
@@ -157,19 +160,19 @@
 >
   <zan-panel title="{{language.changePassword}}">
       <form  bindsubmit="submitPassword" bindreset="abandonPassword">
-        <zan-field
+        <van-field
           name="oldPassword"
-          title="{{language.oldPassword.title}}"
+          label="{{language.oldPassword.title}}"
           placeholder="{{language.oldPassword.placeholder}}"
-          inputType="password"
-        ></zan-field>
+          type="password"
+        ></van-field>
       
-        <zan-field
+        <van-field
           name="newPassword"
-          title="{{language.newPassword.title}}"
+          label="{{language.newPassword.title}}"
           placeholder="{{language.newPassword.placeholder}}"
-          inputType="password"
-        ></zan-field>  
+          type="password"
+        ></van-field>  
 
         <zan-button-group class="horizontal-buttons">
           <button type="warn" form-type="reset" class="button-wrap">

@@ -23,8 +23,8 @@
 
 .logo {
   width: 90rpx;
-  height: 80rpx;
-  border-radius: 60%;
+  height: 90rpx;
+  border-radius: 50%;
 }
 
 .desc {

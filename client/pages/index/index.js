@@ -80,7 +80,7 @@ Page({
     });
   },
   loginRequest(id, password) {
-    request.login(id, password)
+    return request.login(id, password)
       .then(res => {
         if(res.statusCode === 200) {
           this.setData({
@@ -129,12 +129,10 @@ Page({
       ).then(res => {
         if(res.statusCode === 200) {
           util.show(this.data.language.registerSucceed, 'success');
-          this.loginRequest(values.stuId, values.stuPassword);
-          setTimeout(() => {
-            wx.navigateTo({
-              url: '/pages/index/profile'
+          this.loginRequest(values.stuId, values.stuPassword)
+            .then(() => {
+              wx.navigateTo({url: '/pages/index/profile'});
             });
-          }, 1500);
         }
       });
     }

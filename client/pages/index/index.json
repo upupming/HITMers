@@ -6,9 +6,9 @@
     "zan-cell-group": "../../zan-ui/cell-group/index",
     "zan-button": "../../zan-ui/btn/index",
     "zan-dialog": "../../zan-ui/dialog/index",
-    "zan-field": "../../zan-ui/field/index",
     "zan-loading": "../../zan-ui/loading/index",
     
+    "van-field": "../../van-ui/field/index",
     "van-toast": "../../van-ui/toast/index",
     "van-cell": "../../van-ui/cell/index",
     "van-icon": "../../van-ui/icon/index",
