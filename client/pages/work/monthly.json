@@ -8,5 +8,6 @@
       "zan-toast": "../../zan-ui/toast/index",
       "van-icon": "../../van-ui/icon/index",
       "van-field": "../../van-ui/field/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

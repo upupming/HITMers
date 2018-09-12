@@ -244,5 +244,9 @@ Page({
       language: wx.T.getLanguage()
     });
     this.data.shouldChangeTitle = true;
+  },
+
+  onPullDownRefresh(){
+    this.setDaysStyle(this.data.selectedYear, this.data.selectedMonth);
   }
 });
