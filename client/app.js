@@ -4,7 +4,7 @@ import './utils/wxPromise.min.js';
 import locales from './utils/locales';
 import T from './utils/i18n';
 require('./prototypes');
-const update = require('./utils/update');
+// const update = require('./utils/update');
 
 T.registerLocale(locales);
 let savedGlobalData = wx.getStorageSync('globalData');
@@ -36,7 +36,7 @@ App({
     // load all update in locales.js
     this.globalData.language = wx.T.getLanguage();
 
-    update(this.globalData.language);
+    // update(this.globalData.language);
   },
 
   onHide: function() {
