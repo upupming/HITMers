@@ -2,8 +2,8 @@
     <van-cell>
       <view class="title">{{subject}}</view>
       <view class="info">
-        <image src="../../images/time.svg" class="icon" />{{time}}
-        <image src="../../images/person.svg" class="icon" />{{user}}
+        <view class="info-item"><image src="../../images/time.svg" class="icon" />{{time}}</view>
+        <view class="info-item"><image src="../../images/person.svg" class="icon" />{{user}}</view>
       </view>
       <view class="para"><text>{{content}}</text></view>
     </van-cell>

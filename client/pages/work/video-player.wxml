@@ -2,8 +2,8 @@
 <view class="container" wx:else>
   <view class="title">{{subject}}</view>
   <view class="info">
-    <image src="../../images/time.svg" class="icon" />{{time}}
-    <image src="../../images/person.svg" class="icon" />{{user}}
+    <view class="info-item"><image src="../../images/time.svg" class="icon" />{{time}}</view>
+    <view class="info-item"><image src="../../images/person.svg" class="icon" />{{user}}</view>
   </view>
   <video src="{{videoUrl}}" autoplay="{{true}}" loop="{{true}}" custom-cache="{{false}}"></video>
   <view class="para"><text>{{desc}}</text></view>

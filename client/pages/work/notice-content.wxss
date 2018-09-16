@@ -22,6 +22,11 @@
 }
 .info {
   color: #25EC7E;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   padding-bottom: 30rpx;
+  display: flex;
+}
+.info-item {
+  padding: 20rpx;
 }
