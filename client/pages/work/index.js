@@ -254,10 +254,10 @@ Page({
       this.isLocationValid().then(
         res => {
           if(res) {
-            request.addCheck(globalData.stuId, this.data.checkedIn ? false : true, shift === 1)
+            request.addCheck(globalData.stuId, !this.data.checkedIn, shift === 1)
               .then(() => {
                 this.setData({checkedIn: !this.data.checkedIn});
-                util.show(this.data.checkedIn ? this.data.language.checkedOut : this.data.language.checkedIn, 'success');
+                util.show(this.data.checkedIn ? this.data.language.checkedIn : this.data.language.checkedOut, 'success');
               });
           }
         });
