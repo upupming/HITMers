@@ -218,7 +218,12 @@ export default {
     weProtectPravicy: 'HITMers 会非常谨慎地对待您的用户数据，竭尽所能不让用户的隐私被其他人窥探到。',
     update: '更新提示',
     updateIsReady: '新版本已经准备好，是否重启应用？',
-    noUpdate: '您当前使用的是最新版本'
+    noUpdate: '您当前使用的是最新版本',
+
+    freeRooms: '空闲教室',
+    today: '今天',
+    tomorrow: '明天',
+    afterTomorrow: '后天'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -439,6 +444,11 @@ export default {
     weProtectPravicy: 'HITMers will treat your user data very carefully, and do everything we can do to prevent the privacy of our users from being snooped by others.',
     update: 'Update',
     updateIsReady: 'Update is ready, relaunch?',
-    noUpdate: 'HITMers is up-to-date now'
+    noUpdate: 'HITMers is up-to-date now',
+
+    freeRooms: 'Free rooms',
+    today: 'Today',
+    tomorrow: 'Tomorrow',
+    afterTomorrow: 'The day after tomorrow'
   }
 };

@@ -2,7 +2,7 @@
 const request = wx.pro.request;
 const service = require('../config').service;
 import Notify from '../van-ui/notify/index';
-import Toast from '../van-ui/toast/index';
+import Toast from '../van-ui/toast/toast';
 const Base64 = require('./base64.min.js').Base64;
 
 const globalData = getApp().globalData;
@@ -242,6 +242,23 @@ module.exports = {
         subject,
         desc,
         video_code
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);  
+  },
+
+  getKxjs(buildingCode, date) {
+    return request({
+      url: 'https://weixin.hit.edu.cn/app/kxjscx/kxjscxapp/getKxjs',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      data: {
+        info: JSON.stringify({
+          lhdm: buildingCode,
+          rq: date
+        })
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);  

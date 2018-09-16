@@ -38,10 +38,12 @@ T.setNavigationBarTitle = function() {
 
 let tabBarLangs = [
   [
+    '学习',
     '工作',
     '我'
   ],
   [
+    'Learning',
     'Work',
     'Me'
   ]

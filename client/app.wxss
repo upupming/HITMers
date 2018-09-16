@@ -50,7 +50,7 @@ button[type=primary].button-hover {
 table {
   display: table;
   border-collapse: separate;
-  border-spacing: 2px;
+  border-spacing: 0px;
   border-color: gray;
 }
 
@@ -65,16 +65,37 @@ tbody {
   border-color: inherit;
 }
 
+thead {
+  border-top: 3rpx solid #d7dce2;
+  border-left: 3rpx solid #d7dce2;
+}
+tr td:first-child {
+  border-left: 3rpx solid #d7dce2;
+}
+tr th:first-child {
+  border-top: 3rpx solid #d7dce2;
+  border-left: 3rpx solid #d7dce2;
+}
+tr th {
+  border-top: 3rpx solid #d7dce2;
+}
+
 td {
+  border-bottom: 3rpx solid #d7dce2;
+  border-right: 3rpx solid #d7dce2;
   display: table-cell;
   vertical-align: inherit;
+  box-sizing: border-box;
 }
 
 th {
+  border-bottom: 3rpx solid #d7dce2;
+  border-right: 3rpx solid #d7dce2;
 	display: table-cell;
   vertical-align: inherit;
   font-weight: bold;
   text-align: center;
+  box-sizing: border-box;
 }
 
 tr {

@@ -2,17 +2,22 @@
   "pages":[
     "pages/index/index",
     "pages/index/profile",
+    
+    "pages/about/opensource",
+    "pages/about/privacy",
+
     "pages/work/index",
     "pages/work/fill-in-sheet",
     "pages/work/monthly",
     "pages/work/video",
     "pages/work/video-submit",
     "pages/work/video-player",
-    "pages/about/opensource",
-    "pages/about/privacy",
     "pages/work/notices",
     "pages/work/notice-content",
-    "pages/work/notice-submit"
+    "pages/work/notice-submit",
+
+    "pages/learning/free-rooms",
+    "pages/learning/index"
   ],
   "window":{
     "backgroundColor":"#49B1F5",
@@ -27,6 +32,12 @@
     "backgroundColor": "#F9F9F9",
     "borderStyle": "black",
     "list": [
+      {
+        "pagePath": "pages/learning/index",
+        "text": "学习",
+        "iconPath": "images/learning.png",
+        "selectedIconPath": "images/learning-selected.png"
+      },
       {
         "pagePath": "pages/work/index",
         "text": "工作",

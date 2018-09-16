@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="icon-wrap" bindtap="navigateTo" id="free-rooms">
+      <view class="icon">
+        <image class="icon-img" src="../../images/study.svg"/>
+      </view>
+      <view class="icon-action">{{language.freeRooms}}</view>
+  </view>
+</view>
+
+<van-toast id="van-toast"></van-toast>
+<van-notify id="van-notify"></van-notify>

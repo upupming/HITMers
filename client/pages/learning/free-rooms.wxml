@@ -1,0 +1,38 @@
+<view class="tabbar">
+<van-tabbar active="{{ active }}" custom-class="block" bind:change="onDayChange">
+    <van-tabbar-item>
+      <image slot="icon" src="../../images/1.svg" class="icon" mode="aspectFit" />
+      <image slot="icon-active" src="../../images/1-active.svg" mode="aspectFit" />
+      {{language.today}}
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <image slot="icon" src="../../images/2.svg" class="icon" mode="aspectFit" />
+      <image slot="icon-active" src="../../images/2-active.svg" mode="aspectFit" />
+      {{language.tomorrow}}
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <image slot="icon" src="../../images/3.svg" class="icon" mode="aspectFit" />
+      <image slot="icon-active" src="../../images/3-active.svg" mode="aspectFit" />
+      {{language.afterTomorrow}}
+    </van-tabbar-item>
+</van-tabbar>
+<view class="selected">
+  <text>{{dayString + ' ' + weekday}}</text>
+  <picker mode="selector" range="{{jxlmcarr}}" value="{{jxlarrIndex}}" bindchange="changeBuilding">
+        <view class="picker">{{jxlmcarr[jxlarrIndex]}}</view>
+  </picker>
+</view>
+<tr class="tablebar">
+  <th>{{language.freeRooms}}</th>
+  <th wx:for="{{periods}}" wx:for-item="period">{{period}}</th>
+</tr>
+</view>
+<view class="content">
+  <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
+  <table wx:else>
+    <tr wx:for="{{jsArr}}" wx:for-item="room">
+      <td>{{room.cdmc}}</td>
+      <td wx:for="{{periods}}" wx:for-item="period" class="{{isFree[room.cddm][index] ? 'free' : 'not-free'}}"></td>
+    </tr>
+  </table>
+</view>

@@ -1,4 +1,4 @@
-import Toast from '../van-ui/toast/index';
+import Toast from '../van-ui/toast/toast';
 
 function show(message, type) {
   if(type) {

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "van-toast": "../../van-ui/toast/index",
+      "van-notify": "../../van-ui/notify/index" 
+  }
+}

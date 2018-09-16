@@ -1,0 +1,70 @@
+.tabbar {
+  position: fixed !important;
+  top: 0;
+}
+.tablebar {
+  position: fixed;
+  background-color: #99d3f9;
+  width: 730rpx;
+  border: 10rpx solid #49B1F5;
+  border-bottom: none;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+}
+
+.content {
+  padding-top: 90px;
+  padding-bottom: 200px;
+}
+table {
+  box-sizing: border-box;
+  width: 750rpx;
+  text-align: center;
+  color: white;
+  background: #99d3f9;
+  border: 10rpx solid #49B1F5;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+th {
+  width: 104.286rpx;
+}
+td {
+  width: 104.286rpx;
+}
+
+tr {
+  height: 50px;
+}
+
+.free {
+  background-image: url('https://i.loli.net/2018/09/16/5b9e6f1c83843.png');
+  background-size:80% 80%;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.not-free {
+  background-image: url('https://i.loli.net/2018/09/16/5b9e5c175c806.png');
+  background-size:80% 80%;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+.trTitle {
+  position: fixed;
+}
+.trTitle th {
+  width: 104.286rpx;
+  border-bottom: none;
+}
+
+.selected {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background: #49B1F5;
+  width: 750rpx;
+}

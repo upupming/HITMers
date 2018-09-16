@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "zan-loading": "../../zan-ui/loading/index",
+
+    "van-tabbar": "../../van-ui/tabbar/index",
+    "van-tabbar-item": "../../van-ui/tabbar-item/index"
+  }
+}
