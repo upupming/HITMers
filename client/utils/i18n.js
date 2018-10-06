@@ -17,7 +17,7 @@ T.setLocaleByIndex = function (index) {
   lastLangIndex = index;
   T.setLocale(T.langCode[index]);
 
-  setTabBarLang(index);
+  T.setTabBarLang(index);
 };
 
 T.getLanguage = function () {
@@ -49,7 +49,7 @@ let tabBarLangs = [
   ]
 ];
 // 设置 TabBar 语言
-function setTabBarLang(index) {
+T.setTabBarLang = function(index) {
   let tabBarLang = tabBarLangs[index];
   
   tabBarLang.forEach((element, index) => {

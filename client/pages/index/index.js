@@ -19,7 +19,6 @@ Page({
   },
 
   onLoad: function () {
-    this.setLanguage();
     this.setData({
       langIndex: globalData.langIndex,
       logged: globalData.logged,
@@ -27,6 +26,7 @@ Page({
       stuName: globalData.stuName,
       loading: false
     });
+    this.setLanguage();
   },
 
   changeLanguage(e) {
@@ -46,6 +46,7 @@ Page({
     this.setData({
       language: wx.T.getLanguage()
     });
+    wx.T.setTabBarLang(this.data.langIndex);
     wx.T.setNavigationBarTitle();
   },
 
