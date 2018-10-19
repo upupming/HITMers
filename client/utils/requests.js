@@ -1,7 +1,7 @@
 /*eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 const request = wx.pro.request;
 const service = require('../config').service;
-import Notify from '../van-ui/notify/index';
+import Notify from '../van-ui/notify/notify';
 import Toast from '../van-ui/toast/toast';
 const Base64 = require('./base64.min.js').Base64;
 
