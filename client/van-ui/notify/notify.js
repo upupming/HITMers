@@ -1,25 +1,28 @@
-const defaultOptions = {
+import { isObj } from '../common/utils';
+var defaultOptions = {
   selector: '#van-notify',
   duration: 3000
 };
 
-export default function Notify(options = {}) {
-  const pages = getCurrentPages();
-  const ctx = pages[pages.length - 1];
+function parseOptions(text) {
+  return isObj(text) ? text : {
+    text: text
+  };
+}
 
-  options = Object.assign({}, defaultOptions, parseParam(options));
+export default function Notify(options) {
+  if (options === void 0) {
+    options = {};
+  }
 
-  const el = ctx.selectComponent(options.selector);
+  var pages = getCurrentPages();
+  var ctx = pages[pages.length - 1];
+  options = Object.assign({}, defaultOptions, parseOptions(options));
+  var el = ctx.selectComponent(options.selector);
   delete options.selector;
 
   if (el) {
-    el.setData({
-      ...options
-    });
+    el.setData(options);
     el.show();
   }
-}
-
-function parseParam(params = '') {
-  return typeof params === 'object' ? params : { text: params };
 }

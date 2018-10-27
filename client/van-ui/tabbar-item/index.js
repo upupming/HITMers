@@ -1,35 +1,33 @@
-const TABBAR_PATH = '../tabbar/index';
-
-Component({
-  properties: {
+import { VantComponent } from '../common/component';
+VantComponent({
+  props: {
     info: null,
     icon: String,
     dot: Boolean
   },
-
-  options: {
-    multipleSlots: true,
-    addGlobalClass: true
+  relation: {
+    name: 'tabbar',
+    type: 'ancestor'
   },
-
-  relations: {
-    [TABBAR_PATH]: {
-      type: 'ancestor'
-    }
-  },
-
   data: {
-    active: false,
-    count: 0
+    active: false
   },
-
   methods: {
-    onClick() {
-      const parent = this.getRelationNodes(TABBAR_PATH)[0];
+    onClick: function onClick() {
+      var parent = this.getRelationNodes('../tabbar/index')[0];
+
       if (parent) {
         parent.onChange(this);
       }
-      this.triggerEvent('click');
+
+      this.$emit('click');
+    },
+    setActive: function setActive(active) {
+      if (this.data.active !== active) {
+        this.setData({
+          active: active
+        });
+      }
     }
   }
 });

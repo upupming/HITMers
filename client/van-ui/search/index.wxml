@@ -7,6 +7,7 @@
       clearable
       type="search"
       left-icon="search"
+      focus="{{ focus }}"
       border="{{ false }}"
       confirm-type="search"
       value="{{ value }}"
@@ -14,6 +15,7 @@
       readonly="{{ readony }}"
       maxlength="{{ maxlength }}"
       placeholder="{{ placeholder }}"
+      placeholder-style="{{ placeholderStyle }}"
       custom-style="padding: 3px 10px"
       bind:blur="onBlur"
       bind:focus="onFocus"
