@@ -10,7 +10,8 @@
       "van-toast": "../../van-ui/toast/index",
       "van-notify": "../../van-ui/notify/index",
       "van-popup": "../../van-ui/popup/index",
-      "van-icon": "../../van-ui/icon/index" 
+      "van-icon": "../../van-ui/icon/index",
+      "van-action-sheet": "../../van-ui/action-sheet/index"
   },
   "enablePullDownRefresh": true
 }

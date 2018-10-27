@@ -11,6 +11,7 @@ Date.prototype.addDays = function(days) {
 };
 
 let globalData = getApp().globalData;
+let tapEvent;
 
 Page({
 
@@ -174,8 +175,7 @@ Page({
     this.setData({
       selectedDayIndex: dataset.dayIndex,
       selectedPeriod: dataset.period,
-      showFillInSheetPopup: true,
-      toView: event.currentTarget.id
+      showFillInSheetPopup: true
     });
   },
   submitShift() {
@@ -213,17 +213,42 @@ Page({
       showFillInSheetPopup: !this.data.showFillInSheetPopup
     });
   },
+
+  setActions(event) {
+    this.setData({
+      actions: [
+        {name: event.currentTarget.dataset.shiftDetail, disabled: true},
+        {name: '➕'}
+      ]
+    });
+  },
+
+  toggleActionChooser() {
+    this.setData({
+      showActionChooser: !this.data.showActionChooser
+    });
+  },
+
+  seeDetail(event) {
+    this.setActions(event);
+    this.toggleActionChooser();
+    tapEvent = event;
+  },
+
+  onSelectedAction(event) {
+    if(event.detail.name === '➕'){
+      this.toggleActionChooser();
+      this.fillInSheet(tapEvent);
+    }
+  },
+
   deleteShift(event) {
     // Cannot delete others' shift
     if(event.currentTarget.dataset.phoneNumber !== globalData.user.phone_number) {
-      // Add shift instead
-      this.fillInSheet(event);
+      // See shift detail, add shift if user wants to
+      this.seeDetail(event);
       return;
     }
-
-    this.setData({
-      toView: event.currentTarget.id
-    });
 
     let data = this.data;
     Dialog({

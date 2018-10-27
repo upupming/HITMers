@@ -223,7 +223,9 @@ export default {
     freeRooms: '空闲教室',
     today: '今天',
     tomorrow: '明天',
-    afterTomorrow: '后天'
+    afterTomorrow: '后天',
+
+    shiftDetail: '值班详细信息'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -449,6 +451,9 @@ export default {
     freeRooms: 'Free rooms',
     today: 'Today',
     tomorrow: 'Tomorrow',
-    afterTomorrow: 'The day after tomorrow'
+    afterTomorrow: 'The day after tomorrow',
+
+    guide: 'Guide',
+    shiftDetail: 'Shift detail'
   }
 };

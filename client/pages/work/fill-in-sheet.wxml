@@ -1,5 +1,5 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
-<view wx:else>
+<view wx:else class="content">
   <van-cell>
     <view class="card-title">
         <van-icon bind:click="closeRules" custom-class="card-icon" name="close" wx:if="{{showRules}}" />
@@ -10,7 +10,6 @@
     </view>
   </van-cell>
 
-  <scroll-view scroll scroll-x scroll-y scroll-top="{{scrollTop}}" scroll-left="{{scrollLeft}}" bindtap="saveClickPosition" style="height: {{windowHeight}}px">
   <table>
     
     <!-- This week dates -->
@@ -28,13 +27,13 @@
         <td class="strong">{{language.morning}}</td>     
         <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
 
-          <text class="grid working" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+          <text class="grid working" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
           
-          <text class="grid waiting" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+          <text class="grid waiting" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
           
-          <text class="grid studying" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+          <text class="grid studying" wx:for="{{shifts[dayIndex][0]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" data-phone-number="{{guide.phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
           <!-- 补齐至 6 格 -->
-          <text class="grid" wx:if="{{shifts[dayIndex][0].length < 6}}" wx:for="{{complement[shifts[dayIndex][0].length]}}" data-period="morning" data-day-index="{{dayIndex}}" id="{{'morning' + dayIndex + (shifts[dayIndex][0].length + index)}}" bindtap="fillInSheet">\n</text>
+          <text class="grid" wx:if="{{shifts[dayIndex][0].length < 6}}" wx:for="{{complement[shifts[dayIndex][0].length]}}" data-period="morning" data-day-index="{{dayIndex}}" bindtap="fillInSheet">\n</text>
         </td>
       </tr>
 
@@ -44,18 +43,19 @@
      
       <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
         
-        <text class="grid working" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+        <text class="grid working" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'working'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
         
-        <text class="grid waiting" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+        <text class="grid waiting" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'waiting'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
         
-        <text class="grid studying" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" id="{{'afternoon' + dayIndex + index}}" bindtap="deleteShift">{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}</text>
+        <text class="grid studying" wx:for="{{shifts[dayIndex][1]}}" wx:for-item="guide" wx:if="{{guide.status === 'studying'}}" data-phone-number="{{guide.phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-shift-id="{{guide.shift_id}}" data-shift-detail="{{guide.name + ' ' + guide.phone_number + ' ' + guide.language + ' ' + guide.session}}" bindtap="deleteShift">{{guide.name}}</text>
         <!-- 补齐至 6 格 -->
-        <text class="grid" wx:if="{{shifts[dayIndex][1].length < 6}}" wx:for="{{complement[shifts[dayIndex][1].length]}}" data-period="afternoon" data-day-index="{{dayIndex}}" id="{{'afternoon' + dayIndex + (shifts[dayIndex][1].length + index)}}" bindtap="fillInSheet">\n</text>
+        <text class="grid" wx:if="{{shifts[dayIndex][1].length < 6}}" wx:for="{{complement[shifts[dayIndex][1].length]}}" data-period="afternoon" data-day-index="{{dayIndex}}" bindtap="fillInSheet">\n</text>
       </td>
     </tr>
   
   </table>
-</scroll-view>
+
+<image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
 </view>
 
 <van-popup
@@ -94,3 +94,12 @@
 <van-toast id="van-toast"></van-toast>
 <van-notify id="van-notify"></van-notify>
 <zan-dialog id="delete-shift-dialog"></zan-dialog>
+
+<van-action-sheet
+  show="{{ showActionChooser }}"
+  title="{{language.shiftDetail}}"
+  actions="{{ actions }}"
+  bind:close="toggleActionChooser"
+  bind:select="onSelectedAction"
+>
+</van-action-sheet>

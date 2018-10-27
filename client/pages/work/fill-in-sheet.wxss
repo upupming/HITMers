@@ -1,5 +1,6 @@
 table{
   border: 30rpx solid #99d3f9;
+  border-bottom: 120rpx solid #99d3f9 !important;
   display: inline-flex;
   flex-direction: row;
   background: linear-gradient(to right, #5d8ef1, #25b7c4);
@@ -32,7 +33,7 @@ td{
   display: flex;
   flex-direction: column;
   height: 300rpx;
-  width: 400rpx;
+  width: 290rpx;
   text-align: center;
   vertical-align:middle;
   font-weight: 300;
@@ -137,4 +138,12 @@ th:first-child,td:first-child {
 }
 .rules {
   color: #99d3f9;
+}
+
+.download {
+  position: fixed;
+  bottom: 20rpx;
+  right: 40rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
