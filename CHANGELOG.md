@@ -1,25 +1,37 @@
-# 0.0.8
+# HITMers CHANGELOG
 
-## Added
+## v0.0.9
+
+### Added
+
+1. 保存值班表为 pdf
+
+### Fixed
+
+1. 跨越多个月的值班表查询
+
+## 0.0.8
+
+### Added
 
 1. 空闲教室查询
 
-## Fixed
+### Fixed
 
 1. 修复 签到/签出 成功提示消息
 
-## Improved
+### Improved
 
 1. 『工作』页面 Tab 使用馆徽
 2. 时间、人名之间加入 padding
 
-# 0.0.7
+## 0.0.7
 
-## Added
+### Added
 
 1. 修改用户信息时，对非法输入进行验证
 
-## Fixed
+### Fixed
 
 1. 使用 VPS 反向代理 Heroku 提升网络速度
 2. logo 清晰度提升
@@ -27,7 +39,7 @@
 4. 增大弹出输入框字体大小
 5. 签到时先确认位置信息再发起请求
 
-## Improved
+### Improved
 
 1. 值班日历日记增大 textarea 空间
 2. 填写值班表支持关闭/打开值班规则，并美化显示

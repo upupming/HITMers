@@ -451,7 +451,7 @@ Page({
       filePath: this.getFilePath(),
       fileType: 'pdf',
       fail: () => {
-        util.show(this.data.language.fileNotExists, 'fail')
+        util.show(this.data.language.fileNotExists, 'fail');
       }
     });
   },
