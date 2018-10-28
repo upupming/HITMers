@@ -27,7 +27,8 @@ var config = {
     streamCDN: 'cdn-b-east.streamable.com/video/mp4',
     streamCDNProxy: 'hitmers-api.solotime.xyz/mp4',
 
-    html2pdf: 'https://html-pdf-api.herokuapp.com/api/render',
+    url2pdf: 'https://hitmers-api.solotime.xyz/url2pdf',
+    html2pdf: 'https://hitmers-api.solotime.xyz/url2pdf/api/render',
     wxKxjs: 'https://weixin.hit.edu.cn/app/kxjscx/kxjscxapp/getKxjs'
   }
 };
