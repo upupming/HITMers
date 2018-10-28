@@ -14,7 +14,7 @@ tr {
 th{
   display: flex;
   flex-direction: column;
-  height: 300rpx;
+  height: 600rpx;
   width: 120rpx;
   justify-content: center;
   border: 3rpx solid #d7dce2;
@@ -32,7 +32,7 @@ th{
 td{
   display: flex;
   flex-direction: column;
-  height: 300rpx;
+  height: 600rpx;
   width: 290rpx;
   text-align: center;
   vertical-align:middle;
@@ -48,7 +48,7 @@ td{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50rpx;
+  height: 100rpx;
   width: 100%;
   border-bottom: 1rpx solid #d7dce2;
   padding-top: 12rpx;
