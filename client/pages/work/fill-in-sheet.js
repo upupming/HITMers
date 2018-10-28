@@ -2,7 +2,9 @@ import event from '../../utils/event';
 import '../../utils/wxPromise.min.js';
 const util = require('../../utils/util');
 const Dialog = require('../../zan-ui/dialog/dialog');
+import vanDialog from '../../van-ui/dialog/dialog';
 const request = require('../../utils/requests');
+import Toast from '../../van-ui/toast/toast';
 
 Date.prototype.addDays = function(days) {
   var date = new Date(this.valueOf());
@@ -34,16 +36,10 @@ Page({
     statusIndex: 0,
     statuses: ['working', 'waiting', 'studying'],
 
-    // anchor
-    windowHeight: 0,
-    toView: '',
-
     showRules: true
   },
 
   onLoad() {
-    this.getWeight();
-
     this.setLanguage();
     event.on('languageChanged', this, this.setLanguage);
 
@@ -73,15 +69,6 @@ Page({
             });
           }
         }
-      });
-  },
-
-  getWeight() {
-    wx.pro.getSystemInfo()
-      .then(res => {
-        this.setData({
-          windowHeight: res.windowHeight
-        });
       });
   },
 
@@ -296,6 +283,183 @@ Page({
   showRules() {
     this.setData({
       showRules: true
+    });
+  },
+
+  getHTML() {
+    let headHTML = `<head>
+      <style>
+        html {
+          font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+          background-color: #99d3f9;
+        }
+
+        table {
+          border-collapse: collapse;
+          border: 2px solid rgb(200,200,200);
+          letter-spacing: 1px;
+          font-size: 0.8rem;
+          background: linear-gradient(to right, #5d8ef1, #25b7c4);
+          margin-top: 3em;
+          width: 90%;
+        }
+
+        td, th {
+          border: 1px solid rgb(190,190,190);
+          padding: 10px 20px;
+        }
+
+        td {
+          text-align: center;
+        }
+
+        caption {
+          padding: 10px;
+        }
+
+        .working {
+          background: #66BB6A;
+        }
+        
+        .waiting {
+          background: #ef7a82;
+        }
+        
+        .studying {
+          background: #99d3f9;
+        }
+      </style>
+    </head>`;
+
+    let tableOpeningHTML = `<body>
+      <center><table>
+    `;
+    let tableClosingHTML = `</table></center>
+    <body>
+    `;
+
+    let sheetHTML = `<tr>
+      <th>${this.data.language.sheet}</th>
+      <th>${this.data.language.morning}</th>
+      <th>${this.data.language.afternoon}</th>
+    </tr>`;
+
+    for (let dayIndex = 0; dayIndex < this.data.shifts.length; dayIndex++) {
+      // For empty day
+      if(this.data.shifts[dayIndex][0].length === 0 && this.data.shifts[dayIndex][1].length === 0) {
+        sheetHTML += `<tr class="day">
+          <th class="day-date">${this.data.language.months[this.data.monthIndices[dayIndex]] + ' ' + this.data.language.days[this.data.dayIndices[dayIndex]] + ' ' + this.data.language.weekDays[dayIndex]}</th>
+          <td class="morning">&nbsp;</td>
+          <td class="afternoon">&nbsp;</td>
+        </tr>`;
+      }
+      
+      // Morning shifts less than afternoon shifts
+      else if(this.data.shifts[dayIndex][0].length < this.data.shifts[dayIndex][1].length) {
+        let dayRowspan = this.data.shifts[dayIndex][1].length;
+        let commonSpan = this.data.shifts[dayIndex][0].length;
+
+        sheetHTML += `<tr class="day">
+          <th class="day-date" rowspan="${dayRowspan+1}">${this.data.language.months[this.data.monthIndices[dayIndex]] + ' ' + this.data.language.days[this.data.dayIndices[dayIndex]] + ' ' + this.data.language.weekDays[dayIndex]}</th>
+        </tr>`;
+        // Morning shifts and equal size afternoon shifts
+        for(let i=0; i<commonSpan; i++) {
+          let morningGuide = this.data.shifts[dayIndex][0][i];
+          let afternoonGuide = this.data.shifts[dayIndex][1][i];
+          sheetHTML += `<tr><td class="morning ${morningGuide.status}">${morningGuide.name + ' ' + morningGuide.phone_number + ' ' + morningGuide.language + ' ' + morningGuide.session}</td>
+          <td class="afternoon ${afternoonGuide.status}">${afternoonGuide.name + ' ' + afternoonGuide.phone_number + ' ' + afternoonGuide.language + ' ' + afternoonGuide.session}</td></tr>`;
+        }
+        // Extra afternoon shifts
+        for(let i=commonSpan; i<dayRowspan; i++) {
+          let afternoonGuide = this.data.shifts[dayIndex][1][i];
+          sheetHTML += `<tr><td class="morning"></td>
+          <td class="afternoon ${afternoonGuide.status}">${afternoonGuide.name + ' ' + afternoonGuide.phone_number + ' ' + afternoonGuide.language + ' ' + afternoonGuide.session}</td></tr>`;
+        }
+      }
+      // Morning shifts more than afternoon shifts
+      else {
+        let dayRowspan = this.data.shifts[dayIndex][0].length;
+        let commonSpan = this.data.shifts[dayIndex][1].length;
+
+        sheetHTML += `<tr class="day">
+          <th class="day-date" rowspan="${dayRowspan+1}">${this.data.language.months[this.data.monthIndices[dayIndex]] + ' ' + this.data.language.days[this.data.dayIndices[dayIndex]] + ' ' + this.data.language.weekDays[dayIndex]}</th>
+        </tr>`;
+        // Morning shifts and equal size afternoon shifts
+        for(let i=0; i<commonSpan; i++) {
+          let morningGuide = this.data.shifts[dayIndex][0][i];
+          let afternoonGuide = this.data.shifts[dayIndex][1][i];
+          sheetHTML += `<tr><td class="morning ${morningGuide.status}">${morningGuide.name + ' ' + morningGuide.phone_number + ' ' + morningGuide.language + ' ' + morningGuide.session}</td>
+          <td class="afternoon ${afternoonGuide.status}">${afternoonGuide.name + ' ' + afternoonGuide.phone_number + ' ' + afternoonGuide.language + ' ' + afternoonGuide.session}</td></tr>`;
+        }
+        // Extra morning shifts
+        for(let i=commonSpan; i<dayRowspan; i++) {
+          let morningGuide = this.data.shifts[dayIndex][0][i];
+          sheetHTML += `<tr><td class="morning ${morningGuide.status}">${morningGuide.name + ' ' + morningGuide.phone_number + ' ' + morningGuide.language + ' ' + morningGuide.session}</td>
+          <td class="afternoon"></td></tr>`;
+        }
+      }
+    }
+
+    let html = headHTML + tableOpeningHTML + sheetHTML + tableClosingHTML;
+    return html;
+  },
+
+  getFilePath() {
+    let now = new Date();
+    let thisMonday = now.addDays(1 - now.getDay());
+    thisMonday.setHours(0, 0, 0);
+    let filename = util.getDateString(thisMonday);
+    let filePath = `${wx.env.USER_DATA_PATH}/${this.data.language.sheet}@${filename}.pdf`;
+    return filePath;
+  },
+
+  saveToPDF() {
+    let html = this.getHTML();
+    let filePath = this.getFilePath();
+
+    request.getPDFByHTML(html)
+      .then(res => {
+        let fileManager = wx.getFileSystemManager();
+        
+        fileManager.writeFile({
+          filePath: filePath,
+          data: res.data,
+          encoding: 'binary',
+          success: (result)=>{
+            if(result.errMsg === 'writeFile:ok'){
+              Toast.clear();
+              vanDialog.confirm({
+                title: this.data.language.saved,
+                message: this.data.language.willYouOpenIt,
+                confirmButtonText: this.data.language.confirm,
+                cancelButtonText: this.data.language.cancel
+              }).then(this.openPDF);
+            } else {
+              util.show(this.data.language.savingFailed, 'fail');  
+            }
+          },
+          fail: () => {
+            Toast.clear();
+            util.show(this.data.language.savingFailed, 'fail');
+          }
+        });
+      });
+  },
+
+  openPDF() {
+    wx.openDocument({
+      filePath: this.getFilePath(),
+      fileType: 'pdf',
+      fail: () => {
+        util.show(this.data.language.fileNotExists, 'fail')
+      }
+    });
+  },
+
+  toggleInfo() {
+    vanDialog.alert({
+      title: this.data.language.aboutFile,
+      message: this.data.language.pdfFileDeatil
     });
   }
 });

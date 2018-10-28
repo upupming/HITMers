@@ -4,6 +4,7 @@ const service = require('../config').service;
 import Notify from '../van-ui/notify/notify';
 import Toast from '../van-ui/toast/toast';
 const Base64 = require('./base64.min.js').Base64;
+import util from './util';
 
 const globalData = getApp().globalData;
 
@@ -249,7 +250,7 @@ module.exports = {
 
   getKxjs(buildingCode, date) {
     return request({
-      url: 'https://weixin.hit.edu.cn/app/kxjscx/kxjscxapp/getKxjs',
+      url: service.wxKxjs,
       method: 'POST',
       header: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -262,5 +263,21 @@ module.exports = {
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);  
+  },
+
+  getPDFByHTML(html) {
+    util.show(globalData.language.saving, 'loading');
+    return request({
+      url: service.html2pdf,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      responseType: 'arraybuffer',
+      data: {
+        html
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
   }
 };

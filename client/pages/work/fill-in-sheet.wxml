@@ -56,6 +56,9 @@
   </table>
 
 <image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
+<image src="../../images/open-in-new.svg" class="open" bindtap="openPDF"/>
+<image src="../../images/what.svg" class="what" bindtap="toggleInfo"/>
+
 </view>
 
 <van-popup
@@ -103,3 +106,4 @@
   bind:select="onSelectedAction"
 >
 </van-action-sheet>
+<van-dialog id="van-dialog" />

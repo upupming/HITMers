@@ -25,8 +25,10 @@ var config = {
     
     stream: 'https://hitmers-api.solotime.xyz/videos',
     streamCDN: 'cdn-b-east.streamable.com/video/mp4',
-    streamCDNProxy: 'hitmers-api.solotime.xyz/mp4'
+    streamCDNProxy: 'hitmers-api.solotime.xyz/mp4',
 
+    html2pdf: 'https://html-pdf-api.herokuapp.com/api/render',
+    wxKxjs: 'https://weixin.hit.edu.cn/app/kxjscx/kxjscxapp/getKxjs'
   }
 };
 

@@ -143,6 +143,20 @@ th:first-child,td:first-child {
 .download {
   position: fixed;
   bottom: 20rpx;
+  right: 260rpx;
+  width: 70rpx;
+  height: 80rpx;
+}
+.open {
+  position: fixed;
+  bottom: 20rpx;
+  right: 150rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.what {
+  position: fixed;
+  bottom: 20rpx;
   right: 40rpx;
   width: 80rpx;
   height: 80rpx;

@@ -11,7 +11,8 @@
       "van-notify": "../../van-ui/notify/index",
       "van-popup": "../../van-ui/popup/index",
       "van-icon": "../../van-ui/icon/index",
-      "van-action-sheet": "../../van-ui/action-sheet/index"
+      "van-action-sheet": "../../van-ui/action-sheet/index",
+      "van-dialog": "../../van-ui/dialog/index"
   },
   "enablePullDownRefresh": true
 }
