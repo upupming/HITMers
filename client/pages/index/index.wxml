@@ -1,7 +1,7 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view class="container" wx:else>
   <view class="title">
-    <image class="logo" src="../../images/logo.jpg"></image>
+    <image class="logo" src="../../images/logo.png"></image>
     <view class="title-text">HIT Museumers</view>
   </view>
   <view class="desc">{{language.desc}}</view>
