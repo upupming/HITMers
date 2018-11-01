@@ -462,11 +462,184 @@ endDay:4
 }
 ```
 
+## 来宾
+
+### GET
+
+格式：
+
+`GET /v1/visitor`
+
+返回一个数组，包含指定时间范围内来宾信息。
+
+**示例：**
+
+`GET /v1/visitor`
+
+请求 Query:
+
+```txt
+startDateTime:2018-11-03
+endDateTime:2018-11-04
+```
+
+返回：200 OK
+
+```json
+[
+    {
+        "visitor_id": 1,
+        "identity": "计算机学院大一新生",
+        "arriving": "2018-11-02T16:00:00.000Z"
+    },
+    {
+        "visitor_id": 2,
+        "identity": "哈尔滨某中学学生",
+        "arriving": "2018-11-03T16:00:00.000Z"
+    }
+]
+```
+
+### POST
+
+格式：`POST /v1/visitor`
+
+**示例：**
+
+`POST /v1/visitor`
+
+请求 Body:
+
+```json
+{
+    "identity": "神秘人物",
+    "arriving": "2018-11-09"
+}
+```
+
+返回：200 OK
+
+```json
+{
+    "visitor_id": 7,
+    "identity": "神秘人物",
+    "arriving": "2018-11-09"
+}
+```
+
+### DELETE
+
+格式：`DELETE /v1/visitor/:visitor_id`
+
+**示例：**
+
+`DELETE /v1/visitor/1`
+
+返回： 200 OK
+
+```json
+{
+    "visitor_id": 7,
+    "identity": "神秘人物",
+    "arriving": "2018-11-08T16:00:00.000Z"
+}
+```
+
 ## 视频
 
-格式： `GET /videos/:shortcode`
+### GET
 
-因为 streamable.com 没有备案,使用此 API 代理 `https://api.streamable.com/videos/:shortcode` 来获取视频源文件链接，参见 [Streamable API](https://streamable.com/documentation)。
+格式：`GET /v1/video`
+
+返回所有视频，按时间从新到旧排序。
+
+**示例：**
+
+`GET /v1/video`
+
+返回：200 OK
+
+```json
+[
+    {"video_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","video_code":"c9zrn","subject":"视频标题","desc":"视频描述","user":{...}}
+]
+```
+
+### POST
+
+格式：`POST /v1/video`
+
+**示例：**
+
+`POST /v1/video`
+
+请求 Body:
+
+```json
+{
+    "subject": "video subject"
+    "desc": "video desc"
+    "video_code": "c9zrn"
+}
+```
+
+返回：200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
+
+### DELETE
+
+格式：`DELETE /v1/video/:video_id`
+
+**示例：**
+
+`DELETE /v1/video/2`
+
+返回： 200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
 
 ## 通知
 
@@ -562,98 +735,17 @@ endDay:4
 }
 ```
 
-## Streamable 视频
+## Streamable 视频 API
 
-### GET
+格式： `GET /videos/:shortcode`
 
-格式：`GET /v1/video`
+因为 streamable.com 没有备案,使用此 API 代理 `https://api.streamable.com/videos/:shortcode` 来获取视频源文件链接，参见 [Streamable API](https://streamable.com/documentation)。
 
-返回所有视频，按时间从新到旧排序。
+## url-to-pdf-api
 
-**示例：**
+API 地址：
 
-`GET /v1/video`
++ https://html-pdf-api.herokuapp.com
++ https://hitmers-api.solotime.xyz/url2pdf
 
-返回：200 OK
-
-```json
-[
-    {"video_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","video_code":"c9zrn","subject":"视频标题","desc":"视频描述","user":{...}}
-]
-```
-
-### POST
-
-格式：`POST /v1/video`
-
-**示例：**
-
-`POST /v1/video`
-
-请求 Body:
-
-```json
-{
-    "subject": "video subject"
-    "desc": "video desc"
-    "video_code": "c9zrn"
-}
-```
-
-返回：200 OK
-
-```json
-{
-    "video_id": 2,
-    "created_by": "Z003",
-    "created_at": "2018-09-09T11:12:51.000Z",
-    "video_code": null,
-    "subject": null,
-    "desc": null,
-    "user": {
-        "id": "Z003",
-        "name": "张三",
-        "identify": "老师",
-        "phone_number": 13849045786,
-        "language": "中英",
-        "session": 14,
-        "email": "zhangsan@qq.com",
-        "school": "经管学院",
-        "password_changed_times": 0,
-        "reputation": 0
-    }
-}
-```
-
-### DELETE
-
-格式：`DELETE /v1/video/:video_id`
-
-**示例：**
-
-`DELETE /v1/video/2`
-
-返回： 200 OK
-
-```json
-{
-    "video_id": 2,
-    "created_by": "Z003",
-    "created_at": "2018-09-09T11:12:51.000Z",
-    "video_code": null,
-    "subject": null,
-    "desc": null,
-    "user": {
-        "id": "Z003",
-        "name": "张三",
-        "identify": "老师",
-        "phone_number": 13849045786,
-        "language": "中英",
-        "session": 14,
-        "email": "zhangsan@qq.com",
-        "school": "经管学院",
-        "password_changed_times": 0,
-        "reputation": 0
-    }
-}
-```
+使用方法参见 [alvarcarto/url-to-pdf-api](https://github.com/alvarcarto/url-to-pdf-api#examples)。

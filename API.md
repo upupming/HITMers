@@ -460,11 +460,184 @@ Returns: 200 OK
 }
 ```
 
+## Visitors
+
+### GET
+
+Format:
+
+`GET /v1/visitor`
+
+An array which contains visitor's information will be returned.
+
+**Example: **
+
+`GET /v1/visitor`
+
+请求 Query:
+
+```txt
+startDateTime:2018-11-03
+endDateTime:2018-11-04
+```
+
+Returns: 200 OK
+
+```json
+[
+    {
+        "visitor_id": 1,
+        "identity": "计算机学院大一新生",
+        "arriving": "2018-11-02T16:00:00.000Z"
+    },
+    {
+        "visitor_id": 2,
+        "identity": "哈尔滨某中学学生",
+        "arriving": "2018-11-03T16:00:00.000Z"
+    }
+]
+```
+
+### POST
+
+Format: `POST /v1/visitor`
+
+**Example: **
+
+`POST /v1/visitor`
+
+Request Body:
+
+```json
+{
+    "identity": "神秘人物",
+    "arriving": "2018-11-09"
+}
+```
+
+Returns: 200 OK
+
+```json
+{
+    "visitor_id": 7,
+    "identity": "神秘人物",
+    "arriving": "2018-11-09"
+}
+```
+
+### DELETE
+
+Format: `DELETE /v1/visitor/:visitor_id`
+
+**Example: **
+
+`DELETE /v1/visitor/1`
+
+Returns: 200 OK
+
+```json
+{
+    "visitor_id": 7,
+    "identity": "神秘人物",
+    "arriving": "2018-11-08T16:00:00.000Z"
+}
+```
+
 ## Videos
 
-Format: `GET /videos/:shortcode`
+### GET
 
-This API is a proxy of `https://api.streamable.com/videos/:shortcode`, see [Streamable API](https://streamable.com/documentation).
+Format: `GET /v1/video`
+
+Get all videos from newer to older.
+
+**Example: **
+
+`GET /v1/video`
+
+Returns: 200 OK
+
+```json
+[
+    {"video_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","video_code":"c9zrn","subject":"视频标题","desc":"视频描述","user":{...}}
+]
+```
+
+### POST
+
+Format: `POST /v1/video`
+
+**Example: **
+
+`POST /v1/video`
+
+Request Body:
+
+```json
+{
+    "subject": "video subject"
+    "desc": "video desc"
+    "video_code": "c9zrn"
+}
+```
+
+Returns: 200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
+
+### DELETE
+
+Format: `DELETE /v1/video/:video_id`
+
+**Example: **
+
+`DELETE /v1/video/2`
+
+Returns: 200 OK
+
+```json
+{
+    "video_id": 2,
+    "created_by": "Z003",
+    "created_at": "2018-09-09T11:12:51.000Z",
+    "video_code": null,
+    "subject": null,
+    "desc": null,
+    "user": {
+        "id": "Z003",
+        "name": "张三",
+        "identify": "老师",
+        "phone_number": 13849045786,
+        "language": "中英",
+        "session": 14,
+        "email": "zhangsan@qq.com",
+        "school": "经管学院",
+        "password_changed_times": 0,
+        "reputation": 0
+    }
+}
+```
 
 ## Notices
 
@@ -560,98 +733,18 @@ Returns: 200 OK
 }
 ```
 
-## Streamable videos
+## Streamable Video API
 
-### GET
+Format: `GET /videos/:shortcode`
 
-Format: `GET /v1/video`
+This API is a proxy of `https://api.streamable.com/videos/:shortcode`, see [Streamable API](https://streamable.com/documentation).
 
-Get all videos from newer to older.
 
-**Example: **
+## url-to-pdf-api
 
-`GET /v1/video`
+API url:
 
-Returns: 200 OK
++ https://html-pdf-api.herokuapp.com
++ https://hitmers-api.solotime.xyz/url2pdf
 
-```json
-[
-    {"video_id":1,"created_by":"Z003","created_at":"2018-09-06T16:00:00.000Z","video_code":"c9zrn","subject":"视频标题","desc":"视频描述","user":{...}}
-]
-```
-
-### POST
-
-Format: `POST /v1/video`
-
-**Example: **
-
-`POST /v1/video`
-
-Request Body:
-
-```json
-{
-    "subject": "video subject"
-    "desc": "video desc"
-    "video_code": "c9zrn"
-}
-```
-
-Returns: 200 OK
-
-```json
-{
-    "video_id": 2,
-    "created_by": "Z003",
-    "created_at": "2018-09-09T11:12:51.000Z",
-    "video_code": null,
-    "subject": null,
-    "desc": null,
-    "user": {
-        "id": "Z003",
-        "name": "张三",
-        "identify": "老师",
-        "phone_number": 13849045786,
-        "language": "中英",
-        "session": 14,
-        "email": "zhangsan@qq.com",
-        "school": "经管学院",
-        "password_changed_times": 0,
-        "reputation": 0
-    }
-}
-```
-
-### DELETE
-
-Format: `DELETE /v1/video/:video_id`
-
-**Example: **
-
-`DELETE /v1/video/2`
-
-Returns: 200 OK
-
-```json
-{
-    "video_id": 2,
-    "created_by": "Z003",
-    "created_at": "2018-09-09T11:12:51.000Z",
-    "video_code": null,
-    "subject": null,
-    "desc": null,
-    "user": {
-        "id": "Z003",
-        "name": "张三",
-        "identify": "老师",
-        "phone_number": 13849045786,
-        "language": "中英",
-        "session": 14,
-        "email": "zhangsan@qq.com",
-        "school": "经管学院",
-        "password_changed_times": 0,
-        "reputation": 0
-    }
-}
-```
+See [alvarcarto/url-to-pdf-api](https://github.com/alvarcarto/url-to-pdf-api#examples) for more information.
