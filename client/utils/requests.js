@@ -266,7 +266,7 @@ module.exports = {
   },
 
   getPDFByHTML(html) {
-    util.show(globalData.language.saving, 'loading');
+    util.keepShowing(globalData.language.saving, 'loading');
     return request({
       url: service.html2pdf,
       method: 'POST',

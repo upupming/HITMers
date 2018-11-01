@@ -8,9 +8,23 @@ function show(message, type) {
   }
 }
 
+function keepShowing(message, type) {
+  if(type) {
+    Toast[type]({
+      duration: 0,
+      message
+    });
+  } else {
+    Toast({
+      duration: 0,
+      message
+    });
+  }
+}
+
 function getDateString(date, withHours) {
   return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`
     + (withHours ? `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}` : '');
 }
 
-module.exports = { show, getDateString };
+module.exports = { show, keepShowing, getDateString };
