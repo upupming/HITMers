@@ -290,7 +290,7 @@ Page({
     let headHTML = `<head>
       <style>
         html {
-          font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+          font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW-Kai", serif;
           background-color: #99d3f9;
         }
 
@@ -466,5 +466,12 @@ Page({
       title: this.data.language.aboutFile,
       message: this.data.language.pdfFileDeatil
     });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: this.data.language.fillInSheet,
+      path: '/pages/work/fill-in-sheet'
+    };
   }
 });
