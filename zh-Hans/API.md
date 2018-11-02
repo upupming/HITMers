@@ -464,6 +464,8 @@ endDay:4
 
 ## 来宾
 
+返回一个三维数组，分别索引**第几日**、**早晚班**、**全部来宾**。如果返回的数据为 `data`，则 `data[0][0][0]` 表示查询日期中**第一天**的**上午**班的**第一个来宾**，其中每个班次的人员是按照他们的**到达时间**递增排序的。
+
 ### GET
 
 格式：
@@ -480,23 +482,40 @@ endDay:4
 
 ```txt
 startDateTime:2018-11-03
-endDateTime:2018-11-04
+endDateTime:2018-11-05
 ```
 
 返回：200 OK
 
+!> 注意这里实际上只返回了从 `2018-11-03 00:00:00` 到 `2018-11-05 00:00:00` 的来宾信息，如果要获取三天的完整信息，请使用 `2018-11-05 24:00:00` 或者 `2018-11-06 00:00:00` 作为终止时间 `endDateTime:2018-11-05`，多计算几天总是没有问题的。
+
 ```json
 [
-    {
-        "visitor_id": 1,
-        "identity": "计算机学院大一新生",
-        "arriving": "2018-11-02T16:00:00.000Z"
-    },
-    {
-        "visitor_id": 2,
-        "identity": "哈尔滨某中学学生",
-        "arriving": "2018-11-03T16:00:00.000Z"
-    }
+    [
+        [
+            {"visitor_id":2,"identity":"哈尔滨某中学学生","arriving":"2018-11-03T04:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"},
+            {"visitor_id":1,"identity":"计算机学院大一新生","arriving":"2018-11-03T04:20:00.000Z","number_of_people":50,"appointer":"李同学","appointer_phone_number":"12388889999","guided_by":null}
+        ],
+        [
+            {"visitor_id":5,"identity":"哈佛大学教授","arriving":"2018-11-03T05:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":3,"identity":"哈佛大学教授","arriving":"2018-11-03T06:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":4,"identity":"哈佛大学教授","arriving":"2018-11-03T07:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"}
+        ]
+    ],
+    [
+        [
+            {"visitor_id":6,"identity":"材料党支部","arriving":"2018-11-03T18:30:00.000Z","number_of_people":50,"appointer":"李同学","appointer_phone_number":"12388889999","guided_by":null},
+            {"visitor_id":8,"identity":"武汉大学学生","arriving":"2018-11-04T00:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":7,"identity":"天津大学教授","arriving":"2018-11-04T04:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"}
+        ],
+        []
+    ],
+    [
+        [
+            {"visitor_id":11,"identity":"哈尔滨某中学学生","arriving":"2018-11-04T16:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"}
+        ],
+        []
+    ]
 ]
 ```
 
@@ -512,8 +531,12 @@ endDateTime:2018-11-04
 
 ```json
 {
-    "identity": "神秘人物",
-    "arriving": "2018-11-09"
+    "identity":"some important person",
+    "arriving":"2018-11-30",
+    "number_of_people":34,
+    "appointer":"Trump",
+    "appointer_phone_number":"110",
+    "guided_by":"MrWang"
 }
 ```
 
@@ -521,9 +544,13 @@ endDateTime:2018-11-04
 
 ```json
 {
-    "visitor_id": 7,
-    "identity": "神秘人物",
-    "arriving": "2018-11-09"
+    "visitor_id": 13,
+    "identity": "some important person",
+    "arriving": "2018-11-30",
+    "number_of_people": 34,
+    "appointer": "Trump",
+    "appointer_phone_number": "110",
+    "guided_by": "MrWang"
 }
 ```
 
@@ -539,9 +566,13 @@ endDateTime:2018-11-04
 
 ```json
 {
-    "visitor_id": 7,
-    "identity": "神秘人物",
-    "arriving": "2018-11-08T16:00:00.000Z"
+    "visitor_id": 13,
+    "identity": "some important person",
+    "arriving": "2018-11-29T16:00:00.000Z",
+    "number_of_people": 34,
+    "appointer": "Trump",
+    "appointer_phone_number": "110",
+    "guided_by": "MrWang"
 }
 ```
 

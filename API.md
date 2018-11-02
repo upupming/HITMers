@@ -468,33 +468,50 @@ Format:
 
 `GET /v1/visitor`
 
-An array which contains visitor's information will be returned.
+Return a three-dimensional array, whose indices are used for indexing **days index**, **morning/evening**, and **all visitors**. If the returned body is `data`, then `data[0][0][0]` represents in **the first day of the query days**, and **in the morning**, **the first visitor**'s information. Visitors of each period are sorted according to their **arriving time**.
 
 **Example: **
 
 `GET /v1/visitor`
 
-请求 Query:
+Request Query:
 
 ```txt
 startDateTime:2018-11-03
-endDateTime:2018-11-04
+endDateTime:2018-11-05
 ```
 
 Returns: 200 OK
 
+!> Note that visitos' information from `2018-11-03 00:00:00` to `2018-11-05 00:00:00` is returned here, if you want to get all information in three days, please use `2018-11-05 24:00:00` or `2018-11-06 00:00:00` as ending time `endDateTime:2018-11-05`, it doesn't matter if we get one day more information.
+
 ```json
 [
-    {
-        "visitor_id": 1,
-        "identity": "计算机学院大一新生",
-        "arriving": "2018-11-02T16:00:00.000Z"
-    },
-    {
-        "visitor_id": 2,
-        "identity": "哈尔滨某中学学生",
-        "arriving": "2018-11-03T16:00:00.000Z"
-    }
+    [
+        [
+            {"visitor_id":2,"identity":"哈尔滨某中学学生","arriving":"2018-11-03T04:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"},
+            {"visitor_id":1,"identity":"计算机学院大一新生","arriving":"2018-11-03T04:20:00.000Z","number_of_people":50,"appointer":"李同学","appointer_phone_number":"12388889999","guided_by":null}
+        ],
+        [
+            {"visitor_id":5,"identity":"哈佛大学教授","arriving":"2018-11-03T05:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":3,"identity":"哈佛大学教授","arriving":"2018-11-03T06:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":4,"identity":"哈佛大学教授","arriving":"2018-11-03T07:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"}
+        ]
+    ],
+    [
+        [
+            {"visitor_id":6,"identity":"材料党支部","arriving":"2018-11-03T18:30:00.000Z","number_of_people":50,"appointer":"李同学","appointer_phone_number":"12388889999","guided_by":null},
+            {"visitor_id":8,"identity":"武汉大学学生","arriving":"2018-11-04T00:00:00.000Z","number_of_people":10,"appointer":"张老师","appointer_phone_number":"10066669999","guided_by":"王五"},
+            {"visitor_id":7,"identity":"天津大学教授","arriving":"2018-11-04T04:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"}
+        ],
+        []
+    ],
+    [
+        [
+            {"visitor_id":11,"identity":"哈尔滨某中学学生","arriving":"2018-11-04T16:00:00.000Z","number_of_people":70,"appointer":"张老师","appointer_phone_number":"12366669999","guided_by":"赵六"}
+        ],
+        []
+    ]
 ]
 ```
 
@@ -510,8 +527,12 @@ Request Body:
 
 ```json
 {
-    "identity": "神秘人物",
-    "arriving": "2018-11-09"
+    "identity":"some important person",
+    "arriving":"2018-11-30",
+    "number_of_people":34,
+    "appointer":"Trump",
+    "appointer_phone_number":"110",
+    "guided_by":"MrWang"
 }
 ```
 
@@ -519,9 +540,13 @@ Returns: 200 OK
 
 ```json
 {
-    "visitor_id": 7,
-    "identity": "神秘人物",
-    "arriving": "2018-11-09"
+    "visitor_id": 13,
+    "identity": "some important person",
+    "arriving": "2018-11-30",
+    "number_of_people": 34,
+    "appointer": "Trump",
+    "appointer_phone_number": "110",
+    "guided_by": "MrWang"
 }
 ```
 
@@ -537,9 +562,13 @@ Returns: 200 OK
 
 ```json
 {
-    "visitor_id": 7,
-    "identity": "神秘人物",
-    "arriving": "2018-11-08T16:00:00.000Z"
+    "visitor_id": 13,
+    "identity": "some important person",
+    "arriving": "2018-11-29T16:00:00.000Z",
+    "number_of_people": 34,
+    "appointer": "Trump",
+    "appointer_phone_number": "110",
+    "guided_by": "MrWang"
 }
 ```
 
