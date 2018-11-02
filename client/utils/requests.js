@@ -74,6 +74,11 @@ module.exports = {
   },
 
   updateUser(id, user) {
+    Toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: globalData.language.updating
+    });
     return request({
       url: service.user + '/' + id,
       method: 'PUT',
@@ -189,6 +194,11 @@ module.exports = {
       .then(statusCodeChecker);
   },
   register(user, registerCode) {
+    Toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: globalData.language.registering
+    });
     return request({
       url: service.register,
       method: 'POST',

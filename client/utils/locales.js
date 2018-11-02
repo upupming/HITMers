@@ -7,6 +7,7 @@ export default {
     changed: '修改成功',
 
     register: '注册',
+    registering: '正在注册',
     registerSucceed: '注册成功',
     login: '登录',
     logout: '登出',
@@ -21,6 +22,7 @@ export default {
     changePasswordFailed: '密码修改失败',
     illegalPassword: '密码不合法',
     permissions: '应用权限',
+    updating: '正在更新',
 
     requestError: '请求失败',
     requestSuccess: '请求成功',
@@ -249,6 +251,7 @@ export default {
     changed: 'Changed successfully',
 
     register: 'Register',
+    registering: 'Registering',
     registerSucceed: 'Registered successfully',
     login: 'Log in',
     logout: 'Log out',
@@ -263,6 +266,7 @@ export default {
     changePasswordFailed: 'Change password failed',
     illegalPassword: 'Password is invalid',
     permissions: 'Permissions',
+    updating: 'Updating',
 
     requestError: 'Request error',
     requestSuccess: 'Request success',
