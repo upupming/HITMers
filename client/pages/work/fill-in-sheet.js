@@ -36,7 +36,8 @@ Page({
     statusIndex: 0,
     statuses: ['working', 'waiting', 'studying'],
 
-    showRules: true
+    showRules: true,
+    currentView: 'shifts'
   },
 
   onLoad() {
@@ -73,7 +74,11 @@ Page({
   },
 
   onPullDownRefresh() {
-    this.fetchShifts();
+    if(this.data.currentView === 'shifts') {
+      this.fetchShifts();
+    } else {
+      this.fetchVisitors();
+    }
   },
 
   pullDownRefresh() {
@@ -117,6 +122,7 @@ Page({
 
   // Get shifts information
   fetchShifts() {
+    this.setData({loading: true});
     return request.getShifts({
       startMonth: this.data.monthIndices[0] + 1,
       startDay: this.data.dayIndices[0] + 1,
@@ -127,8 +133,7 @@ Page({
         this.setData({
           shifts: res.data,
           loading: false,
-          scrollTop: this.data.scrollTop || 0,
-          scrollLeft: this.data.scrollLeft || 0
+          currentView: 'shifts'
         });
       } 
     }).catch(() => {
@@ -140,6 +145,44 @@ Page({
     }).then(() => {
       this.getRules();
     });
+  },
+  // Get visitors information
+  fetchVisitors() {
+    this.setData({loading: true});
+    return request.getVisitors({
+      startDateTime: `${new Date().getFullYear()}-${this.data.monthIndices[0]+1}-${this.data.dayIndices[0]+1} 8:00:00`,
+      endDateTime: `${new Date().getFullYear()}-${this.data.monthIndices[6]+1}-${this.data.dayIndices[6]+1} 24:00:00`
+    }).then(res => {
+      if(res.statusCode === 200) {
+        res.data = this.toString(res.data);
+        this.setData({
+          visitors: res.data,
+          loading: false,
+          currentView: 'visitors'
+        });
+      }
+    });
+  },
+  toString(visitorsArray) {
+    for(let dayVisitors of visitorsArray) {
+      for (let periodVisitors of dayVisitors) {
+        for (let visitor of periodVisitors) {
+          visitor.detail = this.visitorToString(visitor);
+          visitor.summary = this.visitorToSummaryString(visitor);
+        }
+      }
+    }
+    return visitorsArray;
+  },
+  visitorToString(visitor) {
+    return `${this.visitorToSummaryString(visitor)}
+    ${this.data.language.appointer + ': ' + visitor.appointer + ' ' + visitor.appointer_phone_number}
+    ${this.data.language.guide + ': ' + (visitor.guide || this.data.language.null)}
+    ${this.data.language.comment + ': ' + (visitor.comment || this.data.language.null)}`;
+  },
+  visitorToSummaryString(visitor) {
+    return `${util.getHourMinutes(visitor.arriving) + ' ' + visitor.number_of_people + this.data.language.people}
+    ${visitor.identity}`;
   },
 
   setLanguage() {
@@ -177,10 +220,7 @@ Page({
       data.statuses[data.statusIndex]
     ).then(res => {
       if(res.statusCode === 200) {
-        util.show(data.language.fillInSheetSuccess, 'success');    
-        this.setData({
-          loading: true
-        });
+        util.show(data.language.fillInSheetSuccess, 'success');
         this.fetchShifts();
       }
     });
@@ -198,6 +238,14 @@ Page({
   toggleFillInSheetPopup() {
     this.setData({
       showFillInSheetPopup: !this.data.showFillInSheetPopup
+    });
+  },
+
+  seeVisitor(event) {
+    vanDialog.alert({
+      title: this.data.language.visitorInfo,
+      message: event.currentTarget.dataset.visitorDetail,
+      confirmButtonText: this.data.language.confirm,
     });
   },
 
@@ -259,20 +307,12 @@ Page({
         request.deleteShift(event.currentTarget.dataset.shiftId)
           .then(res => {
             if(res.statusCode === 200) {
-              util.show(data.language.deleteShiftSuccess, 'success');    
-              this.setData({
-                loading: true
-              });
+              util.show(data.language.deleteShiftSuccess, 'success');
               this.fetchShifts();
             }
           });
       }
     });
-  },
-
-  saveClickPosition(event) {
-    this.data.scrollTop = event.detail.y;
-    this.data.scrollLeft = event.detail.x;
   },
 
   closeRules() {
@@ -473,5 +513,13 @@ Page({
       title: this.data.language.fillInSheet,
       path: '/pages/work/fill-in-sheet'
     };
+  },
+
+  changeView() {
+    if(this.data.currentView === 'shifts') {
+      this.fetchVisitors();
+    } else {
+      this.fetchShifts();
+    }
   }
 });

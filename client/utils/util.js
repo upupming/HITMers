@@ -23,8 +23,16 @@ function keepShowing(message, type) {
 }
 
 function getDateString(date, withHours) {
-  return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`
-    + (withHours ? `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}` : '');
+  return getYearMonthDays(date)
+    + (withHours ? getHourMinutes(date) : '');
+}
+function getYearMonthDays(date) {
+  date = new Date(date);
+  return `${date.getFullYear()}-${('0' + (date.getMonth() + 1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+}
+function getHourMinutes(date) {
+  date = new Date(date);
+  return `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}`;
 }
 
-module.exports = { show, keepShowing, getDateString };
+module.exports = { show, keepShowing, getDateString, getYearMonthDays, getHourMinutes };

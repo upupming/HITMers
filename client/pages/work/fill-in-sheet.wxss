@@ -102,6 +102,10 @@ th:first-child,td:first-child {
   background: #99d3f9;
 }
 
+.visitor {
+  background: #66BB6A;
+}
+
 .title {
   padding-top: 20rpx;
   text-align: center; 
@@ -143,18 +147,25 @@ th:first-child,td:first-child {
 .download {
   position: fixed;
   bottom: 20rpx;
-  right: 260rpx;
+  right: 370rpx;
   width: 70rpx;
   height: 80rpx;
 }
 .open {
   position: fixed;
   bottom: 20rpx;
-  right: 150rpx;
+  right: 260rpx;
   width: 80rpx;
   height: 80rpx;
 }
 .what {
+  position: fixed;
+  bottom: 20rpx;
+  right: 150rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.switch {
   position: fixed;
   bottom: 20rpx;
   right: 40rpx;

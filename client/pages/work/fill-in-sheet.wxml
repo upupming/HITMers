@@ -1,6 +1,6 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view wx:else class="content">
-  <van-cell>
+  <van-cell wx:if="{{currentView === 'shifts'}}">
     <view class="card-title">
         <van-icon bind:click="closeRules" custom-class="card-icon" name="close" wx:if="{{showRules}}" />
         <text bindtap="showRules" class="rules">{{language.shiftsRules}}</text>
@@ -10,7 +10,7 @@
     </view>
   </van-cell>
 
-  <table>
+  <table wx:if="{{currentView === 'shifts'}}">
     
     <!-- This week dates -->
     <tr>
@@ -55,9 +55,49 @@
   
   </table>
 
+<table wx:else>
+    
+    <!-- This week dates -->
+    <tr>
+      <th>{{language.visitors}}</th>
+      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}">
+        <view class="month-str">{{language.months[monthIndices[index]]}}</view>
+        <view class="day-str">{{language.days[dayIndices[index]]}}</view>
+        <view class="weekday-str">{{item}}</view>
+      </th>
+    </tr>
+
+    <!-- Morning -->
+    <tr>
+        <td class="strong">{{language.morning}}</td>     
+        <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
+
+          <text class="grid visitor" wx:for="{{visitors[dayIndex][0]}}" wx:for-item="visitor" data-phone-number="{{visitor.appointer_phone_number}}" data-period="morning" data-day-index="{{dayIndex}}" data-visitor-id="{{visitor.visitor_id}}" data-visitor-detail="{{visitor.detail}}" bindtap="seeVisitor">{{visitor.summary}}</text>
+
+          <text class="grid" wx:if="{{visitors[dayIndex][0].length < 6}}" wx:for="{{complement[visitors[dayIndex][0].length]}}" data-period="morning" data-day-index="{{dayIndex}}">\n</text>
+        </td>
+      </tr>
+
+    <!-- Afternoon -->
+    <tr>
+      <td class="strong">{{language.afternoon}}</td>
+     
+      <td wx:for="{{monthIndices}}" wx:for-index="dayIndex">
+        
+        <text class="grid visitor" wx:for="{{visitors[dayIndex][1]}}" wx:for-item="visitor" data-phone-number="{{visitor.appointer_phone_number}}" data-period="afternoon" data-day-index="{{dayIndex}}" data-visitor-id="{{visitor.visitor_id}}" data-visitor-detail="{{visitor.detail}}" bindtap="seeVisitor">{{visitor.summary}}</text>
+        <!-- 补齐至 6 格 -->
+        <text class="grid" wx:if="{{visitors[dayIndex][1].length < 6}}" wx:for="{{complement[visitors[dayIndex][1].length]}}" data-period="afternoon" data-day-index="{{dayIndex}}">\n</text>
+      </td>
+    </tr>
+  
+  </table>
+
+<view wx:if="{{currentView === 'shifts'}}">
 <image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
 <image src="../../images/open-in-new.svg" class="open" bindtap="openPDF"/>
 <image src="../../images/what.svg" class="what" bindtap="toggleInfo"/>
+</view>
+<image src="../../images/switch.svg" class="switch" bindtap="changeView"/>
 
 </view>
 

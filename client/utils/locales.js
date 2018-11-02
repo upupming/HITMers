@@ -225,6 +225,7 @@ export default {
     tomorrow: '明天',
     afterTomorrow: '后天',
 
+    guide: '讲解员',
     shiftDetail: '值班详细信息',
     saved: '文件保存成功',
     willYouOpenIt: '值班表保存成功，是否打开？',
@@ -232,7 +233,13 @@ export default {
     savingFailed: '保存失败',
     fileNotExists: '文件不存在',
     aboutFile: '📄 保存为 pdf 功能',
-    pdfFileDeatil: '所有 pdf 文件均保存在 📁tencent/MicroMsg/wxanewfiles/xxx/ 之下，并按照『值班表@时间.pdf』命名，建议使用可以查看分类文件的文件浏览器浏览，可快速定位到值班表。'
+    pdfFileDeatil: '所有 pdf 文件均保存在 📁tencent/MicroMsg/wxanewfiles/xxx/ 之下，并按照『值班表@时间.pdf』命名，建议使用可以查看分类文件的文件浏览器浏览，可快速定位到值班表。',
+    visitors: '来宾',
+    visitorInfo: '来宾信息',
+    people: '人',
+    comment: '备注',
+    null: '无',
+    appointer: '预约者'
   },
   'en': {
     desc: 'Record everything in the museum',
@@ -468,6 +475,12 @@ export default {
     savingFailed: 'Failed to save',
     fileNotExists: 'File doesn\'t exist',
     aboutFile: '📄 Saving to file pdf feature',
-    pdfFileDeatil: 'All the pdf files are saved under 📁tencent/MicroMsg/wxanewfiles/xxx/ folder，named as 『Shifts sheet@time.pdf』. It is recommended to use a file browser that can view files of different categories to quickly locate the shifts sheet.'
+    pdfFileDeatil: 'All the pdf files are saved under 📁tencent/MicroMsg/wxanewfiles/xxx/ folder，named as 『Shifts sheet@time.pdf』. It is recommended to use a file browser that can view files of different categories to quickly locate the shifts sheet.',
+    visitors: 'Visitors',
+    visitorInfo: 'Visitor information',
+    people: 'people',
+    comment: 'Comment',
+    null: 'None',
+    appointer: 'Appointer'
   }
 };

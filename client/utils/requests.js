@@ -149,6 +149,21 @@ module.exports = {
       .then(statusCodeChecker);
   },
   /**
+   * Get all visitors during filter
+   * @param {Object} filter startDateTime, endDateTime
+   */
+  getVisitors(filter) {
+    return request({
+      url: service.visitor,
+      method: 'GET',
+      header: {
+        'x-access-token': globalData.token
+      },
+      data: filter
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
+  },
+  /**
    * Get all shifts during filter.
    * @param {Object} filter year, startMonth, startDay, endMonth, endDay
    */
