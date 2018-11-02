@@ -1,14 +1,23 @@
 # HITMers CHANGELOG
 
-## v0.0.9
+## v1.0.0
 
 ### Added
 
 1. 保存值班表为 pdf
+2. 查看预约团
 
 ### Fixed
 
 1. 跨越多个月的值班表查询
+
+### Updated
+
+1. Logo & tutorial video
+
+### Improved
+
+1. 优化值班表的展示，不必左右滑屏
 
 ## 0.0.8
 
