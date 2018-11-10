@@ -1,6 +1,6 @@
 {
   "name": "hitmers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "For HIT Musuemers",
   "main": "app.js",
   "scripts": {
