@@ -162,7 +162,7 @@ th:first-child,td:first-child {
   position: fixed;
   bottom: 20rpx;
   right: 150rpx;
-  width: 80rpx;
+  width: 70rpx;
   height: 80rpx;
 }
 .switch {

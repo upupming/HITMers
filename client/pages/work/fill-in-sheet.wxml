@@ -97,8 +97,8 @@
 
 <view wx:if="{{currentView === 'shifts'}}">
 <image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
-<image src="../../images/open-in-new.svg" class="open" bindtap="openPDF"/>
-<image src="../../images/what.svg" class="what" bindtap="toggleInfo"/>
+<image src="../../images/folder-open-fill.svg" class="open" bindtap="openPDF"/>
+<image src="../../images/why.svg" class="what" bindtap="toggleInfo"/>
 </view>
 <image src="../../images/switch.svg" class="switch" bindtap="changeView"/>
 
