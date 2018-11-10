@@ -14,6 +14,7 @@
         type="textarea"
         input-class="input"
         required
+        autosize
         name="content"
       ></van-field>
 

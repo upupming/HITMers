@@ -1,12 +1,12 @@
 {
   "pages":[
+    "pages/work/index",
     "pages/index/index",
     "pages/index/profile",
     
     "pages/about/opensource",
     "pages/about/privacy",
 
-    "pages/work/index",
     "pages/work/fill-in-sheet",
     "pages/work/monthly",
     "pages/work/video",

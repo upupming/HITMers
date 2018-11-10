@@ -21,6 +21,7 @@
         placeholder="{{language.videoDesc.placeholder}}"
         input-class="input"
         required
+        autosize
         name="desc"
       ></van-field>
 
