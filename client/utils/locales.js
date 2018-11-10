@@ -1,6 +1,7 @@
 export default {
   'zh-Hans': {
     desc: '记录在的博物馆一切',
+    HITMuseum: '哈工大博物馆',
 
     language: '语言',
     languageName: '简体中文',
@@ -246,6 +247,7 @@ export default {
   },
   'en': {
     desc: 'Record everything in the museum',
+    HITMuseum: 'HIT Museum',
 
     language: 'Language',
     languageName: 'English',

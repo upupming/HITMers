@@ -1,5 +1,12 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view wx:else class="content">
+  <view class="front-matter">
+    <van-icon bind:click="changeWeek" data-arrow="left" custom-class="arrow" name="arrow-left"/>
+    <text>
+      {{weekNumString}}
+    </text>
+    <van-icon bind:click="changeWeek" data-arrow="right" custom-class="arrow" name="arrow"/>
+  </view>
   <van-cell wx:if="{{currentView === 'shifts'}}">
     <view class="card-title">
         <van-icon bind:click="closeRules" custom-class="card-icon" name="close" wx:if="{{showRules}}" />

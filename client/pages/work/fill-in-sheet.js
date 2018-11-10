@@ -5,12 +5,7 @@ const Dialog = require('../../zan-ui/dialog/dialog');
 import vanDialog from '../../van-ui/dialog/dialog';
 const request = require('../../utils/requests');
 import Toast from '../../van-ui/toast/toast';
-
-Date.prototype.addDays = function(days) {
-  var date = new Date(this.valueOf());
-  date.setDate(date.getDate() + days);
-  return date;
-};
+const config = require('../../config');
 
 let globalData = getApp().globalData;
 let tapEvent;
@@ -28,6 +23,7 @@ Page({
     // This week's date indices
     dayIndices: [],
     complement: [],
+    weekOffset: 0,
 
     showFillInSheetPopup: false,
     selectedDayIndex: 0,
@@ -89,11 +85,6 @@ Page({
     }
   },
 
-  pullDownRefresh() {
-    wx.startPullDownRefresh();
-    this.fetchShifts().then(wx.stopPullDownRefresh);
-  },
-
   setComplement() {
     let complement = [];
     for(let i=0; i<6; i++) {
@@ -104,27 +95,37 @@ Page({
     });
   },
 
-  setDates() {
-    let now = new Date();
-    let weekDayIndex = now.getDay();
+  getWeekNum(date) {
+    return Math.floor((date - config.date.termStartDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
+  },
+
+  getWeekNumString(weekNum) {
+    return globalData.langIndex == 1 ? `Week ${weekNum}` : `第 ${weekNum} 周`;
+  },
+
+  setDates(weekOffsetToBeAdded) {
+    this.data.weekOffset += weekOffsetToBeAdded || 0;
+    let currentWeekNow = new Date().addDays(this.data.weekOffset * 7);
+    let weekDayIndex = currentWeekNow.getDay();
     let monthIndices = [], dayIndices = [];
     let beforeToday = weekDayIndex+1, afterToday = weekDayIndex;
     while(beforeToday-- > 0) {
-      let day = now.addDays(beforeToday - weekDayIndex);
+      let day = currentWeekNow.addDays(beforeToday - weekDayIndex);
       // 0: Jun., ..., 11: Dec.
       monthIndices[beforeToday] = day.getMonth();
       // 0: 1st, ..., 30: 31th
       dayIndices[beforeToday] = day.getDate() - 1;
     }
     while(++afterToday < 7) {
-      let day = now.addDays(afterToday - weekDayIndex);
+      let day = currentWeekNow.addDays(afterToday - weekDayIndex);
       monthIndices[afterToday] = day.getMonth();
       dayIndices[afterToday] = day.getDate() - 1;
     }
     this.setData({
-      weekDayIndex,
+      weekDayIndex : this.data.weekOffset === 0 ? weekDayIndex : -1,
       monthIndices,
-      dayIndices
+      dayIndices,
+      weekNumString: this.getWeekNumString(this.getWeekNum(currentWeekNow))
     });
   },
 
@@ -344,7 +345,7 @@ Page({
 
         table {
           border-collapse: collapse;
-          border: 2px solid rgb(200,200,200);
+          border: 10px solid #f1f1f1;
           letter-spacing: 1px;
           font-size: 0.8rem;
           background: linear-gradient(to right, #5d8ef1, #25b7c4);
@@ -354,7 +355,7 @@ Page({
         }
 
         td, th {
-          border: 1px solid rgb(190,190,190);
+          border: 1px solid #f1f1f1;
           padding: 10px 20px;
         }
 
@@ -378,14 +379,15 @@ Page({
           background: #99d3f9;
         }
 
-        .day-date+tr {
+        .day-date, .day-date+tr {
           font-weight: bold;
+          border-top: 5px solid #f1f1f1;
         }
       </style>
     </head>`;
 
     let tableOpeningHTML = `<body>
-      <center><table>
+      <center><h1>${this.data.language.HITMuseum + ' ' + this.data.weekNumString + ' ' + this.data.language.sheet}</h1><table>
     `;
     let tableClosingHTML = `</table></center>
     <body>
@@ -529,5 +531,11 @@ Page({
     } else {
       this.fetchShifts();
     }
+  },
+
+  changeWeek(event) {
+    let weekToBeAdd = event.currentTarget.dataset.arrow === 'left' ? -1 : 1;
+    this.setDates(weekToBeAdd);
+    this.onPullDownRefresh();
   }
 });

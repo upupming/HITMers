@@ -1,5 +1,5 @@
 let host;
-let env = 'production';
+let env = 'dev';
 
 if(env === 'production') {
   host = 'https://hitmers-api.solotime.xyz';
@@ -31,6 +31,10 @@ var config = {
     url2pdf: 'https://hitmers-api.solotime.xyz/url2pdf',
     html2pdf: 'https://hitmers-api.solotime.xyz/url2pdf/api/render',
     wxKxjs: 'https://weixin.hit.edu.cn/app/kxjscx/kxjscxapp/getKxjs'
+  },
+
+  date: {
+    termStartDate: new Date('2018-09-02 00:00:00')
   }
 };
 

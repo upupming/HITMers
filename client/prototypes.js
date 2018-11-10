@@ -31,3 +31,9 @@ Array.prototype.indexOfSameValue = function(obj){
   }
   return -1;
 };
+
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};

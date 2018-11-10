@@ -119,6 +119,23 @@ th:first-child,td:first-child {
   display: block;
 }
 
+.front-matter {
+  text-align: center;
+  background-color: #25b7c4;
+  padding-bottom: 30rpx;
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+.front-matter text {
+  display: inline;
+}
+.arrow {
+  padding: 55rpx 40rpx 0 40rpx;
+}
+
 .card-title {
   display: block;
   font-weight: bold;
