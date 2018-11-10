@@ -16,5 +16,12 @@ Page({
           loading: false
         });
       });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: this.data.subject,
+      path: `/pages/work/video-player?video_code=${this.data.video_code}&desc=${this.data.desc}&time=${this.data.time}&user=${this.data.user}&subject=${this.data.subject}`
+    };
   }
 });
