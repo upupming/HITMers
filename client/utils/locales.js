@@ -178,6 +178,7 @@ export default {
 
     video: '演示视频',
     submitVideo: '提交视频',
+    adding: '正在添加',
     videoAdded: '视频发布成功',
     streamable: {
       label: 'Streamable 视频代码',
@@ -422,6 +423,7 @@ export default {
 
     video: 'Videos',
     submitVideo: 'Submit video',
+    adding: 'Adding',
     videoAdded: 'Video published successfully',
     streamable: {
       label: 'Streamable video code',

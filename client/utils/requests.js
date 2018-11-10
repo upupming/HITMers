@@ -233,6 +233,11 @@ module.exports = {
       .then(statusCodeChecker);
   },
   addNotice(subject, content) {
+    Toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: globalData.language.adding
+    });
     return request({
       url: service.notice,
       method: 'POST',
@@ -258,6 +263,11 @@ module.exports = {
       .then(statusCodeChecker);
   },
   addVideo(subject, desc, video_code) {
+    Toast.loading({
+      duration: 0,
+      forbidClick: true,
+      message: globalData.language.adding
+    });
     return request({
       url: service.video,
       method: 'POST',
