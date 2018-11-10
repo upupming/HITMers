@@ -36,13 +36,16 @@ Page({
     statusIndex: 0,
     statuses: ['working', 'waiting', 'studying'],
 
-    showRules: true,
-    currentView: 'shifts'
+    showRules: false,
+    currentView: 'shifts',
+    toView: 'today'
   },
 
   onLoad() {
     this.setLanguage();
     event.on('languageChanged', this, this.setLanguage);
+
+    this.setWindowHeight();
 
     this.setDates();
 
@@ -51,8 +54,14 @@ Page({
     this.setComplement();
   },
 
+  setWindowHeight() {
+    this.setData({
+      windowHeight: wx.getSystemInfoSync().windowHeight
+    });
+  },
+
   getRules() {
-    request.getNotices()
+    return request.getNotices()
       .then(res => {
         if(res.statusCode === 200) {
           let notices = res.data;
@@ -65,8 +74,7 @@ Page({
           }
           if(rules) {
             this.setData({
-              rules,
-              showRules: true
+              rules
             });
           }
         }
@@ -123,27 +131,27 @@ Page({
   // Get shifts information
   fetchShifts() {
     this.setData({loading: true});
-    return request.getShifts({
-      startMonth: this.data.monthIndices[0] + 1,
-      startDay: this.data.dayIndices[0] + 1,
-      endMonth: this.data.monthIndices[6] + 1,
-      endDay: this.data.dayIndices[6] + 1
-    }).then(res => {
-      if(res.statusCode === 200) {
-        this.setData({
-          shifts: res.data,
-          loading: false,
-          currentView: 'shifts'
-        });
-      } 
-    }).catch(() => {
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1
-        });
-      }, 1500);
-    }).then(() => {
-      this.getRules();
+    this.getRules().then(() => {
+      return request.getShifts({
+        startMonth: this.data.monthIndices[0] + 1,
+        startDay: this.data.dayIndices[0] + 1,
+        endMonth: this.data.monthIndices[6] + 1,
+        endDay: this.data.dayIndices[6] + 1
+      }).then(res => {
+        if(res.statusCode === 200) {
+          this.setData({
+            shifts: res.data,
+            loading: false,
+            currentView: 'shifts'
+          });
+        } 
+      }).catch(() => {
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 1500);
+      });
     });
   },
   // Get visitors information

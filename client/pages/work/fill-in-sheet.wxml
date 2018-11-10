@@ -10,12 +10,14 @@
     </view>
   </van-cell>
 
+ <scroll-view scroll-y style="height: {{windowHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
   <table wx:if="{{currentView === 'shifts'}}">
     
     <!-- This week dates -->
     <tr>
       <th>{{language.sheet}}</th>
-      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}">
+      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}" id="{{index === weekDayIndex ? 'today' : ' '}}">
         <view class="month-str">{{language.months[monthIndices[index]]}}</view>
         <view class="day-str">{{language.days[dayIndices[index]]}}</view>
         <view class="weekday-str">{{item}}</view>
@@ -55,12 +57,12 @@
   
   </table>
 
-<table wx:else>
+  <table wx:else>
     
     <!-- This week dates -->
     <tr>
       <th>{{language.visitors}}</th>
-      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}">
+      <th wx:for="{{language.weekDays}}" wx:key="*this" class="{{index === weekDayIndex ? 'today' : ' '}}" id="{{index === weekDayIndex ? 'today' : ' '}}">
         <view class="month-str">{{language.months[monthIndices[index]]}}</view>
         <view class="day-str">{{language.days[dayIndices[index]]}}</view>
         <view class="weekday-str">{{item}}</view>
@@ -91,6 +93,7 @@
     </tr>
   
   </table>
+</scroll-view>
 
 <view wx:if="{{currentView === 'shifts'}}">
 <image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
