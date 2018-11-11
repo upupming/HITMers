@@ -28,7 +28,7 @@
     </van-cell>
     <van-cell>
       <view class="title"><image src="../../images/gmail.svg" class="icon" />{{language.contact}}</view>
-      <view bindtap="copy" class="para link" data-link-index="2">
+      <view bindtap="copy" class="para link" data-link-index="4">
         {{links[4]}}
       </view>
     </van-cell>
