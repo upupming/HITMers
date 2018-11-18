@@ -17,7 +17,7 @@
     </view>
   </van-cell>
 
- <scroll-view scroll-y style="height: {{windowHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+ <scroll-view scroll-y style="height: {{windowHeight}}px;" scroll-into-view="{{toView}}">
 
   <table wx:if="{{currentView === 'shifts'}}">
     
@@ -103,8 +103,9 @@
 </scroll-view>
 
 <view wx:if="{{currentView === 'shifts'}}">
-<image src="../../images/download.svg" class="download" bindtap="saveToPDF"/>
-<image src="../../images/folder-open-fill.svg" class="open" bindtap="openPDF"/>
+<image src="../../images/image.svg" class="image" bindtap="saveToImage"/>
+<!-- <image src="../../images/download.svg" class="download" bindtap="saveToPDF"/> -->
+<image src="../../images/folder-open-fill.svg" class="open" bindtap="openImage"/>
 <image src="../../images/why.svg" class="what" bindtap="toggleInfo"/>
 </view>
 <image src="../../images/switch.svg" class="switch" bindtap="changeView"/>

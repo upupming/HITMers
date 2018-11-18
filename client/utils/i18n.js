@@ -58,6 +58,6 @@ T.setTabBarLang = function(index) {
       'text': element
     });
   });
-}
+};
 
 export default T;

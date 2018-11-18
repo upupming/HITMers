@@ -314,5 +314,21 @@ module.exports = {
       }
     }).catch(errorHandler)
       .then(statusCodeChecker);
+  },
+  getImageByHTML(html) {
+    util.keepShowing(globalData.language.saving, 'loading');
+    return request({
+      url: service.html2pdf,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      responseType: 'arraybuffer',
+      data: {
+        html,
+        output: 'screenshot'
+      }
+    }).catch(errorHandler)
+      .then(statusCodeChecker);
   }
 };

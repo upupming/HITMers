@@ -161,6 +161,14 @@ th:first-child,td:first-child {
   color: #99d3f9;
 }
 
+.image {
+  position: fixed;
+  bottom: 20rpx;
+  right: 370rpx;
+  width: 70rpx;
+  height: 80rpx;
+}
+
 .download {
   position: fixed;
   bottom: 20rpx;

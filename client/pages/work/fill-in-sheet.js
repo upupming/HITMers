@@ -459,12 +459,12 @@ Page({
     return html;
   },
 
-  getFilePath() {
+  getFilePath(isImage) {
     let now = new Date();
     let thisMonday = now.addDays(1 - now.getDay());
     thisMonday.setHours(0, 0, 0);
     let filename = util.getDateString(thisMonday);
-    let filePath = `${wx.env.USER_DATA_PATH}/${this.data.language.sheet}@${filename}.pdf`;
+    let filePath = `${wx.env.USER_DATA_PATH}/${this.data.language.sheet}@${filename}.${isImage ? 'png' : 'pdf'}`;
     return filePath;
   },
 
@@ -499,6 +499,47 @@ Page({
           }
         });
       });
+  },
+
+  saveToImage() {
+    let html = this.getHTML();
+    let filePath = this.getFilePath(true);
+
+    request.getImageByHTML(html)
+      .then(res => {
+        let fileManager = wx.getFileSystemManager();
+        
+        fileManager.writeFile({
+          filePath: filePath,
+          data: res.data,
+          encoding: 'binary',
+          success: (result)=>{
+            if(result.errMsg === 'writeFile:ok'){
+              Toast.clear();
+              vanDialog.confirm({
+                title: this.data.language.saved,
+                message: this.data.language.willYouOpenIt,
+                confirmButtonText: this.data.language.confirm,
+                cancelButtonText: this.data.language.cancel
+              }).then(this.openImage);
+            } else {
+              util.show(this.data.language.savingFailed, 'fail');  
+            }
+          },
+          fail: () => {
+            Toast.clear();
+            util.show(this.data.language.savingFailed, 'fail');
+          }
+        });
+      });
+  },
+
+  openImage() {
+    wx.previewImage({
+      urls: [
+        this.getFilePath(true)
+      ] 
+    });
   },
 
   openPDF() {
