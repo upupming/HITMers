@@ -345,17 +345,16 @@ Page({
 
         table {
           border-collapse: collapse;
-          border: 10px solid #f1f1f1;
+          border: 10px solid black;
           letter-spacing: 1px;
-          font-size: 0.8rem;
+          font-size: 2rem;
           background: linear-gradient(to right, #5d8ef1, #25b7c4);
           margin-top: 3em;
           width: 90%;
-          color: white;
         }
 
         td, th {
-          border: 1px solid #f1f1f1;
+          border: 1px solid black;
           padding: 10px 20px;
         }
 
@@ -381,15 +380,29 @@ Page({
 
         .day-date, .day-date+tr {
           font-weight: bold;
-          border-top: 5px solid #f1f1f1;
+          border-top: 5px solid black;
+        }
+
+        .heart {
+          color: #FF4500;
+        }
+        .love {
+          font-style: italic;
+          margin: 5em;
+          font-size: 1rem;
         }
       </style>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     </head>`;
 
     let tableOpeningHTML = `<body>
-      <center><h1>${this.data.language.HITMuseum + ' ' + this.data.weekNumString + ' ' + this.data.language.sheet}</h1><table>
+      <center>
+        <img src="https://raw.githubusercontent.com/upupming/HITMers/dev/client/images/logo.png" height="180px"/>
+          <h1>${this.data.language.HITMuseum + ' ' + this.data.weekNumString + ' ' + this.data.language.sheet}</h1><table>
     `;
-    let tableClosingHTML = `</table></center>
+    let tableClosingHTML = `</table>
+        <p class="love">Made with <i class="fas fa-heart heart"></i> by upupming@HIT Museum</p>
+      </center>
     <body>
     `;
 
