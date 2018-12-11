@@ -1,5 +1,11 @@
 # HITMers CHANGELOG
 
+## v1.1.1(In progress)
+
+### Improved
+
+1. 首次打开时，对服务端进行预请求唤醒正在休眠的服务端
+
 ## v1.1.0
 
 ### Added

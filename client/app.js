@@ -37,6 +37,14 @@ App({
     this.globalData.language = wx.T.getLanguage();
 
     // update(this.globalData.language);
+
+    // Wake up Heroku server.
+    wx.pro.request({
+      url: require('./config').service.host
+    });
+    wx.pro.request({
+      url: require('./config').service.url2pdf
+    });
   },
 
   onHide: function() {
