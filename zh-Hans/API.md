@@ -386,6 +386,26 @@ endDay:4
 
 **示例 2：**
 
+如果 `endMonth` 小于 `startMonth`，将会 `year` 年 `startMonth` 到 12 月加上第二年 1 月到 `endMonth` 的所有班次信息
+
+请求 Query:
+
+```json
+year:2018
+startMonth: 10
+startDay: 28
+endMonth:3
+endDay: 3
+```
+
+返回：200 OK
+
+```json
+一个 127 维的数组
+```
+
+**示例 3：**
+
 `GET /v1/shift/Z003`
 
 请求 Query:

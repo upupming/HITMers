@@ -365,7 +365,7 @@ Get the user's shifts during a period of time.
 Request Query:
 
 ```
-Year:2018
+year:2018
 startMonth: 9
 startDay: 2
 endMonth:9
@@ -384,12 +384,32 @@ Returns: 200 OK
 
 **Example 2:**
 
+If `endMonth` < `startMonth`, all shifts between `startMonth` and December in `year` and shifts between January and `endMonth` will be return.
+
+Request Query:
+
+```json
+year:2018
+startMonth: 10
+startDay: 28
+endMonth:3
+endDay: 3
+```
+
+Return: 200 OK
+
+```json
+An array with length 127
+```
+
+**Example 3:**
+
 `GET /v1/shift/Z003`
 
 Request Query:
 
 ```
-Year:2018
+year:2018
 startMonth: 9
 startDay: 2
 endMonth:9
