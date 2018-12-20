@@ -18,6 +18,8 @@ Page({
     // Today's index
     // 0: Sunday ... 6: Saturday
     weekDayIndex: 0,
+    // This week's year indices
+    yearIndices: [],
     // This week's month indices
     monthIndices: [],
     // This week's date indices
@@ -107,10 +109,11 @@ Page({
     this.data.weekOffset += weekOffsetToBeAdded || 0;
     let currentWeekNow = new Date().addDays(this.data.weekOffset * 7);
     let weekDayIndex = currentWeekNow.getDay();
-    let monthIndices = [], dayIndices = [];
+    let yearIndices = [], monthIndices = [], dayIndices = [];
     let beforeToday = weekDayIndex+1, afterToday = weekDayIndex;
     while(beforeToday-- > 0) {
       let day = currentWeekNow.addDays(beforeToday - weekDayIndex);
+      yearIndices[beforeToday] = day.getFullYear();
       // 0: Jun., ..., 11: Dec.
       monthIndices[beforeToday] = day.getMonth();
       // 0: 1st, ..., 30: 31th
@@ -118,11 +121,13 @@ Page({
     }
     while(++afterToday < 7) {
       let day = currentWeekNow.addDays(afterToday - weekDayIndex);
+      yearIndices[afterToday] = day.getFullYear();
       monthIndices[afterToday] = day.getMonth();
       dayIndices[afterToday] = day.getDate() - 1;
     }
     this.setData({
       weekDayIndex : this.data.weekOffset === 0 ? weekDayIndex : -1,
+      yearIndices,
       monthIndices,
       dayIndices,
       weekNumString: this.getWeekNumString(this.getWeekNum(currentWeekNow))
@@ -134,6 +139,7 @@ Page({
     this.setData({loading: true});
     this.getRules().then(() => {
       return request.getShifts({
+        year: this.data.yearIndices[0],
         startMonth: this.data.monthIndices[0] + 1,
         startDay: this.data.dayIndices[0] + 1,
         endMonth: this.data.monthIndices[6] + 1,
@@ -222,7 +228,7 @@ Page({
     let data = this.data;
     request.addShift(
       globalData.stuId, 
-      new Date().getFullYear(),
+      data.yearIndices[data.selectedDayIndex],
       data.monthIndices[data.selectedDayIndex] + 1, 
       data.dayIndices[data.selectedDayIndex] + 1,
       data.selectedPeriod === 'morning',
