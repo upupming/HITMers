@@ -1,5 +1,5 @@
 {
-	"miniprogramRoot": "./client",
+	"miniprogramRoot": "client/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,

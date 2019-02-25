@@ -36,7 +36,8 @@ Page({
 
     showRules: false,
     currentView: 'shifts',
-    toView: 'today'
+    toView: 'today',
+    termInfo: config.date.termInfo[globalData.langIndex]
   },
 
   onLoad() {
@@ -130,6 +131,7 @@ Page({
       yearIndices,
       monthIndices,
       dayIndices,
+      weekNum: this.getWeekNum(currentWeekNow),
       weekNumString: this.getWeekNumString(this.getWeekNum(currentWeekNow))
     });
   },
@@ -404,7 +406,7 @@ Page({
     let tableOpeningHTML = `<body>
       <center>
         <img src="https://raw.githubusercontent.com/upupming/HITMers/dev/client/images/logo.png" height="180px"/>
-          <h1>${this.data.language.HITMuseum + ' ' + this.data.weekNumString + ' ' + this.data.language.sheet}</h1><table>
+          <h1>${this.data.language.HITMuseum + ' ' + this.data.termInfo + ' ' + this.data.weekNumString + ' ' + this.data.language.sheet}</h1><table>
     `;
     let tableClosingHTML = `</table>
         <p class="love">Made with <i class="fas fa-heart heart"></i> by upupming@HIT Museum</p>

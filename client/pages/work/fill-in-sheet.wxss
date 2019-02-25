@@ -132,6 +132,9 @@ th:first-child,td:first-child {
 .front-matter text {
   display: inline;
 }
+.front-matter .term-info {
+  font-size: 20rpx;
+}
 .arrow {
   padding: 55rpx 40rpx 0 40rpx;
 }

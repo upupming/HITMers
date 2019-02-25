@@ -34,7 +34,12 @@ var config = {
   },
 
   date: {
-    termStartDate: new Date('2018-09-02 00:00:00')
+    // termStartDate: new Date('2018-09-02 00:00:00')
+    termStartDate: new Date('2019-02-25 00:00:00'),
+    termInfo: [
+      '2019 年春季学期',
+      'Spring 2019'
+    ]
   }
 };
 

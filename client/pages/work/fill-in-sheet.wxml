@@ -1,8 +1,11 @@
 <zan-loading type="dot" color="black" wx:if="{{loading}}"></zan-loading>
 <view wx:else class="content">
   <view class="front-matter">
-    <van-icon bind:click="changeWeek" data-arrow="left" custom-class="arrow" name="arrow-left"/>
+    <van-icon bind:click="changeWeek" data-arrow="left" custom-class="arrow" name="arrow-left"
+      style="visibility: {{weekNum === 1 ? 'hidden' : 'visible'}};"
+    />
     <text>
+      <text class="term-info">{{termInfo}}</text>
       {{weekNumString}}
     </text>
     <van-icon bind:click="changeWeek" data-arrow="right" custom-class="arrow" name="arrow"/>
