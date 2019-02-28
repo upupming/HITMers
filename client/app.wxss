@@ -66,31 +66,31 @@ tbody {
 }
 
 thead {
-  border-top: 3rpx solid #d7dce2;
-  border-left: 3rpx solid #d7dce2;
+  border-top: 3rpx solid #969A97;
+  border-left: 3rpx solid #969A97;
 }
 tr td:first-child {
-  border-left: 3rpx solid #d7dce2;
+  border-left: 3rpx solid #969A97;
 }
 tr th:first-child {
-  border-top: 3rpx solid #d7dce2;
-  border-left: 3rpx solid #d7dce2;
+  border-top: 3rpx solid #969A97;
+  border-left: 3rpx solid #969A97;
 }
 tr th {
-  border-top: 3rpx solid #d7dce2;
+  border-top: 3rpx solid #969A97;
 }
 
 td {
-  border-bottom: 3rpx solid #d7dce2;
-  border-right: 3rpx solid #d7dce2;
+  border-bottom: 3rpx solid #969A97;
+  border-right: 3rpx solid #969A97;
   display: table-cell;
   vertical-align: inherit;
   box-sizing: border-box;
 }
 
 th {
-  border-bottom: 3rpx solid #d7dce2;
-  border-right: 3rpx solid #d7dce2;
+  border-bottom: 3rpx solid #969A97;
+  border-right: 3rpx solid #969A97;
 	display: table-cell;
   vertical-align: inherit;
   font-weight: bold;

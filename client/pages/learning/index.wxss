@@ -2,25 +2,34 @@
   width: 33.33333%;
   float: left;
   padding-top: 60rpx;
-  padding-bottom: 10rpx;
+  padding-bottom: 20rpx;
   text-align: center;
   color: var(--theme-color);
+  color: #969A97;
 }
 
 .icon-img {
   width: 100rpx;
-  height: 80rpx;
+  height: 100rpx;
+  display:inline-block;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.icon-action {
+.icon-action, .icon-action-2 {
   font-size: 25rpx;
-}
-
-.icon-action-2 {
-  font-size: 25rpx;
-  color: #25EC7E;
 }
 
 .icon-wrap:active {
+  color: var(--theme-color);
   background: #d9d9d9;
+}
+
+.study {
+  background-image: url('https://i.loli.net/2019/02/28/5c779c598750d.png');
+}
+.study:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c779c5985dfc.png');
 }

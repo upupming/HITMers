@@ -1,31 +1,31 @@
 <view class="container">
   <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="fill-in-sheet">
       <view class="icon">
-        <image class="icon-img" src="../../images/sheet.svg"/>
+        <view class="icon-img sheet"></view>
       </view>
       <view class="icon-action">{{language.fillInSheet}}</view>
   </view>
   <view class="icon-wrap" bindtap="checkInOrOut">
     <view class="icon">
-      <image class="icon-img" src="../../images/check.svg"/>
+      <view class="icon-img check"></view>
     </view>
     <view class="icon-action">{{checkedIn ? language.checkOut : language.checkIn}}</view>
   </view>
   <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="monthly">
     <view class="icon">
-      <image class="icon-img" src="../../images/monthly.svg"/>
+      <view class="icon-img monthly"></view>
     </view>
     <view class="icon-action">{{language.monthly}}</view>
   </view>
   <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="video">
     <view class="icon">
-      <image class="icon-img" src="../../images/video.svg"/>
+      <view class="icon-img video"></view>
     </view>
     <view class="icon-action-2">{{language.video}}</view>
   </view>
   <view class="icon-wrap" bindtap="navigateToIfHasLogged" id="notices">
     <view class="icon">
-      <image class="icon-img" src="../../images/notices.svg"/>
+      <view class="icon-img notices"></view>
     </view>
     <view class="icon-action-2">{{language.notices}}</view>
   </view>

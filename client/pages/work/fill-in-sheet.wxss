@@ -1,9 +1,8 @@
 table{
-  border: 30rpx solid #99d3f9;
-  border-bottom: 120rpx solid #99d3f9 !important;
+  border: 30rpx solid #d7dce2;
+  border-bottom: 120rpx solid #d7dce2 !important;
   display: inline-flex;
   flex-direction: row;
-  background: linear-gradient(to right, #5d8ef1, #25b7c4);
 }
 
 tr {
@@ -17,15 +16,15 @@ th{
   height: 600rpx;
   width: 120rpx;
   justify-content: center;
-  border: 3rpx solid #d7dce2;
-  color: white;
+  border: 3rpx solid #969A97;
+  color: #969A97;
   padding-left: 10rpx;
   padding-right: 10rpx;
   box-sizing: border-box;
 }
 
 .today {
-  background-color: #8077D5;
+  background-color: #FF7E6B;
   color: black;
 }
 
@@ -37,9 +36,9 @@ td{
   text-align: center;
   vertical-align:middle;
   font-weight: 300;
-  font-size: 24rpx;
-  color: #fff;
-  border: 3rpx solid #d7dce2;
+  font-size: 32rpx;
+  color: white;
+  border: 3rpx solid #969A97;
   white-space: nowrap;
   box-sizing: border-box;
 }
@@ -50,7 +49,7 @@ td{
   justify-content: center;
   height: 101rpx;
   width: 100%;
-  border-bottom: 1rpx solid #d7dce2;
+  border-bottom: 1rpx solid #969A97;
   padding-top: 12rpx;
   padding-bottom: 12rpx;
   box-sizing: border-box;
@@ -75,6 +74,7 @@ td.strong {
 }
 th:first-child,td:first-child {
   height: 150rpx;
+  color: #969A97;
 }
 
 .month-str {

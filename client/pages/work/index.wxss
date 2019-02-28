@@ -2,25 +2,61 @@
   width: 33.33333%;
   float: left;
   padding-top: 60rpx;
-  padding-bottom: 10rpx;
+  padding-bottom: 20rpx;
   text-align: center;
-  color: var(--theme-color);
+  color: #969A97;
 }
 
 .icon-img {
   width: 100rpx;
-  height: 80rpx;
+  height: 100rpx;
+  display:inline-block;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.icon-action {
-  font-size: 25rpx;
+.sheet {
+  background-image: url('https://i.loli.net/2019/02/28/5c7776fe569b2.png');
+}
+.sheet:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c777934ee04d.png');
 }
 
-.icon-action-2 {
+.check {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7e88564.png');
+}
+.check:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7e88c6b.png');
+}
+
+.monthly {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7eaee3a.png');
+}
+.monthly:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7eae6af.png');
+}
+
+.video {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7eadf40.png');
+}
+.video:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7ef34e7.png');
+}
+
+.notices {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7ead67c.png');
+}
+.notices:active {
+  background-image: url('https://i.loli.net/2019/02/28/5c778a7ef2e61.png');
+}
+
+.icon-action, .icon-action-2 {
   font-size: 25rpx;
-  color: #25EC7E;
 }
 
 .icon-wrap:active {
+  color: var(--theme-color);
   background: #d9d9d9;
 }

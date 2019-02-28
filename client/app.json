@@ -20,16 +20,16 @@
     "pages/learning/index"
   ],
   "window":{
-    "backgroundColor":"#49B1F5",
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#49B1F5",
+    "backgroundColor":"#97D2FB",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#97D2FB",
     "navigationBarTitleText": "哈工大博物馆小助手",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"black"
   },
   "tabBar": {
     "color": "#888",
-    "selectedColor":"#49B1F5",
-    "backgroundColor": "#F9F9F9",
+    "selectedColor":"#FF7E6B",
+    "backgroundColor": "white",
     "borderStyle": "black",
     "list": [
       {
@@ -42,7 +42,7 @@
         "pagePath": "pages/work/index",
         "text": "工作",
         "iconPath": "images/work.png",
-        "selectedIconPath": "images/work-selected.png"
+        "selectedIconPath": "images/work-selected-min.png"
       },
       {
         "pagePath": "pages/index/index",

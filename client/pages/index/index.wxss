@@ -57,6 +57,13 @@
   overflow: hidden;
   width: 100rpx;
   height: 100rpx;
-  margin: 10rpx;
+  padding: 10rpx;
   border-radius: 50%;
+}
+
+.profile:active
+,.cell:active
+,.view-text:active {
+  color: var(--theme-color);
+  background: #d9d9d9;
 }

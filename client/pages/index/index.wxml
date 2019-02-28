@@ -9,7 +9,7 @@
     <zan-cell-group>
     <zan-cell is-link="{{logged}}" url="/pages/index/profile">
       <view class="flex-container">
-        <view>
+        <view class="profile">
           <open-data class="center-text" type="userNickName" wx:if="{{logged}}"></open-data>
           <text class="center-text" wx:if="{{logged}}">{{stuId || '' }}</text>
           <text class="center-text" wx:if="{{logged}}">{{stuName || ''}}</text>
@@ -25,21 +25,21 @@
         <zan-button class="center" size="small" openType="openSetting">{{language.permissions}}</zan-button>
       </view>
       
-      <view slot="icon">
+      <view slot="icon" class="profile">
         <open-data  wx:if="{{logged}}" type="userAvatarUrl" class="user-avatar"></open-data>
         <image wx:else src="../../images/user-unlogin.png" class="user-avatar" />
       </view>
       
 
-      <view wx:if="{{logged}}" slot="footer" catchtap="logout">{{language.logout}}</view>
+      <view wx:if="{{logged}}" slot="footer" catchtap="logout" class="view-text">{{language.logout}}</view>
     </zan-cell>
-    <zan-cell wx:if="{{logged}}">
+    <zan-cell wx:if="{{logged}}" class="cell">
         <view bindtap="changePassword">{{language.changePassword}}</view>
     </zan-cell>
     </zan-cell-group>
   </zan-panel>
   <zan-panel title="{{language.settings}}">
-    <zan-cell title="{{language.language}}">
+    <zan-cell title="{{language.language}}" class="cell">
       <picker mode="selector" range="{{languages}}" value="{{langIndex}}" bindchange="changeLanguage">
         <!-- 经测试，部分微信版本不支持动态下标索引数组元素 -->
         <!-- <view class="picker">{{languages[langIndex]}}</view> -->
@@ -49,13 +49,13 @@
   </zan-panel>
   <zan-panel title="{{language.about}}">
     <zan-cell-group>
-      <zan-cell title="{{language.version}}" bindtap="update">
+      <zan-cell title="{{language.version}}" bindtap="update" class="cell">
         <view>{{language.currentVersion}}</view>
         <van-icon name="upgrade" slot="footer"></van-icon>
       </zan-cell>
-      <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource">
+      <zan-cell title="{{language.opensource}}"  is-link url="/pages/about/opensource" class="profile">
       </zan-cell>
-      <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy">
+      <zan-cell title="{{language.privacy}}"  is-link url="/pages/about/privacy" class="profile">
       </zan-cell>
     </zan-cell-group>
   </zan-panel>

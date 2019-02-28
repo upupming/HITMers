@@ -1,7 +1,7 @@
 <view class="container">
   <view class="icon-wrap" bindtap="navigateTo" id="free-rooms">
       <view class="icon">
-        <image class="icon-img" src="../../images/study.svg"/>
+        <view class="icon-img study"></view>
       </view>
       <view class="icon-action">{{language.freeRooms}}</view>
   </view>
