@@ -348,21 +348,21 @@ Page({
       <style>
         html {
           font-family: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW-Kai", serif;
-          background-color: #99d3f9;
+          background-color: white;
         }
 
         table {
           border-collapse: collapse;
-          border: 10px solid black;
+          border: 10px solid #969A97;
           letter-spacing: 1px;
           font-size: 2rem;
-          background: linear-gradient(to right, #5d8ef1, #25b7c4);
+          background: white;
           margin-top: 3em;
           width: 90%;
         }
 
         td, th {
-          border: 1px solid black;
+          border: 1px solid #969A97;
           padding: 10px 20px;
         }
 
@@ -388,7 +388,14 @@ Page({
 
         .day-date, .day-date+tr {
           font-weight: bold;
-          border-top: 5px solid black;
+          border-top: 5px solid #969A97;
+          color: #969A97;
+        }
+        tr:first-child {
+          color: #969A97;
+        }
+        td {
+          color: white;
         }
 
         .heart {
