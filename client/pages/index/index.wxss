@@ -3,7 +3,6 @@
 }
 
 .title {
-  margin: 0 0 15rpx;
   text-align: center;
   user-select: none;
 }
@@ -22,15 +21,13 @@
 }
 
 .logo {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 50%;
+  width: 190rpx;
+  height: 190rpx;
 }
 
 .desc {
   font-size: 28rpx;
   color: #455a64;
-  margin: 0 0 60rpx;
   text-align: center;
 }
 
