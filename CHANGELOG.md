@@ -1,6 +1,8 @@
 # HITMers CHANGELOG
 
-## v1.1.1(In progress)
+## v1.2.0
+
+UI 全面更新，更加美观、简洁！
 
 ### Fixed
 
