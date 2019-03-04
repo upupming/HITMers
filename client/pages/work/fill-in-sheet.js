@@ -395,7 +395,7 @@ Page({
           color: #969A97;
         }
         td {
-          color: white;
+          color: black;
         }
 
         .heart {
